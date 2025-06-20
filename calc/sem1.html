@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>sem1</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+</head>
+<body>
+<h1 id="файл-1">Файл 1</h1>
+<hr />
+<h1 id="й-семестр">5-й семестр</h1>
+<h2 id="лекция-1">Лекция № 1</h2>
+<h3
+id="введение.-место-численных-методов-в-математических-дисциплинах.-представление-чисел.-погрешности-вычислений-и-их-оценки">Введение.
+Место численных методов в математических дисциплинах. Представление
+чисел. Погрешности вычислений и их оценки</h3>
+<h4 id="введение">Введение</h4>
+<p>Настоящий семестр курса «Численные методы» посвящен в основном
+вопросам различных приближений функций, аппроксимации, интерполяции и
+т.д. (последующие три семестра это «Численные методы алгебры», «Сеточные
+модели для уравнений в частных производных», «Численные методы для
+уравнений математической физики»).</p>
+<p>Начать надо с понятия числа – здесь целый ряд тем, которые можно лишь
+затронуть. По утверждению Р.В. Хемминга, автора известного курса
+«Численные методы»: «Цель расчетов – понимание, а не числа».
+Представляется, однако, что такая формулировка может быть уточнена:
+«Цель расчетов – понимание через число». То есть «понимание» должно
+выражаться не только через слова и образы, но и в терминах самого числа.
+«Теория чисел» – раздел математики, первоначально изучавший только целые
+числа. С другой стороны, численные методы широко используют операции с
+различными числами, но, конечно, эта дисциплина использует методы
+алгебры, математического анализа, дифференциальных уравнений и других
+разделов математики. Но все же число выступает как некий существенный
+инструмент, имеющий не только прикладной смысл. Поэтому хотелось бы
+вначале очень кратко сказать о значимости самого понятия числа. «Все
+есть число» – известное изречение, связанное с именем Пифагора.
+Понимание числа изменялось с течением времени, число выступало как некий
+образ, стремящийся отразить явления материального мира. Но и развитие
+самого понятия числа позволяло описывать некие новые уровни реальности.
+Платону приписывается неизданное учение о теории идеальных чисел. Там,
+например, характерно следующее высказывание: «… в отличие от
+математических чисел, переход между которыми возможен путем прибавления
+единиц, числа идеальные принципиально несводимы друг на друга, они даны
+прежде всякой количественности, их числовая определенность есть
+качественный спецификум каждого числа». Важно подчеркнуть, что числами
+могут служить различные объекты идеального мира, трактовка которых
+видоизменяется. Хорошо известно, что в античности имели дело с целыми и
+рациональными числами, проблема неизмеримости привела к созданию в
+будущем иррациональных чисел, с течением времени появились понятия
+нуля,</p>
+<hr />
+<p><sup>1</sup></p>
+<hr />
+<p>отрицательных чисел, комплексных чисел и т.д. Помимо прикладного
+направления развивается и философия математики, и от трактата Плотина «О
+числах» (III в. н. э.) до начальной главы книги Шпенглера «Закат Европы»
+(ХХ в. н.э.) «Смысл чисел» можно видеть постоянное стремление понять и
+установить все новые возможности числа.</p>
+<h4 id="представление-чисел">Представление чисел</h4>
+<p>Численные методы немыслимы сейчас без современных мощных компьютеров,
+но здесь стоит сделать некоторые замечания. Число наряду со словом есть
+предельное идеальное понятие. Вместе с тем, для «оперирования с
+реальностью» число в вычислительных устройствах «материализуется». Можно
+отметить очень кратко эволюцию представления чисел при вычислениях.
+Простая древняя счетная доска (абак) появилась до нашей эры и воплощали
+соответствие целого числа и материальных объектов (камешки). В III веке
+н.э. были предложены счеты с передвигающимися костяшками (по сути,
+использующие вычисления с перебросом разряда), что было большим
+достижением. Можно упомянуть и некоторые другие даты и факты в развитии
+вычислительных машин: 1617 г. – счетное устройство Непера, здесь уже
+допускалась операция умножения; 1642 г. – суммирующая машины Паскаля,
+она производила различные арифметические действия; 1673 г. – калькулятор
+Лейбница ускорил выполнение операций умножения и деления. При этом
+развитие вычислительных машин происходило достаточно медленно, можно
+отметить 1804 г., когда в станке Жаккарда для управления
+производственными операциями впервые были использованы перфокарты. Такой
+элемент материализации чисел (наряду с перфолентой) был важен для
+вычислительной техники XX века. Появление электронных вычислительных
+машин (ЭВМ) в XX веке сыграло огромную роль в ускорении вычислений.
+Сейчас происходит дальнейшее усовершенствование компьютеров.</p>
+<p>Для понимания способов вычислений важно понять, что «заключенные» в
+вычислительных устройствах операции в принципе формализуемы. Практически
+во всех вычислительных устройствах (также, как и при вычислениях «на
+бумаге») используется позиционная система исчисления. Другие системы,
+например, с римскими цифрами обладают своими достоинствами, но у них нет
+такой универсальности. В вычислительных устройствах присутствуют два
+важнейших элемента: ограниченное количество разрядов (что определяет
+точность операций) и возможность переброса разрядов. В современных
+устройствах используется как правило двоичная система исчисления. С ней
+связано понятие «бита» (bit – сокращение от binary digit). Простейшее
+устройство основано на принципе «включено» – «выключено» (или «+» -
+«-»). Существует возможность работать с</p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<p>«тритами» (что имеет некоторые преимущества, несмотря на усложнение)
+– такая система была реализована в свое время в ЭВМ «Сетунь». В
+последние десятилетия изучаются возможности квантовых вычислений с
+помощью кубитов (qubit – quantum bit).</p>
+<p>Перевод числа из одной системы в другую, допустим, из десятичной
+системы в двоичную – простая операция, который надо уметь выполнять,
+например <span class="math inline">17_{10} = 10001_2 = 1 \cdot 2^4 + 0
+\cdot 2^3 + 0 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0</span>.</p>
+<p>В вычислительных устройствах применяются две системы представления
+чисел: с фиксированной и плавающей запятой. В современных компьютерах,
+как правило, используются числа с плавающей запятой: здесь задается
+уровень относительной ошибки. В ячейке вычислительного устройства
+хранятся знак числа, показатель и мантисса. В распространенной в
+компьютерах IEEE-арифметике (IEEE - Institute of Electrical and
+Electronics Engineers) используются числа с обычной и двойной точностью:
+с 32-х и 64-х битовыми представлениями соответственно.</p>
+<p>Для чисел обычной точности используется следующее число разрядов: 1
+(знак), 8 (порядок), 23 (мантисса) Максимальная относительная ошибка
+представления здесь <span class="math inline">\mathcal{E}_{маш.} =
+\frac{1}{2} 10^{-23} \approx 6 \cdot 10^{-8}</span>.</p>
+<p>Для чисел с двойной точностью 1 (знак), 11 (порядок), 52 (мантисса)
+Соответственно максимальная относительная ошибка <span
+class="math inline">\mathcal{E}_{маш.} = 10^{-53} \approx
+10^{-16}</span>.</p>
+<h4 id="погрешности-вычислений">Погрешности вычислений</h4>
+<p>В численных методах важно представлять характер и происхождение
+ошибок, погрешностей, которые практически всегда присутствуют в
+вычислениях. Традиционно происхождение погрешностей сводят к двум типам:
+неустранимым и устранимым.</p>
+<p><strong>Неустранимые погрешности</strong> подразделяются в свою
+очередь на а) связанные с физической и математической моделью, которая
+положена в основу моделирования, описания какого-нибудь явления или
+процесса, например, приближение ньютоновой механики вполне оправданно, и
+дает небольшие погрешности, если скорости частиц много меньше скорости
+света, для больших скоростей надо использовать методы теории
+относительности, иначе ошибки, вносимые за счет не совсем адекватной
+физической модели могут оказаться весьма большими;</p>
+<hr />
+<p><sup>3</sup></p>
+<hr />
+<p>б) связанные с погрешностями, появляющимися на практике и внесенными
+в начальные и другие данные, например, при метеорологических
+наблюдениях.</p>
+<p><strong>Устранимые погрешности</strong> имеют тоже два источника: а)
+погрешности вычислительных устройств: это могут быть ошибки величин
+<span class="math inline">\mathcal{E}_{маш.}</span> для современных
+компьютеров, но могут быть и гораздо более грубые погрешности,
+связанные, например, с тем, сколько разрядов удерживают при вычислениях
+«на бумаге»; б) погрешности метода вычислений, например, для приближения
+разностными выражениями производных могут использовать аппроксимации
+первого, второго или более высоких порядков по величине приращения
+аргумента.</p>
+<p>Стоит напомнить некоторые термины, которые используются в численных
+методах при работе с числами. <strong>Значащими цифрами</strong> числа в
+его позиционной записи называются все его цифры, начиная с первой
+ненулевой слева. Например, у приближенного числа <span
+class="math inline">u^* = 0.0\underline{410700}</span> значащими цифрами
+являются подчеркнутые. Значащую цифру называют <strong>верной</strong>,
+если абсолютная погрешность числа не превосходит единицы разряда, в
+котором стоит эта цифра. Например, если для числа <span
+class="math inline">u^* = 0.0\underline{4107}</span> абсолютная
+погрешность <span class="math inline">\Delta(u^*) = 0.000008,</span> то
+все значащие цифры в этом числе являются верными (они подчеркнуты).</p>
+<p><strong>Примечание.</strong> Иногда уславливаются называть значащую
+цифру верной, если абсолютная погрешность не превосходит половины
+единицы разряда, соответствующей этой цифре (тогда используют термин
+<strong>верной в узком смысле</strong>). Иногда говорят и о количестве
+верных цифр после точки: подсчитывается число цифр после точки от первой
+цифры до последней верной цифры. В последнем примере это число равно
+5.</p>
+<h4 id="абсолютная-и-относительная-погрешности">Абсолютная и
+относительная погрешности</h4>
+<p>Пусть <span class="math inline">u</span> – точное значение некоторой
+величины, а <span class="math inline">u^*</span> – известное
+приближенное значение этой величины. Тогда <strong>абсолютной
+погрешностью</strong> приближенного значения <span
+class="math inline">u^*</span> называют величину <span
+class="math inline">\Delta(u^*)</span>, если <span
+class="math inline">|u^* - u| \le \Delta(u^*).</span>
+<strong>Относительная погрешность</strong> этой величины определяется
+следующим образом <span class="math inline">\frac{|u^* - u|}{|u^*|} \le
+\delta(u^*).</span></p>
+<hr />
+<p><sup>4</sup></p>
+<hr />
+<p>Заметим, что часто абсолютной и относительной погрешностями называют
+сами величины <span class="math inline">|u^* - u|</span> и <span
+class="math inline">|u^* - u|/|u^*|</span> соответственно. Тогда <span
+class="math inline">\Delta(u^*)</span> и <span
+class="math inline">\delta(u^*)</span> называют оценками и границами
+соответственно абсолютной и относительной погрешности. Но так как обычно
+точные значения таких величин неизвестны, будем использовать указанные
+определения.</p>
+<p>Нетрудно показать, что абсолютная погрешность суммы (и разности) двух
+величин равна сумме абсолютных погрешностей членов суммы (разности).
+Аналогично для произведения (отношения) двух величин относительная
+погрешность равна сумме относительных погрешностей каждого из членов
+данной операции. Но мы рассмотрим более общий случай функции, зависящей
+от нескольких переменных, тогда сумма или произведение двух величин
+будут частными случаями.</p>
+<p>Получим оценку погрешности при вычислении дифференцируемой функции
+<span class="math inline">u = f(x_1, ..., x_n).</span> приближенных
+аргументов <span class="math inline">x_1, ..., x_n</span>, если известны
+границы их абсолютных погрешностей <span
+class="math inline">\Delta(x_1^*),..., \Delta(x_n^*).</span> Точная
+абсолютная погрешность результата <span class="math inline">| f(x_1^*,
+... x_n^*) - f(x_1, ... x_n)|</span> Главной, т.е. линейной частью этого
+приращения является полный дифференциал <span
+class="math inline">du</span>. Таким образом, получаем оценку (в
+некоторых случаях она достаточно грубая): <span class="math display">
+| f(x_1^*, ..., x_n^*) - f(x_1, ... x_n)| \approx |du| =
+\left|\sum_{i=1}^n \frac{\partial u}{\partial x_i} dx_i\right| \le
+\sum_{i=1}^n \left|\frac{\partial u}{\partial x_i}\right| |\Delta x_i|.
+</span> Значит за границу абсолютной погрешности для функции может быть
+принята следующая величина <span class="math display">
+\Delta(u^*) = \sum_{i=1}^n \left|\frac{\partial u}{\partial x_i}\right|
+|\Delta x_i|.
+</span> Отсюда можно легко найти и относительную погрешность данной
+функции <span class="math display">
+\delta(u^*) = \frac{1}{|u|} \sum_{i=1}^n \left|\frac{\partial
+u}{\partial x_i} dx_i\right| = \sum_{i=1}^n \left|\frac{\partial \ln
+u}{\partial x_i}\right| |\Delta x_i|.
+</span> Из этих формул как частные случаи получается оценка суммы
+(разности) нескольких величин. Пусть <span class="math inline">u = \mp
+x_1 \mp ... \mp x_n</span> Тогда <span class="math display">
+\left|\frac{\partial u}{\partial x_i}\right| = 1
+</span> Значит</p>
+<hr />
+<p><sup>5</sup></p>
+<hr />
+<p><span class="math display">
+\Delta(u^*) \le \sum_{i=1}^n |\Delta x_i|.
+</span> Для произведения получаем аналогичное выражение, но для
+относительны погрешностей. В самом деле, пусть <span
+class="math inline">u = x_1 \cdot ... \cdot x_n</span> Тогда <span
+class="math display">
+\left|\frac{\partial \ln u}{\partial x_i}\right| = \frac{1}{|x_i|}
+</span> Следовательно <span class="math display">
+\delta(u^*) \le \sum_{i=1}^n |\delta x_i|.
+</span> Такой же результат получается и для отношения чисел. Значит
+предельные относительные погрешности произведения и частного
+суммируются.</p>
+<p><strong>Задача.</strong> Найти относительную погрешность вычисления
+функции <span class="math inline">u=x^3y^4/z^5</span>, если известно,
+что <span class="math inline">x^*=1, y^*=2.4, z^*=0,4, \Delta(x^*)=0.01,
+\Delta(y^*)=0.01, \Delta(z^*)=0.01</span>.</p>
+<p>Важен вопрос об относительной ошибке суммы и разности двух чисел.
+Пусть <span class="math inline">w=u+v</span>. Для простоты рассматриваем
+равенства при вычислении погрешностей, получим <span
+class="math display">
+\delta(w^*) = \frac{\Delta(u^*+v^*)}{|u^*+v^*|} = \frac{\Delta(u^*) +
+\Delta(v^*)}{|u^*+v^*|} =
+\frac{\delta(u^*)u^*+\delta(v^*)v^*}{|u^*+v^*|}.
+</span> Поэтому относительная ошибка мало меняется, действительно: <span
+class="math display">
+\delta(w^*) = \frac{\Delta(u^*+v^*)}{|u^*+v^*|} = \frac{\Delta(u^*) +
+\Delta(v^*)}{|u^*+v^*|} = \delta(u^*) \frac{|u^*| + |v^*|}{|u^*+v^*|}.
+</span> Полагаем, что два числа одного знака (иначе можно говорить о
+разности чисел), значит относительная погрешность суммы такая же, как и
+для каждого слагаемого. Существенная проблема может возникнуть при
+вычислении разности. Пусть <span class="math inline">w=u - v</span>.
+<span class="math display">
+\delta(w^*) = \frac{\Delta(u^* - v^*)}{|u^* - v^*|} = \frac{\Delta(u^*)
++ \Delta(v^*)}{|u^* - v^*|} = \frac{\delta(u^*) |u^*| + \delta(v^*)
+|v^*|}{|u^* - v^*|}.
+</span> Пусть два числа определяются с одинаковой относительной
+погрешностью, тогда <span class="math display">
+\delta(w^*) = \delta(u^*) \frac{|u^*|+|v^*|}{|u^* - v^*|}.
+</span> Значит, если разность между двумя числами невелика, то
+относительная погрешность при выполнении данной операции может вырасти.
+Причем, это увеличение существенней для больших по модулю чисел. Пусть
+относительная погрешность 0.001.</p>
+<hr />
+<p><sup>6</sup></p>
+<hr />
+<p>Если <span class="math inline">u^*=100</span>, а <span
+class="math inline">v^*=101</span>, то <span
+class="math inline">\delta(w^*) \approx 0.1</span>. Но если взять
+большие числа: <span class="math inline">u^*=1000</span>, <span
+class="math inline">v^*=1001</span>, то <span
+class="math inline">\delta(w^*) \approx 1</span>. То есть при вычислении
+разности больших чисел возможна потеря точности.</p>
+<hr />
+<p><sup>7</sup></p>
+<hr />
+<h1 id="файл-2">Файл 2</h1>
+<hr />
+<h1 id="лекция-7">Лекция №7</h1>
+<h3 id="вычисление-остаточного-члена">Вычисление остаточного члена</h3>
+<p><span class="math inline">R_N(x) = f(x) - L_N(x)</span> Обозначим
+<span class="math inline">w_N(t) = (t-x_1)...(t-x_N)</span> <span
+class="math inline">\psi(t) = f(t) - L_N(t) - R \cdot w_N(t). \quad
+(1)</span> где <span class="math inline">R</span> - некоторая постоянная
+(параметр) <span class="math inline">R</span> выберем из условия <span
+class="math inline">\psi(x)=0</span>, где <span
+class="math inline">x</span> - точка, в которой оценивается погрешность.
+Из уравнения <span class="math inline">\psi(x)=0</span> получаем <span
+class="math inline">R = \frac{f(x) - L_N(x)}{w_N(x)}</span> где <span
+class="math inline">w_N(x) = (x-x_1)...(x-x_N)</span> Многочлен <span
+class="math inline">w_N(x)</span> обращается в нуль в точках <span
+class="math inline">x=x_1,...,x_N</span> по построению. <span
+class="math inline">f(x_i) = L_N(x_i)=0</span> в этих точках по условию
+интерполяции. Значит, <span class="math inline">\psi(x_i)=0</span> в
+этих же точках, т.е. функция <span class="math inline">\psi(x)</span>
+имеет на отрезке <span class="math inline">[a,b]</span> по меньшей мере
+<span class="math inline">N</span> корней. Подбираем <span
+class="math inline">R</span> так, чтобы <span
+class="math inline">\psi(x)=0</span> ещё в точке <span
+class="math inline">x</span>. Значит окончательно <span
+class="math inline">\psi(x)</span> обращается в нуль в <span
+class="math inline">N+1</span> точке: <span
+class="math inline">x_1,...,x_N, x</span> По теореме Ролля её
+производная <span class="math inline">\psi&#39;(x)</span> обращается в
+нуль по крайней мере в <span class="math inline">N</span> точках. Эти
+точки образуют <span class="math inline">(N-1)</span> отрезок, на концах
+которых уже функция <span class="math inline">\psi&#39;(x)</span> равна
+нулю. Аналогично - <span class="math inline">\psi&#39;&#39;(x)</span>
+обращается в нуль по крайней мере в <span
+class="math inline">(N-1)</span> точке. Получаем, что <span
+class="math inline">\psi^{(N)}(x)</span> обращается в нуль по крайней
+мере в одной точке <span class="math inline">\xi \in [a,b]</span>. Так
+как <span class="math inline">\psi^{(N)}(x) = f^{(N)}(x) - 0 - R \cdot
+N!</span> (<span class="math inline">N</span>-я производная многочлена
+<span class="math inline">(N-1)</span>-ой степени), то из условия <span
+class="math inline">\psi^{(N)}(\xi)=0</span> получаем <span
+class="math inline">R = \frac{f^{(N)}(\xi)}{N!}</span>, значит
+соотношение <span class="math inline">\psi(x)=0</span> можно переписать
+в виде <span class="math inline">R_N(x) = f(x) - L_N(x) =
+\frac{f^{(N)}(\xi)}{N!} w_N(x)</span>, где <span
+class="math inline">w_N(x) = (x-x_1)...(x-x_N)</span>, <span
+class="math inline">\xi \in [a,b]</span></p>
+<hr />
+<p><sup>1</sup></p>
+<hr />
+<h3 id="форма-ньютона">Форма Ньютона</h3>
+<p><span class="math display">
+F_N(x) = f(x_1) + f(x_1, x_2)(x-x_1) + \dots + f(x_1, \dots,
+x_N)(x-x_1)\dots(x-x_{N-1})
+</span> <span class="math display">
+f(x_i, x_{i+1}) = \frac{f(x_{i+1}) - f(x_i)}{x_{i+1}-x_i}
+</span> <span class="math inline">F_N(x) = L_N(x)</span></p>
+<p><strong>Разделенные разности</strong> <strong>Разделенная разность
+нулевого порядка</strong> в точке <span class="math inline">x_i</span>
+совпадает со значением функции <span class="math inline">f(x_i)</span>.
+<strong>Разность первого порядка:</strong> <span class="math display">
+f(x_i, x_{i+1}) = \frac{f(x_{i+1})-f(x_i)}{x_{i+1}-x_i}
+</span> <strong>Разность второго порядка:</strong> <span
+class="math display">
+f(x_i, x_{i+1}, x_{i+2}) = \frac{f(x_{i+1}, x_{i+2}) - f(x_i,
+x_{i+1})}{x_{i+2}-x_i} =
+</span> <span class="math display">
+=
+\frac{(x_{i+1})(f(x_{i+2})-f(x_{i+1}))-(x_{i+2}-x_{i+1})(f(x_{i+1})-f(x_i))}{(x_{i+2}-x_i)(x_{i+2}-x_{i+1})(x_{i+1}-x_i)}
+</span> и т.д. <span class="math display">
+f(x_i, x_{i+1}, \dots, x_{i+k}) = \frac{f(x_{i+1}, \dots, x_{i+k}) -
+f(x_i, \dots, x_{i+k-1})}{x_{i+k}-x_i}
+</span> <strong>Таблица разделенных разностей</strong> <span
+class="math display">
+\begin{array}{c|c|c|c|c}
+x_i &amp; f(x_i) &amp; f(x_i, x_{i+1}) &amp; f(\dots) &amp; \dots \\
+\hline
+x_1 &amp; f(x_1) &amp; &amp; &amp; \\
+&amp; &amp; f(x_1, x_2) &amp; &amp; f(x_1, \dots, x_N) \\
+x_2 &amp; f(x_2) &amp; &amp; f(x_1, x_2, x_3) &amp; \\
+&amp; &amp; f(x_2, x_3) &amp; &amp; \dots \\
+\vdots &amp; \vdots &amp; \vdots &amp; &amp; \\
+&amp; &amp; f(x_{N-1}, x_N) &amp; &amp; \\
+x_N &amp; f(x_N) &amp; &amp; &amp;
+\end{array}
+</span></p>
+<p><strong>Задача.</strong> Построить для функции, обсуждавшейся на
+лекции №8, интерполяционный многочлен второго порядка (по трем узлам)
+методом Ньютона и сравнить его с аналогичным многочленом, полученным
+методом Лагранжа.</p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<h1 id="файл-3">Файл 3</h1>
+<hr />
+<h1 id="й-семестр-1">5-й семестр</h1>
+<h2 id="лекция-12">Лекция №12</h2>
+<h3
+id="нормальная-система-мнк-для-полиномиальной-аппроксимации">Нормальная
+система МНК для полиномиальной аппроксимации</h3>
+<p><span class="math inline">\psi_0=1, \psi_1=x, \psi_2=x^2, \psi_3=x^3,
+\dots, \psi_m=x^m</span> Линейно-независимая система функций <span
+class="math inline">Q_m(x) = L_m(x) = c_0 + c_1x + \dots + c_m
+x^m</span> <span class="math display">
+L_2 = \int_a^b (L_m(x)-f(x))^2 dx
+</span> <span class="math display">
+(f,g) = \frac{1}{b-a}\int_a^b f(x)g(x)dx
+</span> <span class="math inline">C_k [0,1]</span> <span
+class="math display">
+(\psi_i, \psi_j) = \int_0^1 x^i x^j dx = \int_0^1 x^{i+j} dx =
+\frac{1}{i+j+1}
+</span> <span class="math display">
+\begin{cases}
+i=0: &amp; c_0 + \frac{1}{2}c_1 + \dots + \frac{1}{m+1}c_m = \int_0^1
+f(x)dx \\
+i=1: &amp; \frac{1}{2}c_0 + \frac{1}{3}c_1 + \dots + \frac{1}{m+2}c_m =
+\int_0^1 xf(x)dx \\
+&amp; \dots \\
+i=m: &amp; \frac{1}{m+1}c_0 + \frac{1}{m+2}c_1 + \dots +
+\frac{1}{2m+1}c_m = \int_0^1 x^m f(x)dx
+\end{cases}
+</span> Матрица коэффициентов СЛАУ <span class="math display">
+H_{m+1} = \left(\frac{1}{i+j-1}\right)_{i,j=1}^{m+1}
+</span> носит название <strong>матрицы Гильберта</strong>, она
+плохообусловлена. Она заведомо не вырождена, но мера ее обусловленности
+<span class="math inline">\text{cond } H_{m+1}</span> растет чрезвычайно
+быстро с увеличением <span class="math inline">m</span>. При <span
+class="math inline">m=1, \mu = \text{cond } H_2 = ||H_2|| \cdot
+||H_2^{-1}|| \approx 20</span>, но при <span class="math inline">m=5
+\quad \text{cond } H_6 \approx 10^7</span>, а при <span
+class="math inline">m=9 \quad \text{cond } H_{10} \approx
+10^{13}</span></p>
+<hr />
+<p><sup>1</sup></p>
+<hr />
+<h3 id="рациональная-аппроксимация">Рациональная аппроксимация</h3>
+<p>(Изображён график функции f(x) с точками аппроксимации) <span
+class="math display">
+f(x) \approx R(x) = \frac{a_0+a_1x+\dots+a_p x^p}{b_0+b_1x+\dots+b_q
+x^q}
+</span> при различных коэфф. <span class="math inline">a_i, b_i</span>
+возможны асимптотики <span class="math inline">R(x) \xrightarrow{x \to
+0} 0</span> <span class="math inline">R(x) \xrightarrow{x \to \infty}
+0</span></p>
+<h3 id="паде-аппроксимация">Паде аппроксимация</h3>
+<p>Пусть <span class="math display">
+f(z) = \sum_{i=0}^\infty c_i z^i \quad (1)
+</span> рациональная функция, представляющая <span
+class="math inline">f(z)</span>: <span class="math display">
+[L/M] = \frac{a_0+a_1z+\dots+a_L z^L}{b_0+b_1z+\dots+b_M z^M}
+</span> ряд Тейлора (с центром в нуле) совпадает с разложением (1) до
+тех пор, пока это возможно. <span class="math inline">L+1</span>
+коэффициентов <span class="math inline">a_0, a_1, \dots, a_L</span>
+<span class="math inline">M+1</span> коэффициентов <span
+class="math inline">b_0, b_1, \dots, b_M</span> положим <span
+class="math inline">b_0=1</span> (можно фиксировать и <span
+class="math inline">a_0</span>), тогда <span
+class="math inline">L+M+1</span> - свободных коэффициентов, должно
+выполняться соотношение <span class="math display">
+\sum_{i=0}^\infty c_i z^i = \frac{a_0+a_1z+\dots+a_L
+z^L}{b_0+b_1z+\dots+b_M z^M} + O(z^{L+M+1})
+</span></p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<p><strong>Пример</strong> <span class="math inline">f(z) = 1 -
+\frac{1}{2}z + \frac{1}{8}z^2 + \dots</span> <span
+class="math inline">[1/0] = \frac{a_0+a_1z}{1}</span> <span
+class="math inline">a_0+a_1z = 1 - \frac{1}{2}z + O(z^{1+0+1}) = 1 -
+\frac{1}{2}z + O(z^2)</span> <span class="math inline">a_0 = 1, a_1 =
+-\frac{1}{2}</span> т.е. <span class="math inline">[1/0] =
+1-\frac{1}{2}z = f(z)+O(z^2)</span></p>
+<p><span class="math inline">[0/1] = \frac{a_0}{1+b_1z}</span> <span
+class="math inline">\frac{a_0}{1+b_1z} = 1 - \frac{1}{2}z + O(z^{0+1+1})
+\implies a_0 = (1+b_1z)(1-\frac{1}{2}z)+O(z^2) =
+1+(b_1-\frac{1}{2})z+O(z^2)</span> <span class="math inline">a_0 =
+1</span> <span class="math inline">b_1 = \frac{1}{2}</span> <span
+class="math inline">[0/1] = \frac{1}{1+\frac{1}{2}z} = f(z) +
+O(z^2)</span></p>
+<p><span class="math inline">[1/1] = \frac{a_0+a_1z}{1+b_1z}</span>
+<span class="math inline">\frac{a_0+a_1z}{1+b_1z} =
+1-\frac{1}{2}z+\frac{1}{8}z^2+O(z^3)</span> <span
+class="math inline">a_0+a_1z =
+(1+b_1z)(1-\frac{1}{2}z+\frac{1}{8}z^2)+O(z^3)</span> <span
+class="math inline">a_0+a_1z =
+1+(b_1-\frac{1}{2})z+(\frac{1}{8}-\frac{1}{2}b_1)z^2+O(z^3)</span> <span
+class="math inline">a_0 = 1, \quad a_1 = b_1 - \frac{1}{2}, \quad 0 =
+\frac{1}{8} - \frac{1}{2}b_1</span> <span class="math inline">b_1 =
+\frac{1}{4}, \quad a_1 = \frac{1}{4}-\frac{1}{2} = -\frac{1}{4}</span>
+<span class="math inline">a_0=1, b_1 = \frac{1}{4}, a_1 =
+-\frac{1}{4}</span> (correction in handwriting: <span
+class="math inline">b_1 = 2/3, a_1=1/6</span> seems to come from a
+different example or calculation error in the notes)</p>
+<hr />
+<p><sup>3</sup></p>
+<hr />
+<p><span class="math inline">[1/1] =
+\frac{1+\frac{1}{3}z}{1+\frac{5}{6}z}</span> <span
+class="math inline">(b_0+b_1z+\dots+b_M z^M)(c_0+c_1z+\dots) =
+a_0+a_1z+\dots+a_L z^L + O(z^{L+M+1})</span></p>
+<p>Уравнения <span class="math display">
+\begin{cases}
+b_0 c_{L+1} + b_1 c_L + \dots + b_M c_{L-M+1} = 0 \\
+b_0 c_{L+2} + b_1 c_{L+1} + \dots + b_M c_{L-M+2} = 0 \\
+\dots \\
+b_0 c_{L+M} + b_1 c_{L+M-1} + \dots + b_M c_L = 0
+\end{cases}
+</span> <span class="math inline">b_0 = 1</span> находим <span
+class="math inline">b_1, \dots, b_M</span> Теперь находим <span
+class="math inline">a_0, a_1, \dots, a_L</span> <span
+class="math inline">a_0 = c_0</span> <span class="math inline">a_1 = c_1
++ b_1 c_0</span> <span class="math inline">a_2 = c_2 + b_1 c_1 + b_2
+c_0</span> …</p>
+<p><strong>Пример</strong> <span class="math inline">f(z) =
+\sqrt{\frac{1+\frac{1}{2}z}{1+2z}} = 1 - \frac{3}{4}z + \frac{39}{32}z^2
++ \dots</span> <span class="math inline">[1/1]</span> <span
+class="math inline">\frac{a_0+a_1z}{1+b_1z} = 1 - \frac{3}{4}z +
+\frac{39}{32}z^2 + O(z^3)</span> <span class="math inline">a_0+a_1z =
+(1+b_1z)(1 - \frac{3}{4}z + \frac{39}{32}z^2)</span></p>
+<hr />
+<p><sup>4</sup></p>
+<hr />
+<p><span class="math inline">-\frac{3}{4}b_1 + \frac{39}{32} = 0</span>
+<span class="math inline">b_1 = \frac{39}{32} \cdot \frac{4}{3} =
+\frac{13}{8}</span> <span class="math inline">a_0=1</span> <span
+class="math inline">a_1 = b_1 - \frac{3}{4} = \frac{13}{8} - \frac{3}{4}
+= \frac{7}{8}</span> <span class="math inline">[1/1] =
+\frac{1+\frac{7}{8}z}{1+\frac{13}{8}z}</span> (График, сравнивающий f(z)
+и [1/1] аппроксиманту)</p>
+<p><strong>Задача</strong> Найти <span
+class="math inline">\lim_{z\to\infty} f(z)</span> и сравнить с <span
+class="math inline">\lim_{z\to\infty} [1/1]</span></p>
+<hr />
+<p><sup>5</sup></p>
+<hr />
+<h1 id="файл-4">Файл 4</h1>
+<hr />
+<h1 id="й-семестр-2">5-й семестр</h1>
+<h2 id="лекция-9">Лекция №9</h2>
+<h3 id="сплайны-продолжение">Сплайны (продолжение)</h3>
+<h4 id="сходимость-сплайн-интерполяции">Сходимость
+сплайн-интерполяции</h4>
+<p>Пусть <span class="math inline">y=f \in C^4[a,b]</span> <span
+class="math inline">M_4 = ||f^{(4)}||_C</span> <span
+class="math inline">S_3^{(3)}(x)</span> - сплайн третьей степени, Тогда
+<span class="math inline">||f - S_3^{(3)}(x)||_C \le C_1 M_4 h^4</span>
+<span class="math inline">||f&#39; - (S_3^{(3)})&#39;(x)||_C \le C_2 M_4
+h^3</span> <span class="math inline">||f&#39;&#39; -
+(S_3^{(3)})&#39;&#39;(x)||_C \le C_3 M_4 h^2</span> <span
+class="math inline">C_1, C_2, C_3 = \text{const}</span></p>
+<h3 id="в-сплайны">В-сплайны</h3>
+<p>(bell-колокол, basis-базис) <strong>О.</strong>
+<strong>В-сплайном</strong>, или <strong>базисным сплайном</strong>
+степени <span class="math inline">N-1</span> (дефекта 1) относительно
+узлов <span class="math inline">\{x_j\}_{j=n}^{n+N}</span> называется
+функция <span class="math display">
+B_{N-1, n}(x) = B_{N-1}(x_n, x_{n+1}, \dots, x_{n+N}; x) = N
+\sum_{i=n}^{n+N} \frac{(x_i-x)_+^{N-1}}{\prod_{j=n, j \ne i}^{n+N}
+(x_i-x_j)}
+</span> где <span class="math display">
+(x_i-x)_+^{N-1} = \begin{cases} (x_i-x)^{N-1} &amp; , x \le x_i \\ 0
+&amp; , x &gt; x_i \end{cases}
+</span></p>
+<hr />
+<p><sup>1</sup></p>
+<hr />
+<p><span class="math inline">N=1</span> <strong>Нулевой
+В-сплайн</strong> <span class="math display">
+B_{0,n}(x) = B_0(x_n, x_{n+1}; x) = 1 \cdot \left[
+\frac{(x_n-x)_+^0}{x_n-x_{n+1}} + \frac{(x_{n+1}-x)_+^0}{x_{n+1}-x_n}
+\right] =
+</span> (полагаем, что <span class="math inline">0^0=0</span>) <span
+class="math display">
+= \begin{cases} -\frac{1}{h} + \frac{1}{h} = 0 &amp; , x &lt; x_n \\ 0 +
+\frac{1}{h} = \frac{1}{h} &amp; , x_n \le x &lt; x_{n+1} \\ 0+0=0 &amp;
+, x \ge x_{n+1} \end{cases}
+</span> (График в виде прямоугольного импульса высотой 1/h, h=1)</p>
+<p><span class="math inline">N=2</span> <strong>Линейный
+В-сплайн</strong> <span class="math display">
+B_{1,n}(x) = B_1(x_n, x_{n+1}, x_{n+2}; x) = 2 \left[
+\frac{(x_n-x)_+^1}{(x_n-x_{n+1})(x_n-x_{n+2})} +
+\frac{(x_{n+1}-x)_+^1}{(x_{n+1}-x_n)(x_{n+1}-x_{n+2})} +
+\frac{(x_{n+2}-x)_+^1}{(x_{n+2}-x_n)(x_{n+2}-x_{n+1})} \right]
+</span> <span class="math display">
+= \frac{1}{h^2} \left( (x_n-x)_+^1 - 2(x_{n+1}-x)_+^1 + (x_{n+2}-x)_+^1
+\right) =
+</span> <span class="math display">
+= \begin{cases}
+0 &amp; , x &lt; x_n \\
+\frac{x-x_n}{h^2} &amp; , x_n \le x &lt; x_{n+1} \\
+\frac{x_{n+2}-x}{h^2} &amp; , x_{n+1} \le x &lt; x_{n+2} \\
+0 &amp; , x \ge x_{n+2}
+\end{cases}
+</span> (График в виде треугольного импульса (шляпы) с вершиной в <span
+class="math inline">x_{n+1}</span> высотой 1/h)</p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<p><strong>Задача.</strong> Построить <span
+class="math inline">S_1(x)</span> (линейный сплайн), выраженный через
+линейные В-сплайны для интерполяции функции, заданной таблицей: <span
+class="math display">
+\begin{array}{c|c|c|c|c}
+x &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+\hline
+f(x) &amp; 0 &amp; 3 &amp; 1 &amp; 2
+\end{array}
+</span> ### Многочлены Чебышева <span class="math inline">T_n(x), n \ge
+1</span> <span class="math inline">T_0(x)=1, T_1(x)=x</span> <span
+class="math inline">T_{n+1}(x) = 2x T_n(x) - T_{n-1}(x), n \ge 1</span>
+(График полиномов <span class="math inline">T_0, T_1, T_2, T_3</span> на
+отрезке [-1, 1])</p>
+<p><span class="math inline">T_2(x) = 2x T_1(x) - T_0(x) = 2x^2 -
+1</span> <span class="math inline">T_3(x) = 2x T_2(x) - T_1(x) =
+2x(2x^2-1) - x = 4x^3-3x</span></p>
+<h4 id="тригонометрическая-форма">Тригонометрическая форма</h4>
+<p><span class="math inline">\cos((n+1)\theta) = \cos(n\theta+\theta) =
+\cos\theta\cos(n\theta) - \sin\theta\sin(n\theta)</span> <span
+class="math inline">+\cos((n-1)\theta) = \cos(n\theta-\theta) =
+\cos\theta\cos(n\theta) + \sin\theta\sin(n\theta)</span> <span
+class="math inline">\cos((n+1)\theta) + \cos((n-1)\theta) =
+2\cos\theta\cos(n\theta)</span> <span
+class="math inline">\cos((n+1)\theta) = 2\cos\theta\cos(n\theta) -
+\cos((n-1)\theta)</span> <span class="math inline">\theta = \arccos x,
+\quad x = \cos\theta</span></p>
+<hr />
+<p><sup>3</sup></p>
+<hr />
+<p><span class="math inline">\cos((n+1)\arccos x) = 2x \cos(n \arccos x)
+- \cos((n-1)\arccos x)</span> <span class="math inline">T_n(x) = \cos(n
+\arccos x)</span> <span class="math inline">T_{n+1}(x) = 2x T_n(x) -
+T_{n-1}(x)</span> <span class="math inline">\cos(0 \cdot \arccos x) =
+\cos 0 = 1, T_0(x)=1</span> <span class="math inline">\cos(1 \cdot
+\arccos x) = x, T_1(x)=x</span> <span class="math inline">|T_n(x)| \le
+1, |x| \le 1</span></p>
+<p><strong>Задача.</strong> а) <span
+class="math inline">T_n(x)=0</span>? б) при каких значениях <span
+class="math inline">x</span>, <span class="math inline">T_n(x)</span>
+имеет <span class="math inline">\min</span> и <span
+class="math inline">\max</span>?</p>
+<hr />
+<p><sup>4</sup></p>
+<hr />
+<h1 id="файл-5">Файл 5</h1>
+<hr />
+<h1 id="й-семестр-3">5-й семестр</h1>
+<h2 id="лекция-8">Лекция №8</h2>
+<h3 id="сплайны">Сплайны</h3>
+<p>Splain (англ.) - линейка, рейка <strong>Определение.</strong> Пусть
+задана функция <span class="math inline">f(x)</span> на <span
+class="math inline">[a,b]</span>. Разобьем отрезок на <span
+class="math inline">N</span> частей. Эти отрезки: <span
+class="math inline">[x_0, x_1], \dots, [x_{N-1}, x_N]</span>. Обозначим
+это разбиение через <span class="math inline">\Delta</span>.
+<strong>Сплайном</strong> <span class="math inline">S_m^p(f,x)</span>
+<strong>порядка</strong> <span class="math inline">m</span> (степени
+<span class="math inline">m</span>) <strong>дефекта</strong> <span
+class="math inline">p(1 \le p \le m)</span> называют функцию, являющуюся
+многочленом <span class="math inline">m</span>-ой степени на каждом из
+данных отрезков и удовлетворяющую условию непрерывности производных
+<span class="math inline">m-p</span> в точках <span
+class="math inline">x_1, \dots, x_{N-1}</span>.</p>
+<p>Часто используют <span class="math inline">p=1</span>. Порядок <span
+class="math inline">m</span> редко бывает выше 3. В чём преимущество
+использование такой полиномиальной кусочной аппроксимации?</p>
+<p>Рассмотрим в качестве примера функцию Рунге <span
+class="math display">f(x) = \frac{1}{1+25x^2}, \quad x \in [-1,1]</span>
+Традиционный классический интерполяционный многочлен на равномерной
+сетке может при увеличении числа узлов приводить к ухудшению точности,
+см. рис. 1а. Можно использовать многочлены с узлами, неравномерно
+расположенными на отрезке, например, многочлены Чебышева (иллюстрация на
+отдельном рисунке), см. рис. 1б. Но можно использовать
+кусочно-многочленное приближение с выполнением (“сшивки”) непрерывности
+некоторых производных на границах отрезков. Таковы сплайны,
+обеспечивающие сходимость к заданной функции.</p>
+<hr />
+<p><sup>1</sup></p>
+<hr />
+<p>(График функции Рунге и интерполяционных полиномов Interp10,
+Interp15, Interp18 на равномерной сетке, демонстрирующий феномен Рунге.)
+Рис. 1a</p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<p>(График функции Рунге и интерполяционных полиномов Cheb11, Cheb16,
+Cheb21 на чебышевской сетке, показывающий улучшение аппроксимации.) Рис.
+1б</p>
+<hr />
+<p><sup>3</sup></p>
+<hr />
+<hr />
+<p><sup>4</sup></p>
+<hr />
+<p>Рассмотрим возможность построения сплайна порядка <span
+class="math inline">m</span> на <span class="math inline">N</span>
+отрезках. <span class="math inline">S_m^{\Delta}(f,x) = P_{nm}(x) =
+A_{n0} + \dots + A_{nm}x^m</span> при <span class="math inline">x_{n-1}
+\le x \le x_n</span>, мы изучаем сплайн дефекта 1. задаются условия
+непрерывности производных порядка <span class="math inline">m-1</span> в
+точках <span class="math inline">x_1, \dots, x_{N-1}</span> <span
+class="math inline">P_{nm}^{(l)}(x_n) = P_{n+1,m}^{(l)}(x_n) \quad
+(1)</span> <span class="math inline">l=0, \dots, m-1</span> <span
+class="math inline">n=1, \dots, N-1</span> Всего есть <span
+class="math inline">Q=N(m+1)</span> неизвестных <span
+class="math inline">A_{nm}</span>, соотношения (1) образуют систему из
+<span class="math inline">(N-1)m</span> уравнений. Значит, для
+однозначного определения сплайна требуется ещё <span
+class="math inline">N(m+1) - (N-1)m = N+m</span> условий. В основном
+используются интерполяционные сплайны, при этом справедливо <span
+class="math inline">S_m^{\Delta}(x_i) = f(x_i), \quad
+i=0,1,2,3,\dots,N.</span> что даёт ещё <span
+class="math inline">N+1</span> условие, значит всего требуется <span
+class="math inline">(N+m) - (N+1) = m-1</span> дополнительных
+условий.</p>
+<hr />
+<p><sup>5</sup></p>
+<hr />
+<p>Если <span class="math inline">m=1</span>, то дополнительных условий
+не требуется, см. нижеследующий рис. (График кусочно-линейного сплайна
+<span class="math inline">S_1^\Delta</span> и функции <span
+class="math inline">f(x)</span>).</p>
+<p>Для распространенного в применении сплайна <span
+class="math inline">S_3^3</span>, требуется <span
+class="math inline">m-1 = 3-1=2</span> дополнительных условия. Эти
+условия можно обеспечить разными способами. 1) “свободный сплайн” <span
+class="math inline">P_{1,3}^{(2)}(x_0)=0</span>, <span
+class="math inline">P_{N,3}^{(2)}(x_N)=0</span>. 2) условие Монберга: по
+4 точкам (левым и правым) проводим кубические параболы, вычисляем её
+третью производную: <span class="math inline">\frac{d^3
+P_{1,3}(x,0)}{dx^3} = \frac{d^3 L_4(x,0)}{dx^3}</span> <span
+class="math inline">\frac{d^3 P_{N,3}(x,N)}{dx^3} = \frac{d^3
+L_4(x,N)}{dx^3}</span> 3) эмпирический сплайн: требуем непрерывности
+производной и в точке <span class="math inline">x_{N-2}</span> (?) <span
+class="math inline">\frac{d^3 P_{N-1,3}(x,1)}{dx^3} = \frac{d^3
+P_{N,3}(x,N-1)}{dx^3}</span> 4) естественный сплайн (Калиткин):
+обеспечивающий минимум разрывов третьей производной.</p>
+<hr />
+<p><sup>6</sup></p>
+<hr />
+<p><span class="math inline">S_1^1(f,x) = a_{n0} + a_{n1}x</span> <span
+class="math inline">x_{n-1} \le x \le x_n</span> <span
+class="math inline">P_{n,1}(x_{n-1}) = f(x_{n-1}), \quad
+n=1,\dots,N</span> <span class="math inline">P_{n,1}^{(0)}(x_n) =
+P_{n+1,1}^{(0)}(x_n)</span> <span class="math inline">n=1, \dots,
+N-1</span> (График линейного сплайна) <span class="math display">
+\begin{cases}
+a_{n0} + a_{n1}x_{n-1} = f(x_{n-1}) \\
+a_{n0} + a_{n1}x_n = f(x_n)
+\end{cases}
+</span> <span class="math inline">a_{n0} = f(x_{n-1}) -
+x_{n-1}\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}</span> <span
+class="math inline">a_{n1} =
+\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}</span></p>
+<hr />
+<p><sup>7</sup></p>
+<hr />
+<p>Рассмотрим сплайн 3-й степени: <span class="math inline">m=3</span>,
+<span class="math inline">x \in [a,b]</span> <span class="math display">
+S_i^3(x) = a_i + b_i(x-x_{i-1}) + c_i(x-x_{i-1})^2 + d_i(x-x_{i-1})^3
+</span> <span class="math inline">x_{i-1} \le x \le x_i</span> <span
+class="math inline">S_i^3(x_{i-1}) = y_{i-1} = a_i</span> <span
+class="math inline">S_i^3(x_i) = y_i = a_i + b_i h_i + c_i h_i^2 + d_i
+h_i^3</span> <span class="math inline">h_i = x_i - x_{i-1}</span> <span
+class="math inline">(S_i^3)&#39; = b_i + 2c_i(x-x_{i-1}) +
+3d_i(x-x_{i-1})^2</span> <span class="math inline">(S_i^3)&#39;&#39; =
+2c_i + 6d_i(x-x_{i-1})</span> <span class="math display">
+\begin{cases}
+b_i + 2c_i h_i + 3d_i h_i^2 = b_{i+1} \\
+2c_i + 6d_i h_i = 2c_{i+1}
+\end{cases}
+\quad i=1,\dots,N-1
+</span> <span class="math inline">(S_i^3)&#39;&#39;(x_0)=0 \implies
+x=x_0=a \implies 2c_1=0</span> <span
+class="math inline">(S_i^3)&#39;&#39;(x_N)=0 \implies x=x_N=b \implies
+2c_N+6d_N h_N=0 \quad (\text{assuming } c_{N+1}=0)</span> Исключив <span
+class="math inline">a_i, b_i, d_i</span>: <span class="math inline">d_N
+= -\frac{c_N}{3h_N}, \quad d_i = \frac{c_{i+1}-c_i}{3h_i}</span> <span
+class="math inline">a_i = y_{i-1}</span> <span class="math inline">b_i =
+\frac{y_i-y_{i-1}}{h_i} - c_i h_i - \frac{c_{i+1}-c_i}{3}h_i</span>
+<span class="math inline">b_N = \frac{y_N-y_{N-1}}{h_N} - c_N h_N +
+\frac{c_N}{3}h_N</span></p>
+<hr />
+<p><sup>8</sup></p>
+<hr />
+<hr />
+<p><sup>9</sup></p>
+<hr />
+<p><span class="math inline">c_{i-1}h_{i-1} + (2h_{i-1}+2h_i)c_i +
+c_{i+1}h_i = 3\frac{y_i-y_{i-1}}{h_i} - 3\frac{y_{i-1}-y_{i-2}}{h_{i-1}}
+\quad (2)</span> <span class="math inline">c_1=c_{N+1}=0</span>
+<strong>Задание.</strong> Показать, что получается система (2).</p>
+<hr />
+<p><sup>10</sup></p>
+<hr />
+<h1 id="файл-6">Файл 6</h1>
+<hr />
+<h1 id="й-семестр-4">5-й семестр</h1>
+<h2 id="лекция-10">Лекция №10</h2>
+<h3 id="многочлены-чебышёва-и-другие-классические-многочлены">Многочлены
+Чебышёва и другие классические многочлены</h3>
+<p>Значения корней многочленов Чебышева <span class="math inline">x_m =
+\cos \frac{2m+1}{2n}\pi, \quad m=0,1,2,3,...,n-1 \quad (1)</span> (<span
+class="math inline">n</span> - корней) Точки наибольших и наименьших
+значений <span class="math inline">|T_n(x)|=1</span> решение <span
+class="math inline">x_j = \cos \frac{j\pi}{n}, \quad j=0,1,2,3,...,n
+\quad (2)</span> (<span class="math inline">n+1</span> точка) То, что
+эти точки экстремумов <span class="math inline">T_n(x)</span>
+перемежаются с корнями <span class="math inline">T_n(x)</span>, можно
+установить, переписав (2) в виде <span class="math inline">x_j = \cos
+\frac{2j}{2n}\pi, \quad j=0,1,2,3,...,n \quad (3)</span> и сравнив (3) с
+(1).</p>
+<p><strong>О.</strong> <strong>Нормированным многочленом
+Чебышева</strong> называется многочлен <span class="math display">
+\tilde{T}_n(x) = \frac{1}{2^{n-1}}T_n(x)
+</span> <strong>Т.</strong> (Чебышёва) Из всех многочленов степени <span
+class="math inline">n</span> со старшим коэффициентом, равным 1,
+нормированный многочлен Чебышева <span
+class="math inline">\tilde{T}_n(x)</span> наименее уклоняется от нуля на
+<span class="math inline">[-1,1]</span>.</p>
+<p><strong>Доказательство от противного.</strong> Пусть <span
+class="math inline">\exists</span> многочлен <span
+class="math inline">P_n(x) = x^n + a_1 x^{n-1} + \dots + a_n</span>
+такой, что</p>
+<hr />
+<p><sup>1</sup></p>
+<hr />
+<p><span class="math display">
+\max_{x \in [-1,1]} |P_n(x)| &lt; \max_{x \in [-1,1]} |\tilde{T}_n(x)| =
+\frac{1}{2^{n-1}} \quad (2)
+</span> понятно, что разность этих многочленов <span
+class="math inline">Q_{n-1}(x) = \tilde{T}_n(x) - P_n(x) = b_1 x^{n-1} +
+\dots + b_n</span> - многочлен степени не выше <span
+class="math inline">n-1</span>, так как коэффициенты у них при <span
+class="math inline">x^n</span> равны 1. График <span
+class="math inline">\tilde{T}_n</span> лежит в полосе, ограниченной
+прямыми <span class="math inline">y = \pm\frac{1}{2^{n-1}}</span>.
+График <span class="math inline">P_n(x)</span> при <span
+class="math inline">x \in [-1,1]</span> по предположению лежит строго
+внутри этой полосы. Причём график <span
+class="math inline">\tilde{T}_n(x)</span> чередует касания то верхней то
+нижней прямой <span class="math inline">\pm\frac{1}{2^{n-1}}</span>.
+Можно утверждать, что <span class="math inline">Q_{n-1}(x)</span> в
+точках экстремумов <span class="math inline">x_j = \cos
+\frac{j\pi}{n}</span> должен иметь знак „+” при четных <span
+class="math inline">j</span> и „-” при нечётных <span
+class="math inline">j</span>. Поскольку <span
+class="math inline">\tilde{T}_n(x)</span> на <span
+class="math inline">[-1,1]</span> имеет <span
+class="math inline">n+1</span> таких точек экстремума, то многочлен
+<span class="math inline">Q_{n-1}(x)</span> должен иметь по меньшей мере
+<span class="math inline">n</span> перемен знаков, т.е. <span
+class="math inline">n</span> корней, что противоречит основной теореме
+алгебры (<span class="math inline">Q_{n-1}(x)</span> должен иметь <span
+class="math inline">n-1</span> корней).</p>
+<p>Доказанное свойство означает, что среди всех многочленов степени
+<span class="math inline">n</span> вида <span class="math inline">P_n(x)
+= x^n + a_1x^{n-1} + \dots + a_n</span> именно нормированный многочлен
+Чебышева <span class="math inline">\tilde{T}_n(x)</span> минимизирует
+максимальное расстояние от графика многочлена до оси абсцисс при <span
+class="math inline">x \in [-1,1]</span>.</p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<h3 id="интерполяция-по-чебышёвским-узлам">Интерполяция по чебышёвским
+узлам</h3>
+<p>Вопрос состоит в том, как расположить на <span
+class="math inline">[a,b]</span> <span class="math inline">N</span>
+узлов интерполяции, чтобы для многочлена <span
+class="math inline">L_N(x)</span> Лагранжа при этом минимизировал
+максимальную на <span class="math inline">[a,b]</span> погрешность.
+<span class="math display">
+\max_{x \in [a,b]} |f(x) - L_N(x)| \le \frac{\max |f^{(N)}(\xi)|}{N!}
+\max_{x \in [a,b]} |\Pi_N(x)|
+</span> причём <span class="math inline">\max_{\xi \in [a,b]}
+|f^{(N)}(\xi)|</span> не зависит от расположения узлов. Рассмотрим
+многочлен <span class="math inline">\Pi_N(x) =
+(x-x_1)\dots(x-x_N)</span> преобразование <span class="math inline">x =
+\frac{a+b}{2} + \frac{b-a}{2}t</span> переводит <span
+class="math inline">[a,b] \to [-1,1]</span> <span
+class="math inline">t=-1, x=a</span> <span class="math inline">t=1,
+x=b</span> узлам <span class="math inline">x_k \in [a,b]</span> можно
+сопоставить узлы <span class="math inline">t_k \in [-1,1]</span>,
+полагаем <span class="math inline">x_k = \frac{a+b}{2} +
+\frac{b-a}{2}t_k</span> тогда сомножители в <span
+class="math inline">\Pi_N(x)</span> <span class="math inline">x-x_k =
+\frac{b-a}{2}(t-t_k)</span> значит <span class="math display">
+\Pi_N(x) = \prod_{k=1}^N (x-x_k) = \left(\frac{b-a}{2}\right)^N
+\prod_{k=1}^N (t-t_k) =
+</span> <span class="math display">
+= \left(\frac{b-a}{2}\right)^N (t-t_1)\dots(t-t_N)
+</span> отсюда</p>
+<hr />
+<p><sup>3</sup></p>
+<hr />
+<p>величина <span class="math inline">\max_{x \in [a,b]}
+|\Pi_N(x)|</span> будет минимальной, когда будет минимальной величина
+<span class="math inline">\max_{t \in [-1,1]} |\tilde{\Pi}_N(t)|</span>,
+где <span class="math inline">\tilde{\Pi}_N(t) =
+(t-t_1)\dots(t-t_N)</span> - многочлен <span
+class="math inline">N</span>-ой степени, где точки <span
+class="math inline">t_k \in [-1,1], k=1,...,N</span> можно полагать
+параметрами. Применим теорему Чебышева <span class="math inline">\max_{t
+\in [-1,1]} |\tilde{\Pi}_N(t)|</span> будет минимальным в том случае,
+когда <span class="math inline">\tilde{\Pi}_N(t)</span> есть
+нормированный многочлен Чебышева <span
+class="math inline">\tilde{T}_N(t)</span>, значит искомым узлы
+интерполяции <span class="math inline">t_1, \dots, t_N</span> - корни
+многочлена <span class="math inline">T_N(t)</span>. Их называют
+Чебышевскими узлами интерполяции <span class="math inline">t_n = \cos
+\frac{2n+1}{2N}\pi, \quad n=0,1,2,3,...,N-1</span> <span
+class="math inline">\max |\tilde{T}_N(t)| = \frac{1}{2^{N-1}}</span>
+<span class="math inline">\max |\Pi_N(x)| = \left(\frac{b-a}{2}\right)^N
+\frac{1}{2^{N-1}} = \frac{(b-a)^N}{2^{2N-1}}</span> наилучшая
+равномерная оценка погрешности интерполяции <span class="math display">
+\max |f(x)-L_N(x)| \le \frac{\max|f^{(N)}(\xi)|}{N!}
+\frac{(b-a)^N}{2^{2N-1}}
+</span></p>
+<hr />
+<p><sup>4</sup></p>
+<hr />
+<h3 id="свойства-классических-ортогональных-многочленов">Свойства
+классических ортогональных многочленов</h3>
+<p><span class="math inline">p_n(x), x \in (a,b)</span>, с весом <span
+class="math inline">\rho(x)</span> <span class="math inline">\int_a^b
+\rho(x) p_n(x) p_m(x) dx = 0 \quad (m \ne n)</span> 1) Разложение
+произвольного многочлена по ортогональным многочленам. 2) Единственность
+системы ортогональных многочленов при заданном весе. 3) Рекуррентные
+соотношения <span class="math inline">x p_n(x) = \alpha_n p_{n+1}(x) +
+\beta_n p_n(x) + \gamma_n p_{n-1}(x)</span> <span
+class="math inline">\alpha_n, \beta_n, \gamma_n = \text{const}</span> 4)
+Все корни <span class="math inline">x_j</span> многочлена <span
+class="math inline">p_n(x)</span> являются простыми и находятся на
+интервале <span class="math inline">(a,b)</span>.</p>
+<p>Многочлены гипергеометрического типа <span
+class="math inline">y_n(z)</span> являются решениями уравнения <span
+class="math inline">\sigma(z)y&#39;&#39; + \tau(z)y&#39; + \lambda y =
+0</span> Выражения для многочленов даются формулой Родрига <span
+class="math display">
+y_n(z) = \frac{B_n}{\rho(z)} \frac{d^n}{dz^n} [\sigma^n(z)\rho(z)] \quad
+(y)
+</span> функция <span class="math inline">\rho(z)</span> удовлетворяет
+дифференциальному уравнению <span
+class="math inline">[\sigma(z)\rho(z)]&#39; = \tau(z)\rho(z) \quad
+(y)</span></p>
+<hr />
+<p><sup>5</sup></p>
+<hr />
+<p><span class="math inline">\rho(z) = e^{-z^2}, \sigma(z)=1</span>
+Тогда <span class="math inline">\tau(z) = -2z</span> многочлены при
+<span class="math inline">B_n=(-1)^n</span> называются многочлены
+Эрмита: <span class="math display">
+H_n(z) = (-1)^n e^{z^2} \frac{d^n}{dz^n}(e^{-z^2})
+</span> <strong>Многочлены Бесселя</strong> <span
+class="math inline">\sigma(z)=z^2, \tau(z)=2(z+1),
+\rho(z)=e^{-2/z}</span> <span class="math display">
+y_n(z) = \frac{2^{-n}}{e^{-2/z}} \frac{d^n}{dz^n} (z^{2n} e^{-2/z})
+</span></p>
+<hr />
+<p><sup>6</sup></p>
+<hr />
+<h1 id="файл-7">Файл 7</h1>
+<hr />
+<h1 id="й-семестр-5">5-й семестр</h1>
+<h2 id="лекция-11">Лекция №11</h2>
+<h3 id="классические-ортогональные-многочлены-продолжение">Классические
+ортогональные многочлены (продолжение)</h3>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Многочлены</th>
+<th style="text-align: left;"><span
+class="math inline">y_n(z)</span></th>
+<th style="text-align: left;"><span
+class="math inline">(a,b)</span></th>
+<th style="text-align: left;"><span
+class="math inline">\rho(z)</span></th>
+<th style="text-align: left;"><span
+class="math inline">\sigma(z)</span></th>
+<th style="text-align: left;"><span
+class="math inline">\tau(z)</span></th>
+<th style="text-align: left;"><span
+class="math inline">\lambda_n</span></th>
+<th style="text-align: left;"><span class="math inline">B_n</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Якоби</strong></td>
+<td style="text-align: left;"><span
+class="math inline">P_n^{(\alpha,\beta)}(z)</span></td>
+<td style="text-align: left;"><span
+class="math inline">(-1,1)</span></td>
+<td style="text-align: left;"><span
+class="math inline">(1-z)^\alpha(1+z)^\beta</span></td>
+<td style="text-align: left;"><span
+class="math inline">1-z^2</span></td>
+<td style="text-align: left;"><span
+class="math inline">\beta-\alpha-(\alpha+\beta+2)z</span></td>
+<td style="text-align: left;"><span
+class="math inline">n(n+\alpha+\beta+1)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\frac{(-1)^n}{2^n n!}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Лагерра</strong></td>
+<td style="text-align: left;"><span
+class="math inline">L_n^{(\alpha)}(z)</span></td>
+<td style="text-align: left;"><span class="math inline">(0,
+\infty)</span></td>
+<td style="text-align: left;"><span class="math inline">z^\alpha
+e^{-z}</span></td>
+<td style="text-align: left;"><span class="math inline">z</span></td>
+<td style="text-align: left;"><span
+class="math inline">\alpha+1-z</span></td>
+<td style="text-align: left;"><span class="math inline">n</span></td>
+<td style="text-align: left;"><span
+class="math inline">\frac{1}{n!}</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Эрмита</strong></td>
+<td style="text-align: left;"><span
+class="math inline">H_n(z)</span></td>
+<td style="text-align: left;"><span class="math inline">(-\infty,
+\infty)</span></td>
+<td style="text-align: left;"><span
+class="math inline">e^{-z^2}</span></td>
+<td style="text-align: left;"><span class="math inline">1</span></td>
+<td style="text-align: left;"><span class="math inline">-2z</span></td>
+<td style="text-align: left;"><span class="math inline">2n</span></td>
+<td style="text-align: left;"><span
+class="math inline">(-1)^n</span></td>
+</tr>
+</tbody>
+</table>
+<p>Решая уравнение (у), мы получим в зависимости от степени полинома
+<span class="math inline">\sigma(z)</span> следующие возможные виды
+функции <span class="math inline">\rho(z)</span> (они предоставлены в
+каноническом виде): <span class="math display">
+\rho(z) = \begin{cases} (1-z)^\alpha(1+z)^\beta &amp; \text{при }
+\sigma(z) = 1-z^2 \\ z^\alpha e^{-z} &amp; \text{при } \sigma(z) = z \\
+e^{-z^2} &amp; \text{при } \sigma(z) = 1 \end{cases}
+</span> <span class="math inline">\alpha, \beta</span> - некоторые
+постоянные.</p>
+<h4 id="системы-многочленов">Системы многочленов</h4>
+<ol type="1">
+<li><span class="math inline">\rho(z)=(1-z)^\alpha(1+z)^\beta,
+\sigma=1-z^2</span>. Тогда <span class="math inline">\tau(z) =
+-(\alpha+\beta+2)z+\beta-\alpha</span> Соответствующие многочлены <span
+class="math inline">y_n(z)</span> при <span
+class="math inline">B_n=\frac{(-1)^n}{2^n n!}</span> называют
+<strong>многочленами Якоби</strong> и обозначаются <span
+class="math inline">P_n^{(\alpha,\beta)}(z)</span>: <span
+class="math display">
+P_n^{(\alpha,\beta)}(z) = \frac{(-1)^n}{2^n n!}
+(1-z)^{-\alpha}(1+z)^{-\beta}
+\frac{d^n}{dz^n}[(1-z)^{n+\alpha}(1+z)^{n+\beta}]
+</span> <strong>Частные случаи многочленов Якоби:</strong> а)
+<strong>многочлены Лежандра</strong> <span class="math inline">P_n(z) =
+P_n^{(0,0)}(z)</span> б) <strong>многочлены Чебышёва 1-го и 2-го
+рода:</strong> 1-го рода: <span class="math inline">T_n(z) =
+\frac{n!}{(1/2)_n} P_n^{(-1/2, -1/2)}(z), T_n = \cos n\varphi</span>
+2-го рода: <span class="math inline">U_n(z) = \frac{(n+1)!}{(3/2)_n}
+P_n^{(1/2, 1/2)}(z), U_n(\cos\varphi) =
+\frac{\sin((n+1)\varphi)}{\sin\varphi}</span>, <span
+class="math inline">\varphi = \arccos z</span></li>
+</ol>
+<hr />
+<p><sup>1</sup></p>
+<hr />
+<ol start="2" type="1">
+<li><span class="math inline">\rho(z)=z^\alpha e^{-z},
+\sigma(z)=z</span>. Тогда <span class="math inline">\tau(z) =
+-z+\alpha+1</span>. Многочлены <span class="math inline">y_n(z)</span>
+при <span class="math inline">B_n=\frac{1}{n!}</span> называются
+<strong>многочленами Лагерра</strong> и обозначаются <span
+class="math inline">L_n^{(\alpha)}(z)</span>: <span
+class="math display">
+L_n^{(\alpha)}(z) = \frac{1}{n!} z^{-\alpha}e^z
+\frac{d^n}{dz^n}(z^{n+\alpha}e^{-z})
+</span></li>
+<li><span class="math inline">\rho=e^{-z^2}, \sigma(z)=1</span>. Тогда
+<span class="math inline">\tau(z)=-2z</span>. Многочлены <span
+class="math inline">y_n(z)</span> при <span
+class="math inline">B_n=(-1)^n</span> называются <strong>многочленами
+Эрмита</strong> и обозначаются <span class="math inline">H_n(z)</span>:
+<span class="math display">
+H_n(z) = (-1)^n e^{z^2} \frac{d^n}{dz^n}(e^{-z^2})
+</span></li>
+</ol>
+<h4 id="ортогональность-многочленов-чебышева.">Ортогональность
+многочленов Чебышева.</h4>
+<p><span class="math inline">\tilde{T}_n(x)</span> <span
+class="math inline">\int_0^\pi \cos m\varphi \cos n\varphi d\varphi = 0,
+\quad m \ne n</span>. полагаем <span
+class="math inline">\cos\varphi=x</span>, получим <span
+class="math inline">\varphi = \arccos x, \quad d\varphi =
+-\frac{dx}{\sqrt{1-x^2}}</span> <span class="math inline">\varphi=0,
+x=1; \quad \varphi=\pi, x=-1</span> <span class="math display">
+\int_{-1}^1(-1)\frac{1}{\sqrt{1-x^2}} \cos(m \arccos x) \cos(n \arccos
+x)dx = 0 \quad m \ne n
+</span> <span class="math display">
+\int_{-1}^1 \frac{1}{\sqrt{1-x^2}} T_m(x)T_n(x)dx=0 \quad m \ne n
+</span></p>
+<h4 id="обобщенные-многочлены-фурье">Обобщенные многочлены Фурье</h4>
+<p><span class="math inline">f(x) = C_0 \psi_0(x) + C_1 \psi_1(x) +
+\dots + C_m \psi_m(x)</span> <span class="math inline">f(x), \psi_0(x),
+\psi_1(x), \dots, \psi_m(x)</span> - непрер. функции <span
+class="math inline">\{\psi_m\}</span> - система независ. функций.</p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<h1 id="файл-8">Файл 8</h1>
+<hr />
+<h1 id="лекция-11-1">Лекция №11</h1>
+<h3 id="метод-наименьших-квадратов-мнк">Метод наименьших квадратов
+(МНК)</h3>
+<p>(график с точками <span class="math inline">(x_i, y_i)</span>) <span
+class="math inline">y_0, y_1, \dots, y_n</span> <span
+class="math inline">x_0, x_1, \dots, x_n</span> <span
+class="math inline">y=f(x)</span> <span class="math inline">y_i</span>
+для <span class="math inline">f(x)</span> мы ищем функцию <span
+class="math inline">\varphi(x)</span>, которая аппроксимирует на отрезке
+<span class="math inline">[x_0, x_n]</span> заданную дискретным
+приближением <span class="math inline">y_i</span> функцию <span
+class="math inline">f(x)</span>. В МНК функция <span
+class="math inline">\varphi(x)</span> берётся из <span
+class="math inline">m</span>-параметрического семейства функций.
+Параметры выбираются так, чтобы сумма квадратов отклонений <span
+class="math inline">\varphi(x_i)</span> от <span
+class="math inline">y_i</span> была минимальной. полагают, как правило,
+что <span class="math inline">n \gg m</span>.</p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<p><span class="math display">
+\Phi(a_1, ..., a_m)
+</span> <span class="math display">
+\Phi(a_1, ..., a_m) = \sum_{i=0}^n (\varphi(x_i, a_1, ..., a_m) - y_i)^2
+\to \min
+</span> <span class="math display">
+\begin{cases}
+\frac{\partial}{\partial a_1} \left( \sum_{i=0}^n (\varphi(x_i, a_1,
+..., a_m) - y_i)^2 \right) = 0 \\
+\dots \\
+\frac{\partial}{\partial a_m} \left( \sum_{i=0}^n (\varphi(x_i, a_1,
+..., a_m) - y_i)^2 \right) = 0
+\end{cases}
+</span> <span class="math display">
+\begin{cases}
+2 \sum_{i=0}^n (\varphi(x_i, a_1, ..., a_m) - y_i)
+\frac{\partial\varphi}{\partial a_1}\bigg|_{x=x_i} = 0 \\
+\dots \\
+2 \sum_{i=0}^n (\varphi(x_i, a_1, ..., a_m) - y_i)
+\frac{\partial\varphi}{\partial a_m}\bigg|_{x=x_i} = 0
+\end{cases}
+</span> Часто используют двухпараметрические семейства функций: <span
+class="math inline">y=ax+b, \quad y=ax^2+c, \quad y=a+b\ln x</span>
+<span class="math inline">y=ae^{bx}, \quad y=a+\frac{b}{x}</span> <span
+class="math inline">y=\frac{1}{ax+b}, \quad y=\frac{x}{ax+b}</span>
+Трехпараметрические семейства: <span class="math inline">y=ax^2+bx+c,
+\quad y=ax^b+c, \quad y=ae^{bx}+c</span> <strong>Задача</strong> <span
+class="math inline">\varphi(x,a,b)=ax+b</span> <span
+class="math inline">\frac{\partial\varphi}{\partial a}=x, \quad
+\frac{\partial\varphi}{\partial b}=1</span> Найти параметры <span
+class="math inline">a</span> и <span class="math inline">b</span>.</p>
+<hr />
+<p><sup>3</sup></p>
+<hr />
+<h3
+id="обобщенные-многочлены-наилучших-среднеквадратичных-приближений">Обобщенные
+многочлены наилучших среднеквадратичных приближений</h3>
+<p><span class="math inline">f(x), \varphi(x)</span> непрер. на <span
+class="math inline">[a,b]</span> <span class="math inline">S(f,\varphi)
+= \sqrt{\frac{1}{b-a}\int_a^b (f(x)-\varphi(x))^2 dx}</span> Roots <span
+class="math inline">[a,b], x_i</span> <span
+class="math inline">(f,\varphi) = \frac{1}{n+1} \sum_{i=0}^n
+f(x_i)\varphi(x_i)</span> <strong>метрика</strong> <span
+class="math inline">S(f,\varphi) = \sqrt{\frac{1}{n+1} \sum_{i=0}^n
+(f(x_i)-\varphi(x_i))^2}</span> <strong>норма</strong> <span
+class="math inline">||f|| = S(f,0) = \sqrt{(f,f)} = \sqrt{\frac{1}{n+1}
+\sum_{i=0}^n f(x_i)^2}</span> <span class="math inline">S(f,\varphi) =
+\min \iff \sum_{i=0}^n (f(x_i)-\varphi(x_i))^2 = \min</span> Пусть <span
+class="math inline">\varphi(x)</span> - линейная комбинация других
+базисных функций. <span
+class="math inline">\{\varphi_j(x)\}_{j=0}^m</span> - некоторая заданная
+на <span class="math inline">[a,b]</span> система линейно независимых
+функций. <strong>Обобщенный многочлен</strong> <span
+class="math inline">Q_m(x) = C_0\varphi_0(x) + \dots +
+C_m\varphi_m(x)</span> <strong>метод МНК</strong> - нахождение
+оптимального набора <span class="math inline">(C_0^*, \dots,
+C_m^*)</span> <span class="math display">
+\frac{\partial}{\partial C_l} \sum_{i=0}^n
+(C_0\varphi_0(x_i)+\dots+C_m\varphi_m(x_i)-f(x_i))^2 =
+</span> <span class="math display">
+= 2 \sum_{i=0}^n
+\varphi_l(x_i)(C_0\varphi_0(x_i)+\dots+C_m\varphi_m(x_i)-f(x_i)) = 0
+</span></p>
+<hr />
+<p><sup>4</sup></p>
+<hr />
+<p><span class="math display">
+\begin{cases}
+C_0(\varphi_0,\varphi_0) + \dots + C_m(\varphi_0, \varphi_m) =
+(\varphi_0,f) \\
+\dots \\
+C_0(\varphi_m,\varphi_0) + \dots + C_m(\varphi_m, \varphi_m) =
+(\varphi_m,f)
+\end{cases}
+\quad (1)
+</span> Определитель Грама <span class="math display">
+\Delta\Gamma = \begin{vmatrix}
+(\varphi_0,\varphi_0) &amp; \dots &amp; (\varphi_0,\varphi_m) \\
+\vdots &amp; &amp; \vdots \\
+(\varphi_m,\varphi_0) &amp; \dots &amp; (\varphi_m,\varphi_m)
+\end{vmatrix} \ne 0
+</span> существ. единств. обобщ. многочлен <span
+class="math inline">Q_m^*(x) = C_0^*\varphi_0(x) + \dots +
+C_m^*\varphi_m(x)</span> такой, что <span class="math inline">f(x)
+\approx Q_m^*(x)</span> с наименьш. среднеквадратической ошибкой <span
+class="math inline">S(f,Q_m^*(x)) =
+\sqrt{\frac{1}{n+1}\sum_{i=0}^n(f(x_i)-Q_m^*(x_i))^2}</span> Упрощ. (1)
+при ортог. системе <span class="math inline">\varphi_k</span>: <span
+class="math display">
+(\varphi_l, \varphi_n) = \begin{cases} 1, &amp; l=n \\ 0, &amp; l \ne n
+\end{cases} = \delta_{ln}
+</span> Тогда <span class="math inline">C_n=(f, \varphi_n)</span> <span
+class="math inline">C_0 = \frac{(\varphi_0,f)}{||\varphi_0||^2}</span>
+<span class="math inline">C_m =
+\frac{(\varphi_m,f)}{||\varphi_m||^2}</span> для ортонормир. системы
+<span class="math inline">\psi_j</span>: <span class="math inline">f(x)
+\approx (\psi_0,f)\psi_0(x) + \dots + (\psi_m,f)\psi_m(x)</span></p>
+<hr />
+<p><sup>5</sup></p>
+<hr />
+<h1 id="файл-9">Файл 9</h1>
+<hr />
+<h1 id="лекция-7-продолжение-и-семинар">Лекция №7 (продолжение и
+семинар)</h1>
+<h3 id="схема-алгоритм-эйткена">Схема (алгоритм) Эйткена</h3>
+<p>Строим итерационный процесс <span class="math inline">y=f(x)</span>,
+две точки <span class="math inline">(x_0,y_0), (x_1,y_1)</span> <span
+class="math display">
+P_{0,1}(x) = \frac{1}{x_1-x_0} \begin{vmatrix} x-x_0 &amp; y_0 \\ x-x_1
+&amp; y_1 \end{vmatrix}
+</span> отсюда <span class="math inline">P_{0,1}(x) = y_0
+\frac{x-x_1}{x_0-x_1} + y_1 \frac{x-x_0}{x_1-x_0}</span> т.е. это
+выражение совпадает с полиномом первой степени по двум точкам. <span
+class="math display">
+L_2(x) = \sum_{i=0}^1 y_i \prod_{j=0, j \ne i}^1 \frac{x-x_j}{x_i-x_j}
+</span> для других двух точек <span class="math inline">(x_1,y_1),
+(x_2,y_2)</span> <span class="math display">
+P_{1,2}(x) = \frac{1}{x_2-x_1} \begin{vmatrix} x-x_1 &amp; y_1 \\ x-x_2
+&amp; y_2 \end{vmatrix} = y_1 \frac{x-x_2}{x_1-x_2} + y_2
+\frac{x-x_1}{x_2-x_1}
+</span> Следующая итерация строится так: <span
+class="math inline">P_{0,1}(x_0)=y_0, P_{0,1}(x_1)=y_1,
+P_{1,2}(x_1)=y_1, P_{1,2}(x_2)=y_2</span> Тогда получаются определители
+следующего уровня: <span class="math display">
+P_{0,1,2}(x) = \frac{1}{x_2-x_0} \begin{vmatrix} x-x_0 &amp; P_{0,1}(x)
+\\ x-x_2 &amp; P_{1,2}(x) \end{vmatrix}
+</span> при <span class="math inline">x=x_0</span> <span
+class="math display">
+P_{0,1,2}(x_0) = \frac{1}{x_2-x_0} \begin{vmatrix} 0 &amp; y_0 \\
+x_0-x_2 &amp; P_{1,2}(x_0) \end{vmatrix} = \frac{1}{x_2-x_0}
+(-(x_0-x_2))y_0 = y_0
+</span> причем в общем случае <span class="math inline">P_{0,1,2}(x) =
+y_1 \frac{x-x_0}{x_1-x_0} \frac{x-x_2}{x_1-x_2} + y_2 \dots \ne 0</span>
+значит <span class="math inline">P_{0,1,2}(x_0) = y_0</span> и
+аналогично <span class="math inline">P_{0,1,2}(x_1) = y_1</span> <span
+class="math inline">P_{0,1,2}(x_2) = y_2</span></p>
+<hr />
+<p><sup>1</sup></p>
+<hr />
+<p>Таким образом, функция <span class="math inline">P_{0,1,2}(x)</span>
+есть многочлен второй степени, решающий задачу параболической
+интерполяции по трём точкам <span class="math inline">(x_0,y_0),
+(x_1,y_1), (x_2,y_2)</span>. Но такой многочлен единственный, потому
+<span class="math inline">P_{0,1,2}(x)</span> - это <span
+class="math inline">L_3(x)</span> многочлен Лагранжа. Приходим к
+рекуррентному заданию последовательности интерполяционных многочленов
+Лагранжа с помощью интерполяционной схемы Эйткена: <span
+class="math display">
+f(x) \approx P_{0,1,\dots,i}(x) = \frac{1}{x_i-x_0} \begin{vmatrix}
+x-x_0 &amp; P_{0,1,\dots,i-1}(x) \\ x-x_i &amp; P_{1,2,\dots,i}(x)
+\end{vmatrix}
+</span> Методом математической индукции можно показать идентичность этой
+формулы многочлену Лагранжа. Построение итерационной схемы введения
+многочленов позволяет преодолеть (или ослабить значимость) проблемы,
+связанные с тем, что: 1) непосредственное использование многочлена
+Лагранжа в исходной форме неудобно из-за её громоздкости; 2) плохо
+перестраивается <span class="math inline">L_N(x)</span> в <span
+class="math inline">L_{N+1}(x)</span>, что может понадобиться для
+повышения точности интерполяции; 3) при реальном счёте функция <span
+class="math inline">f(x)</span> задается таблицей своих приближенных
+значений, и каноническое развитие процесса сходимости <span
+class="math inline">L_N(x)</span> к <span
+class="math inline">f(x)</span> при больших значениях <span
+class="math inline">N</span> будет нарушено всё возрастающим влиянием на
+результат исходных ошибок.</p>
+<p><strong>Задача.</strong> Применить алгоритм Эйткена для построения
+<span class="math inline">L_3(x)</span> для функции <span
+class="math inline">f(x)</span>, рассматривавшейся на лекции №8.
+Проделать следующую итерацию для нахождения <span
+class="math inline">L_4(x)</span>. Проделать аналогичную процедуру с
+помощью интерполяционного метода Ньютона. Сравнить сложность перехода от
+<span class="math inline">L_3(x)</span> к <span
+class="math inline">L_4(x)</span> этими двумя методами.</p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<h3
+id="обусловленность-задачи-интерполяции.-постоянная-лебега">Обусловленность
+задачи интерполяции. Постоянная Лебега</h3>
+<p>Необходимо рассмотреть проблему чувствительности интерполяционного
+многочлена к ошибкам начальных данных (обусловленность задачи
+интерполяции) и к ошибкам округления (вопрос вычислительной
+устойчивости). Интерполяционный многочлен есть оператор линейный по
+отношению к значениям интерполируемой функции. С учётом погрешности
+начальных данных многочлен в форме Лагранжа может быть записан так <span
+class="math display">
+L_N(x) = \sum_{n=1}^N f_n \varphi_n(x) + \sum_{n=1}^N \delta f_n
+\varphi_n^{N-1}(x)
+</span> где <span class="math inline">\varphi_n^{N-1}(x)</span> -
+многочлены <span class="math inline">(N-1)</span>-й степени, причём
+слагаемое <span class="math display">
+\Delta_N(x, \delta f) = \sum_{n=1}^N \delta f_n \varphi_n^{N-1}(x)
+</span> характеризует чувствительность к ошибкам начальных данных и к
+ошибкам вычислений. Нас интересует оценка величины <span
+class="math inline">\Delta_N(x, \delta f)</span>. Здесь <span
+class="math inline">\varphi_n^{N-1}(x) = \prod_{i\ne n, i=1}^N
+\frac{x-x_i}{x_n-x_i}</span> Значит <span class="math inline">\max_{x
+\in [a,b]} |\Delta_N(x, \delta f)| \le \Lambda_N \delta</span>, где
+<span class="math inline">\delta = \max_{n \in [a,b]} |\delta
+f_n|</span> <span class="math inline">\Lambda_N = \max_{x \in [a,b]}
+\sum_{n=1}^N |\varphi_n^{N-1}(x)|</span> здесь <span
+class="math inline">\Lambda_N</span> - <strong>постоянная
+Лебега</strong>. Рассмотрим сумму модулей всех базисных функций <span
+class="math inline">l_N(x) = \sum_{n=1}^N |\varphi_n(x)|</span>. Назовём
+её <strong>функцией Лебега</strong> (сетки). Тогда постоянная Лебега
+<span class="math inline">\Lambda_N = \max_{x \in [a,b]} l_N(x)</span>.
+Так как функция Лебега зависит лишь от расположения узлов сетки, то и
+константа Лебега зависит лишь от введённой сетки. Обусловленность и
+устойчивость зависят от постоянной Лебега.</p>
+<hr />
+<p><sup>3</sup></p>
+<hr />
+<p>Для алгебраической интерполяции (<span
+class="math inline">\varphi_n(x)=x^n</span>) в случае равномерно
+расположенных узлов доказана оценка <span class="math display">
+\frac{2^{n-3}}{(n-3/2)\sqrt{n-1}} &lt; l_n &lt; 2^{n-1}, \quad n \ge 4,
+</span> т.е. чувствительность результата интерполяции к погрешностям
+задания функции в узлах резко возрастает с ростом <span
+class="math inline">n</span>. Такие погрешности неизбежны как при
+получении табличных значений в результате измерений, так и в результате
+округлений. Если узлами интерполяции являются корни полинома Чебышева
+(эти полиномы будут рассматриваться в дальнейшем, узлы и корни их
+расположены неравномерно), то <span class="math display">
+L_n = \frac{2}{\pi} \ln n + 1 - O_n, \quad 0 \le O_n \le \frac{2}{\pi}
+</span> т.е. с ростом <span class="math inline">n</span> константы
+Лебега растут очень медленно. Доказано, что рост постоянной Лебега для
+данной сетки асимптотически стремится к минимально возможному, и сетка с
+чебышёвскими узлами близка к оптимальной для задач интерполяции.</p>
+<p><strong>Задача.</strong> Задана табличная функция <span
+class="math display">
+\begin{array}{c|c|c|c|c}
+x &amp; 0 &amp; \pi/6 &amp; \pi/4 &amp; \pi/3 \\
+\hline
+\sin x &amp; 0 &amp; 0.5 &amp; 0.71 &amp; 0.87
+\end{array}
+</span> С какой точностью можно восстановить значение в точке <span
+class="math inline">x=7\pi/24</span>, если известно, что функция задана
+с абсолютной погрешностью, не превосходящей <span
+class="math inline">10^{-2}</span>? <strong>Указание.</strong>
+Погрешность складывается из ошибки интерполяции (на 4 узлах) и
+погрешности, связанной с обусловленностью, которая может быть оценена по
+вычисленной величине функции Лебега в данной точке <span
+class="math inline">x=7\pi/24</span>.</p>
+<hr />
+<p><sup>4</sup></p>
+<hr />
+<h3 id="обратная-интерполяция">Обратная интерполяция</h3>
+<p>Ставится задача нахождения приближенного значения <span
+class="math inline">x</span> аргумента в таблично заданной функции <span
+class="math inline">f(x_i)</span>, соответствующего некоторому значению
+<span class="math inline">\bar{y}</span> этой функции. При этом,
+естественно, предполагается, что <span
+class="math inline">\bar{y}</span> не совпадает ни с одним из данных
+значений <span class="math inline">y_i = f(x_i)</span> (и значит, <span
+class="math inline">\bar{x}</span> не совпадает ни с одним из узлов
+<span class="math inline">x_i</span>), и, в то же время, достаточно
+хорошо “вписывается” в таблицу значений <span
+class="math inline">y_i</span>. Для того, чтобы говорить о теоретически
+однозначной разрешимости задачи обратного интерполирования, нужно
+потребовать, чтобы было выполнено основное условие существования
+обратной функции <span class="math inline">x=f^{-1}(y)</span> -
+монотонность данной сеточной функции. Будем считать, что такая
+монотонность имеет место либо во всей исходной таблице значений <span
+class="math inline">y_i</span>, либо в некоторой её части, используемой
+для решения обратной задачи. Одной из часто встречающейся задачей,
+решаемой с помощью метода обратного интерполирования, является поиск
+корня функции, заданной таблицей, т.е. поиск значения <span
+class="math inline">x</span>, при котором <span
+class="math inline">y(x)=0</span>. Формально простейший из приемов
+решения задач обратной интерполяции заключается в перемене ролями
+функции и аргумента и применения интерполяционной формулы Лагранжа, т.е.
+непосредственное вычисление <span class="math inline">\bar{x}</span> по
+известной формуле: <span class="math display">
+\bar{x} = \sum_{k=1}^n x_k
+\frac{(\bar{y}-y_1)...(\bar{y}-y_{k-1})(\bar{y}-y_{k+1})...(\bar{y}-y_n)}{(y_k-y_1)...(y_k-y_{k-1})(y_k-y_{k+1})...(y_k-y_n)}
+</span> Такой подход обладает характерными для применений формулы
+Лагранжа недостатками и привлекателен лишь в случаях, когда степень
+<span class="math inline">N</span> интерполяционного многочлена невысока
+и заранее известна.</p>
+<p><strong>Задача.</strong> Методом обратной интерполяции найти корень
+нелинейного уравнения, используя приведённую таблицу. Оценить точность
+полученного решения. <span class="math inline">x^2+\ln x - 4=0</span>
+<span class="math display">
+\begin{array}{c|c|c|c|c}
+x &amp; x_1=1.5 &amp; x_2=1.8 &amp; x_3=1.9 &amp; x_4=2 \\
+\hline
+f(x) &amp; -1.345 &amp; -0.970 &amp; 0.252 &amp; 0.693
+\end{array}
+</span></p>
+<hr />
+<p><sup>5</sup></p>
+<hr />
+<h1 id="файл-10">Файл 10</h1>
+<hr />
+<h1 id="й-семестр-6">5-й семестр</h1>
+<h2 id="лекция-13">Лекция №13</h2>
+<h3 id="численное-интегрирование">Численное интегрирование</h3>
+<p>Задача приближенного вычисления определенных интегралов (на отрезке
+или по многомерной области) разбивается по сути на две самостоятельные
+подзадачи: а) интегрирование таблично заданной функции, для такой
+проблемы наиболее эффективными будут квадратурные интерполяционного типа
+и правило Рунге оценки погрешности. б) вычисление определенного
+интеграла от известной функции. Самые большие вычислительные затраты в
+этом случае связаны с подсчётом значений функций. Более эффективными
+называются квадратурные формулы типа Гаусса.</p>
+<h4 id="формулы-ньютона-котеса">Формулы Ньютона-Котеса</h4>
+<p>(квадратурные формулы интерполяционного типа) Пусть необходимо
+вычислить интеграл <span class="math inline">I = \int_a^b f(x)dx</span>.
+Данные квадратурные формулы получаются при замене подынтегральной
+функции на интерполяционный многочлен. Погрешность оценивается через
+интегрирование интерполяционной погрешности. Для простой иллюстрации
+рассмотрим приближение интеграла величиной площади прямоугольника с
+основанием в виде отрезка <span class="math inline">[a,b]</span> и с
+высотой <span class="math inline">f(\frac{a+b}{2})</span>, см. рис. 1
+(График функции f(x) и аппроксимирующего прямоугольника) Рис. 1</p>
+<hr />
+<p><sup>1</sup></p>
+<hr />
+<p>Таким образом, приближенная квадратурная формула имеет вид,
+представляется так: <span class="math display">
+\int_a^b f(x)dx \approx (b-a) f\left(\frac{a+b}{2}\right). \quad(1)
+</span> имеющая смысл для любой непрерывной функции, не обязательно
+положительной. Легко видеть, что если функция <span
+class="math inline">f(x)</span> есть произвольная линейная функция <span
+class="math inline">Ax+B</span>, то левая часть в (1) равна правой.
+Геометрически это очевидно, покажем это аналитически: <span
+class="math display">
+\int_a^b f(x)dx = \int_a^b (Ax+B)dx = A\frac{b^2-a^2}{2} + B(b-a) =
+(b-a)\left(A\frac{a+b}{2}+B\right) = (b-a)f\left(\frac{a+b}{2}\right)
+</span> Можно использовать также <strong>формулу трапеций</strong>,
+которая даёт аналогичный результат. В том случае имеем, см. рис. 2 <span
+class="math display">
+\int_a^b f(x)dx \approx \frac{1}{2}(b-a)(f(a)+f(b)) \quad(2)
+</span> (График функции f(x) и аппроксимирующей трапеции) Рис. 2</p>
+<p>Можно рассмотреть ещё одну распространённую на практике квадратурную
+<strong>формулу Симпсона</strong>, см. рис. 3. (График функции f(x) и
+аппроксимирующей параболы) Рис. 3</p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<p>В случае положительной функции она сводится к тому, что определенный
+интеграл приближенно выражается площадью фигуры, ограниченной осью Ox,
+прямыми <span class="math inline">x=a, x=b</span> и параболой второй
+степени, проходящей через точки графика функции <span
+class="math inline">f(x)</span>, имеющие абсциссы <span
+class="math inline">a, \frac{a+b}{2}</span> и <span
+class="math inline">b</span>. <strong>Задача.</strong> Покажите, что эта
+формула имеет вид: <span class="math display">
+\int_a^b f(x)dx \approx \frac{b-a}{6}\left(f(a) +
+4f\left(\frac{a+b}{2}\right) + f(b)\right) \quad(3)
+</span> Из способа получения формулы Симпсона вытекает, что она точна
+для всех многочленов второй степени (более того, формула Симпсона
+оказывается точной и для многочленов третьей степени). Значит,
+квадратурные формулы можно строить, требуя, чтобы они были точны для
+многочленов какой-то степени (аналогичным образом, как мы видели, можно
+строить и формулы для численного дифференцирования). В принципе можно
+построить бесчисленное множество квадратурных формул, точных для всех
+многочленов <span class="math inline">P_m(x)=a_0+a_1x+\dots+a_m
+x^m</span> любой наперед заданной степени <span
+class="math inline">m</span>. Источником получения таких формул могут
+служить классические интерполяционные многочлены Лагранжа. Квадратурные
+формулы интерполяционного типа высокого порядка применяются редко. Можно
+отметить две причины: 1) Во всех приведённых формулах все веса
+квадратурных формул были положительные. Такие формулы называются
+<strong>правильными</strong>. При использовании интерполянтов более
+высоких степеней получаются квадратурные формулы, не являющиеся
+правильными. Для степени многочлена более 7 среди коэффициентов
+встречаются отрицательные.</p>
+<hr />
+<p><sup>3</sup></p>
+<hr />
+<ol start="2" type="1">
+<li>Д. Пойа показал, что <span class="math display"> \lim_{n\to\infty}
+\sum_{m=0}^n |A_{nm}| = \infty, </span> где <span
+class="math inline">A_{nm}</span> - веса квадратурной формулы,
+получающиеся при замене подынтегрального выражения интерполянтом степени
+<span class="math inline">n</span>, <span class="math inline">m</span> -
+нумерует веса, при том <span class="math inline">\sum_{m=0}^n A_{nm} =
+1</span> (или для отрезка <span class="math inline">[a,b]</span> эта
+сумма равна <span class="math inline">(b-a)</span>). Так, поскольку
+многочлен нулевой степени (постоянная) вычисляется точно. Пример: коэфф.
+веса в формуле Симпсона <span
+class="math inline">\frac{1}{6}+\frac{4}{6}+\frac{1}{6}=1</span>.
+Приведенное увеличение суммы абсолютных значений весов квадратур связано
+с быстрым ростом постоянной Лебега при алгебраической интерполяции на
+равномерной сетке.</li>
+</ol>
+<p>Приведем ещё одну квадратурную формулу («правило 3/8»), точную для
+многочленов вплоть до 3-й степени. <span class="math display"> \int_a^b
+f(x)dx \approx (b-a)\left(\frac{1}{8}f(a) +
+\frac{3}{8}f\left(\frac{2a+b}{3}\right) +
+\frac{3}{8}f\left(\frac{a+2b}{3}\right) + \frac{1}{8}f(b)\right) </span>
+Формула Симпсона проще, «правило 3/8», а ошибка погрешности на
+квадратурной формуле Симпсона меньше.</p>
+<p>Часто применяют <strong>составную формулу</strong>: отрезок <span
+class="math inline">[a,b]</span> делят на части, на каждой из которых
+используют интерполяцию не очень высокого порядка. Введём на <span
+class="math inline">[a,b]</span> сетку <span
+class="math inline">\{x_n\}_{n=0}^N</span>, которые будем называть
+узлами квадратуры: <span class="math inline">x_n = a+nh, \quad h =
+\frac{b-a}{N}</span> Будем называть элементарным отрезком <span
+class="math inline">[x_n, x_{n+1}]</span>.</p>
+<hr />
+<p><sup>4</sup></p>
+<hr />
+<p>Заменим подынтегральную функцию её интерполяционным многочленом.
+<strong>I. Формула Трапеций:</strong> <span class="math display">
+f(x) \approx f(x_n) + \frac{f(x_{n+1})-f(x_n)}{x_{n+1}-x_n}(x-x_n)
+</span> выполняем интегрирование по элементарному отрезку: <span
+class="math display">
+I_n \approx \frac{1}{2}(x_{n+1}-x_n)(f_{n+1}+f_n) =
+\frac{h_n}{2}(f_n+f_{n+1}),
+</span> где <span class="math inline">h_n = x_{n+1}-x_n</span>. после
+суммирования по всем элементарным отрезкам получим: <span
+class="math display">
+I \approx \frac{1}{2} \sum_{n=0}^{N-1} h_n(f_n+f_{n+1})
+</span> <strong>II. Формула (правило) Симпсона:</strong> Разбиение
+отрезка <span class="math inline">[a,b]</span> проводится на четное
+число интервалов с равными длинами пар. На отрезке <span
+class="math inline">[x_n, x_{n+2}]</span> можно представить функцию в
+виде интерполяционного многочлена в форме Ньютона <span
+class="math inline">f(x) \approx f_n + A_1(x-x_n) +
+A_2(x-x_n)(x-x_{n+1})</span>. Тогда <span class="math display">
+\int_{x_n}^{x_{n+2}} f(x)dx = \frac{h_n}{3}(f_n + 4f_{n+1} + f_{n+2})
+\quad (4)
+</span> <strong>Задача.</strong> Показать это.
+<strong>Уточнение.</strong> В (4) в отличие от (3) в знаменателе
+присутствует 3, а не 6, поскольку рассматривается удвоенный интервал
+<span class="math inline">2h_n</span>. После суммирования по всем парам
+элементарных отрезков получим (для равномерной сетки):</p>
+<hr />
+<p><sup>5</sup></p>
+<hr />
+<p><span class="math display">
+I \approx \frac{h}{3} \sum_{n=0}^{N/2-1} (f_{2n} + 4f_{2n+1} + f_{2n+2})
+</span> или с дробными индексами: <span class="math display">
+I \approx \frac{h}{6} \sum_{n=0}^{N-1} (f_n + 4f_{n+1/2} + f_{n+1})
+</span> <strong>Оценка погрешности квадратурной формулы</strong> <span
+class="math display">
+E_n = \int_{x_n}^{x_{n+1}} R_N(x)dx \le \frac{\max_{\xi \in [x_n,
+x_{n+1}]} |f^{(N)}(\xi)|}{N!} \max_{x \in [x_n, x_{n+1}]} |\prod_{i=0}^N
+(x-x_i)|
+</span> <span class="math inline">\xi \in [x_n, x_{n+1}]</span>
+<strong>Формула трапеций.</strong> <span class="math display">
+E_n \le \int_{x_n}^{x_{n+1}} \frac{\max|f&#39;&#39;(\xi)|}{2}
+\max|(x-x_n)(x-x_{n+1})| dx =
+</span> <span class="math display">
+= \frac{\max|f&#39;&#39;(\xi)|}{12}h^3
+</span> Тогда для всего отрезка <span class="math inline">[a,b]</span>
+получим: <span class="math display">
+E_N \le \frac{\max|f&#39;&#39;(\xi)|}{12}h^3 \cdot N =
+\frac{\max|f&#39;&#39;(\xi)|}{12}h^2(b-a)
+</span> <strong>Задача.</strong> Показать, что для формулы
+прямоугольника по средней точке оценка будет точнее, чем по формуле
+трапеций: порядок тот же, но другой коэффициент. Найдите его.</p>
+<hr />
+<p><sup>6</sup></p>
+<hr />
+<h3 id="лекция-14">Лекция №14</h3>
+<h4 id="численное-интегрирование-продолжение">Численное интегрирование
+(продолжение)</h4>
+<h5 id="погрешность-формулы-симпсона">Погрешность формулы Симпсона</h5>
+<p><span class="math inline">f(x) = P_2(x)+R_2(x) =
+L_3(x)+R_3(x)</span>, затем используй ньютоновскую интерполяцию. <span
+class="math inline">f(x) = P_2(x) + f(x_{i-1}, x_i, x_{i+1},
+x)(x-x_{i-1})(x-x_i)(x-x_{i+1}) + R_g(x)</span> причём <span
+class="math display">
+\int_{x_{i-1}}^{x_{i+1}} f(x_{i-1}, x_i, x_{i+1}, x_{i+1})
+(x-x_{i-1})(x-x_i)(x-x_{i+1}) dx = 0
+</span> в силу нечетности функции <span
+class="math inline">(x-x_{i-1})(x-x_i)(x-x_{i+1})</span>, проще всего
+это увидеть, если сделать замену <span
+class="math inline">t=x-x_i</span>, тогда <span
+class="math inline">(t+h)t(t-h)=t^3-h^2t</span>, а пределы
+интегрирования <span class="math inline">x_{i-1} \to -h</span>, <span
+class="math inline">x_{i+1} \to h</span>. Разделенная разность с
+кратными узлами <span class="math inline">f(x_{i-1}, x_i, x_i, x_{i+1})
+= \lim_{\epsilon\to 0} f(x_{i-1}, x_i-\epsilon, x_i+\epsilon, x_{i+1})
+\approx \frac{f^{(4)}(\xi)}{4!}</span> имеет достаточно сложный вид, но
+это не играет роли, поскольку зануляется указанный выше интеграл. Тогда
+получаем оценку погрешности квадратурной формулы: <span
+class="math display">
+\Delta = \int_{x_{i-1}}^{x_{i+1}} R_4(x)dx \le \int_{x_{i-1}}^{x_{i+1}}
+\frac{\max|f^{(4)}(\xi)|}{4!} (x-x_{i-1})(x-x_i)^2(x-x_{i+1})dx =
+-\frac{\max|f^{(4)}(\xi)|}{4!} \int_{-h}^h t^2(t^2-h^2)dt =
+-\frac{\max|f^{(4)}(\xi)|}{90}h^5
+</span> Такая оценка получена для <span class="math inline">[x_{i-1},
+x_{i+1}]</span> (при 3-х точках: <span class="math inline">x_{i-1}, x_i,
+x_{i+1}</span>). Для всего интервала <span
+class="math inline">[a,b]</span> имеем (<span
+class="math inline">h=(b-a)/2N</span>): <span class="math display">
+\Delta_{[a,b]} = N\cdot\Delta = N \frac{\max|f^{(4)}(\xi)|}{90}h^5 =
+\frac{b-a}{2h} \frac{\max|f^{(4)}(\xi)|}{90}h^5 = \frac{b-a}{180}h^4
+\max|f^{(4)}(\xi)|
+</span> Если функция <span class="math inline">f(x)</span> имеет только
+три непрерывных производных, то оценка формулы Симпсона ухудшается на
+порядок: <span class="math inline">E_S \approx
+\frac{b-a}{40}\max_{[a,b]}|f^{(3)}(\xi)|h^3</span>.</p>
+<hr />
+<p><sup>1</sup></p>
+<hr />
+<h4
+id="правило-рунге-оценки-погрешности.-экстраполяция-ричардсона.">Правило
+Рунге оценки погрешности. Экстраполяция Ричардсона.</h4>
+<p>Пусть для приближенного вычисления интеграла I применяется некая
+квадратурная формула <span class="math inline">p</span>-го порядка
+точности <span class="math inline">I^{(h)}</span> из семейства составных
+формул Ньютона-Котеса. При условии <span class="math inline">f(x) \in
+C^p</span> это означает, что <span class="math inline">\exists</span>
+постоянная <span class="math inline">C</span> такая, что <span
+class="math inline">I = I^{(h)} + Ch^p</span> (приближенное выражение)
+При уменьшении вдвое шага интегрирования <span class="math inline">I =
+I^{(h/2)} + C_1 (h/2)^p</span> при малых <span
+class="math inline">h</span> постоянные <span
+class="math inline">C</span> и <span class="math inline">C_1</span>
+близки, их отличие есть величина <span class="math inline">O(h)</span>.
+Тогда имеем <span class="math inline">I^{(h)} + Ch^p = I^{(h/2)} +
+C_1(h/2)^p \approx I^{(h/2)} + C(h/2)^p</span> <span
+class="math display">
+C \approx C_1 = \frac{I^{(h/2)}-I^{(h)}}{h^p - (h/2)^p}
+</span> Значит (первая формула Рунге): <span class="math display">
+Ch^p \approx \frac{I^{(h/2)}-I^{(h)}}{1-(1/2)^p}
+</span> Можно получить уточненное значение интеграла (вторая формула
+Рунге): <span class="math display">
+I = I^{(h/2)} + C_1(h/2)^p = I^{(h/2)} + \frac{I^{(h/2)}-I^{(h)}}{2^p-1}
+</span> Также эту формулу называют <strong>экстраполяцией
+Ричардсона</strong>. Фактически при этом точность оказывается не <span
+class="math inline">p</span>-го, а <span
+class="math inline">(p+1)</span>-го порядка. <span class="math display">
+I^{p+1} = I^{(h/2)} + \frac{I^{(h/2)}-I^{(h)}}{2^p-1}
+</span> Применение принципа Рунге считается правомочным, если <span
+class="math display">
+\left|\frac{I^{(h)}-I^{(2h)}}{I^{(h/2)}-I^{(h)}}-2^p\right| &lt; 0.5
+</span></p>
+<hr />
+<p><sup>2</sup></p>
+<hr />
+<p>Рассмотрим конкретный случай: интегрирование по формуле трапеций;
+<span class="math inline">p=2</span>. <span class="math display">
+I^3 = I^2(h/2) + \frac{I^2(h/2)-I^2(h)}{2^2-1} = I^2(h/2) +
+\frac{I^2(h/2)-I^2(h)}{3}
+</span> Можно пояснить, почему эта процедура является экстраполяцией.
+Действительно, покажем, что <span class="math inline">I^3</span> выходит
+за интервал <span class="math inline">[I^2(h), I^2(h/2)]</span>. (пока
+предполагаем, что <span class="math inline">I^2(h/2)&lt;I^2(h)</span>).
+имеем <span class="math display">
+I^2(h/2) + \frac{1}{3}(I^2(h/2)-I^2(h)) &lt; I^2(h/2)
+</span> т.е. <span class="math inline">I^3</span> находится вне
+указанного интервала, что означает экстраполяцию. (Такой вывод делается,
+если и <span class="math inline">I^2(h/2)&gt;I^2(h)</span>). Причем,
+применяя экстраполяцию Ричардсона, мы повышаем порядок точности не до
+третьего, как следовало ожидать, а до четвертого, что является
+характерной чертой формул Ньютона-Котеса четных порядков аппроксимации,
+т.е. <span class="math inline">I^3</span> фактически означает <span
+class="math inline">I^4</span>. <strong>Задача.</strong> Показать это.
+<strong>Решение.</strong> <span class="math display">
+I^3 = \frac{4}{3}I^2(h/2) - \frac{1}{3}I^2(h) =
+\frac{4}{3}\frac{h}{2}(f_0+2f_1+\dots) - \frac{1}{3}h(f_0+f_2+\dots) =
+\dots
+</span> Это в точности совпадает с формулой Симпсона, имеющей точность
+<span class="math inline">O(h^4)</span>, значит <span
+class="math inline">I^3=I^4</span>. Данная процедура применяется и к
+формуле Симпсона <span class="math display">
+I^5 = I^4(h/2) + \frac{I^4(h/2)-I^4(h)}{15}
+</span> что получается формула с порядком точности <span
+class="math inline">O(h^6)</span>, т.е. <span
+class="math inline">I^5=I^6</span>. Повторяя эту процедуру, приходим к
+<strong>алгоритму Ромберга</strong>, уточнения вычисления интеграла по
+рекуррентной формуле <span class="math inline">h_0=b-a, h_1 = (b-a)/2,
+\dots, h_n=(b-a)/2^n</span> до тех пор, пока <span
+class="math inline">|I_k^{m+1} - I_k^m| &lt; \varepsilon</span>, где
+<span class="math inline">\varepsilon</span> - заданная точность
+вычислений.</p>
+<hr />
+<p><sup>3</sup></p>
+<hr />
+<h4 id="квадратурные-формулы-гаусса">Квадратурные формулы Гаусса</h4>
+<p>Формулы Ньютона-Котеса являются интерполяционными, поэтому они не
+могут успешно использоваться для получения формул высокой точности в
+силу неустойчивости интерполяционного процесса для многочленов высокого
+порядка. По этой причине обычно используются многочлены степени от нуля
+до трех (соответственно формулы прямоугольников на средней точке,
+трапеций, Симпсона, 3/8). Вычисления с их помощью интегралов от функций,
+обладающих высокой степенью гладкости, например, близким к полиномам
+высокой степени, представляют нерациональным. Выражение для погрешности
+входят первая, вторая или четвёртая производные. Погрешность
+определяется низким порядком производной при высокой гладкости
+интегрируемой функции. Этих недостатков лишены квадратуры Гаусса.
+Поставим задачу: при заданном числе <span class="math inline">n</span>
+узлов построить квадратуры <span class="math display"> \int_{-1}^1
+f(x)dx = \sum_{i=1}^n c_i f(x_i) </span> точные для многочленов наиболее
+высокой степени. Такие квадратуры называют формулами Гаусса. Здесь <span
+class="math inline">x_i</span> - узлы квадратур, <span
+class="math inline">c_i</span> - веса квадратурных формул.
+<strong>Первый тип квадратур с найденными узлами - квадратуры
+Чебышева</strong>, определяемые из условий максимальной алгебраической
+точности и устойчивости квадратурных формул к ошибкам округлений.
+<strong>Формулы Чебышева</strong> <span class="math display">
+\int_{-1}^1 \varphi(x)dx = C \sum_{i=1}^n \varphi(x_i), </span> То, что
+у всех узлов одинаковый вес обеспечивает минимум ошибки, если <span
+class="math inline">\varphi(x_i)</span> имеют нормально распределенную
+случайную ошибку. Требование точности для алгебраического многочлена 0-й
+степени позволяет получить все <span class="math inline">C</span>: <span
+class="math inline">\varphi(x)=1, \quad \int_{-1}^1 \varphi(x)dx =
+\int_{-1}^1 1 dx = 2 = C \sum_{i=1}^n 1 = Cn</span> отсюда <span
+class="math inline">C=2/n</span>.</p>
+<hr />
+<p><sup>4</sup></p>
+<hr />
+<p>Повышение степени многочленов, для которых формула должна быть точна,
+приводит к системе уравнений: <span class="math inline">\varphi(x)=x
+\quad \int_{-1}^1 xdx = \frac{x^2}{2}\bigg|_{-1}^1 = 0 =
+\frac{2}{n}\sum_{i=1}^n x_i</span> <span
+class="math inline">x_1+x_2+x_3+...+x_n=0</span> <span
+class="math inline">\varphi(x)=x^2 \quad \int_{-1}^1 x^2dx =
+\frac{x^3}{3}\bigg|_{-1}^1 = \frac{2}{3} = \frac{2}{n}\sum_{i=1}^n
+x_i^2</span> <span class="math inline">x_1^2+x_2^2+x_3^2+...+x_n^2 =
+n/3</span> <span class="math inline">\varphi(x)=x^3 \quad
+x_1^3+x_2^3+x_3^3+...+x_n^3=0</span> <span
+class="math inline">\varphi(x)=x^k \quad x_1^k+x_2^k+x_3^k+...+x_n^k =
+\frac{n}{k+1} \frac{1+(-1)^k}{2}</span> Получающаяся симметричная
+система уравнений определяет единственный набор <span
+class="math inline">\{x_i\}</span> при <span
+class="math inline">n=1,2,3,...,7,9</span> (Чебылёв) и имеет комплексные
+корни при <span class="math inline">n=8</span> и <span
+class="math inline">n \ge 10</span> (Бернштейн). Остаточные члены для
+конкретных значений <span class="math inline">n</span>, для которых они
+существуют. В отличие от остаточных членов формул Ньютона-Котеса,
+характерно “перепрыгивание” через нечетные производные. <span
+class="math inline">r_2 = \frac{1}{135}f^{(4)}(\xi_2), \quad r_3 =
+\frac{1}{360}f^{(4)}(\xi_3), \dots</span> <span class="math inline">r_4
+= \frac{2}{12525}f^{(6)}(\xi_4), \quad r_5 =
+\frac{13}{544320}f^{(6)}(\xi_5)</span>, и т.д., здесь <span
+class="math inline">\eta_k \in (-1,1)</span>.</p>
+<p><strong>Формулы Гаусса с 2n параметрами</strong> (<span
+class="math inline">n</span> узлов и <span class="math inline">n</span>
+весов квадратурной формулы) Будем подбирать узлы и веса из требования,
+чтобы равенство <span class="math display"> \int_{-1}^1 \varphi(x)dx =
+\sum_{i=1}^n c_i \varphi(x_i) </span> было точным для многочленов как
+можно более высокой степени, т.е. для <span
+class="math inline">0,1,2,3,...,2n-1</span> степени (<span
+class="math inline">2n</span>).</p>
+<hr />
+<p><sup>5</sup></p>
+<hr />
+<p>Тогда построение квадратурной формулы опирается на решение нелинейной
+системы вида: <span class="math inline">\varphi(x)=1: \sum c_i =
+2</span> <span class="math inline">x: \sum c_i x_i = 0</span> <span
+class="math inline">\dots</span> <span class="math inline">x^{2n-1}:
+\sum c_i x_i^{2n-1} = 0</span> Остаточные члены формул Гаусса: <span
+class="math inline">r_1 = \frac{1}{135}f^{(4)}(\xi_1), \quad r_2 =
+\frac{1}{15750}f^{(6)}(\xi_2), \quad r_3 =
+\frac{1}{3472875}f^{(8)}(\xi_3), \quad r_4 =
+\frac{1}{1237732650}f^{(10)}(\xi_4)</span>. <span
+class="math inline">\xi_2, \xi_3, \xi_4, \xi_5 \in (-1,1)</span>. Видно
+быстрое затухание ошибки при достаточной гладкости функции <span
+class="math inline">\varphi(x)</span>. Оказывается, узлами квадратурной
+формулы Гаусса служат корни многочлена Лежандра <span
+class="math inline">q_n(x)</span>, а веса находятся интегрированием
+базисных многочленов Лагранжа <span class="math inline">C_i</span>
+степени <span class="math inline">n-1</span>, именно <span
+class="math inline">C_i = \int_{-1}^1
+\frac{(x-x_1)...(x-x_{i-1})(x-x_{i+1})...(x-x_n)}{(x_i-x_1)...(x_i-x_{i-1})(x_i-x_{i+1})...(x_i-x_n)}
+dx</span></p>
+<p><strong>Многочлены Лежандра:</strong> <span
+class="math inline">q_n(x) = \frac{1}{2^n n!}
+\frac{d^n}{dx^n}(x^2-1)^n</span> <span class="math inline">q_0=1, q_1=x,
+q_2=\frac{1}{2}(3x^2-1), q_3=\frac{1}{2}(5x^3-3x)</span> <span
+class="math inline">(n+1)q_{n+1}(x) = (2n+1)xq_n(x) - nq_{n-1}(x)</span>
+<span class="math inline">\int_{-1}^1 q_n(x)q_m(x)dx = \begin{cases} 0,
+&amp; n \ne m \\ \frac{2}{2n+1}, &amp; n=m \end{cases}</span></p>
+<p><strong>Задача.</strong> <span
+class="math inline">\varphi(x)=1,x,x^2,x^3</span> (на отрезке <span
+class="math inline">[-1,1]</span>) <span class="math display">
+\begin{cases} c_1+c_2=2 \\ c_1x_1+c_2x_2=0 \\ c_1x_1^2+c_2x_2^2 = 2/3 \\
+c_1x_1^3+c_2x_2^3=0 \end{cases} </span> Найти узлы и веса.</p>
+<p><strong>Задача.</strong> Вычислить интеграл <span
+class="math inline">\int_{-1}^1 (4+x+4.5x^2+3.14x^3+2.x^4)dx</span> с
+использованием квадратур Гаусса (<span
+class="math inline">x_1,x_2,c_1,c_2</span>) и дать оценку точности
+сравнением со значением интеграла, найденным аналитически (наиболее
+простым способом).</p>
+<hr />
+<p><sup>6</sup></p>
+</body>
+</html>
