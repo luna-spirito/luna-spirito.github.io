@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>answers</title>
+  <title>answers2</title>
   <style>
     html {
       color: #1a1a1a;
@@ -186,1182 +186,1343 @@
   href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
 </head>
 <body>
-<p>Отлично, я готов к экзамену. Вот ответы на все вопросы, основанные
-исключительно на предоставленных конспектах лекций.</p>
+<p>Отлично, я готов к экзамену! Вот подробные ответы на все вопросы,
+отформатированные с использованием синтаксиса KaTeX.</p>
 <hr />
 <h3
-id="погрешности-вычислений.-абсолютная-и-относительная-погрешности.-погрешность-функции.">1.
-Погрешности вычислений. Абсолютная и относительная погрешности.
-Погрешность функции.</h3>
-<p>(На основе Лекции №1, 5-й семестр)</p>
-<p>В численных методах практически всегда присутствуют погрешности. Их
-традиционно разделяют на два типа: неустранимые и устранимые.</p>
+id="понятие-обусловленности-для-слау-систем-линейных-алгебраических-уравнений.-нахождение-числа-обусловленности.">1.
+Понятие обусловленности для СЛАУ (систем линейных алгебраических
+уравнений). Нахождение числа обусловленности.</h3>
+<p><strong>Понятие обусловленности</strong> характеризует, насколько
+сильно изменяется решение системы линейных алгебраических уравнений
+(СЛАУ) <span class="math inline">Ax = b</span> при малых изменениях
+(возмущениях) в исходных данных: матрице <span
+class="math inline">A</span> и/или векторе правых частей <span
+class="math inline">b</span>. Система называется <strong>хорошо
+обусловленной</strong>, если малые возмущения данных приводят к малым
+изменениям решения. Система называется <strong>плохо
+обусловленной</strong>, если малые возмущения данных могут привести к
+большим изменениям в решении.</p>
+<p><strong>Вывод формулы и нахождение числа
+обусловленности:</strong></p>
 <ol type="1">
-<li><strong>Неустранимые погрешности</strong> — это погрешности,
-присущие самой постановке задачи:
+<li><p><strong>Возмущение правой части.</strong> Пусть исходная система:
+<span class="math inline">Ax = b \quad (1)</span> А система с
+возмущением в правой части: <span class="math inline">A(x + \Delta x) =
+b + \Delta b \quad (2)</span> Вычитая <span
+class="math inline">(1)</span> из <span class="math inline">(2)</span>,
+получаем: <span class="math inline">A\Delta x = \Delta b</span>, откуда
+<span class="math inline">\Delta x = A^{-1}\Delta b</span>. Вводя нормы
+для векторов и матриц, получаем оценки:</p>
 <ul>
-<li><strong>Погрешности модели</strong>: возникают из-за неполного
-соответствия математической модели реальному физическому явлению
-(например, использование ньютоновой механики вместо
-релятивистской).</li>
-<li><strong>Погрешности входных данных</strong>: связаны с неточностью
-измерений или начальных условий (например, погрешности метеорологических
-наблюдений).</li>
+<li>Из <span class="math inline">(1)</span>: <span
+class="math inline">||b|| = ||Ax|| \le ||A|| \cdot ||x||</span></li>
+<li>Из <span class="math inline">\Delta x = A^{-1}\Delta b</span>: <span
+class="math inline">||\Delta x|| = ||A^{-1}\Delta b|| \le ||A^{-1}||
+\cdot ||\Delta b||</span> Перемножив эти неравенства, имеем: <span
+class="math inline">||b|| \cdot ||\Delta x|| \le ||A|| \cdot ||A^{-1}||
+\cdot ||x|| \cdot ||\Delta b||</span> Отсюда получаем оценку
+относительной погрешности решения: <span
+class="math inline">\frac{||\Delta x||}{||x||} \le \left(||A|| \cdot
+||A^{-1}||\right) \frac{||\Delta b||}{||b||}</span></li>
 </ul></li>
-<li><strong>Устранимые погрешности</strong> — это погрешности,
-возникающие в процессе вычислений:
+<li><p><strong>Число обусловленности.</strong> Величина <span
+class="math inline">\mu(A) = \text{cond } A = ||A|| \cdot
+||A^{-1}||</span> называется <strong>числом (мерой)
+обусловленности</strong> матрицы <span class="math inline">A</span>. Это
+положительное число, которое служит коэффициентом роста относительной
+погрешности решения.</p></li>
+<li><p><strong>Общий случай (возмущение A и b).</strong> При возмущении
+и матрицы, и правой части <span class="math inline">(A+\Delta
+A)(x+\Delta x) = b+\Delta b</span>, можно получить более общую оценку:
+<span class="math inline">\frac{||\Delta x||}{||x||} \le \frac{\mu
+\left( \frac{||\Delta b||}{||b||} + \frac{||\Delta A||}{||A||}
+\right)}{1 - \mu \frac{||\Delta A||}{||A||}}</span></p></li>
+</ol>
+<p><strong>Свойства и вычисление:</strong></p>
 <ul>
-<li><strong>Погрешности вычислительных устройств (ошибки
-округления)</strong>: связаны с ограниченной разрядностью компьютеров.
-Например, для чисел обычной точности (32 бита) машинная относительная
-ошибка <span class="math inline">\mathcal{E}_{маш.} \approx 6 \cdot
-10^{-8}</span>.</li>
-<li><strong>Погрешности метода вычислений</strong>: возникают из-за
-замены точных операций приближенными (например, замена производной
-разностным выражением).</li>
+<li><strong>Значения:</strong>
+<ul>
+<li><span class="math inline">\mu(A) = ||A|| \cdot ||A^{-1}|| \ge ||A
+\cdot A^{-1}|| = ||E|| = 1</span>.</li>
+<li>При <span class="math inline">\mu \approx 1 \div 10</span> система
+считается <strong>хорошо обусловленной</strong>.</li>
+<li>При <span class="math inline">\mu \ge 10^2 \div 10^3</span> система
+считается <strong>плохо обусловленной</strong>.</li>
+</ul></li>
+<li><strong>Вычисление:</strong>
+<ul>
+<li>Для вычисления <span class="math inline">\mu(A)</span> нужно выбрать
+норму. Распространенные нормы матриц, согласованные с векторными
+нормами:
+<ul>
+<li><strong>Кубическая (<span
+class="math inline">\infty</span>-норма):</strong> <span
+class="math inline">||A||_\infty = \max_{1 \le i \le n} \sum_{j=1}^n
+|a_{ij}|</span> (максимальная сумма модулей элементов по строкам).</li>
+<li><strong>Октаэдрическая (1-норма):</strong> <span
+class="math inline">||A||_1 = \max_{1 \le j \le n} \sum_{i=1}^n
+|a_{ij}|</span> (максимальная сумма модулей элементов по столбцам).</li>
+<li><strong>Евклидова (2-норма):</strong> <span
+class="math inline">||A||_2 = \sqrt{\max_i \lambda_i(A^T
+A)}</span>.</li>
+</ul></li>
+<li><strong>Для симметричной матрицы <span
+class="math inline">A</span>:</strong> число обусловленности можно
+оценить через её максимальное и минимальное по модулю собственные
+значения: <span class="math inline">\mu(A) =
+\frac{|\lambda|_{\max}}{|\lambda|_{\min}}</span>.</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="метод-гаусса-прямого-решения-слау.">2. Метод Гаусса прямого
+решения СЛАУ.</h3>
+<p>Метод Гаусса — это <strong>прямой</strong> метод решения СЛАУ вида
+<span class="math inline">Ax=b</span>. Идея метода заключается в
+последовательном исключении неизвестных, приводя исходную систему к
+эквивалентной системе с треугольной матрицей, которая легко решается.
+Метод состоит из двух этапов: прямого и обратного хода.</p>
+<p><strong>1. Прямой ход (метод исключения).</strong></p>
+<p>Цель — привести матрицу системы к верхнему треугольному виду.
+Исходная система: <span class="math display">
+\left\{
+\begin{aligned}
+a_{11}x_1 + \dots + a_{1n}x_n &amp;= b_1 \\
+\dots \\
+a_{n1}x_1 + \dots + a_{nn}x_n &amp;= b_n
+\end{aligned}
+\right.
+</span></p>
+<ul>
+<li><p><strong>Шаг 1:</strong> Предполагая <span
+class="math inline">a_{11} \neq 0</span> (ведущий элемент), исключаем
+<span class="math inline">x_1</span> из всех уравнений, начиная со
+второго. Для этого <span class="math inline">i</span>-е уравнение (<span
+class="math inline">i=2,...,n</span>) умножается на <span
+class="math inline">(-\frac{a_{i1}}{a_{11}})</span> и складывается с
+первым. Коэффициенты новой системы пересчитываются по формулам: <span
+class="math inline">a_{ij}^{(1)} = a_{ij} -
+\frac{a_{i1}}{a_{11}}a_{1j}</span> <span class="math inline">b_{i}^{(1)}
+= b_{i} - \frac{a_{i1}}{a_{11}}b_1</span> для <span
+class="math inline">i,j = 2, ..., n</span>. Первое уравнение остается
+неизменным. Система принимает вид: <span class="math display">
+\begin{alignedat}{1}
+a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n &amp;= b_1 \\
+a_{22}^{(1)}x_2 + \dots + a_{2n}^{(1)}x_n &amp;= b_2^{(1)} \\
+\dots \\
+a_{n2}^{(1)}x_2 + \dots + a_{nn}^{(1)}x_n &amp;= b_n^{(1)}
+\end{alignedat}
+</span></p></li>
+<li><p><strong>Шаг k (k=2,…,n-1):</strong> Процесс повторяется для
+подсистемы размером <span class="math inline">(n-k+1) \times
+(n-k+1)</span>. На <span class="math inline">k</span>-м шаге исключается
+переменная <span class="math inline">x_k</span> из уравнений с <span
+class="math inline">k+1</span> по <span
+class="math inline">n</span>-е.</p></li>
+</ul>
+<p>После <span class="math inline">n-1</span> шагов система приводится к
+треугольному виду: <span class="math display">
+\left\{
+\begin{alignedat}{3}
+a_{11}x_1 + a_{12}x_2 + \dots &amp;+ a_{1n}x_n &amp;&amp;= b_1 \\
+a_{22}^{(1)}x_2 + \dots &amp;+ a_{2n}^{(1)}x_n &amp;&amp;= b_2^{(1)} \\
+\dots \\
+&amp;a_{nn}^{(n-1)}x_n &amp;&amp;= b_n^{(n-1)}
+\end{alignedat}
+\right.
+</span></p>
+<p><strong>2. Обратный ход.</strong></p>
+<p>На этом этапе последовательно находятся неизвестные, начиная с
+последнего. * Из последнего уравнения: <span class="math inline">x_n =
+\frac{b_n^{(n-1)}}{a_{nn}^{(n-1)}}</span> * Из предпоследнего: <span
+class="math inline">x_{n-1} = \frac{b_{n-1}^{(n-2)} -
+a_{n-1,n}^{(n-2)}x_n}{a_{n-1,n-1}^{(n-2)}}</span> * И так далее до
+первого уравнения: <span class="math inline">x_1 = \frac{b_1 - a_{12}x_2
+- \dots - a_{1n}x_n}{a_{11}}</span></p>
+<p><strong>Сложность:</strong> Количество арифметических операций для
+метода Гаусса оценивается как <span class="math inline">O(n^3)</span>.
+Прямой ход требует <span class="math inline">\sim n^3</span> операций, а
+обратный ход — <span class="math inline">\sim n^2</span>.</p>
+<hr />
+<h3
+id="метод-гаусса-с-выбором-главного-элемента-в-строке-или-в-столбце.">3.
+Метод Гаусса с выбором главного элемента в строке или в столбце.</h3>
+<p>Стандартный метод Гаусса может приводить к большим погрешностям, если
+на диагонали оказываются элементы, малые по абсолютной величине. Деление
+на малое число усиливает ошибки округления. Чтобы этого избежать,
+применяют модификацию метода Гаусса с выбором <strong>главного
+(ведущего) элемента</strong>.</p>
+<p><strong>Принцип:</strong> На каждом шаге прямого хода, перед
+исключением очередной переменной, производится поиск максимального по
+модулю элемента и перестановка строк и/или столбцов так, чтобы этот
+элемент оказался на ведущей позиции (на диагонали).</p>
+<p><strong>Реализация:</strong> Пусть на <span
+class="math inline">k</span>-м шаге мы исключаем переменную <span
+class="math inline">x_k</span>.</p>
+<ol type="1">
+<li><strong>Выбор главного элемента по столбцу (наиболее частый
+вариант):</strong>
+<ul>
+<li>В <span class="math inline">k</span>-м столбце текущей матрицы ищут
+элемент с максимальным модулем среди элементов <span
+class="math inline">a_{ik}</span> для <span class="math inline">i = k,
+..., n</span>.</li>
+<li>Пусть максимум достигается для <span class="math inline">i =
+j</span>.</li>
+<li>Тогда <span class="math inline">k</span>-я и <span
+class="math inline">j</span>-я строки матрицы (и соответствующие
+элементы вектора <span class="math inline">b</span>) меняются
+местами.</li>
+<li>После этого выполняется стандартный шаг исключения переменной <span
+class="math inline">x_k</span>.</li>
+</ul></li>
+<li><strong>Выбор главного элемента по строке:</strong>
+<ul>
+<li>В <span class="math inline">k</span>-й строке ищут максимальный по
+модулю элемент <span class="math inline">a_{kj}</span> для <span
+class="math inline">j = k, ..., n</span>.</li>
+<li>Пусть максимум достигается для <span
+class="math inline">j=p</span>.</li>
+<li>Тогда <span class="math inline">k</span>-й и <span
+class="math inline">p</span>-й столбцы матрицы меняются местами. Это
+соответствует перенумерации переменных <span
+class="math inline">x_k</span> и <span class="math inline">x_p</span>.
+Необходимо запомнить эту перестановку, чтобы в конце восстановить
+правильный порядок решения.</li>
+</ul></li>
+<li><strong>Выбор главного элемента по всей матрице:</strong>
+<ul>
+<li>Поиск максимального по модулю элемента ведется по всей оставшейся
+подматрице (<span class="math inline">i,j = k, ..., n</span>).</li>
+<li>Это требует как перестановки строк, так и столбцов.</li>
 </ul></li>
 </ol>
-<p><strong>Абсолютная и относительная погрешности</strong></p>
-<p>Пусть <span class="math inline">u</span> — точное значение величины,
-а <span class="math inline">u^*</span> — её известное приближенное
-значение.</p>
-<ul>
-<li><p><strong>Абсолютной погрешностью</strong> приближенного значения
-<span class="math inline">u^*</span> называют величину <span
-class="math inline">\Delta(u^*)</span>, для которой выполнено
-неравенство: <span class="math inline">|u^* - u| \le
-\Delta(u^*).</span></p></li>
-<li><p><strong>Относительной погрешностью</strong> величины <span
-class="math inline">u^*</span> называют величину <span
-class="math inline">\delta(u^*)</span>, для которой выполнено: <span
-class="math inline">\frac{|u^* - u|}{|u^*|} \le
-\delta(u^*).</span></p></li>
-</ul>
-<p>Часто сами величины <span class="math inline">|u^* - u|</span> и
-<span class="math inline">|u^* - u|/|u^*|</span> называют абсолютной и
-относительной погрешностями, а <span
-class="math inline">\Delta(u^*)</span> и <span
-class="math inline">\delta(u^*)</span> — их оценками или границами.</p>
-<p><strong>Погрешность функции</strong></p>
-<p>Пусть имеется дифференцируемая функция <span class="math inline">u =
-f(x_1, ..., x_n)</span>, и аргументы заданы с абсолютными погрешностями
-<span class="math inline">\Delta(x_i^*)</span>. Тогда погрешность
-результата можно оценить через полный дифференциал.</p>
-<ul>
-<li><strong>Оценка абсолютной погрешности функции:</strong> <span
-class="math display"> \Delta(u^*) = \sum_{i=1}^n \left|\frac{\partial
-u}{\partial x_i}\right| \Delta(x_i^*). </span></li>
-<li><strong>Оценка относительной погрешности функции:</strong> <span
-class="math display"> \delta(u^*) = \frac{\Delta(u^*)}{|u^*|} =
-\sum_{i=1}^n \left|\frac{\partial \ln u}{\partial x_i}\right|
-\Delta(x_i^*). </span></li>
-</ul>
-<p><strong>Частные случаи:</strong> * <strong>Сумма/разность:</strong>
-Абсолютные погрешности складываются. <span
-class="math inline">\Delta(x^* \pm y^*) \le \Delta(x^*) +
-\Delta(y^*)</span>. * <strong>Произведение/частное:</strong>
-Относительные погрешности складываются. <span
-class="math inline">\delta(x^* \cdot y^*) \le \delta(x^*) +
-\delta(y^*)</span> и <span class="math inline">\delta(x^*/y^*) \le
-\delta(x^*) + \delta(y^*)</span>.</p>
-<p>При вычитании близких чисел относительная погрешность может
-значительно возрасти, что приводит к <strong>потере
-точности</strong>.</p>
+<p><strong>Важность:</strong> Модельная задача <span
+class="math inline">\left\{ \begin{alignedat}{1} 10^{-3}x_1 + x_2 &amp;=
+2 \\ x_1 - x_2 &amp;= 1 \end{alignedat} \right.</span> показывает, что
+без выбора главного элемента решение может быть совершенно неверным
+из-за потери точности, в то время как с выбором главного элемента
+(поменяв уравнения местами) получается точное решение.</p>
 <hr />
 <h3
-id="интерполяция.-построение-интерполяционного-многочлена-в-форме-лагранжа.-оценка-остаточного-члена-интерполяционного-многочлена-лагранжа.">2.
-Интерполяция. Построение интерполяционного многочлена в форме Лагранжа.
-Оценка остаточного члена интерполяционного многочлена Лагранжа.</h3>
-<p>(На основе Лекций №7, №9)</p>
-<p><strong>Интерполяция</strong> — это задача нахождения функции (чаще
-всего полинома), которая проходит через заданный набор точек <span
-class="math inline">(x_i, y_i)</span>, называемых узлами
-интерполяции.</p>
-<p>Пусть заданы <span class="math inline">N</span> узлов <span
-class="math inline">(x_1, y_1), \dots, (x_N, y_N)</span>, где <span
-class="math inline">y_i = f(x_i)</span>. Требуется построить
-интерполяционный многочлен <span class="math inline">L_{N-1}(x)</span>
-степени не выше <span class="math inline">N-1</span> такой, что <span
-class="math inline">L_{N-1}(x_i) = y_i</span> для всех <span
-class="math inline">i=1, \dots, N</span>.</p>
-<p><strong>Интерполяционный многочлен в форме Лагранжа</strong></p>
-<p>Многочлен Лагранжа <span class="math inline">L_{N-1}(x)</span> имеет
-вид: <span class="math display"> L_N(x) = \sum_{n=1}^N y_n \varphi_n(x)
-</span> где <span class="math inline">\varphi_n(x)</span> — базисные
-многочлены Лагранжа степени <span class="math inline">N-1</span>: <span
-class="math display"> \varphi_n(x) = \prod_{i=1, i \ne n}^N
-\frac{x-x_i}{x_n-x_i} </span> Каждый базисный многочлен <span
-class="math inline">\varphi_n(x)</span> обладает свойством: <span
-class="math inline">\varphi_n(x_k) = \delta_{nk}</span> (символ
-Кронекера), то есть он равен 1 в узле <span
-class="math inline">x_n</span> и 0 во всех остальных узлах <span
-class="math inline">x_i</span> (<span class="math inline">i \neq
-n</span>). Это обеспечивает выполнение условия интерполяции <span
-class="math inline">L_N(x_k) = y_k</span>.</p>
-<p><strong>Оценка остаточного члена</strong></p>
-<p>Остаточный член (погрешность интерполяции) определяется как <span
-class="math inline">R_N(x) = f(x) - L_N(x)</span>. Для его оценки
-вводится вспомогательная функция <span class="math inline">\psi(t) =
-f(t) - L_N(t) - K \cdot w_N(t)</span>, где <span
-class="math inline">w_N(t) = (t-x_1)\dots(t-x_N)</span> и константа
-<span class="math inline">K</span> подбирается так, чтобы <span
-class="math inline">\psi(x)=0</span> в некоторой точке <span
-class="math inline">x \notin \{x_1, \dots, x_N\}</span>.</p>
-<p>Функция <span class="math inline">\psi(t)</span> обращается в ноль в
-<span class="math inline">N+1</span> точке: <span
-class="math inline">x_1, \dots, x_N, x</span>. По теореме Ролля, её
-производная <span class="math inline">\psi&#39;(t)</span> имеет как
-минимум <span class="math inline">N</span> корней. Продолжая этот
-процесс, приходим к тому, что производная <span
-class="math inline">\psi^{(N)}(t)</span> имеет хотя бы один корень <span
-class="math inline">\xi</span> на интервале, содержащем все эти точки.
-Из выражения <span class="math inline">\psi^{(N)}(t) = f^{(N)}(t) - 0 -
-K \cdot N!</span> и условия <span
-class="math inline">\psi^{(N)}(\xi)=0</span> находим <span
-class="math inline">K = \frac{f^{(N)}(\xi)}{N!}</span>.</p>
-<p>Подставляя это в выражение для <span class="math inline">K</span> из
-условия <span class="math inline">\psi(x)=0</span>, получаем формулу для
-остаточного члена: <span class="math display"> R_N(x) = f(x) - L_N(x) =
-\frac{f^{(N)}(\xi)}{N!} w_N(x) = \frac{f^{(N)}(\xi)}{N!} \prod_{i=1}^N
-(x-x_i) </span> где точка <span class="math inline">\xi</span> лежит в
-наименьшем отрезке, содержащем все узлы <span class="math inline">x_1,
-\dots, x_N</span> и точку <span class="math inline">x</span>.</p>
-<hr />
-<h3 id="численное-дифференцирование.-метод-рунге-ромберга.">3. Численное
-дифференцирование. Метод Рунге-Ромберга.</h3>
-<p>(На основе Лекции №14)</p>
-<p>В предоставленных конспектах лекций тема численного дифференцирования
-не рассматривается подробно. Однако в них детально изложен
-<strong>принцип Рунге</strong> (и экстраполяция Ричардсона) для оценки и
-уточнения погрешности численного интегрирования. Этот же общий принцип
-лежит в основе метода Рунге-Ромберга для численного
-дифференцирования.</p>
-<p><strong>Общий принцип Рунге</strong></p>
-<p>Пусть для вычисления некоторой величины <span
-class="math inline">I</span> (например, интеграла или производной)
-используется метод, погрешность которого имеет вид <span
-class="math inline">R \approx C h^p</span>, где <span
-class="math inline">h</span> — шаг сетки, <span
-class="math inline">p</span> — порядок точности метода, а <span
-class="math inline">C</span> — константа, слабо зависящая от <span
-class="math inline">h</span>.</p>
+id="применение-метода-гаусса-к-вычислению-определителей-и-к-обращению-матриц.">4.
+Применение метода Гаусса к вычислению определителей и к обращению
+матриц.</h3>
+<p>Метод Гаусса является эффективным инструментом не только для решения
+СЛАУ, но и для связанных с ними задач.</p>
+<p><strong>1. Вычисление определителя.</strong></p>
+<ul>
+<li><strong>Идея:</strong> Определитель матрицы не меняется, если к
+одной из её строк прибавить другую строку, умноженную на число. Это в
+точности то преобразование, которое выполняется на прямом ходе метода
+Гаусса.</li>
+<li><strong>Алгоритм:</strong>
 <ol type="1">
-<li><p>Вычисляем приближенное значение <span
-class="math inline">I^{(h)}</span> с шагом <span
-class="math inline">h</span> и <span
-class="math inline">I^{(h/2)}</span> с шагом <span
-class="math inline">h/2</span>.</p>
+<li>Привести матрицу <span class="math inline">A</span> к верхнему
+треугольному виду <span class="math inline">A&#39;</span> с помощью
+прямого хода метода Гаусса.</li>
+<li>Определитель треугольной матрицы равен произведению её диагональных
+элементов.</li>
+<li><span class="math inline">\det(A) = a&#39;_{11} \cdot a&#39;_{22}
+\cdot \dots \cdot a&#39;_{nn}</span></li>
+</ol></li>
+<li><strong>Учет перестановок:</strong> Если при выполнении прямого хода
+использовался выбор главного элемента с перестановкой строк, то нужно
+учесть, что каждая такая перестановка меняет знак определителя. Если
+было совершено <span class="math inline">k</span> перестановок строк,
+то: <span class="math inline">\det(A) = (-1)^k \cdot (\text{произведение
+диагональных элементов})</span>. В обозначениях лекции, <span
+class="math inline">\det A = a_{11} a_{22}^{(1)} \dots
+a_{nn}^{(n-1)}</span>.</li>
+</ul>
+<p><strong>2. Обращение матриц.</strong></p>
 <ul>
-<li><span class="math inline">I \approx I^{(h)} + C h^p</span></li>
-<li><span class="math inline">I \approx I^{(h/2)} + C
-(h/2)^p</span></li>
-</ul></li>
-<li><p>Из этой системы можно оценить погрешность вычисления с шагом
-<span class="math inline">h/2</span>: <span class="math display">
-R^{(h/2)} = C (h/2)^p \approx \frac{I^{(h/2)} - I^{(h)}}{2^p - 1}
-</span> Это <strong>первая формула Рунге</strong> (правило Рунге для
-оценки погрешности).</p></li>
-<li><p>Можно получить уточненное значение, исключив главный член
-погрешности. Это называется <strong>экстраполяцией Ричардсона</strong>:
-<span class="math display"> I_{уточн.} = I^{(h/2)} + R^{(h/2)} =
-I^{(h/2)} + \frac{I^{(h/2)} - I^{(h)}}{2^p - 1} </span> Это
-<strong>вторая формула Рунге</strong>. Уточненное значение, как правило,
-имеет более высокий порядок точности (не менее <span
-class="math inline">p+1</span>).</p></li>
-</ol>
-<p><strong>Применение к численному дифференцированию (Метод
-Рунге-Ромберга)</strong></p>
-<p>Хотя формулы для численного дифференцирования в конспектах не
-приведены, метод Рунге-Ромберга применяет тот же принцип. Например, если
-мы используем формулу для первой производной с порядком точности <span
-class="math inline">O(h^2)</span> (например, центральную разность), то
-<span class="math inline">p=2</span>.</p>
+<li><strong>Идея:</strong> Найти обратную матрицу <span
+class="math inline">A^{-1}</span> — это то же самое, что решить
+матричное уравнение <span class="math inline">AX = E</span>, где <span
+class="math inline">E</span> — единичная матрица, а <span
+class="math inline">X = A^{-1}</span>.</li>
+<li><strong>Алгоритм:</strong>
 <ol type="1">
-<li>Вычисляем производную <span class="math inline">f&#39;(x)</span> с
-шагом <span class="math inline">h</span>, получая <span
-class="math inline">D^{(h)}</span>.</li>
-<li>Вычисляем производную <span class="math inline">f&#39;(x)</span> с
-шагом <span class="math inline">h/2</span>, получая <span
-class="math inline">D^{(h/2)}</span>.</li>
-<li>Оценка погрешности: <span class="math inline">R^{(h/2)} \approx
-\frac{D^{(h/2)} - D^{(h)}}{2^2 - 1} = \frac{D^{(h/2)} -
-D^{(h)}}{3}</span>.</li>
-<li>Уточненное значение производной (формула Ромберга): <span
-class="math inline">D_{уточн.} = D^{(h/2)} + \frac{D^{(h/2)} -
-D^{(h)}}{3}</span>.</li>
-</ol>
-<p>Этот итерационный процесс уточнения можно продолжать, создавая
-таблицу значений (треугольник Ромберга) для достижения высокой
-точности.</p>
-<hr />
-<h3
-id="интерполяция.-конечные-разности.-интерполяционные-многочлены-ньютона.">3.
-Интерполяция. Конечные разности. Интерполяционные многочлены
-Ньютона.</h3>
-<p>(Ошибка в нумерации вопроса, предполагается, что это вопрос №4)</p>
-<p>(На основе Лекции №7)</p>
-<p>Интерполяционная формула Ньютона является альтернативой форме
-Лагранжа и особенно удобна, когда необходимо добавлять новые узлы
-интерполяции, так как это не требует пересчета всех предыдущих
-коэффициентов.</p>
-<p><strong>Разделенные разности</strong></p>
-<p>Форма Ньютона использует разделенные разности, которые определяются
-рекуррентно:</p>
-<ul>
-<li><strong>Разделенная разность нулевого порядка:</strong> <span
-class="math inline">f(x_i) = y_i</span>.</li>
-<li><strong>Разделенная разность первого порядка:</strong> <span
-class="math display"> f(x_i, x_{i+1}) = \frac{f(x_{i+1}) -
-f(x_i)}{x_{i+1} - x_i} </span></li>
-<li><strong>Разделенная разность k-го порядка:</strong> <span
-class="math display"> f(x_i, x_{i+1}, \dots, x_{i+k}) = \frac{f(x_{i+1},
-\dots, x_{i+k}) - f(x_i, \dots, x_{i+k-1})}{x_{i+k} - x_i} </span></li>
-</ul>
-<p>Для вычислений удобно составлять <strong>таблицу разделенных
-разностей</strong>, где каждый следующий столбец вычисляется на основе
-предыдущего.</p>
-<p><strong>Интерполяционный многочлен Ньютона</strong></p>
-<p>С использованием разделенных разностей интерполяционный многочлен
-<span class="math inline">F_N(x)</span> (который тождественно равен
-многочлену Лагранжа <span class="math inline">L_N(x)</span> для тех же
-узлов) записывается в виде: <span class="math display"> F_N(x) = f(x_1)
-+ f(x_1, x_2)(x-x_1) + f(x_1, x_2, x_3)(x-x_1)(x-x_2) + \dots + f(x_1,
-\dots, x_N)(x-x_1)\dots(x-x_{N-1}) </span> Коэффициентами этого
-многочлена являются разделенные разности, стоящие на верхней диагонали
-таблицы.</p>
-<p><strong>Преимущества формы Ньютона:</strong> 1. <strong>Простота
-добавления узлов:</strong> Для построения многочлена <span
-class="math inline">F_{N+1}(x)</span> достаточно добавить к <span
-class="math inline">F_N(x)</span> еще один член: <span
-class="math display"> F_{N+1}(x) = F_N(x) + f(x_1, \dots,
-x_{N+1})(x-x_1)\dots(x-x_N) </span> 2. <strong>Вычислительная
-эффективность:</strong> Построение таблицы и вычисление значения
-полинома по схеме Горнера часто эффективнее прямого вычисления по
-формуле Лагранжа.</p>
-<hr />
-<h3
-id="интерполяция.-сплайны.-дефект-сплайна.-кубический-сплайн.-базисные-сплайны.">4.
-Интерполяция. Сплайны. Дефект сплайна. Кубический сплайн. Базисные
-сплайны.</h3>
-<p>(На основе Лекций №8, №9)</p>
-<p>Использование интерполяционных многочленов высокой степени может
-приводить к большим осцилляциям и плохой сходимости (феномен Рунге).
-<strong>Сплайн-интерполяция</strong> — это метод кусочно-полиномиальной
-интерполяции, который решает эту проблему.</p>
-<p><strong>Определение сплайна</strong> Пусть отрезок <span
-class="math inline">[a,b]</span> разбит на <span
-class="math inline">N</span> частей точками <span
-class="math inline">x_0, x_1, \dots, x_N</span>.
-<strong>Сплайном</strong> <span class="math inline">S_m^p(f,x)</span>
-<strong>порядка</strong> <span class="math inline">m</span> (степени
-<span class="math inline">m</span>) и <strong>дефекта</strong> <span
-class="math inline">p</span> (<span class="math inline">1 \le p \le
-m</span>) называют функцию, которая: 1. На каждом отрезке <span
-class="math inline">[x_{i-1}, x_i]</span> является многочленом степени
-<span class="math inline">m</span>. 2. Удовлетворяет условию <span
-class="math inline">S_m^p(x_i) = f(x_i)</span> во всех узлах. 3. Имеет
-непрерывные производные до порядка <span class="math inline">m-p</span>
-включительно в узлах “сшивки” <span class="math inline">x_1, \dots,
-x_{N-1}</span>.</p>
-<p>Дефект <span class="math inline">p</span> показывает, на сколько
-порядок гладкости сплайна в узлах ниже, чем у полинома той же степени.
-Чаще всего используют сплайны дефекта 1 (<span
-class="math inline">p=1</span>), которые имеют непрерывные производные
-до порядка <span class="math inline">m-1</span>.</p>
-<p><strong>Кубический сплайн (<span class="math inline">m=3,
-p=1</span>)</strong></p>
-<p>Это наиболее распространенный на практике тип сплайна. На каждом
-отрезке <span class="math inline">[x_{i-1}, x_i]</span> он является
-кубическим полиномом <span class="math inline">S_i(x)</span>. В узлах
-<span class="math inline">x_1, \dots, x_{N-1}</span> он имеет
-непрерывные производные до второго порядка включительно: <span
-class="math inline">S_i^{(k)}(x_i) = S_{i+1}^{(k)}(x_i)</span> для <span
-class="math inline">k=0,1,2</span>.</p>
-<p>Для однозначного определения всех коэффициентов кубического сплайна
-требуется <span class="math inline">m-1=2</span> дополнительных
-граничных условия. Распространенные варианты: 1. <strong>Естественный
-сплайн:</strong> вторые производные на концах отрезка равны нулю, <span
-class="math inline">S&#39;&#39;(a)=S&#39;&#39;(b)=0</span>. 2.
-<strong>“Свободный сплайн”:</strong> то же, что и естественный.</p>
-<p>Построение кубического сплайна сводится к решению системы линейных
-алгебраических уравнений (СЛАУ) с трехдиагональной матрицей относительно
-значений вторых производных в узлах. Такие системы эффективно решаются
-методом прогонки.</p>
-<p>Кубические сплайны обладают хорошими аппроксимационными свойствами и
-обеспечивают сходимость к гладкой функции при измельчении сетки.</p>
-<p><strong>Базисные сплайны (B-сплайны)</strong></p>
-<p><strong>B-сплайн</strong> степени <span
-class="math inline">N-1</span> — это сплайн, имеющий минимально
-возможный носитель (отрезок, вне которого он равен нулю). Любой сплайн
-можно представить в виде линейной комбинации B-сплайнов.</p>
-<p>Определение B-сплайна степени <span class="math inline">N-1</span>
-(дефекта 1) на узлах <span
-class="math inline">\{x_j\}_{j=n}^{n+N}</span>: <span
-class="math display"> B_{N-1, n}(x) = N \sum_{i=n}^{n+N}
-\frac{(x_i-x)_+^{N-1}}{\prod_{j=n, j \ne i}^{n+N} (x_i-x_j)}, \quad
-\text{где } u_+^k = \begin{cases} u^k, &amp; u \ge 0 \\ 0, &amp; u &lt;
-0 \end{cases} </span></p>
-<ul>
-<li><strong>B-сплайн нулевой степени (<span
-class="math inline">N=1</span>):</strong> Прямоугольный импульс.</li>
-<li><strong>Линейный B-сплайн (<span
-class="math inline">N=2</span>):</strong> Треугольный импульс
-(“шляпа”).</li>
-<li><strong>Кубический B-сплайн (<span
-class="math inline">N=4</span>):</strong> Гладкая колоколообразная
-функция.</li>
+<li>Уравнение <span class="math inline">AX = E</span> можно
+рассматривать как <span class="math inline">n</span> отдельных систем
+СЛАУ: <span class="math inline">Ax_j = e_j</span> для <span
+class="math inline">j=1, ..., n</span>, где <span
+class="math inline">x_j</span> — <span class="math inline">j</span>-й
+столбец искомой матрицы <span class="math inline">X</span>, а <span
+class="math inline">e_j</span> — <span class="math inline">j</span>-й
+столбец единичной матрицы <span class="math inline">E</span>. Например,
+для первого столбца <span class="math inline">x_1</span>: <span
+class="math display">
+\begin{pmatrix} a_{11} &amp; \dots &amp; a_{1n} \\ \vdots &amp; &amp;
+\vdots \\ a_{n1} &amp; \dots &amp; a_{nn} \end{pmatrix} \begin{pmatrix}
+x_{11} \\ \vdots \\ x_{n1} \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\
+\vdots \\ 0 \end{pmatrix}
+</span></li>
+<li>Все эти <span class="math inline">n</span> систем имеют одну и ту же
+матрицу <span class="math inline">A</span>. Это значит, что самая
+трудоемкая часть метода Гаусса — приведение <span
+class="math inline">A</span> к треугольному виду (прямой ход) —
+выполняется только один раз.</li>
+<li>Прямой ход применяется к расширенной матрице <span
+class="math inline">[A | E]</span>. В результате она преобразуется к
+виду <span class="math inline">[U | B]</span>, где <span
+class="math inline">U</span> — верхняя треугольная матрица, а <span
+class="math inline">B</span> — результат тех же преобразований,
+примененных к <span class="math inline">E</span>.</li>
+<li>Затем для каждого столбца <span class="math inline">b_j</span> из
+<span class="math inline">B</span> решается система <span
+class="math inline">Ux_j = b_j</span> с помощью обратного хода.</li>
+<li>Полученные векторы <span class="math inline">x_1, x_2, ...,
+x_n</span> и будут столбцами искомой обратной матрицы <span
+class="math inline">A^{-1}</span>.</li>
+</ol></li>
 </ul>
 <hr />
-<h3 id="аппроксимация.-метод-наименьших-квадратов.">5. Аппроксимация.
-Метод наименьших квадратов.</h3>
-<p>(На основе Лекции №11, 5-й семестр и Лекции №15, 6-й семестр)</p>
-<p><strong>Аппроксимация</strong> — это задача приближения одной функции
-(часто заданной таблично или сложной) другой, более простой функцией. В
-отличие от интерполяции, аппроксимирующая функция не обязана проходить
-через все заданные точки.</p>
-<p><strong>Метод наименьших квадратов (МНК)</strong> — один из основных
-методов аппроксимации. Он используется, когда данные содержат
-погрешности (шум).</p>
-<p><strong>Постановка задачи:</strong> Пусть задан набор точек <span
-class="math inline">(x_i, y_i)</span>, <span class="math inline">i=0,
-\dots, n</span>. Мы ищем аппроксимирующую функцию <span
-class="math inline">\varphi(x, a_1, \dots, a_m)</span> из некоторого
-<span class="math inline">m</span>-параметрического семейства (где <span
-class="math inline">m \ll n</span>). Параметры <span
-class="math inline">a_1, \dots, a_m</span> выбираются так, чтобы
-минимизировать сумму квадратов отклонений (невязок) значений функции от
-заданных данных: <span class="math display"> \Phi(a_1, ..., a_m) =
-\sum_{i=0}^n (\varphi(x_i, a_1, ..., a_m) - y_i)^2 \to \min </span>
-Необходимым условием минимума является равенство нулю частных
-производных функции <span class="math inline">\Phi</span> по всем
-параметрам <span class="math inline">a_k</span>: <span
-class="math display"> \frac{\partial \Phi}{\partial a_k} = 2
-\sum_{i=0}^n (\varphi(x_i, \dots, a_m) - y_i)
-\frac{\partial\varphi}{\partial a_k}\bigg|_{x=x_i} = 0, \quad k=1,
-\dots, m </span> Эта система из <span class="math inline">m</span>
-уравнений называется <strong>нормальной системой</strong>. Если функция
-<span class="math inline">\varphi</span> линейна по параметрам <span
-class="math inline">a_k</span>, то система также будет линейной.</p>
-<p><strong>Обобщенные многочлены</strong> Часто в качестве <span
-class="math inline">\varphi(x)</span> используют <strong>обобщенный
-многочлен</strong>: <span class="math display"> Q_m(x) = C_0\psi_0(x) +
-\dots + C_m\psi_m(x) </span> где <span
-class="math inline">\{\psi_j(x)\}</span> — система заданных базисных
-функций (например, <span class="math inline">1, x, x^2, \dots</span> или
-<span class="math inline">\sin(kx), \cos(kx)</span>).</p>
-<p>В этом случае нормальная система для коэффициентов <span
-class="math inline">C_l</span> является СЛАУ: <span
-class="math display"> \sum_{j=0}^m C_j (\psi_j, \psi_l) = (f, \psi_l),
-\quad l=0, \dots, m </span> где <span class="math inline">(\cdot,
-\cdot)</span> обозначает скалярное произведение. Для дискретного случая:
-<span class="math display"> (g,h) = \sum_{i=0}^n g(x_i)h(x_i) </span>
-Если базисные функции <span class="math inline">\{\psi_j\}</span>
-ортогональны, матрица системы становится диагональной, и коэффициенты
-находятся очень просто: <span class="math display"> C_l = \frac{(f,
-\psi_l)}{||\psi_l||^2} </span> МНК также используется для решения
-<strong>переопределенных систем</strong> линейных уравнений, где число
-уравнений больше числа неизвестных.</p>
-<hr />
 <h3
-id="определение-многочленов-чебышёва-и-их-свойства.-интерполяция-по-чебышёвским-узлам.">6.
-Определение многочленов Чебышёва и их свойства. Интерполяция по
-чебышёвским узлам.</h3>
-<p>(На основе Лекций №9, №10)</p>
-<p><strong>Многочлены Чебышёва</strong> — это последовательность
-ортогональных многочленов, обладающих рядом уникальных свойств.</p>
-<p><strong>Определение:</strong> Многочлены Чебышёва первого рода <span
-class="math inline">T_n(x)</span> определяются рекуррентным
-соотношением: * <span class="math inline">T_0(x) = 1</span> * <span
-class="math inline">T_1(x) = x</span> * <span
-class="math inline">T_{n+1}(x) = 2x T_n(x) - T_{n-1}(x), \quad n \ge
-1</span></p>
-<p><strong>Свойства:</strong> 1. <strong>Тригонометрическая
-форма:</strong> На отрезке <span class="math inline">[-1, 1]</span> они
-имеют вид <span class="math inline">T_n(x) = \cos(n \arccos x)</span>.
-2. <strong>Ограниченность:</strong> На отрезке <span
-class="math inline">[-1, 1]</span> их значения не превосходят 1 по
-модулю: <span class="math inline">|T_n(x)| \le 1</span>. 3.
-<strong>Корни:</strong> Все <span class="math inline">n</span> корней
-многочлена <span class="math inline">T_n(x)</span> простые, лежат на
-интервале <span class="math inline">(-1, 1)</span> и равны: <span
-class="math display"> x_m = \cos \frac{(2m+1)\pi}{2n}, \quad m=0, 1,
-\dots, n-1 </span> 4. <strong>Точки экстремума:</strong> На отрезке
-<span class="math inline">[-1, 1]</span> многочлен <span
-class="math inline">T_n(x)</span> имеет <span
-class="math inline">n+1</span> точку экстремума, где <span
-class="math inline">|T_n(x)| = 1</span>: <span class="math display"> x_j
-= \cos \frac{j\pi}{n}, \quad j=0, 1, \dots, n </span> 5. <strong>Теорема
-Чебышёва (минимальное уклонение от нуля):</strong> Среди всех
-многочленов степени <span class="math inline">n</span> со старшим
-коэффициентом, равным 1, нормированный многочлен Чебышёва <span
-class="math inline">\tilde{T}_n(x) = \frac{1}{2^{n-1}}T_n(x)</span>
-имеет наименьшее максимальное отклонение от нуля на отрезке <span
-class="math inline">[-1, 1]</span>. Это отклонение равно <span
-class="math inline">\frac{1}{2^{n-1}}</span>.</p>
-<p><strong>Интерполяция по чебышёвским узлам</strong></p>
-<p>Феномен Рунге показывает, что интерполяция на равномерной сетке может
-расходиться. Чтобы минимизировать погрешность интерполяции, нужно
-минимизировать величину <span class="math inline">\max
-|(x-x_1)\dots(x-x_N)|</span>. Согласно теореме Чебышёва, это
-достигается, если узлы интерполяции <span class="math inline">x_k</span>
-являются корнями многочлена Чебышёва <span
-class="math inline">T_N(x)</span>, перенесенными с отрезка <span
-class="math inline">[-1, 1]</span> на отрезок <span
-class="math inline">[a, b]</span>.</p>
-<p><strong>Чебышёвские узлы</strong> на отрезке <span
-class="math inline">[-1, 1]</span> — это корни <span
-class="math inline">T_N(t)</span>. Для отрезка <span
-class="math inline">[a, b]</span> они вычисляются по формуле: <span
-class="math display"> x_k = \frac{a+b}{2} + \frac{b-a}{2}t_k, \quad
-\text{где } t_k = \cos \frac{(2k+1)\pi}{2N} </span> Эти узлы сгущаются к
-концам отрезка. При использовании чебышёвских узлов оценка погрешности
-интерполяции имеет наилучший вид: <span class="math display"> \max_{x
-\in [a,b]} |f(x)-L_N(x)| \le \frac{\max|f^{(N)}(\xi)|}{N!}
-\frac{(b-a)^N}{2^{2N-1}} </span> Кроме того, для чебышёвской сетки
-<strong>постоянная Лебега</strong> <span
-class="math inline">\Lambda_N</span> (характеризующая рост ошибки из-за
-неточности данных) растёт очень медленно (как <span
-class="math inline">\ln N</span>), что делает интерполяцию по этим узлам
-численно устойчивой.</p>
-<hr />
-<h3
-id="классические-ортогональные-полиномы.-многочлены-якоби-лагерра-и-эрмита.-многочлены-лежандра.-свойства-ортогональных-многочленов.">7.
-Классические ортогональные полиномы. Многочлены Якоби, Лагерра и Эрмита.
-Многочлены Лежандра. Свойства ортогональных многочленов.</h3>
-<p>(На основе Лекций №10, №11)</p>
-<p><strong>Ортогональные многочлены</strong> — это системы многочленов
-<span class="math inline">\{p_n(x)\}</span>, удовлетворяющие условию
-ортогональности с некоторым весом <span
-class="math inline">\rho(x)</span> на интервале <span
-class="math inline">(a, b)</span>: <span class="math display"> \int_a^b
-\rho(x) p_n(x) p_m(x) dx = 0 \quad (m \ne n) </span></p>
-<p><strong>Классические ортогональные многочлены</strong> являются
-решениями дифференциального уравнения гипергеометрического типа <span
-class="math inline">\sigma(z)y&#39;&#39; + \tau(z)y&#39; + \lambda y =
-0</span> и могут быть представлены <strong>формулой Родрига</strong>:
-<span class="math display"> y_n(z) = \frac{B_n}{\rho(z)}
-\frac{d^n}{dz^n} [\sigma^n(z)\rho(z)] </span> <span
-class="math display"> [\sigma(z) \rho(z)]&#39; = \tau(z)\rho(z) </span>
-Основные классы:</p>
-<ol type="1">
-<li><strong>Многочлены Якоби <span class="math inline">P_n^{(\alpha,
-\beta)}(z)</span>:</strong>
-<ul>
-<li>Интервал: <span class="math inline">(-1, 1)</span></li>
-<li>Вес: <span
-class="math inline">\rho(z)=(1-z)^\alpha(1+z)^\beta</span></li>
-<li><strong>Частные случаи:</strong>
-<ul>
-<li><strong>Многочлены Лежандра <span
-class="math inline">P_n(z)</span>:</strong> при <span
-class="math inline">\alpha=\beta=0</span>, вес <span
-class="math inline">\rho(z)=1</span>. Они ортогональны на <span
-class="math inline">[-1,1]</span> без веса.</li>
-<li><strong>Многочлены Чебышёва 1-го рода <span
-class="math inline">T_n(z)</span>:</strong> при <span
-class="math inline">\alpha=\beta=-1/2</span>.</li>
-<li><strong>Многочлены Чебышёва 2-го рода <span
-class="math inline">U_n(z)</span>:</strong> при <span
-class="math inline">\alpha=\beta=1/2</span>.</li>
-</ul></li>
-</ul></li>
-<li><strong>Многочлены Лагерра <span
-class="math inline">L_n^{(\alpha)}(z)</span>:</strong>
-<ul>
-<li>Интервал: <span class="math inline">(0, \infty)</span></li>
-<li>Вес: <span class="math inline">\rho(z)=z^\alpha e^{-z}</span></li>
-</ul></li>
-<li><strong>Многочлены Эрмита <span
-class="math inline">H_n(z)</span>:</strong>
-<ul>
-<li>Интервал: <span class="math inline">(-\infty, \infty)</span></li>
-<li>Вес: <span class="math inline">\rho(z)=e^{-z^2}</span></li>
-</ul></li>
-</ol>
-<p><strong>Якоби <span
-class="math inline">P_n^{(\alpha,\beta)}(z)</span></strong></p>
-<ul>
-<li><span class="math inline">(-1, 1)</span></li>
-<li><span class="math inline">\rho(z) =
-(1-z)^\alpha(1+z)^\beta</span></li>
-<li><span class="math inline">P_n^{(\alpha,\beta)}(z) =
-\frac{(-1)^n}{2^n n!} (1-z)^{-\alpha}(1+z)^{-\beta}
-\frac{d^n}{dz^n}\left[(1-z)^{n+\alpha}(1+z)^{n+\beta}\right]</span></li>
-</ul>
-<p><strong>Лежандра <span class="math inline">P_n^{(0,
-0)}</span></strong></p>
-<p><strong>Чебышева I <span class="math inline">P_n^{(-1/2,
--1/2)}</span></strong></p>
-<p><strong>Чебышева II <span class="math inline">P_n^{(1/2,
-1/2)}</span></strong></p>
-<p><strong>Лагерра <span
-class="math inline">L_n^{(\alpha)}(z)</span></strong></p>
-<ul>
-<li><span class="math inline">(0, \infty)</span></li>
-<li><span class="math inline">\rho(z) = z^\alpha e^{-z}</span></li>
-<li><span class="math inline">L_n^{(\alpha)}(z) = \frac{1}{n!}
-z^{-\alpha}e^z
-\frac{d^n}{dz^n}\left(z^{n+\alpha}e^{-z}\right)</span></li>
-</ul>
-<p><strong>Эрмита <span class="math inline">H_n(z)</span></strong></p>
-<ul>
-<li><span class="math inline">(-\infty, \infty)</span></li>
-<li><span class="math inline">\rho(z) = e^{-z^2}</span></li>
-<li><span class="math inline">H_n(z) = (-1)^n e^{z^2}
-\frac{d^n}{dz^n}\left(e^{-z^2}\right)</span></li>
-</ul>
-<p><strong>Общие свойства ортогональных многочленов:</strong></p>
-<ol type="1">
-<li><strong>Единственность:</strong> Для заданного веса система
-ортогональных многочленов (со старшим коэффициентом 1) единственна.</li>
-<li><strong>Корни:</strong> Все <span class="math inline">n</span>
-корней многочлена <span class="math inline">p_n(x)</span> являются
-простыми (различными) и лежат внутри интервала ортогональности <span
-class="math inline">(a,b)</span>.</li>
-<li><strong>Рекуррентные соотношения:</strong> Любые три
-последовательных многочлена связаны трехчленным рекуррентным
-соотношением: <span class="math inline">x p_n(x) = \alpha_n p_{n+1}(x) +
-\beta_n p_n(x) + \gamma_n p_{n-1}(x)</span>.</li>
-<li><strong>Полнота:</strong> Любой многочлен степени <span
-class="math inline">m</span> может быть единственным образом разложен в
-сумму по ортогональным многочленам до степени <span
-class="math inline">m</span>. Это свойство позволяет строить наилучшие
-среднеквадратичные приближения.</li>
-</ol>
-<hr />
-<h3 id="рациональная-аппроксимация.-приближения-паде.">8. Рациональная
-аппроксимация. Приближения Паде.</h3>
-<p>(На основе Лекции №12)</p>
-<p><strong>Рациональная аппроксимация</strong> — это приближение функции
-<span class="math inline">f(x)</span> отношением двух многочленов
-(рациональной функцией): <span class="math display"> f(x) \approx R(x) =
-\frac{P_L(x)}{Q_M(x)} = \frac{a_0+a_1x+\dots+a_L x^L}{b_0+b_1x+\dots+b_M
-x^M} </span> Такие аппроксимации часто более точны, чем полиномиальные,
-особенно для функций, имеющих полюса или асимптотическое поведение.</p>
-<p><strong>Аппроксимация Паде</strong></p>
-<p>Это один из наиболее известных методов построения рациональных
-аппроксимаций. Идея состоит в том, чтобы найти такую рациональную
-функцию <span class="math inline">[L/M](z)</span>, чтобы её разложение в
-ряд Тейлора (Маклорена) совпадало с разложением исходной функции <span
-class="math inline">f(z)</span> как можно дольше.</p>
-<p>Пусть <span class="math inline">f(z) = \sum_{i=0}^\infty c_i
-z^i</span>. Мы ищем аппроксиманту Паде <span
-class="math inline">[L/M](z)</span>: <span class="math display">
-\frac{P_L(z)}{Q_M(z)} = \sum_{i=0}^\infty c_i z^i + O(z^{L+M+1}) </span>
-Для однозначности один из коэффициентов фиксируют, обычно <span
-class="math inline">b_0=1</span>. Тогда у нас есть <span
-class="math inline">L+1</span> неизвестных коэффициентов <span
-class="math inline">a_i</span> и <span class="math inline">M</span>
-неизвестных <span class="math inline">b_j</span>, всего <span
-class="math inline">L+M+1</span> свободных параметров. Этого как раз
-достаточно, чтобы приравнять коэффициенты при степенях <span
-class="math inline">z^0, z^1, \dots, z^{L+M}</span>.</p>
-<p><strong>Алгоритм построения:</strong> 1. Переписываем условие в виде:
-<span class="math display"> (b_0+b_1z+\dots+b_M z^M)(c_0+c_1z+\dots) =
-a_0+a_1z+\dots+a_L z^L + O(z^{L+M+1}) </span> 2. Приравниваем
-коэффициенты при степенях <span class="math inline">z^{L+1}, \dots,
-z^{L+M}</span> к нулю. Это дает систему из <span
-class="math inline">M</span> линейных уравнений для нахождения
-коэффициентов знаменателя <span class="math inline">b_1, \dots,
-b_M</span> (полагая <span class="math inline">b_0=1</span>). 3.
-Приравниваем коэффициенты при степенях <span class="math inline">z^0,
-\dots, z^L</span>. Это дает явные формулы для нахождения коэффициентов
-числителя <span class="math inline">a_0, \dots, a_L</span> через уже
-найденные <span class="math inline">b_j</span> и известные <span
-class="math inline">c_i</span>. * <span class="math inline">a_0 =
-c_0</span> * <span class="math inline">a_1 = c_1 + b_1 c_0</span> *
-…</p>
-<p>Аппроксимации Паде особенно эффективны для аналитических функций и
-часто дают хорошие приближения даже за пределами круга сходимости
-исходного ряда Тейлора.</p>
-<hr />
-<h3
-id="численное-интегрирование.-квадратурные-формулы-ньютона-котеса.-остаточные-члены.">9.
-Численное интегрирование. Квадратурные формулы Ньютона-Котеса.
-Остаточные члены.</h3>
-<p>(На основе Лекций №13, №14)</p>
-<p><strong>Численное интегрирование</strong> (квадратуры) — это задача
-приближенного вычисления определенного интеграла <span
-class="math inline">I = \int_a^b f(x)dx</span>.</p>
-<p><strong>Квадратурные формулы Ньютона-Котеса</strong></p>
-<p>Это класс формул, основанных на замене подынтегральной функции <span
-class="math inline">f(x)</span> на ее интерполяционный многочлен <span
-class="math inline">L_N(x)</span> на сетке с равномерно расположенными
-узлами. <span class="math display"> I \approx \int_a^b L_N(x)dx </span>
-Погрешность (остаточный член) такой формулы получается путем
-интегрирования остаточного члена интерполяционного многочлена: <span
-class="math display"> E = \int_a^b R_N(x)dx = \int_a^b
-\frac{f^{(N)}(\xi(x))}{N!} \prod_{i=1}^N (x-x_i) dx </span> В
-зависимости от числа узлов (степени многочлена) получаются различные
-формулы. Наиболее известны: * <strong>Формула прямоугольников</strong>
-(1 узел, <span class="math inline">N=1</span>). * <strong>Формула
-трапеций</strong> (2 узла, <span class="math inline">N=2</span>). *
-<strong>Формула Симпсона</strong> (3 узла, <span
-class="math inline">N=3</span>).</p>
-<p><strong>Составные квадратурные формулы</strong> Формулы
-Ньютона-Котеса высокого порядка редко используются из-за неустойчивости
-(появления отрицательных весов и роста постоянной Лебега). Вместо этого
-отрезок <span class="math inline">[a,b]</span> разбивают на <span
-class="math inline">N</span> малых частей и на каждой из них применяют
-простую формулу (трапеций или Симпсона).</p>
-<p><strong>Остаточные члены составных формул:</strong> *
-<strong>Составная формула трапеций:</strong> Погрешность на одном
-элементарном отрезке длины <span class="math inline">h</span> равна
-<span class="math inline">E_n \approx
--\frac{h^3}{12}f&#39;&#39;(\xi)</span>. Суммарная погрешность на <span
-class="math inline">[a,b]</span>: <span class="math display"> E_N \le
-\frac{b-a}{12} h^2 \max|f&#39;&#39;(\xi)| \quad \implies O(h^2) </span>
-* <strong>Составная формула Симпсона:</strong> Погрешность на одном
-отрезке длины <span class="math inline">2h</span> равна <span
-class="math inline">E_n \approx -\frac{h^5}{90}f^{(4)}(\xi)</span>.
-Суммарная погрешность на <span class="math inline">[a,b]</span>: <span
-class="math display"> E_N \le \frac{b-a}{180} h^4 \max|f^{(4)}(\xi)|
-\quad \implies O(h^4) </span> Формула Симпсона имеет необычно высокий
-порядок точности (точна для многочленов до 3-й степени включительно),
-что делает ее очень популярной.</p>
-<hr />
-<h3
-id="численное-интегрирование.-квадратурные-формулы-прямоугольников-и-трапеций.">10.
-Численное интегрирование. Квадратурные формулы прямоугольников и
-трапеций.</h3>
-<p>(На основе Лекции №13)</p>
-<p>Это простейшие квадратурные формулы типа Ньютона-Котеса.</p>
-<p><strong>Формула прямоугольников (средней точки)</strong>
-Подынтегральная функция <span class="math inline">f(x)</span> на отрезке
-<span class="math inline">[a, b]</span> заменяется константой, равной
-значению функции в середине отрезка. <span class="math display">
-\int_a^b f(x)dx \approx (b-a) f\left(\frac{a+b}{2}\right) </span> Эта
-формула точна для любого линейного многочлена <span
-class="math inline">f(x)=Ax+B</span>. Ее остаточный член имеет порядок
-<span class="math inline">O(h^3)</span>, а для составной формулы — <span
-class="math inline">O(h^2)</span>.</p>
-<p><strong>Формула трапеций</strong> Подынтегральная функция <span
-class="math inline">f(x)</span> заменяется линейным интерполяционным
-многочленом, проходящим через точки <span class="math inline">(a,
-f(a))</span> и <span class="math inline">(b, f(b))</span>. Геометрически
-это соответствует замене площади под кривой на площадь трапеции. <span
-class="math display"> \int_a^b f(x)dx \approx \frac{b-a}{2}(f(a)+f(b))
-</span> Эта формула также точна для любого линейного многочлена.</p>
-<p><strong>Составная формула трапеций</strong> Отрезок <span
-class="math inline">[a,b]</span> разбивается на <span
-class="math inline">N</span> равных частей длиной <span
-class="math inline">h = (b-a)/N</span> с узлами <span
-class="math inline">x_n = a+nh</span>. На каждом элементарном отрезке
-<span class="math inline">[x_n, x_{n+1}]</span> применяется формула
-трапеций, и результаты суммируются: <span class="math display"> I_n =
-\int_{x_n}^{x_{n+1}} f(x)dx \approx \frac{h}{2}(f_n+f_{n+1}) </span>
-Суммарный интеграл: <span class="math display"> I \approx
-\sum_{n=0}^{N-1} \frac{h}{2}(f_n+f_{n+1}) = h \left( \frac{f_0+f_N}{2} +
-\sum_{n=1}^{N-1} f_n \right) </span> <strong>Остаточный член</strong>
-составной формулы трапеций: <span class="math display"> E_N \le
-\frac{b-a}{12} h^2 \max|f&#39;&#39;(\xi)| </span> Формула имеет второй
-порядок точности по <span class="math inline">h</span>.</p>
-<hr />
-<h3
-id="численное-интегрирование.-квадратурная-формула-симпсона-формула-парабол.">11.
-Численное интегрирование. Квадратурная формула Симпсона (формула
-парабол).</h3>
-<p>(На основе Лекций №13, №14)</p>
-<p><strong>Формула Симпсона</strong> — одна из самых популярных и точных
-квадратурных формул типа Ньютона-Котеса.</p>
-<p><strong>Простая формула Симпсона</strong> На отрезке <span
-class="math inline">[a,b]</span> подынтегральная функция <span
-class="math inline">f(x)</span> заменяется параболой (интерполяционным
-многочленом второй степени), проходящей через три точки: <span
-class="math inline">(a, f(a))</span>, <span
-class="math inline">((a+b)/2, f((a+b)/2))</span> и <span
-class="math inline">(b, f(b))</span>. <span class="math display">
-\int_a^b f(x)dx \approx \frac{b-a}{6}\left(f(a) +
-4f\left(\frac{a+b}{2}\right) + f(b)\right) </span>
-<strong>Особенность:</strong> Хотя формула построена по трем точкам и
-точна для многочленов второй степени, она оказывается точной и для всех
-многочленов третьей степени. Это связано с симметрией узлов и тем, что
-интеграл от нечетного члена погрешности на симметричном интервале равен
-нулю.</p>
-<p><strong>Составная формула Симпсона</strong> Отрезок <span
-class="math inline">[a,b]</span> разбивается на четное число <span
-class="math inline">N</span> интервалов длиной <span
-class="math inline">h=(b-a)/N</span>. Формула применяется к каждой паре
-интервалов (отрезку <span class="math inline">[x_{2n},
-x_{2n+2}]</span>). <span class="math display"> \int_{x_{2n}}^{x_{2n+2}}
-f(x)dx \approx \frac{h}{3}(f_{2n} + 4f_{2n+1} + f_{2n+2}) </span>
-Суммируя по всем парам, получаем составную формулу: <span
-class="math display"> I \approx \frac{h}{3} \sum_{n=0}^{N/2-1} (f_{2n} +
-4f_{2n+1} + f_{2n+2}) </span> Или в более удобной форме: <span
-class="math display"> I \approx \frac{h}{3} \left( f_0 +
-4\sum_{k=1}^{N/2} f_{2k-1} + 2\sum_{k=1}^{N/2-1} f_{2k} + f_N \right)
-</span> (т.е. веса 1 для крайних точек, 4 для нечетных внутренних и 2
-для четных внутренних).</p>
-<p><strong>Остаточный член</strong> составной формулы Симпсона: <span
-class="math display"> E_N \le \frac{b-a}{180} h^4 \max|f^{(4)}(\xi)|
-</span> Формула имеет четвертый порядок точности по <span
-class="math inline">h</span>, что делает ее очень эффективной для
-гладких функций.</p>
-<hr />
-<h3 id="численное-интегрирование.-формулы-гаусса-и-чебышёва.">12.
-Численное интегрирование. Формулы Гаусса и Чебышёва.</h3>
-<p>(На основе Лекции №14)</p>
-<p>Формулы Ньютона-Котеса используют заранее фиксированные, равномерно
-распределенные узлы. <strong>Квадратурные формулы Гаусса</strong> и
-<strong>Чебышёва</strong> достигают более высокой точности за счет
-оптимального выбора не только весов, но и самих узлов.</p>
-<p><strong>Квадратурные формулы Чебышёва</strong> Эти формулы строятся
-из требования максимальной алгебраической точности при условии, что все
-весовые коэффициенты равны. <span class="math display"> \int_{-1}^1
-\varphi(x)dx \approx C \sum_{i=1}^n \varphi(x_i) </span> * Вес <span
-class="math inline">C</span> находится из условия точности для <span
-class="math inline">\varphi(x)=1</span>: <span class="math inline">2 = C
-\cdot n \implies C=2/n</span>. * <span class="math inline">n</span>
-узлов <span class="math inline">x_i</span> находятся из системы
-нелинейных уравнений, требуя точности для многочленов <span
-class="math inline">x, x^2, \dots, x^{n-1}</span>. Такие формулы удобны
-для обработки данных с одинаковой случайной ошибкой. Однако вещественные
-решения для узлов существуют только для <span class="math inline">n=1,
-\dots, 7</span> и <span class="math inline">n=9</span>.</p>
-<p><strong>Квадратурные формулы Гаусса</strong> Это формулы наивысшей
-алгебраической точности. Формула с <span class="math inline">n</span>
-узлами имеет <span class="math inline">2n</span> свободных параметров
-(<span class="math inline">n</span> весов <span
-class="math inline">c_i</span> и <span class="math inline">n</span>
-узлов <span class="math inline">x_i</span>). Эти параметры подбираются
-так, чтобы формула была точна для всех многочленов до степени <span
-class="math inline">2n-1</span> включительно. <span
-class="math display"> \int_{-1}^1 f(x)dx \approx \sum_{i=1}^n c_i f(x_i)
-</span> Доказывается, что это достигается, если: 1. <strong>Узлы <span
-class="math inline">x_i</span></strong> являются корнями
-<strong>многочлена Лежандра</strong> <span
-class="math inline">P_n(x)</span> степени <span
-class="math inline">n</span>. 2. <strong>Веса <span
-class="math inline">c_i</span></strong> находятся интегрированием
-базисных многочленов Лагранжа, построенных по этим узлам: <span
-class="math inline">c_i = \int_{-1}^1 \varphi_i(x) dx</span>.</p>
-<p><strong>Преимущества формул Гаусса:</strong> * <strong>Высокая
-точность:</strong> <span class="math inline">n</span>-точечная формула
-Гаусса точна для многочленов степени до <span
-class="math inline">2n-1</span>, в то время как <span
-class="math inline">n</span>-точечная формула Ньютона-Котеса точна для
-многочленов степени <span class="math inline">n-1</span> (или <span
-class="math inline">n</span>). * <strong>Положительные веса:</strong>
-Все веса <span class="math inline">c_i</span> положительны, что
-обеспечивает численную устойчивость. * <strong>Быстрая
-сходимость:</strong> Остаточные члены убывают очень быстро с ростом
-<span class="math inline">n</span> для достаточно гладких функций.</p>
-<p>Недостатком является то, что узлы и веса являются, как правило,
-иррациональными числами и должны быть заранее вычислены и сохранены в
-таблицах.</p>
-<hr />
-<h3 id="нормы-векторов-и-матриц.-число-обусловленности-матрицы.">13.
-Нормы векторов и матриц. Число обусловленности матрицы.</h3>
-<p>(На основе Лекции №2, 6-й семестр)</p>
-<p><strong>Норма вектора</strong> — это обобщение понятия длины вектора.
-Для вектора <span class="math inline">x</span> в <span
-class="math inline">n</span>-мерном пространстве наиболее
-распространены: * <strong>Кубическая норма (норма-максимум):</strong>
-<span class="math inline">||x||_\infty = \max_{1 \le i \le n}
-|x_i|</span> * <strong>Октаэдрическая норма (норма-сумма):</strong>
-<span class="math inline">||x||_1 = \sum_{i=1}^n |x_i|</span> *
-<strong>Евклидова норма:</strong> <span class="math inline">||x||_2 =
-\sqrt{\sum_{i=1}^n x_i^2}</span></p>
-<p><strong>Норма матрицы</strong> Норма матрицы <span
-class="math inline">||A||</span> — это действительное число,
-удовлетворяющее аксиомам нормы. Важным является понятие
-<strong>согласованной</strong> (или подчиненной) нормы, которая связана
-с нормой вектора: <span class="math display"> ||A|| = \sup_{x \ne 0}
-\frac{||Ax||}{||x||} </span> Согласованные нормы для трех векторных норм
-выше: * <span class="math inline">||A||_\infty = \max_{i} \sum_{j}
-|a_{ij}|</span> (максимальная сумма модулей элементов по строкам) *
-<span class="math inline">||A||_1 = \max_{j} \sum_{i} |a_{ij}|</span>
-(максимальная сумма модулей элементов по столбцам) * <span
-class="math inline">||A||_2 = \sqrt{\lambda_{\max}(A^T A)}</span>
-(спектральная норма). Для симметричной матрицы <span
-class="math inline">A</span>, <span class="math inline">||A||_2 = \max_i
-|\lambda_i(A)|</span>.</p>
-<p><strong>Число обусловленности матрицы</strong> Число обусловленности
-<span class="math inline">\mu(A)</span> характеризует чувствительность
-решения СЛАУ <span class="math inline">Ax=b</span> к малым изменениям
-(погрешностям) в матрице <span class="math inline">A</span> и векторе
-<span class="math inline">b</span>. Оно определяется как: <span
-class="math display"> \mu(A) = \text{cond}(A) = ||A|| \cdot ||A^{-1}||
-</span> <strong>Свойства:</strong> * <span class="math inline">\mu(A)
-\ge 1</span>. * Для симметричной матрицы <span
-class="math inline">A</span> с евклидовой нормой <span
-class="math inline">\mu_2(A) =
-\frac{|\lambda|_{\max}}{|\lambda|_{\min}}</span>.</p>
-<p><strong>Влияние на погрешность решения:</strong> Пусть <span
-class="math inline">x</span> - точное решение, а <span
-class="math inline">x+\Delta x</span> - решение возмущенной системы.
-Тогда относительная погрешность решения оценивается как: <span
-class="math display"> \frac{||\Delta x||}{||x||} \le \frac{\mu(A)}{1 -
-\mu(A) \frac{||\Delta A||}{||A||}} \left( \frac{||\Delta b||}{||b||} +
-\frac{||\Delta A||}{||A||} \right) </span> Если возмущается только
-правая часть (<span class="math inline">\Delta A=0</span>), оценка
-упрощается: <span class="math display"> \frac{||\Delta x||}{||x||} \le
-\mu(A) \frac{||\Delta b||}{||b||} </span> * Если <span
-class="math inline">\mu(A)</span> близко к 1, система <strong>хорошо
-обусловлена</strong>. * Если <span class="math inline">\mu(A)</span>
-велико (например, <span class="math inline">\ge 10^3</span>), система
-<strong>плохо обусловлена</strong>, и малые погрешности во входных
-данных могут привести к огромным ошибкам в решении.</p>
-<hr />
-<h3 id="системы-линейных-уравнений-слау.-метод-прогонки.">14. Системы
-линейных уравнений (СЛАУ). Метод прогонки.</h3>
-<p>(На основе Лекции №1, 6-й семестр)</p>
-<p><strong>Метод прогонки</strong> — это экономичный вариант метода
-Гаусса для решения СЛАУ с <strong>трехдиагональной матрицей</strong>.
-Такие системы часто возникают при решении дифференциальных уравнений,
-интерполяции сплайнами и др.</p>
-<p>Система имеет вид: <span class="math display"> a_i x_{i-1} + b_i x_i
-+ c_i x_{i+1} = d_i, \quad i=1, \dots, n </span> (причем <span
-class="math inline">a_1=0</span> и <span
-class="math inline">c_n=0</span>).</p>
-<p>Метод основан на предположении, что между “соседними” неизвестными
-существует линейная связь: <span class="math display"> x_i = P_i x_{i+1}
-+ Q_i, \quad i=1, \dots, n-1 </span> где <span
-class="math inline">P_i</span> и <span class="math inline">Q_i</span> —
-<strong>прогоночные коэффициенты</strong>.</p>
-<p>Алгоритм состоит из двух этапов:</p>
-<p><strong>1. Прямой ход (вычисление прогоночных коэффициентов)</strong>
-Коэффициенты <span class="math inline">P_i, Q_i</span> вычисляются
-рекуррентно, двигаясь от <span class="math inline">i=1</span> до <span
-class="math inline">n</span>. * Из первого уравнения системы (<span
-class="math inline">b_1 x_1 + c_1 x_2 = d_1</span>) находим: <span
-class="math inline">x_1 = -\frac{c_1}{b_1} x_2 + \frac{d_1}{b_1}</span>.
-Сравнивая с <span class="math inline">x_1 = P_1 x_2 + Q_1</span>,
-получаем: <span class="math display"> P_1 = -\frac{c_1}{b_1}, \quad Q_1
-= \frac{d_1}{b_1} </span> * Подставляя <span class="math inline">x_{i-1}
-= P_{i-1}x_i + Q_{i-1}</span> в <span class="math inline">i</span>-е
-уравнение системы, получаем общие рекуррентные формулы: <span
-class="math display"> P_i = -\frac{c_i}{b_i+a_iP_{i-1}}, \quad Q_i =
-\frac{d_i-a_iQ_{i-1}}{b_i+a_iP_{i-1}}, \quad i=2, \dots, n </span> При
-этом формально <span class="math inline">P_n=0</span>.</p>
-<p><strong>2. Обратный ход (вычисление неизвестных)</strong> Неизвестные
-<span class="math inline">x_i</span> вычисляются в обратном порядке, от
-<span class="math inline">x_n</span> до <span
-class="math inline">x_1</span>. * Из последнего уравнения (<span
-class="math inline">a_n x_{n-1} + b_n x_n = d_n</span>) и подстановки
-<span class="math inline">x_{n-1} = P_{n-1}x_n + Q_{n-1}</span> находим
-<span class="math inline">x_n</span>: <span class="math display"> x_n =
-\frac{d_n - a_n Q_{n-1}}{b_n + a_n P_{n-1}} = Q_n </span> * Остальные
-неизвестные находим по рекуррентной формуле: <span class="math display">
-x_i = P_i x_{i+1} + Q_i, \quad i=n-1, n-2, \dots, 1 </span></p>
-<p>Метод прогонки требует всего <span class="math inline">O(n)</span>
-арифметических действий, что делает его чрезвычайно эффективным для
-систем с трехдиагональной матрицей. Условием его устойчивости является
-<span class="math inline">|b_i| \ge |a_i| + |c_i|</span>.</p>
-<hr />
-<h3
-id="системы-линейных-уравнений.-метод-гаусса-с-выбором-главного-элемента.">15.
-Системы линейных уравнений. Метод Гаусса с выбором главного
-элемента.</h3>
-<p>(На основе Лекции №1, 6-й семестр)</p>
-<p><strong>Метод Гаусса</strong> — это классический прямой метод решения
-СЛАУ <span class="math inline">Ax=b</span>. Он заключается в
-последовательном исключении неизвестных, приводя матрицу системы к
-треугольному виду.</p>
+id="метод-прогонки-решения-систем-с-трехдиагональными-матрицами-коэффициентов.">5.
+Метод прогонки решения систем с трехдиагональными матрицами
+коэффициентов.</h3>
+<p>Метод прогонки — это экономичный вариант метода Гаусса, специально
+адаптированный для решения СЛАУ с <strong>трехдиагональными
+матрицами</strong>. Такие системы часто возникают при решении
+дифференциальных уравнений, интерполяции сплайнами и др.</p>
+<p>Система имеет вид: <span class="math display">
+\left\{
+\begin{alignedat}{1}
+b_1 x_1 + c_1 x_2 &amp;= d_1 \\
+a_2 x_1 + b_2 x_2 + c_2 x_3 &amp;= d_2 \\
+a_3 x_2 + b_3 x_3 + c_3 x_4 &amp;= d_3 \\
+&amp;\dots \\
+a_{n-1} x_{n-2} + b_{n-1} x_{n-1} + c_{n-1} x_n &amp;= d_{n-1} \\
+a_n x_{n-1} + b_n x_n &amp;= d_n
+\end{alignedat}
+\right.
+</span> Метод основан на предположении, что неизвестные связаны
+рекуррентным соотношением: <span class="math inline">x_i = P_i x_{i+1} +
+Q_i</span>, где <span class="math inline">i = 1, ..., n-1</span>.
+Коэффициенты <span class="math inline">P_i</span> и <span
+class="math inline">Q_i</span> называются <strong>прогоночными
+коэффициентами</strong>.</p>
 <p><strong>Алгоритм:</strong></p>
 <ol type="1">
-<li><strong>Прямой ход:</strong> Система преобразуется к эквивалентной
-системе с верхнетреугольной матрицей.
+<li><strong>Прямой ход (вычисление прогоночных коэффициентов):</strong>
 <ul>
-<li>На <span class="math inline">k</span>-м шаге (<span
-class="math inline">k=1, \dots, n-1</span>) <span
-class="math inline">k</span>-е уравнение используется для исключения
-переменной <span class="math inline">x_k</span> из всех последующих
-уравнений (с <span class="math inline">k+1</span>-го по <span
-class="math inline">n</span>-е). Для этого из <span
-class="math inline">i</span>-го уравнения (<span class="math inline">i
-&gt; k</span>) вычитается <span class="math inline">k</span>-е
-уравнение, умноженное на коэффициент <span class="math inline">m_{ik} =
-a_{ik}^{(k-1)}/a_{kk}^{(k-1)}</span>.</li>
-<li>Элемент <span class="math inline">a_{kk}^{(k-1)}</span>, на который
-производится деление, называется <strong>ведущим (или разрешающим)
-элементом</strong>.</li>
-<li>В результате получается система <span
-class="math inline">Ux=b&#39;</span>, где <span
-class="math inline">U</span> — верхнетреугольная матрица.</li>
+<li>Из первого уравнения системы выражаем <span
+class="math inline">x_1</span> через <span
+class="math inline">x_2</span>: <span class="math inline">x_1 =
+-\frac{c_1}{b_1}x_2 + \frac{d_1}{b_1}</span>. Сравнивая с <span
+class="math inline">x_1 = P_1x_2 + Q_1</span>, получаем: <span
+class="math inline">P_1 = -\frac{c_1}{b_1}</span>, <span
+class="math inline">Q_1 = \frac{d_1}{b_1}</span>.</li>
+<li>Для <span class="math inline">i</span>-го уравнения <span
+class="math inline">a_i x_{i-1} + b_i x_i + c_i x_{i+1} = d_i</span>,
+подставляем в него <span class="math inline">x_{i-1} = P_{i-1}x_i +
+Q_{i-1}</span>: <span class="math inline">a_i(P_{i-1}x_i + Q_{i-1}) +
+b_i x_i + c_i x_{i+1} = d_i</span>.</li>
+<li>Отсюда выражаем <span class="math inline">x_i</span> через <span
+class="math inline">x_{i+1}</span> и находим общие формулы: <span
+class="math inline">P_i = -\frac{c_i}{b_i+a_iP_{i-1}}</span> <span
+class="math inline">Q_i = \frac{d_i-a_iQ_{i-1}}{b_i+a_iP_{i-1}}</span>
+Эти формулы применяются для <span class="math inline">i = 2, ...,
+n</span>. При этом <span class="math inline">c_n</span> формально
+считается равным нулю, что дает <span class="math inline">P_n =
+0</span>.</li>
 </ul></li>
-<li><strong>Обратный ход:</strong> Решение полученной треугольной
-системы находится последовательно, начиная с последнего уравнения.
+<li><strong>Обратный ход (нахождение решения):</strong>
 <ul>
-<li><span class="math inline">x_n = b&#39;_n / u_{nn}</span></li>
-<li><span class="math inline">x_i = \frac{1}{u_{ii}} \left( b&#39;_i -
-\sum_{j=i+1}^n u_{ij}x_j \right), \quad i=n-1, \dots, 1</span></li>
+<li>Из последнего уравнения <span class="math inline">a_n x_{n-1} + b_n
+x_n = d_n</span> и соотношения <span class="math inline">x_{n-1} =
+P_{n-1}x_n + Q_{n-1}</span> выводится, что <span class="math inline">x_n
+= Q_n</span>.</li>
+<li>Остальные неизвестные находятся в обратном порядке по рекуррентной
+формуле: <span class="math inline">x_i = P_i x_{i+1} + Q_i</span> для
+<span class="math inline">i = n-1, n-2, ..., 1</span>.</li>
 </ul></li>
 </ol>
-<p>Количество арифметических операций в методе Гаусса составляет <span
-class="math inline">O(n^3)</span>.</p>
-<p><strong>Проблема малых ведущих элементов и выбор главного
-элемента</strong></p>
-<p>Если на каком-то шаге ведущий элемент <span
-class="math inline">a_{kk}^{(k-1)}</span> равен нулю или очень мал по
-абсолютной величине, стандартный алгоритм невыполним или приводит к
-большим вычислительным погрешностям. Чтобы избежать этого, применяется
-<strong>метод Гаусса с выбором главного элемента</strong>.</p>
-<ul>
-<li><strong>Выбор по столбцу (частичный выбор):</strong> На <span
-class="math inline">k</span>-м шаге среди элементов <span
-class="math inline">a_{ik}^{(k-1)}</span> (<span
-class="math inline">i=k, \dots, n</span>) ищется максимальный по модулю.
-Пусть это будет <span class="math inline">a_{jk}^{(k-1)}</span>. Тогда
-<span class="math inline">k</span>-е и <span
-class="math inline">j</span>-е уравнения (строки матрицы) меняются
-местами. После этого максимальный по модулю элемент оказывается на
-ведущей позиции <span class="math inline">a_{kk}^{(k-1)}</span>, и на
-него производится деление.</li>
-<li><strong>Выбор по всей матрице (полный выбор):</strong> На <span
-class="math inline">k</span>-м шаге ищется максимальный по модулю
-элемент во всей оставшейся подматрице <span
-class="math inline">a_{ij}^{(k-1)}</span> (<span class="math inline">i,j
-\ge k</span>). Если он найден в позиции <span
-class="math inline">(p,q)</span>, то <span
-class="math inline">k</span>-я и <span class="math inline">p</span>-я
-строки, а также <span class="math inline">k</span>-й и <span
-class="math inline">q</span>-й столбцы меняются местами. Этот метод
-более надежен, но требует больше сравнений и усложняет учет
-перестановок.</li>
-</ul>
-<p>Выбор главного элемента является стандартной практикой для
-обеспечения численной устойчивости метода Гаусса.</p>
+<p>Метод прогонки требует <span class="math inline">O(n)</span>
+арифметических действий, что делает его чрезвычайно эффективным для
+систем данного типа.</p>
 <hr />
 <h3
-id="системы-линейных-уравнений.-метод-простой-итерации.-метод-зейделя.">16.
-Системы линейных уравнений. Метод простой итерации. Метод Зейделя.</h3>
-<p>(На основе Лекций №4, №5, №6, 6-й семестр)</p>
-<p>Итерационные методы находят решение СЛАУ <span
-class="math inline">Ax=b</span> как предел последовательности векторов
-<span class="math inline">x^{(m)}</span>. Они особенно эффективны для
-больших разреженных систем.</p>
-<p><strong>Метод простой итерации (МПИ)</strong> Исходная система <span
-class="math inline">Ax=b</span> приводится к эквивалентному виду,
-удобному для итераций: <span class="math display"> x = Bx + C </span>
-Часто это делается так: <span class="math inline">x = (E-\tau A)x + \tau
-b</span>, где <span class="math inline">\tau</span> — итерационный
-параметр. Итерационный процесс: <span class="math display"> x^{(m+1)} =
-Bx^{(m)} + C, \quad m=0,1,2,\dots </span> где <span
-class="math inline">x^{(0)}</span> — произвольное начальное
-приближение.</p>
-<ul>
-<li><strong>Условие сходимости:</strong>
-<ul>
-<li>Достаточное: Норма матрицы перехода <span class="math inline">||B||
-&lt; 1</span>.</li>
-<li>Необходимое и достаточное: Все собственные числа матрицы <span
-class="math inline">B</span> по модулю меньше 1 (<span
-class="math inline">\rho(B)&lt;1</span>).</li>
-</ul></li>
-<li>Скорость сходимости линейная (как у геометрической прогрессии со
-знаменателем <span class="math inline">||B||</span>).</li>
-</ul>
-<p><strong>Метод Якоби</strong> Это частный случай МПИ. Матрица <span
-class="math inline">A</span> представляется в виде <span
-class="math inline">A=L+D+U</span> (нижняя, диагональная, верхняя
-части). Итерационная схема: <span class="math display"> D x^{(m+1)} = b
-- (L+U)x^{(m)} </span> В покоординатной записи: <span
-class="math display"> x_i^{(m+1)} = \frac{1}{a_{ii}} \left( b_i -
-\sum_{j \ne i} a_{ij}x_j^{(m)} \right) </span> Для вычисления <span
-class="math inline">x^{(m+1)}</span> используются только компоненты
-предыдущего приближения <span class="math inline">x^{(m)}</span>. Метод
-сходится, если матрица <span class="math inline">A</span> имеет
-диагональное преобладание.</p>
-<p><strong>Метод Зейделя (метод последовательных приближений)</strong>
-Это модификация метода Якоби, которая ускоряет сходимость. При
-вычислении <span class="math inline">i</span>-й компоненты вектора <span
-class="math inline">x^{(m+1)}</span> используются уже вычисленные на
-этом же шаге компоненты <span class="math inline">x_1^{(m+1)}, \dots,
-x_{i-1}^{(m+1)}</span>. <span class="math display"> (L+D)x^{(m+1)} = b -
-U x^{(m)} </span> В покоординатной записи: <span class="math display">
-x_i^{(m+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j &lt; i}
-a_{ij}x_j^{(m+1)} - \sum_{j &gt; i} a_{ij}x_j^{(m)} \right) </span> *
-<strong>Условие сходимости:</strong> Метод Зейделя сходится, если
-матрица <span class="math inline">A</span> симметрична и положительно
-определена, или если она имеет диагональное преобладание. Как правило,
-метод Зейделя сходится быстрее метода Якоби, если он вообще
-сходится.</p>
-<hr />
-<h3 id="системы-линейных-уравнений.-метод-вращений.">17. Системы
-линейных уравнений. Метод вращений.</h3>
-<p>(На основе Лекции №3, 6-й семестр)</p>
-<p><strong>Метод вращений (метод Гивенса)</strong> — это прямой метод
-решения СЛАУ, который, как и метод Гаусса, приводит матрицу к
-треугольному виду. Его главным преимуществом является высокая численная
-устойчивость.</p>
-<p>Идея метода состоит в последовательном занулении поддиагональных
-элементов матрицы с помощью ортогональных преобразований (поворотов
-плоскости), которые не изменяют евклидову норму столбцов и,
-следовательно, не приводят к росту элементов матрицы.</p>
-<p><strong>Алгоритм:</strong> Для зануления элемента <span
-class="math inline">a_{ij}</span> (<span
-class="math inline">i&gt;j</span>) используется преобразование,
-затрагивающее только <span class="math inline">j</span>-ю и <span
-class="math inline">i</span>-ю строки. 1. Чтобы занулить элемент <span
-class="math inline">a_{21}</span>, мы преобразуем первую и вторую
-строки. Умножаем первое уравнение на <span class="math inline">c</span>
-и второе на <span class="math inline">s</span> и складываем. Затем
-первое умножаем на <span class="math inline">-s</span>, второе на <span
-class="math inline">c</span> и складываем. 2. Коэффициенты <span
-class="math inline">c</span> и <span class="math inline">s</span>
-(косинус и синус угла поворота) выбираются из условий: *
-<code>-s * a_11 + c * a_21 = 0</code> (зануление элемента <span
-class="math inline">a_{21}</span> в новой второй строке) *
-<code>c^2 + s^2 = 1</code> (условие ортогональности преобразования)
-Решением являются: <span class="math display"> c =
-\frac{a_{11}}{\sqrt{a_{11}^2+a_{21}^2}}, \quad s =
-\frac{a_{21}}{\sqrt{a_{11}^2+a_{21}^2}} </span> 3. После этого
-преобразования все элементы первой и второй строк (и правых частей)
-пересчитываются. Важное свойство: $ (a_{1k}‘)^2 + (a_{2k}’)^2 = a_{1k}^2
-+ a_{2k}^2 $ для любого столбца <span class="math inline">k</span>. 4.
-Далее аналогично зануляется элемент <span
-class="math inline">a_{31}</span> с помощью преобразования первой и
-третьей строк, и так далее, пока все элементы первого столбца под
-диагональю не станут нулями. 5. Процесс повторяется для второго столбца
-(зануляются элементы <span class="math inline">a_{32}, a_{42},
-\dots</span>), третьего и т.д.</p>
-<p>В итоге матрица <span class="math inline">A</span> приводится к
-верхнетреугольному виду <span class="math inline">U</span>. После этого
-решение находится обратным ходом, как в методе Гаусса.</p>
-<p><strong>Сравнение с методом Гаусса:</strong> *
-<strong>Устойчивость:</strong> Метод вращений численно более устойчив,
-так как не происходит роста элементов матрицы. * <strong>Количество
-операций:</strong> Он требует значительно больше арифметических действий
-(примерно в два раза), чем метод Гаусса, что делает его менее
-предпочтительным для хорошо обусловленных систем.</p>
-<hr />
-<h3
-id="системы-линейных-уравнений.-метод-холецкого-квадратного-корня.">18.
-Системы линейных уравнений. Метод Холецкого (квадратного корня).</h3>
-<p>(На основе Лекции №3, 6-й семестр)</p>
-<p><strong>Метод Холецкого (метод квадратного корня)</strong> — это
-эффективный прямой метод решения СЛАУ <span
-class="math inline">Ax=b</span>, применимый в случае, когда матрица
-<span class="math inline">A</span> является <strong>симметричной и
-положительно определенной</strong>.</p>
-<p>Идея метода заключается в разложении (факторизации) матрицы <span
-class="math inline">A</span> в произведение верхней треугольной матрицы
-<span class="math inline">V</span> и ее транспонированной: <span
-class="math display"> A = V^T V </span> где <span
-class="math inline">V</span> — верхняя треугольная матрица. Такое
-разложение для симметричной положительно определенной матрицы всегда
-существует и единственно (если диагональные элементы <span
-class="math inline">V</span> положительны).</p>
-<p><strong>Алгоритм:</strong> 1. <strong>Нахождение матрицы V
-(разложение Холецкого):</strong> Элементы <span
-class="math inline">u_{ij}</span> матрицы <span
-class="math inline">V</span> находятся путем приравнивания элементов
-произведения <span class="math inline">V^T V</span> соответствующим
-элементам матрицы <span class="math inline">A</span>. Это дает
-рекуррентные формулы: * <span class="math inline">u_{11} =
-\sqrt{a_{11}}</span> * <span class="math inline">u_{1j} = a_{1j} /
-u_{11}, \quad j=2,\dots,n</span> * <span class="math inline">u_{ii} =
-\sqrt{a_{ii} - \sum_{k=1}^{i-1} u_{ki}^2}, \quad i=2,\dots,n</span> *
-<span class="math inline">u_{ij} = \frac{1}{u_{ii}} \left( a_{ij} -
-\sum_{k=1}^{i-1} u_{ki}u_{kj} \right), \quad j &gt; i</span> Для
-вещественности <span class="math inline">u_{ii}</span> необходимо, чтобы
-подкоренные выражения были положительны, что гарантируется положительной
-определенностью матрицы <span class="math inline">A</span>.</p>
-<ol start="2" type="1">
-<li><strong>Решение двух систем с треугольными матрицами:</strong> После
-нахождения <span class="math inline">V</span> исходная система <span
-class="math inline">Ax=b</span> заменяется на <span
-class="math inline">V^T V x = b</span>. Решение разбивается на два
+id="понятие-lu-разложения-матриц.-решение-линейных-систем-с-помощью-lu-разложения.">6.
+Понятие LU-разложения матриц. Решение линейных систем с помощью
+LU-разложения.</h3>
+<p><strong>LU-разложение</strong> (или LU-факторизация) — это
+представление квадратной матрицы <span class="math inline">A</span> в
+виде произведения двух матриц: <span class="math inline">A = LU</span>
+где: * <span class="math inline">L</span> (Lower) — нижняя треугольная
+матрица. * <span class="math inline">U</span> (Upper) — верхняя
+треугольная матрица.</p>
+<p><strong>Теорема:</strong> Если все главные миноры квадратной матрицы
+<span class="math inline">A</span> отличны от нуля, то существует
+LU-разложение. Если диагональные элементы одной из матриц (<span
+class="math inline">L</span> или <span class="math inline">U</span>)
+зафиксированы (например, равны 1), то такое разложение единственно. В
+случае, когда диагональные элементы <span class="math inline">L</span>
+равны 1: <span class="math display">
+\begin{pmatrix}
+1 &amp; &amp; &amp; 0 \\
+l_{21} &amp; 1 &amp; &amp; \\
+\vdots &amp; \dots &amp; \ddots &amp; \\
+l_{n1} &amp; l_{n2} &amp; \dots &amp; 1
+\end{pmatrix}
+\begin{pmatrix}
+u_{11} &amp; u_{12} &amp; \dots &amp; u_{1n} \\
+&amp; u_{22} &amp; &amp; u_{2n} \\
+&amp; &amp; \ddots &amp; \vdots \\
+0 &amp; &amp; &amp; u_{nn}
+\end{pmatrix}
+=
+\begin{pmatrix}
+a_{11} &amp; \dots &amp; a_{1n} \\
+\vdots &amp; &amp; \vdots \\
+a_{n1} &amp; \dots &amp; a_{nn}
+\end{pmatrix}
+</span></p>
+<p><strong>Нахождение матриц L и U:</strong> Элементы <span
+class="math inline">L</span> и <span class="math inline">U</span>
+находятся последовательно, приравнивая элементы произведения <span
+class="math inline">LU</span> соответствующим элементам <span
+class="math inline">A</span>. Формулы для вычисления: <span
+class="math inline">u_{ij} = a_{ij} - \sum_{m=1}^{i-1}
+l_{im}u_{mj}</span>, для <span class="math inline">i \le j</span> <span
+class="math inline">l_{ij} = \frac{1}{u_{jj}} \left( a_{ij} -
+\sum_{m=1}^{j-1} l_{im}u_{mj} \right)</span>, для <span
+class="math inline">i &gt; j</span> Вычисления проводятся поочередно:
+первая строка <span class="math inline">U</span>, первый столбец <span
+class="math inline">L</span>, вторая строка <span
+class="math inline">U</span>, второй столбец <span
+class="math inline">L</span> и т.д.</p>
+<p><strong>Решение СЛАУ с помощью LU-разложения:</strong></p>
+<p>Метод позволяет эффективно решать систему <span
+class="math inline">Ax = b</span>, особенно если нужно решать несколько
+систем с одной и той же матрицей <span class="math inline">A</span>, но
+разными правыми частями <span class="math inline">b</span>.</p>
+<ol type="1">
+<li><strong>Разложение:</strong> Сначала выполняется LU-разложение
+матрицы <span class="math inline">A</span>, что является самым
+трудоемким шагом (<span class="math inline">O(n^3)</span>).</li>
+<li><strong>Решение:</strong> Исходное уравнение <span
+class="math inline">Ax=b</span> принимает вид <span
+class="math inline">LUx=b</span>. Решение разбивается на два простых
 этапа:
 <ul>
-<li>Сначала решается система с нижней треугольной матрицей <span
-class="math inline">V^T z = b</span> (прямой ход).</li>
-<li>Затем решается система с верхней треугольной матрицей <span
-class="math inline">Vx = z</span> (обратный ход).</li>
+<li><strong>Этап 1: Решение системы <span class="math inline">Lz =
+b</span></strong>. Вводится вспомогательный вектор <span
+class="math inline">z = Ux</span>. Так как <span
+class="math inline">L</span> — нижняя треугольная, система <span
+class="math inline">Lz=b</span> легко решается прямым ходом (аналогично
+обратной подстановке). <span class="math inline">z_1 = b_1</span> <span
+class="math inline">z_i = b_i - \sum_{j=1}^{i-1} l_{ij}z_j</span> для
+<span class="math inline">i = 2, ..., n</span>.</li>
+<li><strong>Этап 2: Решение системы <span class="math inline">Ux =
+z</span></strong>. Так как <span class="math inline">U</span> — верхняя
+треугольная, эта система решается обратным ходом (стандартная обратная
+подстановка Гаусса). <span class="math inline">x_n = z_n / u_{nn}</span>
+<span class="math inline">x_i = (z_i - \sum_{j=i+1}^{n} u_{ij}x_j) /
+u_{ii}</span> для <span class="math inline">i = n-1, ..., 1</span>.</li>
 </ul></li>
 </ol>
-<p><strong>Преимущества:</strong> * <strong>Эффективность:</strong>
-Требует примерно в два раза меньше арифметических операций, чем метод
-Гаусса. * <strong>Численная устойчивость:</strong> Метод очень устойчив,
-не требует выбора главного элемента. * <strong>Экономия памяти:</strong>
-Так как матрица <span class="math inline">A</span> симметрична, можно
-хранить только ее верхний (или нижний) треугольник.</p>
+<p>Каждый из этих двух этапов требует <span
+class="math inline">O(n^2)</span> операций.</p>
 <hr />
 <h3
-id="нелинейные-уравнения.-метод-простой-итерации.-метод-ньютона.-применение-метода-ньютона-к-вычислению-значений-функций.-модификации-метода-ньютона.-метод-секущих.">19.
-Нелинейные уравнения. Метод простой итерации. Метод Ньютона. Применение
-метода Ньютона к вычислению значений функций. Модификации метода
-Ньютона. Метод секущих.</h3>
-<p>(На основе Лекций №9, №10, 8-й семестр)</p>
-<p>Задача состоит в нахождении корня <span
-class="math inline">x^*</span> уравнения <span
-class="math inline">f(x)=0</span>.</p>
-<p><strong>Метод простой итерации (МПИ)</strong> 1. Уравнение <span
-class="math inline">f(x)=0</span> приводится к эквивалентному виду <span
-class="math inline">x = F(x)</span>. 2. Строится итерационный процесс:
-<span class="math inline">x_{n+1} = F(x_n)</span>, начиная с некоторого
-<span class="math inline">x_0</span>. 3. <strong>Сходимость:</strong>
-Процесс сходится к корню <span class="math inline">x^*</span>, если в
-окрестности корня функция <span class="math inline">F(x)</span> является
-сжимающим отображением, т.е. <span class="math inline">|F(x_1) - F(x_2)|
-\le q|x_1 - x_2|</span> с <span class="math inline">q &lt; 1</span>.
-Достаточным условием является <span class="math inline">|F&#39;(x^*)|
-&lt; 1</span>. Скорость сходимости — <strong>линейная</strong>.</p>
-<p><strong>Метод Ньютона (метод касательных)</strong> Это один из самых
-быстрых методов. Идея состоит в линеаризации функции <span
-class="math inline">f(x)</span> в окрестности текущего приближения. 1.
-График <span class="math inline">f(x)</span> заменяется касательной в
-точке <span class="math inline">(x_n, f(x_n))</span>. 2. Следующее
-приближение <span class="math inline">x_{n+1}</span> — это точка
-пересечения касательной с осью абсцисс. 3. Итерационная формула: <span
-class="math display"> x_{n+1} = x_n - \frac{f(x_n)}{f&#39;(x_n)} </span>
-4. <strong>Сходимость:</strong> При достаточно хорошем начальном
-приближении <span class="math inline">x_0</span> и при условии, что
-<span class="math inline">f&#39;(x)</span> и <span
-class="math inline">f&#39;&#39;(x)</span> сохраняют знак и ограничены в
-окрестности корня, метод сходится с <strong>квадратичной
-скоростью</strong>: <span class="math inline">|x_{n+1}-x^*| \le
-C|x_n-x^*|^2</span>.</p>
-<p><strong>Применение метода Ньютона к вычислению функций</strong> Для
-вычисления значения <span class="math inline">y=f(a)</span> можно
-составить неявное уравнение <span class="math inline">F(a, x) =
-0</span>, решением которого является <span
-class="math inline">x=f(a)</span>, и применить к нему метод Ньютона. *
-<strong>Пример: вычисление <span
-class="math inline">\sqrt[m]{a}</span></strong>. Уравнение: <span
-class="math inline">x^m - a = 0</span>. Итерационная формула: <span
-class="math display"> x_{n+1} = x_n - \frac{x_n^m-a}{mx_n^{m-1}} =
-\frac{1}{m}\left((m-1)x_n + \frac{a}{x_n^{m-1}}\right) </span> Для <span
-class="math inline">m=2</span> это <strong>формула Герона</strong> для
-квадратного корня: <span class="math inline">x_{n+1} = \frac{1}{2}(x_n +
-a/x_n)</span>.</p>
-<p><strong>Модификации метода Ньютона</strong> * <strong>Упрощенный
-метод Ньютона:</strong> Производная вычисляется только один раз: <span
-class="math inline">f&#39;(x_n)</span> заменяется на <span
-class="math inline">f&#39;(x_0)</span>. Это снижает трудоемкость, но
-скорость сходимости становится линейной. * <strong>Разностный метод
-Ньютона:</strong> Производная заменяется ее разностной аппроксимацией:
-<span class="math inline">f&#39;(x_n) \approx
-\frac{f(x_n+h_n)-f(x_n)}{h_n}</span>. Это позволяет избежать
-аналитического вычисления производной, сохраняя быструю (сверхлинейную)
-сходимость. * <strong>Метод для кратных корней
-(Ньютона-Шрёдера):</strong> Если корень имеет кратность <span
-class="math inline">m</span>, обычный метод Ньютона сходится линейно.
-Модифицированная формула восстанавливает квадратичную сходимость: <span
-class="math display"> x_{n+1} = x_n - m\frac{f(x_n)}{f&#39;(x_n)}
+id="разложение-симметричных-матриц.-метод-квадратных-корней-схема-холецкого.">7.
+Разложение симметричных матриц. Метод квадратных корней (схема
+Холецкого).</h3>
+<p>Для <strong>симметричных положительно определенных</strong> матриц
+существует специальный, более эффективный и численно устойчивый вариант
+LU-разложения, известный как <strong>метод квадратного корня</strong>
+или <strong>схема Холецкого</strong>.</p>
+<p><strong>Идея разложения:</strong> Симметричная матрица <span
+class="math inline">A</span> (<span class="math inline">A = A^T</span>)
+представляется в виде: <span class="math inline">A = V^T V</span> где
+<span class="math inline">V</span> — верхняя треугольная матрица, а
+<span class="math inline">V^T</span> — транспонированная к ней, то есть
+нижняя треугольная матрица. <span class="math display">
+V = \begin{pmatrix} u_{11} &amp; u_{12} &amp; \dots &amp; u_{1n} \\ 0
+&amp; u_{22} &amp; \dots &amp; u_{2n} \\ \vdots &amp; &amp; \ddots &amp;
+\vdots \\ 0 &amp; 0 &amp; \dots &amp; u_{nn} \end{pmatrix}, \quad V^T =
+\begin{pmatrix} u_{11} &amp; 0 &amp; \dots &amp; 0 \\ u_{12} &amp;
+u_{22} &amp; \dots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp;
+\vdots \\ u_{1n} &amp; u_{2n} &amp; \dots &amp; u_{nn} \end{pmatrix}
+</span> Приравнивая элементы произведения <span class="math inline">V^T
+V</span> элементам <span class="math inline">A</span>, получаем систему
+уравнений для нахождения <span class="math inline">u_{ij}</span>.</p>
+<p><strong>Формулы для вычисления элементов <span
+class="math inline">V</span>:</strong></p>
+<p>Элементы <span class="math inline">u_{ij}</span> вычисляются
+последовательно по строкам: * <span class="math inline">u_{11} =
+\sqrt{a_{11}}</span> * <span class="math inline">u_{1j} = a_{1j} /
+u_{11}</span> для <span class="math inline">j = 2, ..., n</span> * <span
+class="math inline">u_{ii} = \sqrt{a_{ii} - \sum_{m=1}^{i-1}
+u_{mi}^2}</span> для <span class="math inline">i = 2, ..., n</span> *
+<span class="math inline">u_{ij} = (a_{ij} - \sum_{m=1}^{i-1}
+u_{mi}u_{mj}) / u_{ii}</span> для <span class="math inline">j &gt;
+i</span> * <span class="math inline">u_{ij} = 0</span> для <span
+class="math inline">j &lt; i</span></p>
+<p>Для того чтобы все <span class="math inline">u_{ii}</span> были
+действительными, необходимо и достаточно, чтобы матрица <span
+class="math inline">A</span> была положительно определенной (все
+подкоренные выражения будут положительны).</p>
+<p><strong>Решение СЛАУ по схеме Холецкого:</strong></p>
+<p>Аналогично общему LU-методу, решение системы <span
+class="math inline">Ax=b</span> сводится к двум этапам:</p>
+<ol type="1">
+<li><strong>Разложение:</strong> Находится матрица <span
+class="math inline">V</span> так, что <span class="math inline">A = V^T
+V</span>.</li>
+<li><strong>Решение:</strong> Система <span class="math inline">V^T Vx =
+b</span> решается в два шага:
+<ul>
+<li><strong>Этап 1: <span class="math inline">V^Tz = b</span></strong>.
+Решается система с нижней треугольной матрицей <span
+class="math inline">V^T</span> для нахождения вспомогательного вектора
+<span class="math inline">z</span> (прямая подстановка).</li>
+<li><strong>Этап 2: <span class="math inline">Vx = z</span></strong>.
+Решается система с верхней треугольной матрицей <span
+class="math inline">V</span> для нахождения искомого вектора <span
+class="math inline">x</span> (обратная подстановка).</li>
+</ul></li>
+</ol>
+<p>Этот метод требует примерно вдвое меньше операций, чем обычный метод
+Гаусса, и не требует вычисления квадратных корней, если представить
+разложение в виде <span class="math inline">A=LDL^T</span>, где <span
+class="math inline">D</span> — диагональная.</p>
+<hr />
+<h3 id="метод-вращения-решения-линейных-систем.">8. Метод вращения
+решения линейных систем.</h3>
+<p>Метод вращения (метод Гивенса) — это прямой метод решения СЛАУ,
+который, в отличие от метода Гаусса, не приводит к росту элементов
+матрицы в процессе вычислений, что делает его численно более
+устойчивым.</p>
+<p><strong>Идея метода:</strong> Метод заключается в последовательном
+занулении поддиагональных элементов матрицы путем применения
+<strong>ортогональных преобразований (вращений)</strong>. Каждое такое
+преобразование затрагивает только две строки системы и “поворачивает” их
+в плоскости так, чтобы один из элементов стал равен нулю.</p>
+<p><strong>Алгоритм (Прямой ход):</strong></p>
+<ol type="1">
+<li><strong>Зануление первого столбца:</strong>
+<ul>
+<li>Чтобы занулить элемент <span class="math inline">a_{21}</span>,
+рассматриваются первые две строки. Они умножаются на <span
+class="math inline">c_1</span> и <span class="math inline">s_1</span>
+(косинус и синус угла вращения) и складываются.</li>
+<li>Новые строки 1’ и 2’ формируются так: <span
+class="math inline">1&#39; = c_1 \cdot (\text{строка 1}) + s_1 \cdot
+(\text{строка 2})</span> <span class="math inline">2&#39; = -s_1 \cdot
+(\text{строка 1}) + c_1 \cdot (\text{строка 2})</span></li>
+<li>Коэффициенты <span class="math inline">c_1</span> и <span
+class="math inline">s_1</span> выбираются из двух условий:
+<ol type="1">
+<li><span class="math inline">c_1^2 + s_1^2 = 1</span> (условие
+ортогональности преобразования).</li>
+<li>Коэффициент при <span class="math inline">x_1</span> в новой второй
+строке должен стать нулем: <span class="math inline">-s_1 a_{11} + c_1
+a_{21} = 0</span>.</li>
+</ol></li>
+<li>Из этих условий находятся: <span class="math inline">c_1 =
+\frac{a_{11}}{\sqrt{a_{11}^2+a_{21}^2}}</span>, <span
+class="math inline">s_1 =
+\frac{a_{21}}{\sqrt{a_{11}^2+a_{21}^2}}</span>.</li>
+<li>После этого преобразования <span class="math inline">a_{21}</span>
+обнуляется. Процесс повторяется для зануления <span
+class="math inline">a_{31}</span> (вращением строк 1 и 3), <span
+class="math inline">a_{41}</span> (вращением 1 и 4) и т.д., пока все
+поддиагональные элементы первого столбца не станут нулями.</li>
+</ul></li>
+<li><strong>Зануление остальных столбцов:</strong>
+<ul>
+<li>Аналогичная процедура применяется для зануления поддиагональных
+элементов второго столбца (вращением строк 2, 3, 4, …), затем третьего и
+т.д.</li>
+</ul></li>
+</ol>
+<p>В результате <span class="math inline">n-1</span> этапов прямого хода
+матрица приводится к верхнему треугольному виду: <span
+class="math display">
+\begin{alignedat}{1}
+a_{11}^{(n-1)}x_1 + a_{12}^{(n-1)}x_2 + \dots + a_{1n}^{(n-1)}x_n &amp;=
+b_1^{(n-1)} \\
+a_{22}^{(n-2)}x_2 + \dots + a_{2n}^{(n-2)}x_n &amp;= b_2^{(n-2)} \\
+\dots \\
+a_{nn}x_n &amp;= b_n^{(n-2)}
+\end{alignedat}
 </span></p>
-<p><strong>Метод секущих (метод хорд)</strong> Это двухточечный метод,
-который является своего рода разностным аналогом метода Ньютона. 1.
-Вместо касательной через точку <span class="math inline">(x_n,
-f(x_n))</span> проводится <strong>секущая</strong> через две последние
-точки <span class="math inline">(x_{n-1}, f(x_{n-1}))</span> и <span
-class="math inline">(x_n, f(x_n))</span>. 2. Итерационная формула: <span
-class="math display"> x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n)
-- f(x_{n-1})} </span> 3. Метод не требует вычисления производных.
-Скорость сходимости <strong>сверхлинейная</strong> (порядок <span
-class="math inline">\approx 1.618</span>), что медленнее, чем у Ньютона,
-но быстрее, чем у МПИ.</p>
+<p><strong>Обратный ход:</strong> После приведения матрицы к
+треугольному виду, решение находится стандартным обратным ходом, как в
+методе Гаусса.</p>
+<p><strong>Ключевое свойство:</strong> Преобразование вращения является
+ортогональным, оно сохраняет евклидову норму (длину) векторов-столбцов
+матрицы. <span class="math inline">(a_{1j}^{(1)})^2 + (a_{2j}^{(1)})^2 =
+a_{1j}^2 + a_{2j}^2</span>. Это означает, что элементы матрицы не
+растут, что обеспечивает численную устойчивость. Однако метод вращений
+требует большего количества арифметических операций (примерно в 2 раза
+больше), чем метод Гаусса.</p>
 <hr />
 <h3
-id="методы-решения-снау-систем-нелинейных-алгебраических-уравнений.-векторная-запись-нелинейных-систем.-метод-простых-итераций.">20.
-Методы решения СНАУ (систем нелинейных алгебраических) уравнений.
-Векторная запись нелинейных систем. Метод простых итераций.</h3>
-<p>(На основе Лекции №11, 6-й семестр)</p>
-<p>Задача состоит в решении системы из <span
-class="math inline">n</span> нелинейных уравнений с <span
-class="math inline">n</span> неизвестными.</p>
-<p><strong>Векторная запись:</strong> Систему <span
+id="итеративные-методы-решения-слау.-принцип-последовательных-приближений.">9.
+Итеративные методы решения СЛАУ. Принцип последовательных
+приближений.</h3>
+<p>В отличие от прямых методов, которые дают точное решение (в
+отсутствие ошибок округления) за конечное число шагов,
+<strong>итерационные (или итеративные) методы</strong> строят
+последовательность приближений <span class="math inline">x^{(0)},
+x^{(1)}, ..., x^{(m)}, ...</span>, которая при определенных условиях
+сходится к точному решению <span class="math inline">x^*</span>.</p>
+<p><strong>Принцип последовательных приближений:</strong></p>
+<ol type="1">
+<li><p><strong>Преобразование системы:</strong> Исходная система <span
+class="math inline">Ax = b</span> преобразуется к эквивалентному виду,
+удобному для итераций: <span class="math inline">x = Bx + C</span> Это
+можно сделать разными способами, например: <span class="math inline">x =
+x + \tau(b - Ax) = (E - \tau A)x + \tau b</span>, где <span
+class="math inline">\tau</span> — итерационный параметр. Здесь <span
+class="math inline">B = E - \tau A</span>, <span class="math inline">C =
+\tau b</span>.</p></li>
+<li><p><strong>Построение итерационного процесса:</strong></p>
+<ul>
+<li>Выбирается <strong>начальное приближение</strong> <span
+class="math inline">x^{(0)}</span> (часто нулевой вектор).</li>
+<li>Последующие приближения вычисляются по рекуррентной формуле: <span
+class="math inline">x^{(m+1)} = Bx^{(m)} + C</span>, где <span
+class="math inline">m = 0, 1, 2, ...</span></li>
+</ul></li>
+<li><p><strong>Условие сходимости:</strong> Процесс сходится к решению
+<span class="math inline">x^*</span>, если последовательность <span
+class="math inline">x^{(m)}</span> сходится к <span
+class="math inline">x^*</span> при <span class="math inline">m \to
+\infty</span>. Основным условием сходимости является требование, чтобы
+оператор <span class="math inline">B</span> был
+<strong>сжимающим</strong>, то есть <span class="math inline">||B|| &lt;
+1</span> в некоторой норме.</p></li>
+<li><p><strong>Критерий остановки:</strong> Итерации продолжаются до тех
+пор, пока не будет достигнута заданная точность. Критерием может
+служить:</p>
+<ul>
+<li>Малость нормы разности двух последовательных приближений: <span
+class="math inline">||x^{(m+1)} - x^{(m)}|| &lt;
+\varepsilon</span>.</li>
+<li>Малость нормы невязки: <span class="math inline">||b - Ax^{(m)}||
+&lt; \varepsilon</span>.</li>
+</ul></li>
+</ol>
+<p><strong>Преимущества итерационных методов:</strong> * Особенно
+эффективны для больших разреженных систем (с большим количеством нулей),
+которые часто возникают при решении дифференциальных уравнений. * Менее
+чувствительны к ошибкам округления, так как ошибка на одном шаге может
+быть исправлена на последующих. * Проще в программировании.</p>
+<p><strong>Недостатки:</strong> * Сходимость не всегда гарантирована. *
+Скорость сходимости может быть низкой.</p>
+<hr />
+<h3 id="простые-итерации-для-решения-слау.">10. Простые итерации для
+решения СЛАУ.</h3>
+<p>Метод простой итерации (МПИ) — это базовый итерационный метод,
+реализующий общий принцип последовательных приближений.</p>
+<p><strong>Формы записи МПИ:</strong></p>
+<ol type="1">
+<li><p><strong>Каноническая форма:</strong> Исходная система <span
+class="math inline">Ax = b</span> преобразуется к виду <span
+class="math inline">x = Bx + C</span>. Итерационный процесс задается
+формулой: <span class="math inline">x^{(m+1)} = Bx^{(m)} + C</span>
+Пример преобразования: <span class="math inline">x = (E - \tau A)x +
+\tau b</span>, где <span class="math inline">\tau</span> — итерационный
+параметр.</p></li>
+<li><p><strong>Форма с невязкой:</strong> Вводится понятие
+<strong>невязки</strong> <span class="math inline">m</span>-го
+приближения: <span class="math inline">r^{(m)} = b - Ax^{(m)}</span>.
+Итерационный процесс записывается как: <span
+class="math inline">x^{(m+1)} = x^{(m)} + \tau r^{(m)} = x^{(m)} +
+\tau(b - Ax^{(m)})</span> Эта форма эквивалентна предыдущей, если <span
+class="math inline">B = E - \tau A</span> и <span class="math inline">C
+= \tau b</span>. Если приближение <span
+class="math inline">x^{(m)}</span> сходится к решению <span
+class="math inline">x^*</span>, то невязка <span
+class="math inline">r^{(m)}</span> стремится к нулю.</p></li>
+</ol>
+<p><strong>Выбор начального приближения:</strong> В качестве <span
+class="math inline">x^{(0)}</span> обычно берут нулевой вектор <span
+class="math inline">(0, 0, ..., 0)^T</span> или вектор правой части
+<span class="math inline">b</span>.</p>
+<p><strong>Сходимость:</strong> Метод сходится, если выполнены условия,
+рассмотренные в следующем вопросе. Скорость сходимости зависит от нормы
+матрицы перехода <span class="math inline">B</span>.</p>
+<p><strong>Оценка точности:</strong> Зная норму <span
+class="math inline">q = ||B||</span>, можно оценить погрешность: *
+<strong>Априорная оценка (до начала вычислений):</strong> <span
+class="math inline">||x^{(m)} - x^*|| \le \frac{q^m}{1-q}||x^{(1)} -
+x^{(0)}||</span> * <strong>Апостериорная оценка (в процессе
+вычислений):</strong> <span class="math inline">||x^{(m)} - x^*|| \le
+\frac{q}{1-q}||x^{(m)} - x^{(m-1)}||</span> Величину <span
+class="math inline">q</span> можно оценить по отношению норм разностей
+соседних итераций: <span class="math inline">q \approx \frac{||x^{(m+1)}
+- x^{(m)}||}{||x^{(m)} - x^{(m-1)}||}</span></p>
+<hr />
+<h3 id="достаточное-условие-сходимости-метода-простой-итерации.">11.
+Достаточное условие сходимости метода простой итерации.</h3>
+<p><strong>Теорема (Достаточное условие сходимости МПИ):</strong>
+Итерационный процесс <span class="math inline">x^{(m+1)} = Bx^{(m)} +
+C</span> сходится к единственному решению системы <span
+class="math inline">x = Bx + C</span> при любом начальном приближении
+<span class="math inline">x^{(0)}</span>, если норма матрицы перехода
+<span class="math inline">B</span> меньше единицы: <span
+class="math inline">||B|| \le q &lt; 1</span> для некоторой матричной
+нормы, согласованной с векторной.</p>
+<p><strong>Доказательство:</strong> 1. Пусть <span
+class="math inline">x^*</span> — точное решение, то есть <span
+class="math inline">x^* = Bx^* + C</span>. 2. Рассмотрим погрешность на
+<span class="math inline">(m+1)</span>-м шаге: <span
+class="math inline">\varepsilon^{(m+1)} = x^{(m+1)} - x^*</span>. <span
+class="math inline">\varepsilon^{(m+1)} = (Bx^{(m)} + C) - (Bx^* + C) =
+B(x^{(m)} - x^*) = B\varepsilon^{(m)}</span>. 3. Применяя это
+соотношение рекурсивно, получаем: <span
+class="math inline">\varepsilon^{(m+1)} = B\varepsilon^{(m)} =
+B^2\varepsilon^{(m-1)} = \dots = B^{m+1}\varepsilon^{(0)}</span>, где
+<span class="math inline">\varepsilon^{(0)} = x^{(0)} - x^*</span>. 4.
+Перейдем к нормам: <span class="math inline">||\varepsilon^{(m+1)}|| =
+||B^{m+1}\varepsilon^{(0)}|| \le ||B||^{m+1}
+||\varepsilon^{(0)}||</span>. 5. По условию теоремы, <span
+class="math inline">||B|| \le q &lt; 1</span>. Следовательно: <span
+class="math inline">||\varepsilon^{(m+1)}|| \le q^{m+1}
+||\varepsilon^{(0)}||</span>. 6. Поскольку <span class="math inline">q
+&lt; 1</span>, то <span class="math inline">q^{m+1} \to 0</span> при
+<span class="math inline">m \to \infty</span>. Это означает, что <span
+class="math inline">||\varepsilon^{(m+1)}|| \to 0</span>, и,
+следовательно, <span class="math inline">x^{(m+1)} \to x^*</span>.</p>
+<p><strong>Скорость сходимости:</strong> Неравенство <span
+class="math inline">||\varepsilon^{(m)}|| \le q^m
+||\varepsilon^{(0)}||</span> показывает, что погрешность уменьшается со
+скоростью <strong>геометрической прогрессии</strong> со знаменателем
+<span class="math inline">q</span>. Чем меньше <span
+class="math inline">q</span>, тем выше скорость сходимости.</p>
+<p><strong>Необходимое и достаточное условие (без доказательства в
+лекциях):</strong> Метод <span class="math inline">x = Bx+C</span>
+сходится при любом <span class="math inline">x^{(0)}</span> тогда и
+только тогда, когда все собственные числа <span
+class="math inline">\lambda</span> матрицы <span
+class="math inline">B</span> по модулю меньше единицы: <span
+class="math inline">|\lambda_i(B)| &lt; 1</span> для всех <span
+class="math inline">i</span>.</p>
+<hr />
+<h3 id="метод-якоби-решения-слау.">12. Метод Якоби решения СЛАУ.</h3>
+<p>Метод Якоби — это один из классических итерационных методов,
+являющийся частным случаем метода простой итерации.</p>
+<p><strong>Идея метода:</strong> В <span class="math inline">i</span>-м
+уравнении системы <span class="math inline">Ax=b</span> выражается <span
+class="math inline">i</span>-я компонента вектора <span
+class="math inline">x</span> через все остальные. Для построения
+следующего приближения <span class="math inline">x^{(m+1)}</span>
+используются только компоненты предыдущего приближения <span
+class="math inline">x^{(m)}</span>.</p>
+<p><strong>Вывод формулы:</strong> 1. Представим матрицу <span
+class="math inline">A</span> в виде суммы трех матриц: <span
+class="math inline">A = L + D + U</span>, где * <span
+class="math inline">L = \begin{pmatrix} 0 &amp; &amp; \\ a_{21} &amp; 0
+&amp; \\ \vdots &amp; \ddots &amp; \\ a_{n1} &amp; \dots &amp; 0
+\end{pmatrix}</span> — строго нижнетреугольная часть <span
+class="math inline">A</span>. * <span class="math inline">D =
+\begin{pmatrix} a_{11} &amp; &amp; 0 \\ &amp; \ddots &amp; \\ 0 &amp;
+&amp; a_{nn} \end{pmatrix}</span> — диагональная часть <span
+class="math inline">A</span>. * <span class="math inline">U =
+\begin{pmatrix} 0 &amp; a_{12} &amp; \dots &amp; a_{1n} \\ &amp; \ddots
+&amp; \vdots \\ &amp; &amp; 0 \end{pmatrix}</span> — строго
+верхнетреугольная часть <span class="math inline">A</span>. 2. Исходная
+система <span class="math inline">Ax=b</span> записывается как <span
+class="math inline">(L+D+U)x = b</span>. 3. Для итерационного процесса
+<span class="math inline">(m+1)</span>-е приближение <span
+class="math inline">x^{(m+1)}</span> связывается с <span
+class="math inline">D</span>, а <span class="math inline">m</span>-е — с
+<span class="math inline">L</span> и <span class="math inline">U</span>:
+<span class="math inline">Dx^{(m+1)} + (L+U)x^{(m)} = b</span> 4. Отсюда
+выражается <span class="math inline">x^{(m+1)}</span>: <span
+class="math inline">x^{(m+1)} = -D^{-1}(L+U)x^{(m)} + D^{-1}b</span> Это
+и есть формула метода Якоби в матричной форме. Матрица перехода здесь
+<span class="math inline">B_J = -D^{-1}(L+U)</span>.</p>
+<p><strong>Покомпонентная запись:</strong> Из <span
+class="math inline">i</span>-го уравнения <span
+class="math inline">\sum_{j=1}^{n} a_{ij}x_j = b_i</span> выражаем <span
+class="math inline">x_i</span>: <span class="math inline">a_{ii}x_i =
+b_i - \sum_{j \ne i} a_{ij}x_j</span>. Итерационная формула для <span
+class="math inline">i</span>-й компоненты: <span class="math display">
+\left\{
+\begin{alignedat}{1}
+x_1^{(m+1)} &amp;= -(a_{12}x_2^{(m)} + a_{13}x_3^{(m)} + \dots +
+a_{1n}x_n^{(m)} - b_1)/a_{11} \\
+&amp;\dots \\
+x_n^{(m+1)} &amp;= -(a_{n1}x_1^{(m)} + a_{n2}x_2^{(m)} + \dots +
+a_{n,n-1}x_{n-1}^{(m)} - b_n)/a_{nn}
+\end{alignedat}
+\right.
+</span> или <span class="math inline">x_i^{(m+1)} = \frac{1}{a_{ii}}
+\left( b_i - \sum_{\substack{j=1 \\ j \ne i}}^n a_{ij}x_j^{(m)}
+\right)</span>, где <span class="math inline">i=1, ..., n</span>.</p>
+<p><strong>Особенности:</strong> * Все компоненты вектора <span
+class="math inline">x^{(m+1)}</span> могут вычисляться одновременно
+(параллельно), так как для расчета <span
+class="math inline">x_i^{(m+1)}</span> нужны только значения из <span
+class="math inline">x^{(m)}</span>. * Требуется хранить в памяти два
+вектора: <span class="math inline">x^{(m)}</span> и <span
+class="math inline">x^{(m+1)}</span>.</p>
+<hr />
+<h3
+id="диагональное-преобладание-и-достаточное-условие-сходимости-метода-якоби.-критерий-сходимости-метода-якоби.">13.
+Диагональное преобладание и достаточное условие сходимости метода Якоби.
+Критерий сходимости метода Якоби.</h3>
+<p><strong>Диагональное преобладание:</strong> Говорят, что матрица
+<span class="math inline">A</span> обладает <strong>строгим диагональным
+преобладанием</strong>, если для каждой строки модуль диагонального
+элемента больше суммы модулей всех остальных элементов в этой строке:
+<span class="math inline">|a_{ii}| &gt; \sum_{\substack{j=1 \\ j \ne
+i}}^n |a_{ij}|</span>, для всех <span class="math inline">i=1, ...,
+n</span>.</p>
+<p><strong>Теорема (Достаточное условие сходимости метода
+Якоби):</strong> Если матрица <span class="math inline">A</span> системы
+<span class="math inline">Ax=b</span> обладает строгим диагональным
+преобладанием, то метод Якоби сходится к единственному решению системы
+при любом начальном приближении.</p>
+<p><strong>Обоснование:</strong> Это условие гарантирует, что норма
+матрицы перехода <span class="math inline">B_J = -D^{-1}(L+U)</span>
+будет меньше 1. Рассмотрим <span class="math inline">\infty</span>-норму
+(максимальная сумма модулей по строкам): <span
+class="math inline">||B_J||_\infty = \max_i \sum_{\substack{j=1 \\ j \ne
+i}}^n \left|-\frac{a_{ij}}{a_{ii}}\right| = \max_i \frac{1}{|a_{ii}|}
+\sum_{\substack{j=1 \\ j \ne i}}^n |a_{ij}|</span>. Из условия
+диагонального преобладания следует, что <span
+class="math inline">\frac{1}{|a_{ii}|} \sum_{\substack{j=1 \\ j \ne
+i}}^n |a_{ij}| &lt; 1</span> для каждой строки <span
+class="math inline">i</span>. Следовательно, <span
+class="math inline">||B_J||_\infty &lt; 1</span>, и по общей теореме о
+сходимости МПИ, метод Якоби сходится.</p>
+<p><strong>Теорема (Критерий сходимости метода Якоби):</strong> Для
+сходимости итераций метода Якоби необходимо и достаточно, чтобы все
+корни <span class="math inline">\lambda</span> характеристического
+уравнения <span class="math inline">det(B_J - \lambda E) = 0</span> были
+по модулю меньше единицы. Это уравнение можно преобразовать к
+эквивалентному виду, более удобному для анализа: <span
+class="math inline">det(\lambda D + L + U) = 0</span> или в развернутой
+форме: <span class="math display">
+\begin{vmatrix}
+\lambda a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
+a_{21} &amp; \lambda a_{22} &amp; \dots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \dots &amp; \lambda a_{nn}
+\end{vmatrix} = 0
+</span> Все корни <span class="math inline">\lambda</span> этого
+уравнения должны быть по модулю меньше 1.</p>
+<hr />
+<h3 id="метод-зейделя-решения-слау.">14. Метод Зейделя решения
+СЛАУ.</h3>
+<p>Метод Зейделя (или метод Гаусса-Зейделя) — это модификация метода
+Якоби, которая часто обеспечивает более быструю сходимость.</p>
+<p><strong>Идея метода:</strong> Основное отличие от метода Якоби
+состоит в том, что при вычислении <span
+class="math inline">(m+1)</span>-го приближения для компоненты <span
+class="math inline">x_i^{(m+1)}</span> используются уже вычисленные на
+этом же шаге компоненты <span class="math inline">x_1^{(m+1)}, ...,
+x_{i-1}^{(m+1)}</span>.</p>
+<p><strong>Вывод формулы:</strong> 1. Снова представим <span
+class="math inline">A = L+D+U</span>. Система: <span
+class="math inline">(L+D+U)x = b</span>. 2. Итерационный процесс
+строится так, чтобы уже вычисленные на <span
+class="math inline">(m+1)</span>-м шаге компоненты (связанные с <span
+class="math inline">L</span>) и диагональные (связанные с <span
+class="math inline">D</span>) относились к <span
+class="math inline">x^{(m+1)}</span>, а еще не обновленные (связанные с
+<span class="math inline">U</span>) — к <span
+class="math inline">x^{(m)}</span>: <span
+class="math inline">(L+D)x^{(m+1)} + Ux^{(m)} = b</span> 3. Отсюда
+выражается <span class="math inline">x^{(m+1)}</span>: <span
+class="math inline">x^{(m+1)} = -(L+D)^{-1}Ux^{(m)} + (L+D)^{-1}b</span>
+Это формула метода Зейделя в матричной форме. Матрица перехода: <span
+class="math inline">B_S = -(L+D)^{-1}U</span>.</p>
+<p><strong>Покомпонентная запись:</strong> Вычисления производятся
+последовательно для <span class="math inline">i = 1, ..., n</span>:
+<span class="math inline">a_{11}x_1^{(m+1)} = -a_{12}x_2^{(m)} -
+a_{13}x_3^{(m)} - \dots - a_{1n}x_n^{(m)} + b_1</span> <span
+class="math inline">a_{22}x_2^{(m+1)} = -a_{21}x_1^{(m+1)} -
+a_{23}x_3^{(m)} - \dots - a_{2n}x_n^{(m)} + b_2</span> <span
+class="math inline">\dots</span> <span
+class="math inline">a_{nn}x_n^{(m+1)} = -a_{n1}x_1^{(m+1)} -
+a_{n2}x_2^{(m+1)} - \dots - a_{n,n-1}x_{n-1}^{(m+1)} + b_n</span> или
+<span class="math inline">x_i^{(m+1)} = \frac{1}{a_{ii}} \left( b_i -
+\sum_{j=1}^{i-1} a_{ij}x_j^{(m+1)} - \sum_{j=i+1}^{n} a_{ij}x_j^{(m)}
+\right)</span></p>
+<p><strong>Особенности:</strong> * Компоненты <span
+class="math inline">x^{(m+1)}</span> нельзя вычислять параллельно, так
+как расчет <span class="math inline">x_i^{(m+1)}</span> зависит от <span
+class="math inline">x_1^{(m+1)}, ..., x_{i-1}^{(m+1)}</span>. * Обычно
+требуется хранить только один вектор <span class="math inline">x</span>,
+значения которого последовательно обновляются. * Часто сходится быстрее
+метода Якоби (примерно в 2 раза для некоторых классов задач).</p>
+<hr />
+<h3
+id="достаточное-условие-сходимости-метода-зейделя-для-решения-слау.-критерий-сходимости-метода-зейделя.">15.
+Достаточное условие сходимости метода Зейделя для решения СЛАУ. Критерий
+сходимости метода Зейделя.</h3>
+<p><strong>Достаточные условия сходимости:</strong> 1. Как и для метода
+Якоби, <strong>строгое диагональное преобладание</strong> матрицы <span
+class="math inline">A</span> является достаточным условием сходимости
+метода Зейделя. 2. <strong>Теорема:</strong> Пусть <span
+class="math inline">A</span> — вещественная, симметричная и положительно
+определенная матрица. Тогда метод Зейделя сходится при любом начальном
+приближении.</p>
+<p><strong>Теорема (Критерий сходимости метода Зейделя):</strong> Для
+сходимости итерационного метода Зейделя необходимо и достаточно, чтобы
+все корни <span class="math inline">\lambda</span> характеристического
+уравнения <span class="math inline">det(B_S - \lambda E) = 0</span> были
+по модулю меньше единицы, где <span class="math inline">B_S =
+-(L+D)^{-1}U</span> — матрица перехода. Это условие эквивалентно
+требованию, чтобы все корни уравнения <span class="math inline">det(U +
+\lambda(L+D)) = 0</span> были по модулю меньше единицы. В развернутой
+форме это уравнение выглядит так: <span class="math display">
+\begin{vmatrix}
+\lambda a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
+\lambda a_{21} &amp; \lambda a_{22} &amp; \dots &amp; \lambda a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\lambda a_{n1} &amp; \lambda a_{n2} &amp; \dots &amp; \lambda a_{nn}
+\end{vmatrix} = 0
+</span> Здесь в определителе <span class="math inline">i</span>-я строка
+умножается на <span class="math inline">\lambda</span> только для
+элементов с <span class="math inline">j \ge i</span>.</p>
+<hr />
+<h3
+id="проблема-выбора-итерационного-параметра.-связь-между-слау-и-разностными-методами-для-дифференциальных-уравнений.">16.
+Проблема выбора итерационного параметра. Связь между СЛАУ и разностными
+методами для дифференциальных уравнений.</h3>
+<p><strong>Проблема выбора итерационного параметра (<span
+class="math inline">\tau</span>):</strong></p>
+<p>В методах типа простой итерации (<span class="math inline">x^{(m+1)}
+= x^{(m)} + \tau r^{(m)}</span>) и методе верхней релаксации, скорость
+сходимости и даже сам факт сходимости критически зависят от выбора
+<strong>итерационного параметра</strong> <span
+class="math inline">\tau</span>.</p>
+<ul>
+<li><strong>Сходимость:</strong> Для МПИ с симметричной положительно
+определенной матрицей <span class="math inline">A</span> процесс
+сходится, если <span class="math inline">0 &lt; \tau &lt;
+\frac{2}{\lambda_{\max}(A)}</span>. Если <span
+class="math inline">\tau</span> выбрать за пределами этого интервала,
+итерации будут расходиться.</li>
+<li><strong>Скорость сходимости:</strong> Внутри интервала сходимости
+существует <strong>оптимальное значение</strong> <span
+class="math inline">\tau_{\text{опт}}</span>, при котором скорость
+сходимости максимальна.</li>
+</ul>
+<p>Задача состоит в том, чтобы найти это оптимальное значение <span
+class="math inline">\tau_{\text{опт}}</span>, что часто требует знания
+границ спектра (минимального <span
+class="math inline">\lambda_{\min}</span> и максимального <span
+class="math inline">\lambda_{\max}</span> собственных значений) матрицы
+<span class="math inline">A</span>, которые, в свою очередь, найти
+непросто.</p>
+<p><strong>Метод верхней релаксации (SOR - Successive
+Over-Relaxation):</strong> Это развитие метода Зейделя, в которое
+вводится параметр релаксации <span class="math inline">\tau</span>:
+<span class="math inline">(\tau L) x^{(m+1)} + D x^{(m+1)} + (1-\tau)D
+x^{(m)} + \tau U x^{(m)} = \tau b</span>. Выразив <span
+class="math inline">x^{(m+1)}</span>: <span
+class="math inline">x^{(m+1)} = -(D+\tau L)^{-1}((1-\tau)D+\tau
+U)x^{(m)} + \tau(D+\tau L)^{-1}b</span>. Выбор <span
+class="math inline">\tau</span> позволяет управлять скоростью
+сходимости. * <span class="math inline">0 &lt; \tau &lt; 1</span>:
+нижняя релаксация. * <span class="math inline">\tau = 1</span>: метод
+Зейделя. * <span class="math inline">1 &lt; \tau &lt; 2</span>: верхняя
+релаксация (часто дает ускорение). В общем случае задача поиска <span
+class="math inline">\tau_{\text{опт}}</span> не решена, но известно, что
+<span class="math inline">1 &lt; \tau_{\text{опт}} &lt; 2</span>.</p>
+<p><strong>Связь СЛАУ и разностных методов:</strong></p>
+<p>Многие задачи математической физики, описываемые дифференциальными
+уравнениями (например, уравнение теплопроводности, уравнение Пуассона),
+для численного решения дискретизируются. Это означает, что область
+решения покрывается сеткой, а производные заменяются <strong>конечными
+разностями</strong>.</p>
+<p>Этот процесс, называемый <strong>сеточной или разностной
+аппроксимацией</strong>, приводит к замене одного дифференциального
+уравнения на систему алгебраических уравнений, где неизвестными являются
+значения искомой функции в узлах сетки.</p>
+<ul>
+<li>Часто эти системы являются СЛАУ.</li>
+<li>Матрицы таких СЛАУ обычно <strong>большие</strong> (тысячи и
+миллионы уравнений), <strong>разреженные</strong> (много нулей) и имеют
+<strong>ленточную структуру</strong> (например, трехдиагональную).</li>
+<li>Именно для таких систем итерационные методы особенно
+эффективны.</li>
+</ul>
+<p>Таким образом, решение дифференциальных уравнений численно часто
+сводится к решению СЛАУ, а свойства этой СЛАУ (например, спектр матрицы)
+напрямую связаны со свойствами исходной дифференциальной задачи.</p>
+<hr />
+<h3
+id="оптимизация-скорости-сходимости-итерационных-процессов.-выбор-оптимального-итеративного-параметра.-чебышевское-ускорение-итераций.">17.
+Оптимизация скорости сходимости итерационных процессов. Выбор
+оптимального итеративного параметра. Чебышевское ускорение
+итераций.</h3>
+<p>Для метода простой итерации <span class="math inline">x^{(m+1)} = (E
+- \tau A)x^{(m)} + \tau b</span> с симметричной положительно
+определенной матрицей <span class="math inline">A</span>, скорость
+сходимости определяется нормой оператора перехода <span
+class="math inline">q = ||E - \tau A||</span>. Для минимизации <span
+class="math inline">q</span> (и ускорения сходимости) необходимо решить
+задачу: <span class="math inline">\min_\tau \max_\lambda |1 -
+\tau\lambda|</span>, где <span class="math inline">\lambda</span>
+пробегает все собственные значения матрицы <span
+class="math inline">A</span>.</p>
+<p><strong>1. Выбор оптимального постоянного параметра <span
+class="math inline">\tau_0</span>:</strong></p>
+<ul>
+<li>Пусть собственные значения <span class="math inline">A</span> лежат
+в интервале <span class="math inline">[l, L]</span>, где <span
+class="math inline">l = \lambda_{\min} &gt; 0</span>, <span
+class="math inline">L = \lambda_{\max} &gt; 0</span>.</li>
+<li>Функция <span class="math inline">y(\tau) = |1 - \tau\lambda|</span>
+максимальна на концах интервала, то есть <span
+class="math inline">\max_\lambda|1-\tau\lambda| = \max(|1-\tau l|,
+|1-\tau L|)</span>.</li>
+<li>Минимум этой величины достигается, когда <span
+class="math inline">|1-\tau_0 l| = |1-\tau_0 L|</span>. Отсюда находится
+<strong>оптимальный параметр <span
+class="math inline">\tau_0</span></strong>: <span
+class="math inline">\tau_0 = \frac{2}{l+L}</span>.</li>
+<li>При таком <span class="math inline">\tau_0</span> скорость
+сходимости (знаменатель прогрессии) равна: <span class="math inline">q =
+\max_{\lambda \in [l,L]} |1-\tau_0\lambda| = 1 - \frac{2}{L/l+1} =
+\frac{L/l-1}{L/l+1}</span>. При <span class="math inline">l/L \ll
+1</span>, <span class="math inline">q \approx 1 -
+2\frac{l}{L}</span>.</li>
+<li>Число итераций <span class="math inline">m</span> для достижения
+точности <span class="math inline">\varepsilon</span> оценивается как
+<span class="math inline">m_{\tau_0} \approx
+\frac{\ln\varepsilon}{\ln(1-2l/L)} \approx
+\frac{L}{2l}\ln\frac{1}{\varepsilon}</span>.</li>
+</ul>
+<p><strong>2. Чебышевское ускорение итераций (метод с переменным
+параметром):</strong></p>
+<p>Идея состоит в использовании на каждом шаге своего параметра <span
+class="math inline">\tau_j</span>, чтобы минимизировать ошибку за <span
+class="math inline">m</span> шагов. * Ошибка после <span
+class="math inline">m</span> шагов: <span
+class="math inline">\delta^{(m)} = \prod_{j=1}^m (E - \tau_j A)
+\delta^{(0)}</span>. * Задача сводится к: <span
+class="math inline">\min_{\{\tau_j\}} \max_{\lambda \in [l,L]}
+\left|\prod_{j=1}^m (1 - \tau_j\lambda)\right|</span>. * Решением этой
+задачи является <strong>полином Чебышева</strong>, наименее уклоняющийся
+от нуля на отрезке. Корни этого полинома определяют оптимальный набор
+итерационных параметров <span class="math inline">\{\tau_j\}</span>:
+<span class="math inline">\tau_j = \left[\frac{L+l}{2} + \frac{L-l}{2}
+\cos \frac{\pi(2j-1)}{2m}\right]^{-1}, \quad j=1,...,m</span>. * Для
+такого набора параметров скорость сходимости значительно выше: <span
+class="math inline">q \approx 1-2\sqrt{\frac{l}{L}}</span>. * Число
+итераций оценивается как <span class="math inline">m_ч \approx
+\frac{\ln\varepsilon}{\ln(1-2\sqrt{l/L})} \approx
+\frac{1}{2}\sqrt{\frac{L}{l}}\ln\frac{1}{\varepsilon}</span>. *
+<strong>Эффективность:</strong> <span
+class="math inline">\frac{m_{\tau_0}}{m_ч} \approx
+\sqrt{\frac{L}{l}}</span>. Если <span class="math inline">L/l</span>
+велико (плохо обусловленная матрица), ускорение может быть очень
+существенным.</p>
+<p><strong>Недостаток:</strong> Чебышевский набор параметров в
+естественном порядке приводит к численно неустойчивому процессу. Для
+устойчивости параметры <span class="math inline">\{\tau_j\}</span> нужно
+использовать в специальном, “перемешанном” порядке.</p>
+<hr />
+<h3
+id="подходы-к-решению-нелинейных-уравнений.-вопрос-выбора-начального-приближения.-отделение-корня-интервал-изоляции.">18.
+Подходы к решению нелинейных уравнений. Вопрос выбора начального
+приближения. Отделение корня, интервал изоляции.</h3>
+<p>Задача решения нелинейного уравнения состоит в нахождении корней
+(нулей) <span class="math inline">x^*</span> уравнения <span
+class="math inline">f(x) = 0</span>.</p>
+<p><strong>Этапы решения:</strong> 1. <strong>Локализация (отделение)
+корней:</strong> Определение интервалов, в каждом из которых содержится
+ровно один корень. Такой интервал называется <strong>интервалом
+изоляции</strong>. 2. <strong>Уточнение корня:</strong> Нахождение
+значения корня в интервале изоляции с заданной точностью.</p>
+<p><strong>Методы локализации корней:</strong> *
+<strong>Графический:</strong> Построение графика функции <span
+class="math inline">y=f(x)</span> и нахождение точек его пересечения с
+осью <span class="math inline">Ox</span>. *
+<strong>Аналитический:</strong> Использование свойств функции
+(непрерывность, монотонность, знаки на концах отрезка). Если непрерывная
+функция <span class="math inline">f(x)</span> принимает на концах
+отрезка <span class="math inline">[a, b]</span> значения разных знаков
+(<span class="math inline">f(a)f(b) &lt; 0</span>), то на этом отрезке
+есть как минимум один корень. Если к тому же производная <span
+class="math inline">f&#39;(x)</span> сохраняет знак на <span
+class="math inline">[a, b]</span>, то корень на этом отрезке
+единственный. * <strong>Табулирование:</strong> Вычисление значений
+функции в ряде точек и поиск смены знака.</p>
+<p><strong>Вопрос выбора начального приближения:</strong> Выбор
+начального приближения <span class="math inline">x_0</span> критически
+важен для сходимости и скорости сходимости итерационных методов. * Для
+<strong>двухточечных методов</strong> (дихотомия, хорды) требуется
+задать интервал изоляции <span class="math inline">[a, b]</span>. * Для
+<strong>одноточечных методов</strong> (Ньютона, МПИ) требуется задать
+одно начальное приближение <span class="math inline">x_0</span>. Хороший
+выбор <span class="math inline">x_0</span> (достаточно близко к корню)
+обеспечивает сходимость. Плохой выбор может привести к расходимости,
+зацикливанию или сходимости к другому корню.</p>
+<p><strong>Классификация методов уточнения корней:</strong> *
+<strong>Двухточечные:</strong> Используют информацию об интервале
+локализации. Гарантируют сходимость, но могут быть медленными. (Пример:
+дихотомия, хорды). * <strong>Одноточечные:</strong> Не требуют
+интервала, используют значение функции и её производных в одной точке.
+Могут быть очень быстрыми, но сходимость не гарантирована. (Пример:
+метод Ньютона).</p>
+<hr />
+<h3 id="метод-дихотомии-и-метод-хорд-решения-нелинейного-уравнения.">19.
+Метод дихотомии и метод хорд решения нелинейного уравнения.</h3>
+<p>Это двухточечные методы, требующие задания интервала изоляции <span
+class="math inline">[a, b]</span>, на концах которого <span
+class="math inline">f(a)f(b) &lt; 0</span>.</p>
+<p><strong>1. Метод деления отрезка пополам (дихотомия):</strong></p>
+<ul>
+<li><strong>Идея:</strong> На каждом шаге интервал, содержащий корень,
+делится пополам. Для следующего шага выбирается та половина, на концах
+которой функция сохраняет разные знаки.</li>
+<li><strong>Алгоритм:</strong>
+<ol type="1">
+<li>Задан интервал <span class="math inline">[a_0, b_0]</span>.</li>
+<li>На <span class="math inline">n</span>-м шаге вычисляется середина
+отрезка <span class="math inline">c_n = (a_n + b_n)/2</span>.</li>
+<li>Вычисляется <span class="math inline">f(c_n)</span>.</li>
+<li>Если <span class="math inline">f(a_n)f(c_n) &lt; 0</span>, то новый
+отрезок <span class="math inline">[a_{n+1}, b_{n+1}] = [a_n,
+c_n]</span>.</li>
+<li>Иначе (если <span class="math inline">f(c_n)f(b_n) &lt; 0</span>),
+новый отрезок <span class="math inline">[a_{n+1}, b_{n+1}] = [c_n,
+b_n]</span>.</li>
+<li>Процесс повторяется до тех пор, пока длина отрезка <span
+class="math inline">(b_n - a_n)</span> не станет меньше заданной
+точности <span class="math inline">2\varepsilon</span>.</li>
+</ol></li>
+<li><strong>Свойства:</strong>
+<ul>
+<li><strong>Надежность:</strong> Метод всегда сходится, если <span
+class="math inline">f(x)</span> непрерывна.</li>
+<li><strong>Скорость:</strong> <strong>Линейная</strong>. Длина отрезка
+на <span class="math inline">n</span>-м шаге <span
+class="math inline">(b-a)/2^n</span>. <span
+class="math inline">|x_n-x^*| \le \frac{1}{2}(b-a)2^{-n}</span>.</li>
+<li><strong>Недостаток:</strong> Не учитывает значения функции, только
+их знаки. Не находит корни четной кратности.</li>
+</ul></li>
+</ul>
+<p><strong>2. Метод хорд (метод секущих):</strong></p>
+<ul>
+<li><strong>Идея:</strong> Вместо деления отрезка пополам, он делится в
+точке пересечения <strong>хорды</strong> (секущей), соединяющей точки
+<span class="math inline">(a, f(a))</span> и <span
+class="math inline">(b, f(b))</span>, с осью <span
+class="math inline">Ox</span>.</li>
+<li><strong>Алгоритм (с проверкой знаков):</strong>
+<ol type="1">
+<li>Уравнение хорды: <span class="math inline">\frac{y - f(a)}{x-a} =
+\frac{f(b)-f(a)}{b-a}</span>.</li>
+<li>Точка пересечения с осью <span class="math inline">y=0</span>: <span
+class="math inline">c = a - \frac{f(a)(b-a)}{f(b)-f(a)}</span>.</li>
+<li>Как и в дихотомии, выбирается новый подынтервал (<span
+class="math inline">[a, c]</span> или <span class="math inline">[c,
+b]</span>), на концах которого <span class="math inline">f(x)</span>
+имеет разные знаки.</li>
+</ol></li>
+<li><strong>Вариант без проверки знаков (метод секущих):</strong>
+Итерационная формула, использующая две последние точки <span
+class="math inline">x_n</span> и <span
+class="math inline">x_{n-1}</span>: <span class="math inline">x_{n+1} =
+x_n - \frac{f(x_n)}{ (f(x_n) - f(x_{n-1}))/(x_n-x_{n-1}) }</span></li>
+<li><strong>Свойства:</strong>
+<ul>
+<li>Скорость сходимости обычно выше, чем у дихотомии (сверхлинейная,
+порядок <span class="math inline">\approx 1.618</span>), особенно если
+функция близка к линейной.</li>
+<li>Менее надежен, чем дихотомия (вариант без проверки знаков может
+разойтись).</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="метод-ньютона.">20. Метод Ньютона.</h3>
+<p>Метод Ньютона (метод касательных) — это один из самых эффективных
+одноточечных методов решения нелинейного уравнения <span
+class="math inline">f(x) = 0</span>.</p>
+<p><strong>Идея метода:</strong> На каждом шаге итерации кривая <span
+class="math inline">y=f(x)</span> заменяется
+<strong>касательной</strong>, проведенной в текущей точке приближения
+<span class="math inline">(x_n, f(x_n))</span>. Следующее приближение
+<span class="math inline">x_{n+1}</span> — это точка пересечения этой
+касательной с осью <span class="math inline">Ox</span>.</p>
+<p><strong>Вывод формулы:</strong> 1. Будем использовать приближенную
+формулу <span class="math inline">f(x) \approx f(x_n) +
+f&#39;(x_n)(x-x_n)</span>. 2. Вместо исходного уравнения <span
+class="math inline">f(x)=0</span> воспользуемся линейным уравнением:
+<span class="math inline">f(x_n) + f&#39;(x_n)(x - x_n) = 0</span>. 3.
+Решение этого уравнения примем за приближение <span
+class="math inline">x_{n+1}</span>: <span class="math inline">x_{n+1} =
+x_n - \frac{f(x_n)}{f&#39;(x_n)}</span>, для <span
+class="math inline">n=0,1,2,3,...</span></p>
+<p><strong>Условия сходимости:</strong> 1.
+<strong>Геометрические:</strong> Метод сходится, если начальное
+приближение <span class="math inline">x_0</span> выбрано достаточно
+близко к корню <span class="math inline">x^*</span>, а функция <span
+class="math inline">f(x)</span> “ведет себя хорошо” (не слишком пологая,
+без резких изгибов). 2. <strong>Аналитические:</strong> Пусть всюду на
+<span class="math inline">[a,b]</span> выполняются условия: <span
+class="math inline">|f&#39;(x)| &gt; M_1 &gt; 0</span> <span
+class="math inline">|f&#39;&#39;(x)| &lt; M_2</span> Тогда, если нулевое
+приближение <span class="math inline">x_0</span> находится в <span
+class="math inline">\varepsilon</span>-окрестности корня <span
+class="math inline">x^*</span> (<span
+class="math inline">O_\varepsilon(x_*)</span>), то итерационный процесс
+сходится. Более строго, сходимость гарантирована, если на интервале
+изоляции <span class="math inline">[a, b]</span> производные <span
+class="math inline">f&#39;(x)</span> и <span
+class="math inline">f&#39;&#39;(x)</span> сохраняют знак, и <span
+class="math inline">x_0</span> выбрано так, что <span
+class="math inline">f(x_0)f&#39;&#39;(x_0) &gt; 0</span>.</p>
+<p><strong>Скорость сходимости:</strong> *
+<strong>Квадратичная:</strong> Если <span
+class="math inline">f&#39;(x^*) \ne 0</span> (простой корень), то <span
+class="math inline">|x_{n+1}-x^*| \le
+\frac{M_2}{2M_1}|x_n-x^*|^2</span>. Это означает, что на каждом шаге
+количество верных значащих цифр примерно удваивается. *
+<strong>Линейная:</strong> Если корень кратный (<span
+class="math inline">f&#39;(x^*)=0</span>), сходимость замедляется до
+линейной.</p>
+<p><strong>Недостатки:</strong> * Требует вычисления производной на
+каждом шаге, что может быть трудоемко. * Локальный характер сходимости
+(требует хорошего <span class="math inline">x_0</span>).</p>
+<hr />
+<h3 id="применение-метода-ньютона-к-вычислению-значений-функций.">21.
+Применение метода Ньютона к вычислению значений функций.</h3>
+<p>Метод Ньютона можно использовать для вычисления значений различных
+функций (<span class="math inline">y=f(a)</span>), особенно если прямые
+вычисления сложны, а операция деления доступна.</p>
+<p><strong>Общий подход:</strong> 1. <strong>Неявное
+представление:</strong> Требуемое значение <span
+class="math inline">x=f(a)</span> представляется как корень неявного
+уравнения <span class="math inline">F(a, x) = 0</span>. Функция <span
+class="math inline">F</span> подбирается так, чтобы она была легко
+дифференцируема по <span class="math inline">x</span>, а ее вычисление
+было простым. 2. <strong>Применение метода Ньютона:</strong> К уравнению
+<span class="math inline">F(a, x) = 0</span> (где <span
+class="math inline">a</span> — параметр) применяется итерационная
+формула Ньютона для нахождения <span class="math inline">x</span>: <span
+class="math inline">x_{n+1} = x_n - \frac{F(a, x_n)}{F&#39;_x(a,
+x_n)}</span>, для <span class="math inline">n=0,1,2,3...</span></p>
+<p><strong>Примеры:</strong></p>
+<ol type="1">
+<li><strong>Вычисление квадратного корня <span class="math inline">x =
+\sqrt{a}</span>:</strong>
+<ul>
+<li>Уравнение: <span class="math inline">x^2 - a = 0</span>.</li>
+<li><span class="math inline">F(a, x) = x^2 - a</span>, <span
+class="math inline">F&#39;_x(a, x) = 2x</span>.</li>
+<li>Итерационная формула (формула Герона): <span
+class="math inline">x_{n+1} = x_n - \frac{x_n^2 - a}{2x_n} =
+\frac{1}{2}\left(x_n+\frac{a}{x_n}\right)</span></li>
+</ul></li>
+<li><strong>Вычисление корня m-й степени <span class="math inline">x =
+\sqrt[m]{a}</span>:</strong>
+<ul>
+<li>Уравнение: <span class="math inline">x^m - a = 0</span>.</li>
+<li><span class="math inline">F(a, x) = x^m - a</span>, <span
+class="math inline">F&#39;_x(a, x) = mx^{m-1}</span>.</li>
+<li>Итерационная формула: <span class="math inline">x_{n+1} = x_n -
+\frac{x_n^m - a}{mx_n^{m-1}} = \frac{1}{m}((m-1)x_n +
+\frac{a}{x_n^{m-1}})</span></li>
+</ul></li>
+<li><strong>Вычисление обратной величины <span class="math inline">x =
+1/a</span> без деления:</strong>
+<ul>
+<li>Уравнение: <span class="math inline">a - \frac{1}{x} =
+0</span>.</li>
+<li><span class="math inline">F(a, x) = a - \frac{1}{x}</span>, <span
+class="math inline">F&#39;_x(a, x) = \frac{1}{x^2}</span>.</li>
+<li>Итерационная формула: <span class="math inline">x_{n+1} = x_n -
+\frac{a-1/x_n}{1/x_n^2} = x_n(2-ax_n)</span> Этот процесс использует
+только умножение и вычитание. Итерации сходятся, если <span
+class="math inline">x_0 \in (0, 2/a)</span>.</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="модификации-метода-ньютона.-метод-ньютона-шрёдера.">22.
+Модификации метода Ньютона. Метод Ньютона-Шрёдера.</h3>
+<p>Основной недостаток метода Ньютона — необходимость вычислять
+производную <span class="math inline">f&#39;(x_n)</span> на каждой
+итерации. Модификации направлены на упрощение этого шага.</p>
+<p><strong>1. Упрощенный (огрубленный) метод Ньютона:</strong></p>
+<ul>
+<li><strong>Идея:</strong> Производная вычисляется только один раз в
+начальной точке <span class="math inline">x_0</span> и используется на
+всех последующих шагах.</li>
+<li><strong>Формула:</strong> <span class="math inline">x_{n+1} = x_n -
+\frac{f(x_n)}{f&#39;(x_0)}</span>, для <span
+class="math inline">n=0,1,2,3...</span></li>
+<li><strong>Геометрический смысл:</strong> Все последующие секущие
+параллельны касательной в точке <span
+class="math inline">x_0</span>.</li>
+<li><strong>Скорость:</strong> Квадратичная сходимость теряется, метод
+сходится <strong>линейно</strong>.</li>
+</ul>
+<p><strong>2. Разностный метод Ньютона (метод секущих):</strong></p>
+<ul>
+<li><strong>Идея:</strong> Производная <span
+class="math inline">f&#39;(x_n)</span> аппроксимируется конечной
+разностью.</li>
+<li><strong>Формула:</strong> <span class="math inline">x_{n+1} = x_n -
+\frac{f(x_n)(x_n - x_{n-1})}{f(x_n) - f(x_{n-1})}</span>. Другой вариант
+— использование малого шага <span class="math inline">h_n</span>: <span
+class="math inline">x_{n+1} = x_n - \frac{h_n f(x_n)}{f(x_n+h_n) -
+f(x_n)}</span>.</li>
+<li><strong>Скорость:</strong> Сверхлинейная (для метода секущих) или
+близкая к квадратичной (при малом <span
+class="math inline">h_n</span>).</li>
+</ul>
+<p><strong>3. Методы высших порядков:</strong></p>
+<ul>
+<li><strong>Идея:</strong> Использовать больше членов в разложении
+Тейлора для аппроксимации функции. Например, квадратичная
+аппроксимация.</li>
+<li><strong>Формула 3-го порядка:</strong> <span
+class="math inline">f(x_n) + f&#39;(x_n)(x_{n+1}-x_n) +
+\frac{1}{2}f&#39;&#39;(x_n)(x_{n+1}-x_n)^2 = 0</span>. Используя <span
+class="math inline">x_{n+1}-x_n \approx
+-\frac{f(x_n)}{f&#39;(x_n)}</span>, получаем: <span
+class="math inline">x_{n+1} = x_n - \frac{f(x_n)}{f&#39;(x_n)} -
+\frac{1}{2}\frac{f&#39;&#39;(x_n)}{f&#39;(x_n)}\left(\frac{f(x_n)}{f&#39;(x_n)}\right)^2
+= x_n - \frac{f(x_n)}{f&#39;(x_n)} - \frac{f(x_n)^2
+f&#39;&#39;(x_n)}{2f&#39;(x_n)^3}</span>.</li>
+<li><strong>Скорость:</strong> Кубическая. Требует вычисления второй
+производной, что еще более трудоемко.</li>
+</ul>
+<p><strong>4. Метод Ньютона для кратных корней (Метод
+Ньютона-Шрёдера):</strong></p>
+<ul>
+<li><strong>Проблема:</strong> Если корень <span
+class="math inline">x^*</span> имеет кратность <span
+class="math inline">m &gt; 1</span>, то <span
+class="math inline">f&#39;(x^*) = 0</span>, и обычный метод Ньютона
+сходится лишь <strong>линейно</strong> со знаменателем <span
+class="math inline">(m-1)/m</span>. <span
+class="math inline">x_{n+1}-x_* \approx
+\frac{m-1}{m}(x_n-x_*)</span>.</li>
+<li><strong>Идея:</strong> Модифицировать шаг итерации, умножив его на
+известную кратность корня <span class="math inline">m</span>.</li>
+<li><strong>Формула:</strong> <span class="math inline">x_{n+1} = x_n -
+m\frac{f(x_n)}{f&#39;(x_n)}</span>.</li>
+<li><strong>Скорость:</strong> Эта модификация восстанавливает
+<strong>квадратичную</strong> скорость сходимости для кратных корней.
+<span class="math inline">x_{n+1}-x_* = O((x_n-x_*)^2)</span>.</li>
+<li><strong>Недостаток:</strong> Требуется заранее знать кратность корня
+<span class="math inline">m</span>.</li>
+</ul>
+<hr />
+<h3
+id="методы-решения-снау-систем-нелинейных-алгебраических-уравнений.-метод-простых-итераций.">23.
+Методы решения СНАУ (систем нелинейных алгебраических) уравнений. Метод
+простых итераций.</h3>
+<p>Система нелинейных алгебраических уравнений (СНАУ) имеет вид: <span
 class="math display">
 \left\{
 \begin{aligned}
@@ -1370,434 +1531,625 @@ f_1(x_1, \dots, x_n) &amp;= 0 \\
 f_n(x_1, \dots, x_n) &amp;= 0
 \end{aligned}
 \right.
-</span> удобно записывать в векторной форме: <span class="math display">
-f(x) = 0 </span> где <span class="math inline">x = (x_1, \dots,
-x_n)^T</span> и <span class="math inline">f = (f_1, \dots,
-f_n)^T</span>.</p>
-<p><strong>Метод простой итерации (МПИ) для СНАУ</strong> Аналогично
-одномерному случаю, система <span class="math inline">f(x)=0</span>
-приводится к эквивалентному виду: <span class="math display"> x =
-\varphi(x) </span> где <span class="math inline">\varphi(x) =
-(\varphi_1(x), \dots, \varphi_n(x))^T</span> — вектор-функция.
-Итерационный процесс строится следующим образом: <span
-class="math display"> x^{(m+1)} = \varphi(x^{(m)}) </span> начиная с
-некоторого начального приближения <span
-class="math inline">x^{(0)}</span>.</p>
-<p><strong>Сходимость МПИ для СНАУ:</strong> Процесс сходится, если в
-некоторой замкнутой выпуклой области <span
-class="math inline">\Omega</span>, содержащей корень, отображение <span
-class="math inline">\varphi(x)</span> является
-<strong>сжимающим</strong>. * <strong>Определение сжимающего
-отображения:</strong> Существует число <span class="math inline">q \in
-[0, 1)</span> такое, что для любых <span class="math inline">x_1, x_2
-\in \Omega</span> выполняется: <span class="math display">
-\rho(\varphi(x_1), \varphi(x_2)) \le q \rho(x_1,x_2) </span> где <span
-class="math inline">\rho</span> — метрика (расстояние) в <span
-class="math inline">\mathbb{R}^n</span>.</p>
+</span> или в векторной форме <span class="math inline">f(x) = 0</span>,
+где <span class="math inline">x = (x_1, \dots, x_n)^T</span> и <span
+class="math inline">f = (f_1, \dots, f_n)^T</span>.</p>
+<p><strong>Метод простой итерации (МПИ) для СНАУ:</strong></p>
+<p>Является обобщением одномерного случая.</p>
+<ol type="1">
+<li><p><strong>Преобразование системы:</strong> Исходная система <span
+class="math inline">f(x) = 0</span> преобразуется к эквивалентному виду:
+<span class="math inline">x = \varphi(x)</span> или покомпонентно: <span
+class="math display">
+\begin{aligned}
+x_1 &amp;= \varphi_1(x_1, \dots, x_n) \\
+\dots \\
+x_n &amp;= \varphi_n(x_1, \dots, x_n)
+\end{aligned}
+</span></p></li>
+<li><p><strong>Итерационный процесс:</strong></p>
 <ul>
-<li><strong>Достаточное условие сходимости:</strong> Пусть в выпуклой
-области <span class="math inline">\Omega</span> компоненты <span
-class="math inline">\varphi_i(x)</span> имеют непрерывные частные
-производные. Если норма <strong>матрицы Якоби</strong> отображения <span
-class="math inline">\varphi(x)</span> меньше единицы: <span
-class="math display"> ||\mathcal{J}(x)|| = \left\| \frac{d\varphi}{dx}
-\right\| = \left\| \begin{pmatrix} \frac{\partial \varphi_1}{\partial
-x_1} &amp; \dots &amp; \frac{\partial \varphi_1}{\partial x_n} \\ \vdots
-&amp; \ddots &amp; \vdots \\ \frac{\partial \varphi_n}{\partial x_1}
-&amp; \dots &amp; \frac{\partial \varphi_n}{\partial x_n} \end{pmatrix}
-\right\| \le q &lt; 1, \quad \forall x \in \Omega </span> то отображение
-является сжимающим, и МПИ сходится к единственному в <span
-class="math inline">\Omega</span> решению.</li>
+<li>Выбирается начальное приближение (вектор) <span
+class="math inline">x^{(0)}</span>.</li>
+<li>Последовательность приближений строится по формуле: <span
+class="math inline">x^{(m+1)} = \varphi(x^{(m)})</span></li>
+</ul></li>
+</ol>
+<p><strong>Сходимость МПИ для СНАУ:</strong></p>
+<ul>
+<li><p><strong>Определение (Выпуклая область):</strong> Область <span
+class="math inline">\Omega \subset \mathbb{R}^n</span> называют
+<strong>выпуклой</strong>, если наряду с двумя любыми точками <span
+class="math inline">a \in \Omega</span> и <span class="math inline">b
+\in \Omega</span> она включает все точки отрезка <span
+class="math inline">[a,b]</span>.</p></li>
+<li><p><strong>Определение (Сжимающее отображение):</strong> Отображение
+<span class="math inline">y=\varphi(x)</span> называется
+<strong>сжимающим</strong> в замкнутой выпуклой области <span
+class="math inline">\Omega</span>, если <span
+class="math inline">\exists q: 0 \le q &lt; 1</span> и <span
+class="math inline">\rho(\varphi(x_1), \varphi(x_2)) \le q
+\rho(x_1,x_2)</span>, <span class="math inline">\forall x_1, x_2 \in
+\Omega</span>, где <span class="math inline">\rho(x_1,x_2)</span> —
+метрика в <span class="math inline">\mathbb{R}^n</span>.</p></li>
+<li><p><strong>Теорема (Принцип сжимающих отображений):</strong> Для
+сжимающего отображения <span class="math inline">y=\varphi(x)</span>
+уравнение <span class="math inline">x=\varphi(x)</span> имеет
+единственное решение <span class="math inline">x_*</span>, и
+итерационный процесс <span class="math inline">x^{(m+1)} =
+\varphi(x^{(m)})</span> сходится к <span class="math inline">x^*</span>
+при любом <span class="math inline">x^{(0)}</span>.</p></li>
+<li><p><strong>Достаточное условие сходимости (через матрицу
+Якоби):</strong> Пусть область <span class="math inline">\Omega \subset
+\mathbb{R}^n</span> выпуклая, <span class="math inline">x \in
+\Omega</span>, а компоненты <span
+class="math inline">\varphi_i(x)</span> вектор-функции <span
+class="math inline">\varphi(x)=(\varphi_1, \dots, \varphi_n)^T</span>
+имеют равномерно непрерывные производные первого порядка. Положим, что
+норма матрицы Якоби <span class="math inline">J = \frac{d\varphi(x)}{dx}
+= \begin{pmatrix} \frac{\partial \varphi_1}{\partial x_1} &amp; \dots
+&amp; \frac{\partial \varphi_1}{\partial x_n} \\ \vdots &amp; \ddots
+&amp; \vdots \\ \frac{\partial \varphi_n}{\partial x_1} &amp; \dots
+&amp; \frac{\partial \varphi_n}{\partial x_n} \end{pmatrix}</span> не
+превосходит некоторого числа <span class="math inline">0 \le q &lt;
+1</span>, т.е. <span class="math inline">||J|| \le q &lt; 1, \quad
+\forall x \in \Omega</span>. Тогда отображение <span
+class="math inline">y=\varphi(x)</span> является сжимающим в <span
+class="math inline">\Omega</span>, т.е. <span
+class="math inline">\rho(\varphi(x_1), \varphi(x_2)) \le q
+\rho(x_1,x_2)</span>.</p></li>
 </ul>
-<p>Выбор формы <span class="math inline">x=\varphi(x)</span> критически
-важен для сходимости. Разные формы приводят к разным матрицам Якоби и,
-соответственно, к разным условиям сходимости.</p>
+<p>Как и в одномерном случае, выбор представления <span
+class="math inline">x=\varphi(x)</span> и начального приближения <span
+class="math inline">x^{(0)}</span> является ключевым для обеспечения
+сходимости.</p>
 <hr />
 <h3
-id="метод-ньютона-решения-снау.-его-реализации-и-модификации.-вопрос-о-сходимости-метода-ньютона.">21.
+id="метод-ньютона-решения-снау.-его-реализации-и-модификации.-вопрос-о-сходимости-метода-ньютона.">24.
 Метод Ньютона решения СНАУ. Его реализации и модификации. Вопрос о
 сходимости метода Ньютона.</h3>
-<p>(На основе Лекции №11, 6-й семестр)</p>
-<p><strong>Метод Ньютона для СНАУ</strong> — это обобщение одномерного
-метода Ньютона. Он основан на линеаризации системы в окрестности
-текущего приближения.</p>
-<p>Вектор-функция <span class="math inline">f(x)</span> раскладывается в
-ряд Тейлора в окрестности <span class="math inline">x^{(m)}</span>:
-<span class="math display"> f(x) \approx f(x^{(m)}) +
-\mathcal{J}(x^{(m)})(x - x^{(m)}) </span> где <span
-class="math inline">\mathcal{J}(x^{(m)})</span> — матрица Якоби системы
-<span class="math inline">f(x)=0</span>, вычисленная в точке <span
-class="math inline">x^{(m)}</span>: <span class="math display">
-\mathcal{J}_{ij} = \frac{\partial f_i}{\partial x_j} </span> Приравнивая
-это выражение к нулю, чтобы найти следующее приближение <span
-class="math inline">x^{(m+1)}</span>, получаем СЛАУ относительно
-поправки <span class="math inline">\Delta x^{(m)} = x^{(m+1)} -
-x^{(m)}</span>: <span class="math display"> \mathcal{J}(x^{(m)}) \Delta
-x^{(m)} = -f(x^{(m)}) </span></p>
-<p><strong>Алгоритм метода Ньютона:</strong> На каждом шаге <span
-class="math inline">m</span>: 1. Вычислить вектор невязок <span
-class="math inline">f(x^{(m)})</span>. 2. Вычислить матрицу Якоби <span
-class="math inline">\mathcal{J}(x^{(m)})</span>. 3. Решить СЛАУ <span
-class="math inline">\mathcal{J}(x^{(m)}) \Delta x^{(m)} =
--f(x^{(m)})</span> относительно <span class="math inline">\Delta
-x^{(m)}</span> (например, методом Гаусса). 4. Найти новое приближение:
-<span class="math inline">x^{(m+1)} = x^{(m)} + \Delta x^{(m)}</span>.
-Процесс повторяется до достижения необходимой точности, например, пока
-<span class="math inline">||f(x^{(m)})|| &lt; \varepsilon</span> или
-<span class="math inline">||\Delta x^{(m)}|| &lt;
-\varepsilon</span>.</p>
-<p><strong>Сходимость:</strong> * Метод Ньютона имеет
-<strong>квадратичную скорость сходимости</strong> в малой окрестности
-решения. * Однако сходимость является <strong>локальной</strong>: она
-гарантирована только при достаточно хорошем начальном приближении <span
-class="math inline">x^{(0)}</span>. При неудачном выборе <span
-class="math inline">x^{(0)}</span> итерации могут расходиться. *
-Достаточные условия сходимости достаточно сложны и на практике их трудно
-проверить.</p>
-<p><strong>Модификации:</strong> Основная трудность метода —
-необходимость на каждом шаге вычислять матрицу Якоби и решать новую
-СЛАУ. * <strong>Упрощенный (модифицированный) метод Ньютона:</strong>
-Матрица Якоби вычисляется и обращается только один раз, в начальной
-точке <span class="math inline">x^{(0)}</span>: <span
-class="math display"> x^{(m+1)} = x^{(m)} - \mathcal{J}^{-1}(x^{(0)})
-f(x^{(m)}) </span> Это значительно снижает вычислительные затраты на
-итерацию, но скорость сходимости падает до линейной.</p>
+<p>Метод Ньютона является обобщением одномерного метода на системы
+уравнений и одним из самых эффективных методов решения СНАУ.</p>
+<p><strong>Идея метода:</strong> На каждом шаге система нелинейных
+функций <span class="math inline">f(x)</span> линеаризуется в
+окрестности текущего приближения <span
+class="math inline">x^{(m)}</span> с помощью разложения в ряд Тейлора
+(ограничиваясь линейными членами). <span class="math inline">f(x)
+\approx f(x^{(m)}) + f&#39;(x^{(m)})(x - x^{(m)})</span> Здесь <span
+class="math inline">f&#39;(x)</span> — это <strong>матрица
+Якоби</strong> <span class="math inline">J(x)</span> системы <span
+class="math inline">f(x)</span>. <span class="math display">
+J(x) = f&#39;(x) = \frac{df}{dx} = \begin{pmatrix}
+\frac{\partial f_1}{\partial x_1} &amp; \dots &amp; \frac{\partial
+f_1}{\partial x_n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+\frac{\partial f_n}{\partial x_1} &amp; \dots &amp; \frac{\partial
+f_n}{\partial x_n}
+\end{pmatrix}
+</span></p>
+<p><strong>Вывод итерационной формулы:</strong> 1. Линеаризованная
+система: <span class="math inline">f(x^{(m)}) + J(x^{(m)})(x^{(m+1)} -
+x^{(m)}) = 0</span>. 2. Выражаем поправку <span
+class="math inline">\Delta x^{(m)} = x^{(m+1)} - x^{(m)}</span>, решая
+СЛАУ: <span class="math inline">J(x^{(m)})\Delta x^{(m)} =
+-f(x^{(m)})</span>. 3. Новое приближение: <span
+class="math inline">x^{(m+1)} = x^{(m)} + \Delta x^{(m)}</span>. Или, в
+терминах обратной матрицы: <span class="math inline">x^{(m+1)} = x^{(m)}
+- [J(x^{(m)})]^{-1}f(x^{(m)})</span>.</p>
+<p><strong>Реализация одного шага метода Ньютона:</strong> 1. Вычислить
+вектор <span class="math inline">f(x^{(m)})</span>. 2. Вычислить матрицу
+Якоби <span class="math inline">J(x^{(m)})</span>. 3. Решить СЛАУ <span
+class="math inline">J(x^{(m)})\Delta x = -f(x^{(m)})</span> относительно
+<span class="math inline">\Delta x</span>. 4. Найти новое приближение
+<span class="math inline">x^{(m+1)} = x^{(m)} + \Delta x</span>.</p>
+<p><strong>Модификации:</strong> * <strong>Упрощенный метод
+Ньютона:</strong> Матрица Якоби и ее обратная (или LU-разложение)
+вычисляются только один раз <span class="math inline">J(x^{(0)})</span>.
+На последующих шагах решается СЛАУ с той же матрицей. Это снижает
+трудоемкость шага, но замедляет сходимость с квадратичной до линейной. *
+<strong>Разностный метод Ньютона:</strong> Элементы матрицы Якоби <span
+class="math inline">\frac{\partial f_i}{\partial x_j}</span> заменяются
+конечно-разностными аппроксимациями.</p>
+<p><strong>Вопрос о сходимости:</strong> * <strong>Локальная
+сходимость:</strong> Метод Ньютона обладает <strong>квадратичной
+скоростью сходимости</strong>, если начальное приближение <span
+class="math inline">x^{(0)}</span> выбрано достаточно близко к решению
+<span class="math inline">x^*</span> и если матрица Якоби <span
+class="math inline">J(x^*)</span> невырождена. *
+<strong>Сложность:</strong> Достаточные условия сходимости для СНАУ
+имеют сложный вид и на практике их трудно проверить. Сходимость сильно
+зависит от выбора <span class="math inline">x^{(0)}</span>. Если <span
+class="math inline">x^{(0)}</span> далеко от решения, метод может легко
+разойтись.</p>
 <hr />
 <h3
-id="сведение-задачи-решения-слау-и-снау-к-задаче-нахождения-минимума-функционала.-проблема-поиска-минимума-и-различные-подходы-к-ее-решению.-метод-покоординатного-спуска.-метод-скорейшего-наискорейшего-спуска.-метод-минимальных-невязок.">22.
+id="сведение-задачи-решения-слау-и-снау-к-задаче-нахождения-минимума-функционала.-проблема-поиска-минимума-и-различные-подходы-к-ее-решению.">25.
 Сведение задачи решения СЛАУ и СНАУ к задаче нахождения минимума
-функционала. Проблема поиска минимума и различные подходы к ее решению.
-Метод покоординатного спуска. Метод скорейшего (наискорейшего) спуска.
-Метод минимальных невязок.</h3>
-<p>(На основе Лекций №7, №12, 6-й семестр)</p>
-<p>Задачи решения СЛАУ и СНАУ можно свести к эквивалентной задаче
-минимизации некоторого функционала. Это позволяет использовать методы
-оптимизации, которые часто обладают лучшими свойствами глобальной
-сходимости.</p>
-<p><strong>Сведение к задаче минимизации</strong></p>
-<ul>
-<li><p><strong>Для СЛАУ <span class="math inline">Ax=b</span> (с
-симметричной, положительно определенной матрицей A):</strong> Решение
-СЛАУ эквивалентно нахождению минимума квадратичного <strong>функционала
-энергии</strong>: <span class="math display"> \Phi(x) = (Ax, x) - 2(b,x)
-</span> Градиент этого функционала равен <span
-class="math inline">\text{grad } \Phi(x) = 2(Ax-b)</span>. В точке
-минимума градиент равен нулю, что дает исходное уравнение <span
-class="math inline">Ax-b=0</span>.</p></li>
-<li><p><strong>Для СНАУ <span
-class="math inline">f(x)=0</span>:</strong> Решение системы эквивалентно
-нахождению глобального минимума неотрицательного функционала: <span
-class="math display"> \Phi(x) = \sum_{i=1}^n f_i^2(x) = ||f(x)||_2^2
-</span> Минимум <span class="math inline">\Phi(x)=0</span> достигается
-тогда и только тогда, когда <span class="math inline">f_i(x)=0</span>
-для всех <span class="math inline">i</span>.</p></li>
-</ul>
-<p><strong>Методы поиска минимума</strong></p>
-<ol type="1">
-<li><p><strong>Метод покоординатного спуска:</strong> Минимизация
-происходит последовательно по каждой координате. На <span
-class="math inline">k</span>-м шаге все координаты, кроме <span
-class="math inline">x_k</span>, фиксируются, и ищется минимум функции
-одной переменной по <span class="math inline">x_k</span>. Затем процесс
-циклически повторяется для всех координат.</p>
-<ul>
-<li>Для квадратичного функционала СЛАУ этот метод <strong>эквивалентен
-методу Зейделя</strong>.</li>
-</ul></li>
-<li><p><strong>Метод градиентного спуска:</strong> Движение происходит в
-направлении, противоположном градиенту (направлении наискорейшего
-убывания функции). <span class="math display"> x^{(m+1)} = x^{(m)} -
-\tau_m \text{grad } \Phi(x^{(m)}) </span> где <span
-class="math inline">\tau_m</span> — шаг спуска.</p></li>
-<li><p><strong>Метод наискорейшего (градиентного) спуска:</strong> Это
-вариант градиентного спуска, где на каждом шаге итерационный параметр
-<span class="math inline">\tau_m</span> выбирается из условия
-минимизации функционала вдоль направления градиента: <span
-class="math display"> \min_{\tau_m} \Phi(x^{(m)} - \tau_m \text{grad }
-\Phi(x^{(m)})) </span> Для квадратичного функционала СЛАУ это приводит к
-формуле: <span class="math display"> \tau_m = \frac{(r_m, r_m)}{(Ar_m,
-r_m)}, \quad \text{где } r_m = Ax^{(m)}-b \text{ (вектор невязки)}
-</span> Скорость сходимости метода зависит от числа обусловленности
-матрицы <span class="math inline">\mu(A)</span>: чем оно больше, тем
-медленнее сходимость.</p></li>
-<li><p><strong>Метод минимальных невязок:</strong> (Не описан в
-конспектах, но схож по идее с методом наискорейшего спуска, но
-минимизирует норму невязки на следующем шаге).</p></li>
+функционала. Проблема поиска минимума и различные подходы к ее
+решению.</h3>
+<p>Многие задачи решения уравнений можно свести к эквивалентной задаче
+поиска экстремума (обычно минимума) некоторой функции или функционала.
+Этот подход особенно полезен, когда прямые или итерационные методы
+решения уравнений работают плохо.</p>
+<p><strong>Сведение СЛАУ к задаче минимизации:</strong> Для СЛАУ <span
+class="math inline">Ax=b</span> с <strong>симметричной положительно
+определенной</strong> матрицей <span class="math inline">A</span> ее
+решение <span class="math inline">x^*</span> является точкой минимума
+<strong>квадратичного функционала энергии</strong>: <span
+class="math inline">\Phi(x) = (Ax, x) - 2(b, x) + C</span>
+<strong>Теорема:</strong> Если <span
+class="math inline">A=A^*&gt;0</span>, то существует единственный
+элемент <span class="math inline">y \in \mathbb{R}^n</span>, придающий
+наименьшее значение квадратичному функционалу <span
+class="math inline">\Phi(x)</span>, являющийся решением СЛАУ <span
+class="math inline">Ax=b</span>. Доказывается, что условие минимума
+<span class="math inline">\text{grad } \Phi(x) = 0</span> эквивалентно
+исходному уравнению <span class="math inline">Ax=b</span>, так как <span
+class="math inline">\text{grad } \Phi(x) = 2(Ax - b)</span>.</p>
+<p><strong>Сведение СНАУ к задаче минимизации:</strong> Для СНАУ <span
+class="math inline">f(x)=0</span> можно построить неотрицательную
+функцию (функционал), минимум которой равен нулю и достигается в точке,
+являющейся решением системы. Стандартный выбор — <strong>сумма квадратов
+невязок</strong>: <span class="math inline">\Phi(x) = \sum_{i=1}^n
+f_i^2(x)</span> где <span class="math inline">x=(x_1, \dots,
+x_n)^T</span>. Очевидно, <span class="math inline">\Phi(x) \ge 0</span>,
+и <span class="math inline">\Phi(x^*) = 0</span> тогда и только тогда,
+когда <span class="math inline">f_i(x^*) = 0</span> для всех <span
+class="math inline">i</span>, то есть когда <span
+class="math inline">x^*</span> — решение СНАУ.</p>
+<p><strong>Проблема поиска минимума:</strong> Задача нахождения минимума
+функции многих переменных <span class="math inline">\Phi(x)</span> сама
+по себе является сложной. * <strong>Локальный vs Глобальный
+минимум:</strong> Методы обычно находят какой-либо <strong>локальный
+минимум</strong>. Гарантировать нахождение <strong>глобального
+минимума</strong> сложно. В случае СЛАУ с <span
+class="math inline">A&gt;0</span> и СНАУ (с функционалом суммы
+квадратов) локальный минимум является и глобальным. *
+<strong>“Овраги”:</strong> Поверхность уровня функции <span
+class="math inline">\Phi(x)</span> может иметь сложный рельеф с узкими и
+вытянутыми впадинами (“оврагами”), что сильно замедляет сходимость
+многих методов.</p>
+<p><strong>Подходы к решению задачи минимизации:</strong> 1.
+<strong>Методы, использующие производные (градиентные):</strong> *
+<strong>Метод наискорейшего спуска:</strong> Движение в направлении
+антиградиента. * <strong>Метод покоординатного спуска:</strong>
+Минимизация по одной координате за раз. 2. <strong>Методы, не
+использующие производные (прямого поиска):</strong> * <strong>Метод
+перебора (сеточный):</strong> Простой, но очень неэффективный. *
+<strong>Методы исключения отрезков (для 1D):</strong> Дихотомия, золотое
+сечение.</p>
+<hr />
+<h3 id="метод-покоординатного-спуска.">26. Метод покоординатного
+спуска.</h3>
+<p>Метод покоординатного спуска — это итерационный метод минимизации
+функции нескольких переменных <span class="math inline">F(x_1, ...,
+x_n)</span>.</p>
+<p><strong>Идея метода:</strong> Вместо того чтобы двигаться в сложном
+многомерном пространстве, на каждом шаге минимизация производится только
+вдоль одной координатной оси, при этом значения остальных координат
+фиксируются.</p>
+<p><strong>Алгоритм:</strong> 1. Выбирается начальное приближение <span
+class="math inline">x^{(0)} = (x_1^{(0)}, ..., x_n^{(0)})^T</span>. 2.
+Итерационный процесс (один цикл по всем координатам): * Фиксируются
+<span class="math inline">x_2^{(0)}, ..., x_n^{(0)}</span>. Находится
+<span class="math inline">x_1^{(1)}</span> из условия минимизации
+функции одной переменной <span class="math inline">F(x_1, x_2^{(0)},
+..., x_n^{(0)})</span>. * Затем, исходя из нового приближения <span
+class="math inline">(x_1^{(1)}, x_2^{(0)}, \dots, x_n^{(0)})</span>,
+путем минимизации функции <span class="math inline">F(x_1^{(1)}, x_2,
+\dots, x_n^{(0)})</span> по переменной <span
+class="math inline">x_2</span> находим следующее приближение <span
+class="math inline">(x_1^{(1)}, x_2^{(1)}, \dots, x_n^{(0)})</span>. * …
+* Процесс циклически повторяется до достижения критерия остановки.</p>
+<p><strong>Геометрическая интерпретация:</strong> Движение к минимуму
+происходит “ступеньками” параллельно координатным осям. На каждом шаге
+мы движемся по прямой, параллельной оси, до точки, где эта прямая
+касается линии уровня функции.</p>
+<p><strong>Связь с методом Зейделя:</strong> При решении СЛАУ с
+симметричной положительно определенной матрицей <span
+class="math inline">A</span> через минимизацию функционала <span
+class="math inline">\Phi(x) = (Ax, x) - 2(b, x)</span>, метод
+покоординатного спуска <strong>в точности совпадает</strong> с методом
+Зейделя. Условие минимизации <span class="math inline">\Phi(x)</span> по
+<span class="math inline">x_k</span>, <span
+class="math inline">\frac{\partial \Phi}{\partial x_k} = 0</span>, с
+учетом <span class="math inline">\text{grad } \Phi(x) = 2(Ax-b)</span>
+приводит к: <span class="math inline">2 \left(\sum_{j=1}^n a_{kj} x_j -
+b_k\right) = 0</span>. Это уравнение соответствует уравнению при
+итерациях Зейделя.</p>
+<p><strong>Недостатки:</strong> * Может сходиться очень медленно,
+особенно для функций с вытянутыми “оврагами”, не ориентированными вдоль
+осей.</p>
+<hr />
+<h3 id="метод-скорейшего-наискорейшего-спуска.">27. Метод скорейшего
+(наискорейшего) спуска.</h3>
+<p>Метод наискорейшего спуска (или градиентного спуска) — это
+классический итерационный метод минимизации функции <span
+class="math inline">\Phi(x)</span>.</p>
+<p><strong>Идея метода:</strong> На каждом шаге движение к минимуму
+осуществляется в направлении, <strong>противоположном направлению
+градиента</strong> <span class="math inline">\text{grad }
+\Phi(x)</span>, так как градиент указывает направление наибольшего роста
+функции.</p>
+<p><strong>Алгоритм:</strong> 1. <strong>Основная итерационная
+формула:</strong> <span class="math inline">x^{(m+1)} = x^{(m)} - \tau_m
+\text{grad } \Phi(x^{(m)})</span>, где <span class="math inline">\tau_m
+&gt; 0</span> — <strong>шаг спуска</strong>.</p>
+<ol start="2" type="1">
+<li><strong>Выбор шага <span class="math inline">\tau_m</span> (метод
+наискорейшего спуска):</strong> Шаг <span
+class="math inline">\tau_m</span> выбирается на каждой итерации из
+условия <strong>оптимальности</strong>: он должен минимизировать функцию
+<span class="math inline">\Phi</span> вдоль направления антиградиента.
+То есть <span class="math inline">\tau_m</span> находится из решения
+одномерной задачи минимизации: <span class="math inline">\min_{\tau_m}
+\Phi(x^{(m)} - \tau_m \text{grad } \Phi(x^{(m)}))</span> Это
+эквивалентно решению уравнения <span
+class="math inline">\frac{d}{d\tau_m} \Phi(x^{(m+1)}(\tau_m)) =
+0</span>.</li>
 </ol>
+<p><strong>Применение к решению СЛАУ:</strong> Для СЛАУ <span
+class="math inline">Ax=b</span> с симметричной положительно определенной
+матрицей <span class="math inline">A</span> (<span
+class="math inline">A=A^*&gt;0</span>), используем функционал <span
+class="math inline">\Phi(x)=(Ax,x)-2(b,x)</span>. * <span
+class="math inline">\text{grad } \Phi(x) = 2(Ax - b)</span>. Вводя
+вектор невязки <span class="math inline">r_m = Ax^{(m)}-b</span>,
+итерационная формула записывается как: <span
+class="math inline">x^{(m+1)} = x^{(m)} - \tau_m r_m</span>. *
+Оптимальный шаг <span class="math inline">\tau_m</span> находится из
+условия <span
+class="math inline">\frac{d}{d\tau_m}\Phi(x^{(m+1)})=0</span>, которое
+приводит к: <span class="math inline">(Ax^{(m+1)}-b, Ax^{(m)}-b) =
+0</span>. Подставляя <span class="math inline">x^{(m+1)} = x^{(m)} -
+\tau_m(Ax^{(m)}-b)</span>, получаем: <span
+class="math inline">((Ax^{(m)}-b) - \tau_m A(Ax^{(m)}-b),
+Ax^{(m)}-b)=0</span>. Откуда: <span class="math inline">\tau_m =
+\frac{(r_m, r_m)}{(Ar_m, r_m)}</span>.</p>
+<p><strong>Свойства:</strong> * Сходимость гарантирована для
+симметричных положительно определенных матриц. * Скорость сходимости —
+<strong>линейная</strong>. Знаменатель прогрессии <span
+class="math inline">\delta_0 = \frac{1-\xi}{1+\xi}</span>, где <span
+class="math inline">\xi=\frac{\lambda_{\min}(A)}{\lambda_{\max}(A)}</span>.
+* Сходимость может быть очень медленной для плохо обусловленных задач
+(<span class="math inline">\mu \gg 1</span>), так как <span
+class="math inline">\delta_0</span> будет близко к 1.</p>
 <hr />
 <h3
-id="понятие-переопределенной-системы.-решение-в-смысле-наименьших-квадратов.">23.
+id="понятие-переопределенной-системы.-решение-в-смысле-наименьших-квадратов.">28.
 Понятие переопределенной системы. Решение в смысле наименьших
 квадратов.</h3>
-<p>(На основе Лекции №15, 6-й семестр)</p>
-<p><strong>Переопределенная система линейных алгебраических уравнений
-(СЛАУ)</strong> — это система <span class="math inline">Ax=b</span>, в
-которой число уравнений <span class="math inline">m</span> больше числа
-неизвестных <span class="math inline">n</span> (<span
-class="math inline">m&gt;n</span>).</p>
-<p>Как правило, такая система не имеет классического решения, то есть не
-существует вектора <span class="math inline">x</span>, который бы
-удовлетворял всем уравнениям одновременно. Поэтому ищется
-<strong>псевдорешение</strong>, которое в некотором смысле является
-наилучшим.</p>
-<p><strong>Решение в смысле наименьших квадратов</strong> Наиболее
-распространенный подход — <strong>метод наименьших квадратов
-(МНК)</strong>. Вектор невязок определяется как <span
-class="math inline">r = Ax - b</span>. Ищется такой вектор <span
-class="math inline">x^*</span>, который минимизирует евклидову норму
-вектора невязки, то есть сумму квадратов его компонент: <span
-class="math display"> ||r||_2^2 = \sum_{i=1}^m r_i^2 = \sum_{i=1}^m
-\left(\sum_{j=1}^n a_{ij}x_j - b_i\right)^2 \to \min </span> Вектор
-<span class="math inline">x^*</span>, доставляющий минимум этому
-функционалу, называется <strong>нормальным псевдорешением</strong>.</p>
-<p>Для нахождения <span class="math inline">x^*</span> необходимо взять
-частные производные по всем <span class="math inline">x_k</span> и
-приравнять их к нулю. Это приводит к системе из <span
-class="math inline">n</span> линейных уравнений с <span
-class="math inline">n</span> неизвестными, которая называется
-<strong>нормальной системой уравнений</strong>: <span
-class="math display"> \sum_{j=1}^n \left(\sum_{i=1}^m
-a_{ik}a_{ij}\right)x_j = \sum_{i=1}^m b_i a_{ik}, \quad k=1, \dots, n
+<p><strong>Переопределенная система:</strong> Система линейных
+алгебраических уравнений <span class="math inline">Ax=b</span>
+называется <strong>переопределенной</strong>, когда число уравнений
+<span class="math inline">m</span> больше числа неизвестных <span
+class="math inline">n</span> (<span class="math inline">m &gt;
+n</span>). <span class="math display">
+A = \begin{pmatrix}
+a_{11} &amp; \dots &amp; a_{1n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; \dots &amp; a_{mn}
+\end{pmatrix}, \quad
+x = \begin{pmatrix}
+x_1 \\
+\vdots \\
+x_n
+\end{pmatrix}, \quad
+b = \begin{pmatrix}
+b_1 \\
+\vdots \\
+b_m
+\end{pmatrix}
+</span> <span class="math display">
+\left\{
+\begin{aligned}
+a_{11}x_1 + \dots + a_{1n}x_n &amp;= b_1 \\
+\vdots \\
+a_{m1}x_1 + \dots + a_{mn}x_n &amp;= b_m
+\end{aligned}
+\right. \quad (1)
+</span> Как правило, такая система <strong>не имеет классического
+решения</strong>, то есть не существует вектора <span
+class="math inline">x</span>, который бы удовлетворял всем <span
+class="math inline">m</span> уравнениям одновременно.</p>
+<p><strong>Решение в смысле наименьших квадратов (МНК):</strong> Раз
+классического решения нет, ищут “наилучшее” приближенное решение.
+<strong>Метод наименьших квадратов (МНК)</strong> предлагает в качестве
+такого решения вектор <span class="math inline">x^*</span>, который
+минимизирует <strong>сумму квадратов невязок</strong> всех
+уравнений.</p>
+<ul>
+<li><strong>Невязка</strong> <span class="math inline">i</span>-го
+уравнения: <span class="math inline">r_i = (a_{i1}x_1 + \dots +
+a_{in}x_n) - b_i</span>.</li>
+<li><strong>Функционал МНК:</strong> <span class="math inline">\Phi(x_1,
+\dots, x_n) = \sum_{i=1}^m r_i^2 = \sum_{i=1}^m (a_{i1}x_1 + \dots +
+a_{in}x_n - b_i)^2</span>.</li>
+<li>Искомое решение <span class="math inline">x^*</span> — это точка
+минимума функции <span class="math inline">\Phi(x)</span>, называемая
+<strong>нормальным псевдорешением</strong>.</li>
+</ul>
+<p><strong>Нахождение решения:</strong> Для нахождения минимума <span
+class="math inline">\Phi(x)</span> необходимо приравнять к нулю все её
+частные производные по <span class="math inline">x_j</span>: <span
+class="math inline">\frac{\partial\Phi(x_1, \dots, x_n)}{\partial x_j} =
+0</span>, для <span class="math inline">j=1, \dots, n</span>. Выполнив
+дифференцирование, получим: <span class="math inline">2\sum_{i=1}^m
+a_{ij}(a_{i1}x_1 + \dots + a_{in}x_n - b_i) = 0</span> Это приводит к
+новой системе из <span class="math inline">n</span> линейных уравнений с
+<span class="math inline">n</span> неизвестными, которая называется
+<strong>системой нормальных уравнений</strong>: <span
+class="math display">
+\left\{
+\begin{aligned}
+\left(\sum_{i=1}^m a_{i1}^2\right)x_1 + \dots + \left(\sum_{i=1}^m
+a_{i1}a_{in}\right)x_n &amp;= \sum_{i=1}^m b_i a_{i1} \\
+\vdots \\
+\left(\sum_{i=1}^m a_{in}a_{i1}\right)x_1 + \dots + \left(\sum_{i=1}^m
+a_{in}^2\right)x_n &amp;= \sum_{i=1}^m b_i a_{in}
+\end{aligned}
+\right.
 </span> В матричной форме эта система записывается как: <span
-class="math display"> A^T A x = A^T b </span> Матрица <span
-class="math inline">A^T A</span> является квадратной (<span
-class="math inline">n \times n</span>) и симметричной. Если столбцы
-исходной матрицы <span class="math inline">A</span> линейно независимы,
-то матрица <span class="math inline">A^T A</span> положительно
-определена, и нормальная система имеет единственное решение, которое
-можно найти любым стандартным методом (например, Гаусса или
-Холецкого).</p>
+class="math inline">A^TAx = A^Tb</span> Решение этой “квадратной”
+системы и дает искомое псевдорешение.</p>
 <hr />
 <h3
-id="экстремум-функции-одной-переменной.-понятие-унимодальной-функции.-метод-половинного-деления.-метод-золотого-сечения.">24.
-Экстремум функции одной переменной. Понятие унимодальной функции. Метод
-половинного деления. Метод золотого сечения.</h3>
-<p>(На основе Лекций №12, №13, 6-й семестр)</p>
-<p>Задача состоит в нахождении точки <span
-class="math inline">u^*</span> на отрезке <span
-class="math inline">[a,b]</span>, в которой функция <span
-class="math inline">\Phi(u)</span> достигает минимума.</p>
-<p><strong>Унимодальная функция</strong> Функция <span
-class="math inline">\Phi(u)</span> называется унимодальной на отрезке
-<span class="math inline">[a,b]</span>, если у нее на этом отрезке есть
-только один локальный минимум. Это означает, что по обе стороны от точки
-минимума функция монотонна (убывает слева и возрастает справа). Это
-свойство позволяет эффективно сужать отрезок поиска.</p>
-<p><strong>Метод дихотомии (деления отрезка пополам)</strong> Это
-простой метод поиска минимума, основанный на сравнении значений функции
-в двух близких точках. 1. Выбираются две точки <span
-class="math inline">u_1, u_2</span> внутри отрезка <span
-class="math inline">[a,b]</span>, близкие к его середине: <span
-class="math inline">u_1 = (a+b-\Delta)/2</span>, <span
-class="math inline">u_2 = (a+b+\Delta)/2</span>, где <span
-class="math inline">\Delta</span> — малая величина. 2. Вычисляются
-значения <span class="math inline">\Phi(u_1)</span> и <span
-class="math inline">\Phi(u_2)</span>. 3. Если <span
-class="math inline">\Phi(u_1) \le \Phi(u_2)</span>, то минимум находится
-на отрезке <span class="math inline">[a, u_2]</span>, и правая часть
-отбрасывается. 4. Если <span class="math inline">\Phi(u_1) &gt;
-\Phi(u_2)</span>, то минимум находится на отрезке <span
-class="math inline">[u_1, b]</span>, и левая часть отбрасывается. 5.
-Процесс повторяется на новом, укороченном отрезке.</p>
-<p>На каждом шаге длина отрезка поиска уменьшается примерно в 2 раза.
-Метод надежен, но требует двух вычислений функции на каждой
-итерации.</p>
-<p><strong>Метод золотого сечения</strong> Это более эффективный метод,
-который требует всего одного нового вычисления функции на каждой
-итерации. 1. Отрезок <span class="math inline">[a,b]</span> делится
-двумя точками <span class="math inline">x_1, x_2</span> в пропорции
-“золотого сечения”. Для отрезка <span class="math inline">[0,1]</span>
-это точки <span class="math inline">x_1 = 1-\tau</span> и <span
-class="math inline">x_2 = \tau</span>, где <span
-class="math inline">\tau = (\sqrt{5}-1)/2 \approx 0.618</span>. <span
-class="math display"> x_1 = a + (1-\tau)(b-a), \quad x_2 = a + \tau(b-a)
-</span> 2. Сравниваются значения <span
-class="math inline">\Phi(x_1)</span> и <span
-class="math inline">\Phi(x_2)</span>, и отрезок сужается, как в методе
-дихотомии. 3. <strong>Ключевое свойство:</strong> Оставшаяся внутренняя
-точка на новом отрезке снова делит его в пропорции золотого сечения.
-Например, если отбросили <span class="math inline">[x_2, b]</span>, то
-на новом отрезке <span class="math inline">[a, x_2]</span> точка <span
-class="math inline">x_1</span> уже является одной из двух нужных точек.
-Остается вычислить значение функции только в одной новой точке.</p>
-<p>На каждой итерации длина отрезка умножается на <span
-class="math inline">\tau \approx 0.618</span>. Метод сходится немного
-медленнее, чем дихотомия (коэффициент сжатия 0.618 против 0.5), но
-требует вдвое меньше вычислений функции, что делает его более
-предпочтительным, если вычисление <span
-class="math inline">\Phi(u)</span> является трудоемким.</p>
+id="проблема-поиска-минимума.-постановка-задачи.-метод-дихотомии.-золотое-сечение.">29.
+Проблема поиска минимума. Постановка задачи. Метод дихотомии. Золотое
+сечение.</h3>
+<p><strong>Постановка задачи:</strong> Пусть на множестве <span
+class="math inline">U</span> определена скалярная функция (целевая
+функция) <span class="math inline">\Phi(u)</span>. Задача состоит в
+нахождении элемента <span class="math inline">u^*</span> (или <span
+class="math inline">u^{**}</span>), на котором <span
+class="math inline">\Phi(u)</span> достигает: * <strong>Локального
+минимума:</strong> <span class="math inline">\Phi(u^*) \le
+\Phi(u)</span> в некоторой окрестности <span
+class="math inline">u^*</span>. * <strong>Глобального минимума:</strong>
+<span class="math inline">\Phi(u^{**}) = \inf_{u \in U}
+\Phi(u)</span>.</p>
+<p>Рассмотрим задачу одномерной минимизации на отрезке <span
+class="math inline">[a,b]</span> для <strong>унимодальной</strong>
+функции (имеющей на отрезке ровно один минимум).</p>
+<p><strong>1. Метод дихотомии (для поиска минимума):</strong></p>
+<ul>
+<li><strong>Идея:</strong> Исключение части отрезка, где минимума
+заведомо нет.</li>
+<li><strong>Алгоритм:</strong>
+<ol type="1">
+<li>Внутри отрезка <span class="math inline">[a,b]</span> выбираются две
+близкие к центру точки <span class="math inline">u_1</span> и <span
+class="math inline">u_2</span> (<span class="math inline">u_1 &lt;
+u_2</span>). Например, <span class="math inline">u_1 =
+\frac{b+a-\Delta}{2}</span>, <span class="math inline">u_2 =
+\frac{b+a+\Delta}{2}</span>, где <span class="math inline">\Delta</span>
+— малое число.</li>
+<li>Вычисляются <span class="math inline">\Phi(u_1)</span> и <span
+class="math inline">\Phi(u_2)</span>.</li>
+<li>Если <span class="math inline">\Phi(u_1) \le \Phi(u_2)</span> —
+минимум находится левее <span class="math inline">u_2</span>, новый
+отрезок поиска <span class="math inline">[a, u_2]</span>.</li>
+<li>Если <span class="math inline">\Phi(u_1) &gt; \Phi(u_2)</span> —
+минимум находится правее <span class="math inline">u_1</span>, новый
+отрезок поиска <span class="math inline">[u_1, b]</span>.</li>
+<li>Процесс повторяется.</li>
+</ol></li>
+<li><strong>Свойства:</strong> Надежен, но на каждом шаге требует
+вычисления функции в двух новых точках. Длина отрезка на <span
+class="math inline">n</span> итераций <span class="math inline">\Delta_n
+= \frac{b-a}{2^n} + \left(1-\frac{1}{2^n}\right)\Delta</span>. Точность
+<span class="math inline">\varepsilon_n =
+\frac{\Delta_n}{2}</span>.</li>
+</ul>
+<p><strong>2. Метод золотого сечения:</strong></p>
+<ul>
+<li><strong>Идея:</strong> Более эффективный метод исключения отрезков,
+который на каждой итерации (кроме первой) требует вычисления функции
+<strong>только в одной новой точке</strong>.</li>
+<li><strong>Алгоритм:</strong>
+<ol type="1">
+<li>Отрезок <span class="math inline">[a,b]</span> делится двумя точками
+<span class="math inline">x_1</span> и <span
+class="math inline">x_2</span> в пропорции <strong>золотого
+сечения</strong>: <span
+class="math inline">x_1=a+\frac{3-\sqrt{5}}{2}(b-a)</span>, <span
+class="math inline">x_2=a+\frac{\sqrt{5}-1}{2}(b-a)</span>. Коэффициент
+<span class="math inline">\tau = \frac{\sqrt{5}-1}{2} \approx
+0.61803</span>.</li>
+<li>Сравниваются <span class="math inline">\Phi(x_1)</span> и <span
+class="math inline">\Phi(x_2)</span>.</li>
+<li>Если <span class="math inline">\Phi(x_1) \le \Phi(x_2)</span>, новый
+отрезок <span class="math inline">[a, x_2]</span>. При этом точка <span
+class="math inline">x_1</span> становится “новой” <span
+class="math inline">x_2</span> на этом отрезке.</li>
+<li>Если <span class="math inline">\Phi(x_1) &gt; \Phi(x_2)</span>,
+новый отрезок <span class="math inline">[x_1, b]</span>. Точка <span
+class="math inline">x_2</span> становится “новой” <span
+class="math inline">x_1</span>.</li>
+<li>На каждой итерации длина отрезка поиска умножается на <span
+class="math inline">\tau</span>. После <span
+class="math inline">n</span> итераций длина становится <span
+class="math inline">\Delta_n = \tau^n(b-a)</span>.</li>
+</ol></li>
+<li><strong>Свойства:</strong> Требует вдвое меньше вычислений функции,
+чем дихотомия, что часто делает метод более эффективным на
+практике.</li>
+</ul>
 <hr />
-<h3
-id="нахождения-собственных-векторов-и-собственных-значений-матрицы.-метод-простой-итерации-для-нахождения-собственных-значений-матрицы.">25.
-Нахождения собственных векторов и собственных значений матрицы. Метод
-простой итерации для нахождения собственных значений матрицы.</h3>
-<p>(На основе Лекции №13, 6-й семестр)</p>
-<p>Задача нахождения собственных значений (спектральная задача) для
-матрицы <span class="math inline">A</span> consiste в отыскании таких
-чисел <span class="math inline">\lambda</span> (собственных значений) и
-соответствующих им ненулевых векторов <span class="math inline">x</span>
-(собственных векторов), что выполняется равенство: <span
-class="math display"> Ax = \lambda x </span> Это эквивалентно нахождению
-корней <strong>характеристического уравнения</strong>: <span
-class="math display"> \det(A - \lambda I) = 0 </span> где <span
-class="math inline">I</span> — единичная матрица. Для матриц большого
-размера прямое решение этого уравнения неэффективно, поэтому
-используются итерационные методы.</p>
-<p>Различают <strong>частичную проблему</strong> (нахождение одного или
-нескольких собственных значений, например, максимального по модулю) и
-<strong>полную проблему</strong> (нахождение всех собственных
-значений).</p>
-<p><strong>Метод простой итерации (степенной метод) для нахождения
-доминантного собственного значения</strong></p>
-<p><strong>Степенной метод</strong> — это итерационный метод для решения
-частичной проблемы, а именно для нахождения собственного значения <span
-class="math inline">\lambda_1</span>, максимального по модулю
-(доминантного), и соответствующего ему собственного вектора <span
-class="math inline">x_1</span>.</p>
-<p><strong>Предположения:</strong> 1. Матрица <span
-class="math inline">A</span> имеет <span class="math inline">n</span>
-линейно независимых собственных векторов <span class="math inline">x_1,
-\dots, x_n</span>. 2. Существует единственное доминантное собственное
-значение: <span class="math inline">|\lambda_1| &gt; |\lambda_2| \ge
-\dots \ge |\lambda_n|</span>.</p>
-<p><strong>Алгоритм:</strong> 1. Выбирается произвольный начальный
-вектор <span class="math inline">y^{(0)}</span>, не ортогональный
-собственному вектору <span class="math inline">x_1</span>. 2. Строится
-итерационная последовательность: <span class="math display"> y^{(s+1)} =
-A y^{(s)} </span> 3. Разложив <span class="math inline">y^{(0)}</span>
-по базису из собственных векторов <span class="math inline">y^{(0)} =
-\sum c_i x_i</span>, получаем: <span class="math display"> y^{(s)} = A^s
-y^{(0)} = \sum c_i \lambda_i^s x_i = \lambda_1^s \left(c_1 x_1 +
-\sum_{i=2}^n c_i \left(\frac{\lambda_i}{\lambda_1}\right)^s x_i\right)
-</span> 4. Поскольку <span class="math inline">|\lambda_i/\lambda_1|
-&lt; 1</span> для <span class="math inline">i&gt;1</span>, при больших
-<span class="math inline">s</span> слагаемые в сумме стремятся к нулю, и
-<span class="math display"> y^{(s)} \approx c_1 \lambda_1^s x_1 </span>
-Это означает, что последовательность векторов <span
-class="math inline">y^{(s)}</span> по направлению сходится к
-собственному вектору <span class="math inline">x_1</span>.</p>
-<p><strong>Нахождение <span
-class="math inline">\lambda_1</span>:</strong> Из соотношения <span
-class="math inline">y^{(s+1)} \approx \lambda_1 y^{(s)}</span> следует,
-что <span class="math display"> \lambda_1 \approx
-\frac{y_j^{(s+1)}}{y_j^{(s)}} </span> для любой ненулевой компоненты
-<span class="math inline">j</span>. Для большей устойчивости можно
-использовать отношение норм: <span class="math display"> |\lambda_1|
-\approx \frac{||y^{(s+1)}||}{||y^{(s)}||} </span> На практике, чтобы
-избежать переполнения или исчезновения чисел, вектор <span
-class="math inline">y^{(s)}</span> на каждом шаге нормируют.</p>
-<hr />
-<h3 id="частичная-проблема-собственных-значений.-степенной-метод.">26.
+<h3 id="частичная-проблема-собственных-значений.-степенной-метод.">30.
 Частичная проблема собственных значений. Степенной метод.</h3>
-<p>(На основе Лекции №13, 6-й семестр)</p>
-<p><strong>Частичная проблема собственных значений</strong> заключается
-в отыскании одного или нескольких собственных значений матрицы, но не
-всего спектра. Чаще всего требуется найти: * <strong>Доминантное
-собственное значение</strong> — максимальное по модулю (<span
-class="math inline">\lambda_1</span>). * <strong>Минимальное по модулю
-собственное значение</strong> (<span
-class="math inline">\lambda_n</span>).</p>
-<p>Знание этих величин важно для анализа устойчивости итерационных
-методов и оценки числа обусловленности матрицы.</p>
-<p><strong>Степенной метод для нахождения <span
-class="math inline">\lambda_1</span> (доминантного с.з.)</strong></p>
-<p>Этот метод, также известный как метод простой итерации, был описан в
-предыдущем вопросе. Он основан на итерационном процессе <span
-class="math inline">y^{(s+1)} = A y^{(s)}</span>. При определенных
-условиях последовательность <span class="math inline">y^{(s)}</span>
-сходится по направлению к собственному вектору <span
-class="math inline">x_1</span>, соответствующему доминантному
-собственному значению <span class="math inline">\lambda_1</span>. Само
-значение <span class="math inline">\lambda_1</span> оценивается как
-отношение координат или норм последовательных итераций. Скорость
-сходимости метода линейная и определяется отношением <span
-class="math inline">|\lambda_2/\lambda_1|</span>.</p>
-<p><strong>Нахождение минимального по модулю собственного значения <span
-class="math inline">\lambda_n</span></strong></p>
-<p>Если матрица <span class="math inline">A</span> невырождена, то ее
-собственные значения <span class="math inline">\lambda_i</span> и
-собственные значения обратной матрицы <span
-class="math inline">A^{-1}</span> связаны соотношением: <span
-class="math display"> \text{с.з.}(A^{-1}) = \frac{1}{\lambda_i} </span>
-При этом собственные векторы у матриц <span class="math inline">A</span>
-и <span class="math inline">A^{-1}</span> совпадают. Если <span
-class="math inline">|\lambda_1| \ge \dots \ge |\lambda_{n-1}| &gt;
-|\lambda_n| &gt; 0</span>, то для обратной матрицы <span
-class="math inline">A^{-1}</span> максимальным по модулю собственным
-значением будет <span class="math inline">1/\lambda_n</span>.</p>
-<p><strong>Алгоритм (метод обратных итераций):</strong> 1. Найти матрицу
-<span class="math inline">A^{-1}</span>. 2. Применить к матрице <span
-class="math inline">A^{-1}</span> степенной метод для нахождения ее
-доминантного собственного значения <span class="math inline">\mu_1 =
-1/\lambda_n</span>. * <span class="math inline">y^{(s+1)} = A^{-1}
-y^{(s)}</span> * <span class="math inline">\mu_1 \approx
-||y^{(s+1)}||/||y^{(s)}||</span> 3. Искомое минимальное по модулю
-собственное значение матрицы <span class="math inline">A</span> будет
-равно: <span class="math display"> \lambda_n = \frac{1}{\mu_1}
-</span></p>
-<p>На практике вместо вычисления <span class="math inline">A^{-1}</span>
-на каждом шаге решают СЛАУ <span class="math inline">A y^{(s+1)} =
-y^{(s)}</span>. Это более эффективно, особенно если использовать
-LU-разложение матрицы <span class="math inline">A</span>, которое
-выполняется один раз.</p>
+<p><strong>Частичная проблема собственных значений</strong> состоит в
+отыскании одного или нескольких собственных значений матрицы, но не
+всех. Чаще всего ищут: * <strong>Максимальное по модулю</strong>
+собственное значение <span class="math inline">\lambda_1</span>. *
+<strong>Минимальное по модулю</strong> собственное значение <span
+class="math inline">\lambda_n</span>. Эти значения важны для анализа
+устойчивости, сходимости итерационных методов и оценки числа
+обусловленности.</p>
+<p><strong>Степенной метод:</strong> Это простой итерационный метод для
+нахождения <strong>максимального по модулю</strong> собственного
+значения <span class="math inline">\lambda_1</span> (доминантного) и
+соответствующего ему собственного вектора <span
+class="math inline">x_1</span>.</p>
+<p><strong>Условия применимости:</strong> * Матрица <span
+class="math inline">A</span> должна иметь <span
+class="math inline">n</span> линейно независимых собственных векторов
+(быть матрицей простой структуры). * Должно существовать доминантное
+собственное значение, то есть <span class="math inline">|\lambda_1| &gt;
+|\lambda_2| \ge \dots \ge |\lambda_n|</span>.</p>
+<p><strong>Алгоритм:</strong> 1. Выбирается произвольный ненулевой
+начальный вектор <span class="math inline">x^{(0)}</span>, который
+предполагается не ортогональным собственному вектору <span
+class="math inline">x_1</span>. 2. Строится итерационная
+последовательность: <span class="math inline">x^{(s+1)} =
+Ax^{(s)}</span> 3. <strong>Анализ сходимости:</strong> Разложим <span
+class="math inline">x^{(0)}</span> по базису из собственных векторов
+<span class="math inline">x_i</span>: <span class="math inline">x^{(0)}
+= \sum_{i=1}^n c_i x_i</span>. Тогда <span class="math inline">x^{(s)} =
+A^s x^{(0)} = A^s \left(\sum_{i=1}^n c_i x_i\right) = \sum_{i=1}^n c_i
+A^s x_i = \sum_{i=1}^n c_i \lambda_i^s x_i = \lambda_1^s \left(c_1 x_1 +
+\sum_{i=2}^{n} c_i\left(\frac{\lambda_i}{\lambda_1}\right)^s
+x_i\right)</span>. Так как <span
+class="math inline">|\frac{\lambda_i}{\lambda_1}| &lt; 1</span> для
+<span class="math inline">i &gt; 1</span>, то при <span
+class="math inline">s \to \infty</span> слагаемые <span
+class="math inline">\left(\frac{\lambda_i}{\lambda_1}\right)^s</span>
+стремятся к нулю. <span class="math inline">x^{(s)} \approx
+c_1\lambda_1^s x_1</span>. Это означает, что вектор <span
+class="math inline">x^{(s)}</span> по направлению сходится к
+собственному вектору <span class="math inline">x_1</span>.</p>
+<ol start="4" type="1">
+<li><strong>Нахождение <span
+class="math inline">\lambda_1</span>:</strong> Из <span
+class="math inline">x^{(s+1)} \approx \lambda_1 x^{(s)}</span> следует,
+что <span class="math inline">\lambda_1</span> можно оценить как
+отношение соответствующих компонент: <span class="math inline">\lambda_1
+\approx \frac{x_j^{(s+1)}}{x_j^{(s)}}</span>. Более устойчивая оценка
+(используя евклидову норму): <span class="math inline">|\lambda_1|
+\approx \sqrt{\frac{(x^{(s+1)},x^{(s+1)})}{(x^{(s)},x^{(s)})}}</span>.
+Процесс сходится линейно со знаменателем <span
+class="math inline">q=|\lambda_2/\lambda_1|</span>. При расчетах на ЭВМ
+после каждой итерации может потребоваться нормировать вектор <span
+class="math inline">x^{(s+1)}</span>, чтобы избежать переполнений.</li>
+</ol>
+<p><strong>Нахождение <span class="math inline">\lambda_n</span>
+(минимального по модулю):</strong> Если <span
+class="math inline">A</span> невырождена, то её собственные значения
+<span class="math inline">\lambda(A)</span> и собственные значения <span
+class="math inline">A^{-1}</span> связаны как <span
+class="math inline">\lambda(A^{-1}) = 1/\lambda(A)</span>. Максимальное
+по модулю собственное значение <span class="math inline">A^{-1}</span>
+будет <span class="math inline">1/\lambda_n</span>. Таким образом, чтобы
+найти <span class="math inline">\lambda_n</span>, можно применить
+степенной метод для поиска максимального собственного числа к матрице
+<span class="math inline">A^{-1}</span>. Итерационный процесс <span
+class="math inline">y^{(s+1)} = A^{-1}y^{(s)}</span> эквивалентен
+решению СЛАУ <span class="math inline">Ay^{(s+1)} = y^{(s)}</span> на
+каждом шаге.</p>
 <hr />
 <h3
-id="полная-проблема-нахождения-собственных-значений.-метод-lu.-понятие-о-методе-вращений-для-случая-эрмитовой-матрицы.">27.
+id="полная-проблема-нахождения-собственных-значений.-метод-lu.-понятие-о-методе-qr.">31.
 Полная проблема нахождения собственных значений. Метод LU. Понятие о
-методе вращений для случая эрмитовой матрицы.</h3>
-<p>(На основе Лекции №14, 6-й семестр)</p>
-<p><strong>Полная проблема собственных значений</strong> — это задача
-нахождения всех собственных значений (и, возможно, векторов) матрицы.
-Методы ее решения часто основаны на приведении матрицы к более простому
-виду (треугольному или диагональному) с помощью <strong>преобразований
-подобия</strong>, которые сохраняют спектр.</p>
-<p><strong>Метод LU (LR-алгоритм)</strong> Это итерационный метод,
-основанный на LU-разложении матрицы. 1. <strong>Начало:</strong> <span
-class="math inline">A_0 = A</span>. 2. <strong>Итерационный шаг <span
-class="math inline">n</span>:</strong> * Выполняется LU-разложение
-матрицы <span class="math inline">A_n = L_n U_n</span>. *
-Матрицы-сомножители перемножаются в обратном порядке для получения
-следующей матрицы в последовательности: <span
-class="math inline">A_{n+1} = U_n L_n</span>. 3. <strong>Свойство
-подобия:</strong> Матрица <span class="math inline">A_{n+1}</span>
-подобна матрице <span class="math inline">A_n</span>, так как <span
-class="math inline">A_{n+1} = U_n L_n = (L_n^{-1} A_n) L_n = L_n^{-1}
-A_n L_n</span>. Следовательно, все матрицы в последовательности <span
-class="math inline">\{A_n\}</span> имеют одинаковый спектр. 4.
-<strong>Сходимость:</strong> При определенных условиях (например, если
-все <span class="math inline">|\lambda_i|</span> различны)
-последовательность матриц <span class="math inline">\{A_n\}</span>
-сходится к <strong>верхней треугольной матрице</strong>. Диагональные
-элементы этой предельной матрицы и являются собственными значениями
-исходной матрицы <span class="math inline">A</span>.</p>
-<p>Метод LU прост в реализации, но может быть численно неустойчивым.</p>
-<p><strong>Метод вращений (метод Якоби) для симметричной
-матрицы</strong> Для симметричных (в комплексном случае — эрмитовых)
-матриц существует полная ортонормированная система собственных векторов.
-Это означает, что для любой симметричной матрицы <span
-class="math inline">A</span> существует такая ортогональная матрица
-<span class="math inline">X</span> (столбцы которой — собственные
-векторы), что: <span class="math display"> \Lambda = X^T A X </span> где
-<span class="math inline">\Lambda</span> — диагональная матрица, на
-диагонали которой стоят собственные значения <span
+методе QR.</h3>
+<p><strong>Полная проблема собственных значений</strong> заключается в
+нахождении <strong>всех</strong> собственных значений (и, возможно,
+собственных векторов) матрицы <span class="math inline">A</span>.</p>
+<p><strong>Общая идея итерационных методов:</strong> Основана на
+<strong>преобразованиях подобия</strong>. Матрица <span
+class="math inline">A</span> с помощью последовательности преобразований
+<span class="math inline">A_{n+1} = C_n^{-1}A_nC_n</span> приводится к
+более простому виду (треугольному или диагональному), у которого
+собственные значения легко находятся (это диагональные элементы). Так
+как преобразование подобия сохраняет спектр, найденные числа будут
+собственными значениями исходной матрицы <span
 class="math inline">A</span>.</p>
-<p><strong>Метод вращений Якоби</strong> — это итерационный метод,
-который строит последовательность ортогональных преобразований подобия,
-чтобы в пределе привести матрицу <span class="math inline">A</span> к
-диагональному виду. 1. На каждом шаге выбирается наибольший по модулю
-внедиагональный элемент <span class="math inline">a_{ij}</span>. 2.
-Строится матрица вращения (поворота) <span
-class="math inline">R_{ij}</span>, которая отличается от единичной
-только в элементах <span class="math inline">(i,i), (i,j), (j,i),
-(j,j)</span>. Угол поворота выбирается так, чтобы в новой матрице <span
-class="math inline">A&#39; = R_{ij}^T A R_{ij}</span> элементы <span
-class="math inline">a&#39;_{ij}</span> и <span
-class="math inline">a&#39;_{ji}</span> стали равны нулю. 3. Процесс
-повторяется. Доказывается, что сумма квадратов внедиагональных элементов
-на каждом шаге уменьшается, и матрица сходится к диагональной.</p>
-<p>Этот метод очень надежен и устойчив для симметричных матриц. Более
-современным и быстрым аналогом, применимым и для несимметричных матриц,
-является <strong>QR-алгоритм</strong>, основанный на разложении <span
-class="math inline">A=QR</span> (ортогональная и верхнетреугольная).</p>
+<p><strong>1. LU-алгоритм:</strong></p>
+<ul>
+<li><strong>Идея:</strong> Использует LU-разложение для построения
+последовательности подобных матриц.</li>
+<li><strong>Алгоритм:</strong>
+<ol type="1">
+<li>Начальная матрица <span class="math inline">A_0 = A</span>.</li>
+<li>На <span class="math inline">n</span>-м шаге:
+<ul>
+<li>Выполняется LU-разложение: <span class="math inline">A_n =
+L_nU_n</span>.</li>
+<li>Матрицы <span class="math inline">L_n</span> и <span
+class="math inline">U_n</span> перемножаются в обратном порядке для
+получения следующей матрицы: <span class="math inline">A_{n+1} =
+U_nL_n</span>.</li>
+</ul></li>
+</ol></li>
+<li><strong>Свойства:</strong>
+<ul>
+<li>Матрица <span class="math inline">A_{n+1}</span> подобна <span
+class="math inline">A_n</span> (<span class="math inline">A_{n+1} =
+U_nL_n = L_n^{-1}A_nL_n</span>), а значит, все матрицы в
+последовательности <span class="math inline">\{A_n\}</span> имеют тот же
+спектр, что и <span class="math inline">A</span>.</li>
+<li>При ряде ограничений на матрицу <span class="math inline">A</span>
+(простейшим из которых является, в частности, требование, чтобы все ее
+собственные числа были различны по модулю), последовательность <span
+class="math inline">A_n</span> сходится к <strong>верхней треугольной
+матрице</strong>.</li>
+<li>Собственные значения исходной матрицы <span
+class="math inline">A</span> будут стоять на диагонали предельной
+треугольной матрицы.</li>
+</ul></li>
+<li><strong>Недостатки:</strong> Метод может быть численно
+неустойчивым.</li>
+</ul>
+<p><strong>2. QR-алгоритм:</strong></p>
+<ul>
+<li><strong>Идея:</strong> Аналогичен LU-алгоритму, но использует
+численно более устойчивое <strong>QR-разложение</strong>, где <span
+class="math inline">Q</span> — ортогональная матрица (<span
+class="math inline">Q^{-1}=Q^T</span>), а <span
+class="math inline">R</span> — верхняя треугольная.</li>
+<li><strong>Теоретическая основа:</strong> <strong>Теорема
+Шура</strong>: Для любой вещественной <span class="math inline">n \times
+n</span> матрицы <span class="math inline">A</span> найдется такая
+вещественная ортогональная <span class="math inline">n \times n</span>
+матрица <span class="math inline">Q</span>, что <span
+class="math inline">Q^TAQ</span> является квазитреугольной матрицей:
+<span class="math display">
+Q^TAQ =
+\begin{pmatrix}
+R_{11} &amp; R_{12} &amp; \dots &amp; R_{1m} \\
+0 &amp; R_{22} &amp; \dots &amp; R_{2m} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \dots &amp; R_{mm}
+\end{pmatrix},
+</span> где <span class="math inline">R_{ii}</span> - либо вещественное
+число, либо <span class="math inline">2 \times 2</span> матрица с
+комплексно сопряженными собственными значениями.</li>
+<li><strong>Алгоритм:</strong>
+<ol type="1">
+<li><span class="math inline">A_0 = A</span>.</li>
+<li>На <span class="math inline">n</span>-м шаге:
+<ul>
+<li>Выполняется QR-разложение: <span class="math inline">A_n =
+Q_nR_n</span>.</li>
+<li><code>A_{n+1} = R_nQ_n</code>.</li>
+</ul></li>
+</ol></li>
+<li><strong>Свойства:</strong>
+<ul>
+<li><span class="math inline">A_{n+1}</span> ортогонально подобна <span
+class="math inline">A_n</span> (<span class="math inline">A_{n+1} =
+R_nQ_n = Q_n^TA_nQ_n</span>).</li>
+<li>Последовательность <span class="math inline">A_n</span> сходится к
+<strong>квазитреугольной (блочно-треугольной) матрице</strong>.</li>
+<li>Действительные собственные значения будут на диагонали.</li>
+<li>Пары комплексно-сопряженных собственных чисел будут собственными
+значениями диагональных блоков <span class="math inline">2 \times
+2</span>.</li>
+<li>Скорость сходимости зависит от отношений <span
+class="math inline">|\lambda_i|/|\lambda_j|</span>.</li>
+</ul></li>
+<li><strong>Преимущества:</strong> QR-алгоритм является одним из самых
+надежных и широко используемых методов для решения полной проблемы
+собственных значений благодаря своей численной устойчивости.</li>
+</ul>
 </body>
 </html>
