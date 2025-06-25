@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>answers</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+</head>
+<body>
+<p>Конечно, вот подробные ответы на экзаменационные вопросы,
+составленные на основе предоставленных лекций.</p>
+<hr />
+<h3
+id="вывод-уравнения-колебаний-струны.-постановка-краевых-задач-и-задачи-коши-для-уравнения-колебаний-струны.">1.
+Вывод уравнения колебаний струны. Постановка краевых задач и задачи Коши
+для уравнения колебаний струны.</h3>
+<p><strong>(Источник: Лекция 1, раздел 1; Лекция 2, раздел
+4)</strong></p>
+<p>Рассмотрим идеальную гибкую струну. Предположим, что: 1. Струна
+однородна, её масса на единицу длины в состоянии покоя постоянна и равна
+<span class="math inline">\rho</span>. 2. Натяжение струны <span
+class="math inline">T</span> велико, и оно не меняется при колебаниях.
+3. Колебания являются малыми и поперечными, т.е. точки струны смещаются
+только в одной плоскости (плоскости <span
+class="math inline">XOY</span>) перпендикулярно оси <span
+class="math inline">OX</span>. 4. Струна не сопротивляется изгибу.</p>
+<p>Пусть <span class="math inline">u(t, x)</span> — отклонение точки
+струны с абсциссой <span class="math inline">x</span> от положения
+равновесия в момент времени <span class="math inline">t</span>.</p>
+<p>Выделим малый участок струны между точками <span
+class="math inline">x_1</span> и <span class="math inline">x_2</span>.
+Пусть <span class="math inline">\alpha_1</span> и <span
+class="math inline">\alpha_2</span> — углы, образованные касательными к
+струне в этих точках с осью <span class="math inline">OX</span>.</p>
+<p>Поскольку колебания малые, <span class="math inline">\alpha \approx
+\sin \alpha \approx \tan \alpha = u_x(t,x)</span>.</p>
+<ol type="1">
+<li><p><strong>Проекция сил на ось OX:</strong> Силы натяжения,
+действующие на концах участка, равны <span
+class="math inline">T_1</span> и <span class="math inline">T_2</span>.
+<span class="math display">-T_1 \cos \alpha_1 + T_2 \cos \alpha_2 =
+0</span> Так как <span class="math inline">\cos \alpha \approx 1</span>
+для малых углов, получаем <span class="math inline">T_1 \approx T_2
+\approx T</span>. Сила натяжения постоянна вдоль всей струны.</p></li>
+<li><p><strong>Проекция сил на ось OY:</strong> Результирующая сила в
+вертикальном направлении складывается из вертикальных компонент сил
+натяжения и внешней распределенной силы <span class="math inline">f(t,
+x)</span>: <span class="math display">F_y = -T \sin \alpha_1 + T \sin
+\alpha_2 + \int_{x_1}^{x_2} f(t, \xi) d\xi</span> Используя приближение
+<span class="math inline">\sin \alpha \approx \tan \alpha = u_x</span>,
+получаем: <span class="math display">F_y \approx T(u_x(t, x_2) - u_x(t,
+x_1)) + f(t, \xi^*)(x_2 - x_1)</span> где <span
+class="math inline">\xi^* \in [x_1, x_2]</span>.</p></li>
+<li><p><strong>Второй закон Ньютона:</strong> Масса участка струны <span
+class="math inline">m \approx \rho (x_2 - x_1) = \rho \Delta x</span>.
+Ускорение равно <span class="math inline">u_{tt}(t, x)</span>. <span
+class="math display">m \cdot a = F_y \implies \rho \Delta x \cdot
+u_{tt}(t, x) \approx T(u_x(t, x_2) - u_x(t, x_1)) + f(t, \xi^*) \Delta
+x</span> Делим на <span class="math inline">\Delta x</span> и устремляем
+<span class="math inline">\Delta x \to 0</span>: <span
+class="math display">\rho u_{tt}(t, x) = T \lim_{\Delta x \to 0}
+\frac{u_x(t, x+\Delta x) - u_x(t, x)}{\Delta x} + f(t, x)</span> <span
+class="math display">\rho u_{tt} = T u_{xx} + f(t, x)</span>
+Окончательно, вводя <span class="math inline">a^2 = T/\rho</span>,
+получаем <strong>уравнение колебаний струны</strong>: <span
+class="math display">u_{tt} = a^2 u_{xx} + f(t, x)</span></p></li>
+</ol>
+<h4 id="постановка-задач">Постановка задач</h4>
+<ol type="1">
+<li><p><strong>Задача Коши (для бесконечной струны):</strong> Найти
+решение уравнения <span class="math inline">u_{tt} = a^2 u_{xx} + f(t,
+x)</span> для <span class="math inline">x \in \mathbb{R}, t &gt;
+0</span>, удовлетворяющее начальным условиям: <span
+class="math display">
+\begin{cases}
+u(0, x) = \varphi(x) &amp; \text{(начальное положение)} \\
+u_t(0, x) = \psi(x) &amp; \text{(начальная скорость)}
+\end{cases}
+</span></p></li>
+<li><p><strong>Краевые задачи (для ограниченной струны <span
+class="math inline">x \in [0, L]</span>):</strong> Найти решение
+уравнения <span class="math inline">u_{tt} = a^2 u_{xx} + f(t, x)</span>
+для <span class="math inline">x \in (0, L), t &gt; 0</span>, с
+начальными условиями и граничными условиями.</p>
+<ul>
+<li><strong>Первая краевая задача (закрепленные концы):</strong> <span
+class="math display">u(t, 0) = g_1(t), \quad u(t, L) =
+g_2(t)</span></li>
+<li><strong>Вторая краевая задача (свободные концы):</strong> <span
+class="math display">u_x(t, 0) = h_1(t), \quad u_x(t, L) =
+h_2(t)</span></li>
+<li><strong>Третья краевая задача (упругое закрепление):</strong> <span
+class="math display">(\alpha_1 u_x + \beta_1 u)|_{x=0} = \mu_1(t), \quad
+(\alpha_2 u_x + \beta_2 u)|_{x=L} = \mu_2(t)</span></li>
+</ul></li>
+</ol>
+<hr />
+<h3
+id="формула-даламбера.-существование-решения-задачи-коши-для-уравнения-колебаний-струны.">2.
+Формула Даламбера. Существование решения задачи Коши для уравнения
+колебаний струны.</h3>
+<p><strong>(Источник: Лекция 1, раздел 2)</strong></p>
+<p>Рассмотрим задачу Коши для однородного уравнения колебаний струны
+(<span class="math inline">f=0</span>): <span class="math display">
+\begin{cases}
+u_{tt} = a^2 u_{xx}, \quad t&gt;0, x \in \mathbb{R} \\
+u(0, x) = \varphi(x) \\
+u_t(0, x) = \psi(x)
+\end{cases}
+</span> Для вывода решения используем метод характеристик.
+Характеристическое уравнение имеет вид <span class="math inline">(dx)^2
+- a^2(dt)^2 = 0</span>, откуда <span class="math inline">dx = \pm
+adt</span>. Характеристики — это прямые <span class="math inline">x \pm
+at = const</span>.</p>
+<p>Сделаем замену переменных: <span class="math inline">\xi = x + at,
+\eta = x - at</span>. Тогда <span class="math inline">u_{tt} - a^2
+u_{xx} = -4a^2 u_{\xi\eta} = 0</span>, откуда <span
+class="math inline">u_{\xi\eta} = 0</span>. Интегрируя последовательно,
+получаем общее решение: <span class="math display">u(t, x) = F(\xi) +
+G(\eta) = F(x+at) + G(x-at)</span> где <span class="math inline">F,
+G</span> — произвольные дважды дифференцируемые функции.</p>
+<p>Подставим начальные условия: 1. <span class="math inline">u(0, x) =
+F(x) + G(x) = \varphi(x)</span> 2. <span class="math inline">u_t(0, x) =
+aF&#39;(x) - aG&#39;(x) = \psi(x) \implies F&#39;(x) - G&#39;(x) =
+\frac{1}{a}\psi(x)</span></p>
+<p>Интегрируя второе уравнение, получаем <span class="math inline">F(x)
+- G(x) = \frac{1}{a} \int_{x_0}^x \psi(s)ds + C</span>. Решая систему
+для <span class="math inline">F(x)</span> и <span
+class="math inline">G(x)</span>, находим: <span class="math display">
+F(x) = \frac{1}{2}\varphi(x) + \frac{1}{2a}\int_{x_0}^x \psi(s)ds +
+\frac{C}{2} \\
+G(x) = \frac{1}{2}\varphi(x) - \frac{1}{2a}\int_{x_0}^x \psi(s)ds -
+\frac{C}{2}
+</span> Подставляя <span class="math inline">x+at</span> и <span
+class="math inline">x-at</span> в качестве аргументов, получаем: <span
+class="math display">
+u(t, x) = \frac{\varphi(x+at) + \varphi(x-at)}{2} + \frac{1}{2a}\left(
+\int_{x_0}^{x+at} \psi(s)ds - \int_{x_0}^{x-at} \psi(s)ds \right)
+</span> <span class="math display">
+u(t, x) = \frac{\varphi(x+at) + \varphi(x-at)}{2} +
+\frac{1}{2a}\int_{x-at}^{x+at} \psi(s)ds
+</span> Это и есть <strong>формула Даламбера</strong> для однородного
+уравнения.</p>
+<p>Для <strong>неоднородного уравнения</strong> с нулевыми начальными
+условиями решение дается принципом Дюамеля, и общая формула Даламбера
+имеет вид: <span class="math display">
+u(t, x) = \frac{\varphi(x+at) + \varphi(x-at)}{2} +
+\frac{1}{2a}\int_{x-at}^{x+at} \psi(\xi)d\xi + \frac{1}{2a}\int_0^t
+\int_{x-a(t-\tau)}^{x+a(t-\tau)} f(\tau, \xi) d\xi d\tau
+</span></p>
+<p><strong>Теорема существования:</strong> Пусть <span
+class="math inline">\varphi(x) \in C^2(\mathbb{R})</span>, <span
+class="math inline">\psi(x) \in C^1(\mathbb{R})</span> и <span
+class="math inline">f(t,x) \in C^1([0, +\infty) \times
+\mathbb{R})</span>. Тогда задача Коши имеет единственное решение класса
+<span class="math inline">C^2([0, +\infty) \times \mathbb{R})</span>, и
+это решение задается формулой Даламбера. <strong>(Источник: Лекция 1,
+стр. 4, Теорема)</strong></p>
+<hr />
+<h3
+id="решение-с-помощью-формулы-даламбера-краевых-задач-для-полуограниченной-струны.">3.
+Решение с помощью формулы Даламбера краевых задач для полуограниченной
+струны.</h3>
+<p><strong>(Источник: Лекция 2, раздел 3)</strong></p>
+<p>Рассмотрим струну, занимающую полуось <span class="math inline">x
+&gt; 0</span>. Решение ищется с помощью метода отражения
+(продолжения).</p>
+<p><strong>1. Первая краевая задача (закрепленный конец): <span
+class="math inline">u(t, 0) = 0</span></strong> Задача: <span
+class="math display">
+\begin{cases}
+u_{tt} = a^2 u_{xx} + f(t,x), \quad t &gt; 0, x &gt; 0 \\
+u(0, x) = \varphi(x), \quad u_t(0, x) = \psi(x) \\
+u(t, 0) = 0
+\end{cases}
+</span> Продолжим начальные данные и правую часть на всю ось <span
+class="math inline">\mathbb{R}</span> <strong>нечетным</strong> образом:
+<span class="math display">
+\tilde{\varphi}(x) = \begin{cases} \varphi(x), &amp; x \ge 0 \\
+-\varphi(-x), &amp; x &lt; 0 \end{cases}
+\quad
+\tilde{\psi}(x) = \begin{cases} \psi(x), &amp; x \ge 0 \\ -\psi(-x),
+&amp; x &lt; 0 \end{cases}
+\quad
+\tilde{f}(t,x) = \begin{cases} f(t,x), &amp; x \ge 0 \\ -f(t,-x), &amp;
+x &lt; 0 \end{cases}
+</span> Теперь решаем задачу Коши для бесконечной струны с продолженными
+данными <span class="math inline">\tilde{\varphi}, \tilde{\psi},
+\tilde{f}</span> по формуле Даламбера. Полученное решение <span
+class="math inline">\tilde{u}(t,x)</span> при <span
+class="math inline">x=0</span> будет равно: <span class="math display">
+\tilde{u}(t, 0) = \frac{\tilde{\varphi}(at) + \tilde{\varphi}(-at)}{2} +
+\dots = \frac{\varphi(at) - \varphi(at)}{2} + \dots = 0
+</span> Аналогично, интегралы от нечетных функций по симметричным
+интервалам равны нулю. Таким образом, граничное условие выполняется
+автоматически. Решение исходной задачи есть сужение <span
+class="math inline">\tilde{u}(t,x)</span> на <span class="math inline">x
+&gt; 0</span>.</p>
+<p><strong>2. Вторая краевая задача (свободный конец): <span
+class="math inline">u_x(t, 0) = 0</span></strong> Задача аналогична, но
+с граничным условием <span class="math inline">u_x(t, 0) = 0</span>. В
+этом случае данные продолжаются <strong>четным</strong> образом: <span
+class="math display">
+\hat{\varphi}(x) = \begin{cases} \varphi(x), &amp; x \ge 0 \\
+\varphi(-x), &amp; x &lt; 0 \end{cases}
+\quad
+\hat{\psi}(x) = \begin{cases} \psi(x), &amp; x \ge 0 \\ \psi(-x), &amp;
+x &lt; 0 \end{cases}
+\quad
+\hat{f}(t,x) = \begin{cases} f(t,x), &amp; x \ge 0 \\ f(t,-x), &amp; x
+&lt; 0 \end{cases}
+</span> Решение <span class="math inline">\hat{u}(t,x)</span> задачи
+Коши с этими данными будет иметь производную по <span
+class="math inline">x</span>: <span class="math inline">\hat{u}_x(t,x) =
+\frac{1}{2}(\hat{\varphi}&#39;(x+at) + \hat{\varphi}&#39;(x-at)) +
+\dots</span> Поскольку производная четной функции нечетна, <span
+class="math inline">\hat{\varphi}&#39;</span> и <span
+class="math inline">\hat{\psi}</span> нечетны. Тогда: <span
+class="math inline">\hat{u}_x(t, 0) = \frac{1}{2}(\hat{\varphi}&#39;(at)
++ \hat{\varphi}&#39;(-at)) + \dots = \frac{1}{2}(\hat{\varphi}&#39;(at)
+- \hat{\varphi}&#39;(at)) + \dots = 0</span>. Граничное условие
+выполняется.</p>
+<hr />
+<h3 id="метод-разделения-переменных-для-ограниченной-струны.">4. Метод
+разделения переменных для ограниченной струны.</h3>
+<p><strong>(Этот вопрос не разобран в лекциях. Приводится стандартное
+решение.)</strong></p>
+<p>Рассмотрим однородную задачу для струны с закрепленными концами
+(<span class="math inline">x \in [0,L]</span>): <span
+class="math display">
+\begin{cases}
+u_{tt} = a^2 u_{xx} \\
+u(0, x) = \varphi(x), \quad u_t(0, x) = \psi(x) \\
+u(t, 0) = 0, \quad u(t, L) = 0
+\end{cases}
+</span> Ищем решение в виде <span class="math inline">u(t, x) =
+T(t)X(x)</span>. Подставляя в уравнение: <span
+class="math display">T&#39;&#39;(t)X(x) = a^2 T(t)X&#39;&#39;(x)
+\implies \frac{T&#39;&#39;(t)}{a^2 T(t)} = \frac{X&#39;&#39;(x)}{X(x)} =
+-\lambda</span> где <span class="math inline">-\lambda</span> —
+константа разделения.</p>
+<p><strong>1. Пространственная часть (задача Штурма-Лиувилля):</strong>
+<span class="math display">X&#39;&#39;(x) + \lambda X(x) = 0, \quad
+X(0)=0, X(L)=0</span> Нетривиальные решения существуют только при <span
+class="math inline">\lambda &gt; 0</span>. Общее решение: <span
+class="math inline">X(x) = C_1 \cos(\sqrt{\lambda}x) + C_2
+\sin(\sqrt{\lambda}x)</span>. Из <span class="math inline">X(0)=0</span>
+следует <span class="math inline">C_1=0</span>. Из <span
+class="math inline">X(L)=0</span> следует <span class="math inline">C_2
+\sin(\sqrt{\lambda}L) = 0</span>. Так как <span class="math inline">C_2
+\neq 0</span> (иначе решение тривиально), то <span
+class="math inline">\sqrt{\lambda}L = n\pi</span> для <span
+class="math inline">n=1,2,\dots</span>. Собственные значения и функции:
+<span class="math display">\lambda_n = \left(\frac{n\pi}{L}\right)^2,
+\quad X_n(x) = \sin\left(\frac{n\pi x}{L}\right)</span></p>
+<p><strong>2. Временная часть:</strong> <span
+class="math display">T_n&#39;&#39;(t) + a^2 \lambda_n T_n(t) = 0
+\implies T_n&#39;&#39;(t) + \left(\frac{an\pi}{L}\right)^2 T_n(t) =
+0</span> Решение: <span class="math inline">T_n(t) = A_n
+\cos\left(\frac{an\pi t}{L}\right) + B_n \sin\left(\frac{an\pi
+t}{L}\right)</span>.</p>
+<p><strong>3. Общее решение:</strong> По принципу суперпозиции, общее
+решение есть сумма частных решений: <span class="math display">u(t, x) =
+\sum_{n=1}^{\infty} \left(A_n \cos\left(\frac{an\pi t}{L}\right) + B_n
+\sin\left(\frac{an\pi t}{L}\right)\right) \sin\left(\frac{n\pi
+x}{L}\right)</span></p>
+<p><strong>4. Нахождение коэффициентов:</strong> Коэффициенты <span
+class="math inline">A_n</span> и <span class="math inline">B_n</span>
+определяются из начальных условий с помощью рядов Фурье. - <span
+class="math inline">u(0, x) = \sum_{n=1}^\infty A_n \sin\left(\frac{n\pi
+x}{L}\right) = \varphi(x) \implies A_n = \frac{2}{L}\int_0^L
+\varphi(x)\sin\left(\frac{n\pi x}{L}\right)dx</span> - <span
+class="math inline">u_t(0, x) = \sum_{n=1}^\infty B_n \frac{an\pi}{L}
+\sin\left(\frac{n\pi x}{L}\right) = \psi(x) \implies B_n \frac{an\pi}{L}
+= \frac{2}{L}\int_0^L \psi(x)\sin\left(\frac{n\pi x}{L}\right)dx</span>
+<span class="math display">B_n = \frac{2}{an\pi}\int_0^L
+\psi(x)\sin\left(\frac{n\pi x}{L}\right)dx</span></p>
+<hr />
+<h3
+id="первая-и-вторая-краевые-задачи-для-волнового-уравнения.-энергетическое-равенство.-единственность-решений.">5.
+Первая и вторая краевые задачи для волнового уравнения. Энергетическое
+равенство. Единственность решений.</h3>
+<p><strong>(Источник: Лекция 2, разделы 4, 5)</strong></p>
+<p>Пусть <span class="math inline">\Omega \subset \mathbb{R}^n</span> —
+ограниченная область. Рассмотрим цилиндр <span
+class="math inline">\omega_T = \Omega \times (0, T)</span>.
+<strong>Первая краевая задача (Дирихле):</strong> <span
+class="math display">
+\begin{cases}
+u_{tt} = a^2 \Delta u + f(t,x), \quad (t,x) \in \omega_T \\
+u|_{\partial\Omega \times [0,T]} = \chi(t,x) \\
+u(0,x) = \varphi(x), \quad u_t(0,x) = \psi(x)
+\end{cases}
+</span> <strong>Вторая краевая задача (Неймана):</strong> <span
+class="math display">
+\begin{cases}
+u_{tt} = a^2 \Delta u + f(t,x), \quad (t,x) \in \omega_T \\
+\frac{\partial u}{\partial \nu}|_{\partial\Omega \times [0,T]} =
+\chi(t,x) \\
+u(0,x) = \varphi(x), \quad u_t(0,x) = \psi(x)
+\end{cases}
+</span></p>
+<p><strong>Энергетическое равенство</strong> <strong>Теорема:</strong>
+Пусть <span class="math inline">u \in C^2(\bar{\omega}_T)</span>
+является решением однородного волнового уравнения <span
+class="math inline">u_{tt} = a^2\Delta u</span> с однородными граничными
+условиями (<span class="math inline">u|_{\partial\Omega}=0</span> или
+<span class="math inline">\frac{\partial u}{\partial
+\nu}|_{\partial\Omega}=0</span>). Тогда для <strong>энергии</strong>
+системы <span class="math display">E(t) = \frac{1}{2} \int_\Omega
+(u_t^2(t,x) + a^2 |\nabla u(t,x)|^2) dx</span> справедливо
+<strong>энергетическое равенство</strong>: <span
+class="math inline">E(t) = E(0)</span> для всех <span
+class="math inline">t \in [0,T]</span>.</p>
+<p><strong>Доказательство:</strong> <span class="math display">
+\frac{dE}{dt} = \int_\Omega (u_t u_{tt} + a^2 \nabla u \cdot \nabla u_t)
+dx
+</span> Заменим <span class="math inline">u_{tt}</span> на <span
+class="math inline">a^2\Delta u</span>: <span class="math display">
+\frac{dE}{dt} = \int_\Omega (a^2 u_t \Delta u + a^2 \nabla u \cdot
+\nabla u_t) dx = a^2 \int_\Omega (u_t \Delta u + \nabla u \cdot \nabla
+u_t) dx
+</span> По формуле Грина: <span class="math inline">\int_\Omega v\Delta
+u \,dx = \int_{\partial\Omega} v \frac{\partial u}{\partial \nu} d\sigma
+- \int_\Omega \nabla v \cdot \nabla u \,dx</span>. Применим её с <span
+class="math inline">v=u_t</span>: <span class="math display">
+\int_\Omega u_t \Delta u \,dx = \int_{\partial\Omega} u_t \frac{\partial
+u}{\partial \nu} d\sigma - \int_\Omega \nabla u_t \cdot \nabla u \,dx
+</span> Подставляя обратно в <span
+class="math inline">\frac{dE}{dt}</span>: <span class="math display">
+\frac{dE}{dt} = a^2 \left( \int_{\partial\Omega} u_t \frac{\partial
+u}{\partial \nu} d\sigma - \int_\Omega \nabla u_t \cdot \nabla u \,dx +
+\int_\Omega \nabla u \cdot \nabla u_t \,dx \right) = a^2
+\int_{\partial\Omega} u_t \frac{\partial u}{\partial \nu} d\sigma
+</span> В случае задачи Дирихле <span
+class="math inline">u|_{\partial\Omega}=0 \implies
+u_t|_{\partial\Omega}=0</span>. В случае задачи Неймана <span
+class="math inline">\frac{\partial u}{\partial
+\nu}|_{\partial\Omega}=0</span>. В обоих случаях подынтегральное
+выражение равно нулю, следовательно, <span
+class="math inline">\frac{dE}{dt}=0</span>, и <span
+class="math inline">E(t) = const = E(0)</span>.</p>
+<p><strong>Единственность решений:</strong> Пусть <span
+class="math inline">u_1</span> и <span class="math inline">u_2</span> —
+два решения одной и той же краевой задачи. Их разность <span
+class="math inline">w = u_1 - u_2</span> удовлетворяет однородному
+уравнению с нулевыми начальными и граничными условиями. <span
+class="math inline">E_w(0) = \frac{1}{2} \int_\Omega (w_t^2(0,x) + a^2
+|\nabla w(0,x)|^2) dx = 0</span>. Из энергетического равенства <span
+class="math inline">E_w(t) = E_w(0) = 0</span> для всех <span
+class="math inline">t</span>. Так как подынтегральное выражение в <span
+class="math inline">E_w(t)</span> неотрицательно, то <span
+class="math inline">u_t(t,x) \equiv 0</span> и <span
+class="math inline">\nabla u(t,x) \equiv 0</span>. Это значит, что <span
+class="math inline">w(t,x)</span> есть константа. Но так как <span
+class="math inline">w(0,x)=0</span>, то <span class="math inline">w(t,x)
+\equiv 0</span>, и <span class="math inline">u_1 \equiv u_2</span>.
+Решение единственно.</p>
+<hr />
+<h3
+id="задача-коши-для-волнового-уравнения.-энергетическое-неравенство.-теорема-единственности-решения-задачи-коши.">6.
+Задача Коши для волнового уравнения. Энергетическое неравенство. Теорема
+единственности решения задачи Коши.</h3>
+<p><strong>(Источник: Лекция 3, раздел 6)</strong></p>
+<p>Рассмотрим задачу Коши для однородного волнового уравнения в <span
+class="math inline">\mathbb{R}^n</span>: <span class="math display">
+\begin{cases}
+u_{tt} = a^2 \Delta u, \quad t&gt;0, x \in \mathbb{R}^n \\
+u(0, x) = \varphi(x), \quad u_t(0, x) = \psi(x)
+\end{cases}
+</span> Решение в точке <span class="math inline">(t_0, x_0)</span>
+зависит только от начальных данных в шаре <span
+class="math inline">|x-x_0| \le at_0</span>. Это <strong>область
+зависимости</strong>. Обратно, начальные данные в точке <span
+class="math inline">(0, y)</span> влияют на решение в <strong>конусе
+влияния</strong> <span class="math inline">|x-y| \le at</span>.</p>
+<p><strong>Энергетическое неравенство</strong> Рассмотрим
+<strong>характеристический конус</strong> <span class="math inline">K =
+\{(t,x) : 0 &lt; t &lt; t_0, |x-x_0| &lt; a(t_0-t)\}</span>.
+<strong>Теорема:</strong> Пусть <span class="math inline">u \in
+C^2(\mathbb{R}_+ \times \mathbb{R}^n)</span> — решение однородной задачи
+Коши. Тогда для любого <span class="math inline">(t_0, x_0)</span> и
+любого <span class="math inline">\tau \in (0, t_0)</span> справедливо
+<strong>энергетическое неравенство</strong>: <span
+class="math display">E(\tau) \le E(0)</span> где энергия <span
+class="math inline">E(t)</span> определяется как интеграл по сечению
+конуса: <span class="math display">E(t) = \frac{1}{2}
+\int_{|x-x_0|&lt;a(t_0-t)} (u_t^2(t,x) + a^2 |\nabla u(t,x)|^2)
+dx</span> <strong>Идея доказательства:</strong> Аналогично
+доказательству энергетического равенства, интегрируется тождество <span
+class="math inline">(u_{tt} - a^2\Delta u)u_t = 0</span> по усеченному
+конусу <span class="math inline">K_\tau</span>. После применения формулы
+Грина получается интеграл по границе конуса. Показывается, что интеграл
+по боковой поверхности конуса неотрицателен. Это приводит к неравенству
+<span class="math inline">E(\tau) - E(0) \le 0</span>.</p>
+<p><strong>Теорема единственности:</strong> Решение задачи Коши для
+волнового уравнения в классе <span class="math inline">C^2</span>
+единственно. <strong>Доказательство:</strong> Пусть <span
+class="math inline">u_1, u_2</span> — два решения. Их разность <span
+class="math inline">w = u_1 - u_2</span> решает задачу Коши с нулевыми
+начальными данными. Тогда энергия <span class="math inline">E_w(0) =
+0</span>. Из энергетического неравенства следует, что <span
+class="math inline">E_w(t) \le E_w(0) = 0</span> для любого <span
+class="math inline">t</span> в любой области зависимости. Так как <span
+class="math inline">E_w(t) \ge 0</span>, то <span
+class="math inline">E_w(t) \equiv 0</span>. Отсюда, как и в п. 5,
+следует, что <span class="math inline">w(t,x) \equiv 0</span>.
+Следовательно, <span class="math inline">u_1 \equiv u_2</span>.</p>
+<hr />
+<h3
+id="метод-фурье-для-волнового-уравнения-в-пространстве-размерности-2-прямоугольник.">7.
+Метод Фурье для волнового уравнения в пространстве размерности 2
+(прямоугольник).</h3>
+<p><strong>(Этот вопрос не разобран в лекциях. Приводится стандартное
+решение.)</strong></p>
+<p>Рассмотрим задачу для прямоугольной мембраны <span
+class="math inline">\Omega = [0, L_x] \times [0, L_y]</span> с
+закрепленными краями. <span class="math display">
+\begin{cases}
+u_{tt} = a^2(u_{xx} + u_{yy}) \\
+u(0, x, y) = \varphi(x, y), \quad u_t(0, x, y) = \psi(x, y) \\
+u|_{\partial\Omega} = 0
+\end{cases}
+</span> Ищем решение в виде <span class="math inline">u(t,x,y) =
+T(t)X(x)Y(y)</span>. Подстановка в уравнение и разделение переменных
+дают: <span class="math display">\frac{T&#39;&#39;(t)}{a^2T(t)} =
+\frac{X&#39;&#39;(x)}{X(x)} + \frac{Y&#39;&#39;(y)}{Y(y)} =
+-\lambda</span> Это приводит к трем обыкновенным дифференциальным
+уравнениям: 1. <span class="math inline">X&#39;&#39;(x) + \lambda_x X(x)
+= 0, \quad X(0)=0, X(L_x)=0 \implies \lambda_{x,n} =
+(\frac{n\pi}{L_x})^2, X_n(x) = \sin(\frac{n\pi x}{L_x})</span> 2. <span
+class="math inline">Y&#39;&#39;(y) + \lambda_y Y(y) = 0, \quad Y(0)=0,
+Y(L_y)=0 \implies \lambda_{y,m} = (\frac{m\pi}{L_y})^2, Y_m(y) =
+\sin(\frac{m\pi y}{L_y})</span> 3. <span
+class="math inline">T_{nm}&#39;&#39;(t) + a^2(\lambda_{x,n} +
+\lambda_{y,m})T_{nm}(t) = 0</span></p>
+<p>Обозначим <span class="math inline">\omega_{nm} =
+a\sqrt{(\frac{n\pi}{L_x})^2 + (\frac{m\pi}{L_y})^2}</span>. Решение для
+<span class="math inline">T(t)</span>: <span
+class="math display">T_{nm}(t) = A_{nm} \cos(\omega_{nm}t) + B_{nm}
+\sin(\omega_{nm}t)</span> Общее решение — это двойной ряд Фурье: <span
+class="math display">u(t,x,y) = \sum_{n=1}^\infty \sum_{m=1}^\infty
+(A_{nm}\cos(\omega_{nm}t) + B_{nm}\sin(\omega_{nm}t)) \sin(\frac{n\pi
+x}{L_x})\sin(\frac{m\pi y}{L_y})</span> Коэффициенты <span
+class="math inline">A_{nm}</span> и <span
+class="math inline">B_{nm}</span> находятся из начальных условий с
+помощью двойных интегралов (коэффициенты двойного ряда Фурье).</p>
+<hr />
+<h3
+id="метод-фурье-для-волнового-уравнения-в-пространстве-размерности-2-круг.">8.
+Метод Фурье для волнового уравнения в пространстве размерности 2
+(круг).</h3>
+<p><strong>(Этот вопрос не разобран в лекциях. Приводится стандартное
+решение.)</strong></p>
+<p>Рассмотрим колебания круглой мембраны радиуса <span
+class="math inline">R</span> с закрепленным краем. В полярных
+координатах <span class="math inline">(r, \theta)</span> уравнение имеет
+вид: <span class="math display">u_{tt} = a^2\left(u_{rr} +
+\frac{1}{r}u_r + \frac{1}{r^2}u_{\theta\theta}\right)</span> Ищем
+решение в виде <span class="math inline">u(t, r, \theta) = T(t)V(r,
+\theta)</span>. Это приводит к уравнению Гельмгольца для <span
+class="math inline">V</span>: <span class="math display">\Delta V + k^2
+V = 0, \quad k^2 = \lambda</span> которое решается дальнейшим
+разделением переменных <span class="math inline">V(r, \theta) =
+R(r)\Theta(\theta)</span>.</p>
+<ol type="1">
+<li><span class="math inline">\Theta&#39;&#39;(\theta) +
+m^2\Theta(\theta) = 0 \implies \Theta_m(\theta) = C_1\cos(m\theta) +
+C_2\sin(m\theta)</span>. Условие периодичности требует <span
+class="math inline">m \in \mathbb{Z}</span>.</li>
+<li><span class="math inline">r^2R&#39;&#39;(r) + rR&#39;(r) + (k^2r^2 -
+m^2)R(r) = 0</span>. Это <strong>уравнение Бесселя</strong>. Граничное
+условие <span class="math inline">u(t, R, \theta)=0</span> дает <span
+class="math inline">R(R)=0</span>. Решениями, которые не бесконечны в
+центре (<span class="math inline">r=0</span>), являются функции Бесселя
+первого рода <span class="math inline">J_m(kr)</span>. Условие <span
+class="math inline">J_m(kR)=0</span> определяет дискретный набор
+допустимых значений <span class="math inline">k</span>. Пусть <span
+class="math inline">\mu_{mn}</span> — <span
+class="math inline">n</span>-й положительный корень уравнения <span
+class="math inline">J_m(z)=0</span>. Тогда <span
+class="math inline">k_{mn} = \mu_{mn}/R</span>.</li>
+<li>Уравнение для <span class="math inline">T(t)</span> имеет вид <span
+class="math inline">T&#39;&#39; + (ak_{mn})^2 T = 0</span>.</li>
+</ol>
+<p>Общее решение представляет собой двойной ряд по функциям Бесселя и
+тригонометрическим функциям.</p>
+<hr />
+<h3 id="формула-кирхгофа-для-однородного-волнового-уравнения.">9.
+Формула Кирхгофа для однородного волнового уравнения.</h3>
+<p><strong>(Источник: Лекция 4)</strong></p>
+<p>Формула Кирхгофа дает решение задачи Коши для однородного волнового
+уравнения в <strong>трехмерном пространстве</strong> (<span
+class="math inline">n=3</span>): <span class="math display">
+\begin{cases}
+u_{tt} = a^2 \Delta u \\
+u(0, x) = \varphi(x), \quad u_t(0, x) = \psi(x)
+\end{cases}
+</span> <strong>Теорема (Формула Кирхгофа):</strong> Пусть <span
+class="math inline">\varphi \in C^3(\mathbb{R}^3)</span>, <span
+class="math inline">\psi \in C^2(\mathbb{R}^3)</span>. Тогда решение
+задачи Коши дается формулой: <span class="math display">
+u(t, x) = \frac{1}{4\pi a^2 t} \int_{|\xi-x|=at} \psi(\xi) dS_\xi +
+\frac{\partial}{\partial t}\left(\frac{1}{4\pi a^2 t} \int_{|\xi-x|=at}
+\varphi(\xi) dS_\xi \right)
+</span> Интегрирование ведется по сфере <span
+class="math inline">S_{at}(x)</span> радиуса <span
+class="math inline">at</span> с центром в точке <span
+class="math inline">x</span>. Формулу можно переписать в виде: <span
+class="math display">
+u(t,x) = t \cdot M_t[\psi] + \frac{\partial}{\partial t}(t \cdot
+M_t[\varphi])
+</span> где <span class="math inline">M_t[g] = \frac{1}{4\pi a^2
+t^2}\int_{|\xi-x|=at} g(\xi) dS_\xi</span> — среднее значение функции
+<span class="math inline">g</span> по сфере.</p>
+<p><strong>Лемма (основа вывода):</strong> Для функции <span
+class="math inline">M_g(t,x) = \frac{1}{4\pi a^2 t} \int_{|\xi-x|=at}
+g(\xi) dS_\xi</span> (с <span class="math inline">t</span> в первой
+степени), где <span class="math inline">g \in C^2(\mathbb{R}^3)</span>,
+выполняются тождества: 1. <span
+class="math inline">\frac{\partial^2}{\partial t^2}M_g = a^2 \Delta
+M_g</span> 2. <span class="math inline">M_g|_{t=0} = 0</span> 3. <span
+class="math inline">\frac{\partial M_g}{\partial t}|_{t=0} = g(x)</span>
+Из этой леммы следует, что <span class="math inline">u_1(t,x) =
+M_\psi(t,x)</span> решает задачу с начальными условиями <span
+class="math inline">(0, \psi)</span>, а <span
+class="math inline">u_2(t,x) = \frac{\partial}{\partial t}
+M_\varphi(t,x)</span> решает задачу с начальными условиями <span
+class="math inline">(\varphi, 0)</span>. По принципу суперпозиции их
+сумма дает искомое решение.</p>
+<hr />
+<h3
+id="метод-спуска.-формула-пуассона-для-однородного-волнового-уравнения.">10.
+Метод спуска. Формула Пуассона для однородного волнового уравнения.</h3>
+<p><strong>(Источник: Лекция 4, раздел 8)</strong></p>
+<p><strong>Метод спуска</strong> — это способ получения решения задачи
+Коши в пространстве меньшей размерности из решения в пространстве
+большей размерности.</p>
+<p>Рассмотрим задачу Коши в <span
+class="math inline">\mathbb{R}^2</span>. Мы можем “поднять” ее в <span
+class="math inline">\mathbb{R}^3</span>, считая, что начальные функции
+<span class="math inline">\varphi(x_1, x_2)</span> и <span
+class="math inline">\psi(x_1, x_2)</span> не зависят от третьей
+координаты <span class="math inline">x_3</span>. Тогда и решение <span
+class="math inline">u(t, x_1, x_2, x_3)</span> не будет зависеть от
+<span class="math inline">x_3</span>. Для этого трехмерного решения мы
+можем применить формулу Кирхгофа.</p>
+<p><span class="math display">u(t, x_1, x_2) = \frac{1}{4\pi a^2 t}
+\int_{S_{at}(x)} \psi(\xi_1, \xi_2) dS_\xi + \frac{\partial}{\partial
+t}\left(\frac{1}{4\pi a^2 t} \int_{S_{at}(x)} \varphi(\xi_1, \xi_2)
+dS_\xi \right)</span> где <span
+class="math inline">x=(x_1,x_2,0)</span>, <span
+class="math inline">\xi=(\xi_1, \xi_2, \xi_3)</span>, а <span
+class="math inline">S_{at}(x)</span> — сфера в <span
+class="math inline">\mathbb{R}^3</span>. Интеграл по сфере можно
+“спустить” в интеграл по кругу <span
+class="math inline">D_{at}(x_1,x_2)</span> в плоскости <span
+class="math inline">(\xi_1, \xi_2)</span>. Элемент площади сферы <span
+class="math inline">dS_\xi</span> проецируется на плоскость с якобианом:
+<span class="math inline">dS_\xi = \frac{at}{\sqrt{a^2t^2 - r^2}}d\xi_1
+d\xi_2</span>, где <span class="math inline">r^2 = (\xi_1-x_1)^2 +
+(\xi_2-x_2)^2</span>. Интеграл по сфере равен удвоенному интегралу по
+кругу (верхняя и нижняя полусферы дают одинаковый вклад).</p>
+<p>После преобразований получается <strong>формула Пуассона</strong> для
+решения задачи Коши в <span class="math inline">\mathbb{R}^2</span>:
+<span class="math display">
+u(t, x, y) = \frac{1}{2\pi a} \int_{r \le at} \frac{\psi(\xi,
+\eta)}{\sqrt{a^2t^2 - r^2}} d\xi d\eta + \frac{\partial}{\partial t}
+\left( \frac{1}{2\pi a} \int_{r \le at} \frac{\varphi(\xi,
+\eta)}{\sqrt{a^2t^2 - r^2}} d\xi d\eta \right)
+</span> где <span class="math inline">r^2 = (\xi-x)^2 +
+(\eta-y)^2</span>.</p>
+<hr />
+<h3
+id="принцип-дюамеля.-формулы-кирхгофа-и-пуассона-для-неоднородного-волнового-уравнения.">11.
+Принцип Дюамеля. Формулы Кирхгофа и Пуассона для неоднородного волнового
+уравнения.</h3>
+<p><strong>(Источник: Лекция 4, раздел 9; Лекция 5, раздел
+10)</strong></p>
+<p><strong>Теорема (Принцип Дюамеля):</strong> Решение задачи Коши для
+неоднородного уравнения с нулевыми начальными условиями: <span
+class="math display">
+\begin{cases}
+u_{tt} = a^2 \Delta u + f(t,x) \\
+u(0, x) = 0, \quad u_t(0, x) = 0
+\end{cases}
+</span> можно представить в виде: <span class="math display">u(t, x) =
+\int_0^t U(t-\tau, x; \tau) d\tau</span> где <span
+class="math inline">U(t, x; \tau)</span> — решение задачи Коши для
+однородного уравнения с начальными данными, “заданными” в момент времени
+<span class="math inline">\tau</span>: <span class="math display">
+\begin{cases}
+U_{tt} = a^2 \Delta U \\
+U(0, x; \tau) = 0, \quad U_t(0, x; \tau) = f(\tau, x)
+\end{cases}
+</span> (Примечание: в лекциях приведена немного другая, но
+эквивалентная формулировка <span class="math inline">U(t-\tau, x;
+\tau)</span>).</p>
+<p>Используя этот принцип, можно дописать интегральные члены к формулам
+Кирхгофа и Пуассона, чтобы учесть неоднородность <span
+class="math inline">f(t,x)</span>.</p>
+<p><strong>Формула Кирхгофа для неоднородного уравнения (<span
+class="math inline">n=3</span>):</strong> <span class="math display">
+u(t,x) = u_{hom}(t,x) + \frac{1}{4\pi a^2} \int_0^t \frac{1}{t-\tau}
+\int_{|\xi-x|=a(t-\tau)} f(\tau, \xi) dS_\xi d\tau
+</span></p>
+<p><strong>Формула Пуассона для неоднородного уравнения (<span
+class="math inline">n=2</span>):</strong> <span class="math display">
+u(t,x) = u_{hom}(t,x) + \frac{1}{2\pi a} \int_0^t \int_{|\xi-x|\le
+a(t-\tau)} \frac{f(\tau, \xi)}{\sqrt{a^2(t-\tau)^2 - |\xi-x|^2}} d\xi
+d\tau
+</span> Здесь <span class="math inline">u_{hom}(t,x)</span> —
+соответствующее решение однородного уравнения (формулы из п. 9 и
+10).</p>
+<hr />
+<h3
+id="распространение-волн-в-пространствах-различной-размерности.-качественные-различия.">12.
+Распространение волн в пространствах различной размерности. Качественные
+различия.</h3>
+<p><strong>(Источник: Лекция 5, раздел 11)</strong></p>
+<p>Рассмотрим решение задачи Коши с финитными начальными данными, т.е.
+<span class="math inline">\varphi(x)</span> и <span
+class="math inline">\psi(x)</span> равны нулю вне некоторого шара <span
+class="math inline">|x| \le R</span>.</p>
+<p><strong>Случай <span class="math inline">n=3</span> (трехмерное
+пространство):</strong> Решение дается формулой Кирхгофа. Интегрирование
+идет по сфере <span class="math inline">|\xi-x|=at</span>. - Если <span
+class="math inline">at &lt; |x|-R</span> (сфера интегрирования не
+достигла области возмущения), то <span
+class="math inline">u(t,x)=0</span>. - Если <span
+class="math inline">|x|-R &lt; at &lt; |x|+R</span> (сфера пересекает
+область возмущения), то <span class="math inline">u(t,x)</span> может
+быть не равно нулю. - Если <span class="math inline">at &gt;
+|x|+R</span> (сфера прошла область возмущения), то <span
+class="math inline">u(t,x)=0</span> снова.</p>
+<p>Это означает, что в точке <span class="math inline">x</span>
+возмущение приходит в момент времени <span class="math inline">t_1 =
+(|x|-R)/a</span> и полностью прекращается в момент <span
+class="math inline">t_2 = (|x|+R)/a</span>. Волна имеет <strong>четкий
+передний и задний фронт</strong>. Это называется <strong>принципом
+Гюйгенса</strong>. Искажения сигнала не происходит.</p>
+<p><strong>Случай <span class="math inline">n=2</span> (двумерное
+пространство):</strong> Решение дается формулой Пуассона. Интегрирование
+идет по кругу <span class="math inline">|\xi-x| \le at</span>. - Если
+<span class="math inline">at &lt; |x|-R</span> (круг интегрирования не
+достиг области возмущения), то <span
+class="math inline">u(t,x)=0</span>. - Как только <span
+class="math inline">at &gt; |x|-R</span>, круг начинает пересекать
+область возмущения, и <span class="math inline">u(t,x)</span> становится
+отличным от нуля.</p>
+<p>Волна имеет <strong>четкий передний фронт</strong>, но <strong>задний
+фронт размыт</strong>. После прохождения переднего фронта возмущение в
+точке <span class="math inline">x</span> не прекращается, а лишь
+затухает со временем, так как область возмущения навсегда остается
+внутри области интегрирования. Происходит <strong>диффузия
+волны</strong>. Принцип Гюйгенса не выполняется.</p>
+<p><strong>Случай <span class="math inline">n=1</span> (одномерное
+пространство):</strong> Решение дается формулой Даламбера. Оно состоит
+из двух частей: 1. Слагаемое с <span class="math inline">\varphi</span>:
+<span class="math inline">\frac{1}{2}(\varphi(x+at) +
+\varphi(x-at))</span>. Оно ведет себя как в 3D — имеет четкий передний и
+задний фронт. 2. Слагаемое с <span class="math inline">\psi</span>:
+<span
+class="math inline">\frac{1}{2a}\int_{x-at}^{x+at}\psi(s)ds</span>. Оно
+ведет себя как в 2D — имеет четкий передний фронт и размытый задний.</p>
+<p>Таким образом, в 1D поведение зависит от типа начального возмущения.
+Если струну оттянуть и отпустить (<span
+class="math inline">\psi=0</span>), возмущение будет иметь четкие
+фронты. Если по струне ударить (<span
+class="math inline">\varphi=0</span>), звучание будет затухающим, с
+размытым задним фронтом.</p>
+<hr />
+<h3
+id="пространства-основных-функций-mathcaldomega-примеры-основных-функций.-действия-над-основными-функциями.-сходимость-основных-функций-примеры-сходящихся-и-расходящихся-последовательностей.">13.
+Пространства основных функций <span
+class="math inline">\mathcal{D}(\Omega)</span>, примеры основных
+функций. Действия над основными функциями. Сходимость основных функций,
+примеры сходящихся и расходящихся последовательностей.</h3>
+<p><strong>(Источник: Лекция 6, раздел 13)</strong></p>
+<p><strong>Пространство основных функций <span
+class="math inline">\mathcal{D}(\Omega)</span></strong> (или <span
+class="math inline">C_0^\infty(\Omega)</span>) — это множество функций
+<span class="math inline">\varphi(x)</span>, определенных в области
+<span class="math inline">\Omega \subset \mathbb{R}^n</span>, которые
+удовлетворяют двум условиям: 1. <strong>Бесконечная гладкость:</strong>
+<span class="math inline">\varphi \in C^\infty(\Omega)</span>. 2.
+<strong>Финитность:</strong> носитель функции <span
+class="math inline">\text{supp}(\varphi) = \overline{\{x \in \Omega :
+\varphi(x) \neq 0\}}</span> является компактом, лежащим в <span
+class="math inline">\Omega</span>.</p>
+<p><strong>Пример основной функции (“шапочка”):</strong> <span
+class="math display">
+\varphi(x) =
+\begin{cases}
+e^{-\frac{1}{1-x^2}}, &amp; |x| &lt; 1 \\
+0, &amp; |x| \ge 1
+\end{cases}
+</span> Эта функция бесконечно дифференцируема на всей оси <span
+class="math inline">\mathbb{R}</span>, а её носитель — отрезок <span
+class="math inline">[-1, 1]</span>.</p>
+<p><strong>Действия над основными функциями:</strong> - <strong>Линейные
+операции:</strong> Если <span class="math inline">\varphi, \psi \in
+\mathcal{D}(\Omega)</span>, то <span class="math inline">\alpha\varphi +
+\beta\psi \in \mathcal{D}(\Omega)</span>. - <strong>Умножение на <span
+class="math inline">C^\infty</span>-функцию:</strong> Если <span
+class="math inline">\varphi \in \mathcal{D}(\Omega)</span> и <span
+class="math inline">f \in C^\infty(\Omega)</span>, то <span
+class="math inline">f\varphi \in \mathcal{D}(\Omega)</span>. -
+<strong>Дифференцирование:</strong> Если <span
+class="math inline">\varphi \in \mathcal{D}(\Omega)</span>, то любая её
+производная <span class="math inline">D^\alpha \varphi</span> также
+принадлежит <span class="math inline">\mathcal{D}(\Omega)</span>.</p>
+<p><strong>Сходимость в <span
+class="math inline">\mathcal{D}(\Omega)</span>:</strong>
+Последовательность <span class="math inline">\varphi_n \in
+\mathcal{D}(\Omega)</span> сходится к <span class="math inline">\varphi
+\in \mathcal{D}(\Omega)</span> при <span class="math inline">n \to
+\infty</span> (пишется <span class="math inline">\varphi_n \to
+\varphi</span> в <span class="math inline">\mathcal{D}(\Omega)</span>),
+если: 1. <strong>Существует компакт <span class="math inline">K \subset
+\Omega</span> такой, что <span
+class="math inline">\text{supp}(\varphi_n) \subset K</span> для всех
+<span class="math inline">n</span>.</strong> (Условие равностепенной
+финитности). 2. <strong>Для любого мультииндекса <span
+class="math inline">\alpha</span>, последовательность производных <span
+class="math inline">D^\alpha \varphi_n</span> равномерно сходится к
+<span class="math inline">D^\alpha \varphi</span> на <span
+class="math inline">K</span> (а значит и на <span
+class="math inline">\Omega</span>).</strong></p>
+<p><strong>Примеры последовательностей:</strong> -
+<strong>Сходящаяся:</strong> <span class="math inline">\varphi_n(x) =
+\frac{1}{n}\varphi(x)</span>, где <span
+class="math inline">\varphi(x)</span> — “шапочка”. Здесь <span
+class="math inline">\varphi_n \to 0</span> в <span
+class="math inline">\mathcal{D}(\mathbb{R})</span>. Носитель у всех
+функций один и тот же, и все производные равномерно сходятся к нулю. -
+<strong>Расходящаяся (нарушение условия 1):</strong> <span
+class="math inline">\varphi_n(x) = \varphi(x-n)</span>. Это
+последовательность “убегающих шапочек”. Нет общего компакта, содержащего
+все носители. - <strong>Расходящаяся (нарушение условия 2):</strong>
+<span class="math inline">\varphi_n(x) = \sin(nx)\varphi(x)</span>. Хотя
+носитель общий, производные <span class="math inline">D\varphi_n =
+n\cos(nx)\varphi(x) + \sin(nx)\varphi&#39;(x)</span> не сходятся
+равномерно (из-за множителя <span class="math inline">n</span>).</p>
+<hr />
+<h3
+id="пространства-обобщенных-функций-mathcaldomega.-примеры-регулярные-обобщенные-функции-delta-функция.-действия-над-обобщенными-функциями.-сходимость-обобщенных-функций.">14.
+Пространства обобщенных функций <span
+class="math inline">\mathcal{D}&#39;(\Omega)</span>. Примеры: регулярные
+обобщенные функции, <span class="math inline">\delta</span>-функция.
+Действия над обобщенными функциями. Сходимость обобщенных функций.</h3>
+<p><strong>(Источник: Лекция 6, разделы 13, 14)</strong></p>
+<p><strong>Пространство обобщенных функций (распределений) <span
+class="math inline">\mathcal{D}&#39;(\Omega)</span></strong> — это
+пространство всех непрерывных линейных функционалов на пространстве
+основных функций <span class="math inline">\mathcal{D}(\Omega)</span>.
+Элемент <span class="math inline">f \in \mathcal{D}&#39;(\Omega)</span>
+— это отображение <span class="math inline">f: \mathcal{D}(\Omega) \to
+\mathbb{R}</span>, такое что: 1. <strong>Линейность:</strong> <span
+class="math inline">\langle f, \alpha\varphi + \beta\psi \rangle =
+\alpha\langle f, \varphi \rangle + \beta\langle f, \psi \rangle</span>.
+2. <strong>Непрерывность:</strong> Если <span
+class="math inline">\varphi_n \to \varphi</span> в <span
+class="math inline">\mathcal{D}(\Omega)</span>, то <span
+class="math inline">\langle f, \varphi_n \rangle \to \langle f, \varphi
+\rangle</span> в <span class="math inline">\mathbb{R}</span>. Здесь
+<span class="math inline">\langle f, \varphi \rangle</span> обозначает
+действие функционала <span class="math inline">f</span> на функцию <span
+class="math inline">\varphi</span>.</p>
+<p><strong>Примеры:</strong> 1. <strong>Регулярные обобщенные
+функции:</strong> Любая локально интегрируемая функция <span
+class="math inline">f(x) \in L^1_{loc}(\Omega)</span> порождает
+обобщенную функцию (которую обозначают той же буквой <span
+class="math inline">f</span>) по правилу: <span
+class="math display">\langle f, \varphi \rangle = \int_\Omega
+f(x)\varphi(x) dx</span> Линейность очевидна, непрерывность доказывается
+с использованием свойств сходимости в <span
+class="math inline">\mathcal{D}(\Omega)</span>. 2. <strong><span
+class="math inline">\delta</span>-функция Дирака:</strong> Это
+сингулярная (нерегулярная) обобщенная функция, определяемая как: <span
+class="math display">\langle \delta_{x_0}, \varphi \rangle =
+\varphi(x_0)</span> (Обычно пишут <span
+class="math inline">\delta(x-x_0)</span>, а при <span
+class="math inline">x_0=0</span> просто <span
+class="math inline">\delta(x)</span>). Она “измеряет” значение основной
+функции в точке <span class="math inline">x_0</span>.</p>
+<p><strong>Действия над обобщенными функциями:</strong> Действия
+определяются по принципу дуальности, перенося операцию с обобщенной
+функции на основную. - <strong>Сложение и умножение на число:</strong>
+<span class="math display">\langle \alpha f + \beta g, \varphi \rangle =
+\alpha \langle f, \varphi \rangle + \beta \langle g, \varphi
+\rangle</span> - <strong>Умножение на <span
+class="math inline">C^\infty</span>-функцию:</strong> Пусть <span
+class="math inline">a(x) \in C^\infty(\Omega)</span>. <span
+class="math display">\langle af, \varphi \rangle = \langle f, a\varphi
+\rangle</span> (Это корректно, так как <span
+class="math inline">a\varphi \in \mathcal{D}(\Omega)</span>). -
+<strong>Дифференцирование:</strong> (см. следующий вопрос).</p>
+<p><strong>Сходимость в <span
+class="math inline">\mathcal{D}&#39;(\Omega)</span>:</strong>
+Последовательность <span class="math inline">f_n \in
+\mathcal{D}&#39;(\Omega)</span> сходится к <span class="math inline">f
+\in \mathcal{D}&#39;(\Omega)</span> (слабая сходимость), если для
+<strong>любой</strong> основной функции <span
+class="math inline">\varphi \in \mathcal{D}(\Omega)</span> числовая
+последовательность <span class="math inline">\langle f_n, \varphi
+\rangle</span> сходится к <span class="math inline">\langle f, \varphi
+\rangle</span>: <span class="math display">f_n \to f \text{ в }
+\mathcal{D}&#39;(\Omega) \iff \forall \varphi \in \mathcal{D}(\Omega),
+\quad \lim_{n\to\infty} \langle f_n, \varphi \rangle = \langle f,
+\varphi \rangle</span></p>
+<hr />
+<h3
+id="дифференцирование-обобщенных-функций.-delta-функция-как-производная-функции-хевисайда.-производные-delta-функции.">15.
+Дифференцирование обобщенных функций. <span
+class="math inline">\delta</span>-функция как производная функции
+Хевисайда. Производные <span
+class="math inline">\delta</span>-функции.</h3>
+<p><strong>(Источник: Лекция 6, раздел 14)</strong></p>
+<p><strong>Определение производной:</strong> Производная <span
+class="math inline">D^\alpha f</span> обобщенной функции <span
+class="math inline">f \in \mathcal{D}&#39;(\Omega)</span> определяется
+по формуле: <span class="math display">\langle D^\alpha f, \varphi
+\rangle = (-1)^{|\alpha|} \langle f, D^\alpha \varphi \rangle, \quad
+\forall \varphi \in \mathcal{D}(\Omega)</span> Это определение
+мотивировано формулой интегрирования по частям для регулярных функций.
+Любая обобщенная функция бесконечно дифференцируема в смысле этого
+определения.</p>
+<p><strong><span class="math inline">\delta</span>-функция как
+производная функции Хевисайда:</strong> Функция Хевисайда: <span
+class="math display">
+\Theta(x) =
+\begin{cases}
+1, &amp; x &gt; 0 \\
+0, &amp; x \le 0
+\end{cases}
+</span> Она является регулярной обобщенной функцией. Найдем ее
+производную <span class="math inline">\Theta&#39;</span>: <span
+class="math display">
+\langle \Theta&#39;, \varphi \rangle = (-1)^1 \langle \Theta,
+\varphi&#39; \rangle = -\int_{-\infty}^\infty \Theta(x)\varphi&#39;(x)dx
+= -\int_0^\infty \varphi&#39;(x)dx
+</span> Так как <span class="math inline">\varphi(x)</span> финитна, она
+равна нулю при больших <span class="math inline">x</span>. <span
+class="math display">
+-\int_0^\infty \varphi&#39;(x)dx = -[\varphi(x)]_0^\infty =
+-(\lim_{x\to\infty}\varphi(x) - \varphi(0)) = -(0 - \varphi(0)) =
+\varphi(0)
+</span> Мы получили, что <span class="math inline">\langle \Theta&#39;,
+\varphi \rangle = \varphi(0) = \langle \delta, \varphi \rangle</span>.
+Следовательно, <strong><span class="math inline">\Theta&#39; =
+\delta</span></strong>.</p>
+<p><strong>Производные <span
+class="math inline">\delta</span>-функции:</strong> Используя общее
+определение, производная <span class="math inline">\delta</span>-функции
+<span class="math inline">k</span>-го порядка определяется как: <span
+class="math display">\langle \delta^{(k)}, \varphi \rangle = (-1)^k
+\langle \delta, \varphi^{(k)} \rangle = (-1)^k \varphi^{(k)}(0)</span>
+Например: - <span class="math inline">\langle \delta&#39;, \varphi
+\rangle = -\varphi&#39;(0)</span>. <span
+class="math inline">\delta&#39;</span> описывает диполь. - <span
+class="math inline">\langle \delta&#39;&#39;, \varphi \rangle =
+\varphi&#39;&#39;(0)</span>. <span
+class="math inline">\delta&#39;&#39;</span> описывает квадруполь.</p>
+<hr />
+<h3
+id="определение-фундаментального-решения-дифференциального-уравнения.-фундаментальное-решения-уравнения-лапласа.">16.
+Определение фундаментального решения дифференциального уравнения.
+Фундаментальное решения уравнения Лапласа.</h3>
+<p><strong>(Источник: Лекция 7, раздел 15)</strong></p>
+<p><strong>Определение:</strong> Пусть <span
+class="math inline">L</span> — линейный дифференциальный оператор.
+<strong>Фундаментальным решением</strong> уравнения <span
+class="math inline">Lu=0</span> называется обобщенная функция <span
+class="math inline">E(x, x_0)</span> (или просто <span
+class="math inline">E(x)</span> для операторов с постоянными
+коэффициентами, с <span class="math inline">x_0=0</span>), которая
+удовлетворяет уравнению: <span class="math display">L E(x, x_0) =
+\delta(x-x_0)</span> Здесь <span class="math inline">L</span> действует
+на <span class="math inline">E</span> в смысле теории обобщенных
+функций. Фундаментальное решение — это, по сути, “отклик” системы на
+точечное возмущение, описываемое <span
+class="math inline">\delta</span>-функцией.</p>
+<p><strong>Фундаментальное решение уравнения Лапласа:</strong> Уравнение
+Лапласа: <span class="math inline">\Delta u = 0</span>. Мы ищем решение
+<span class="math inline">E</span> уравнения Пуассона <span
+class="math inline">\Delta E = \delta(x)</span>. Такое решение (с
+точностью до выбора констант) имеет вид: - <strong>Для <span
+class="math inline">n=2</span> (в плоскости):</strong> <span
+class="math display">E(x) = \frac{1}{2\pi} \ln |x|</span> - <strong>Для
+<span class="math inline">n &gt; 2</span> (в пространстве):</strong>
+<span class="math display">E(x) = \frac{1}{(2-n)\omega_n |x|^{n-2}} =
+-\frac{\Gamma(n/2)}{2(n-2)\pi^{n/2}|x|^{n-2}}</span> где <span
+class="math inline">\omega_n</span> — площадь поверхности единичной
+сферы в <span class="math inline">\mathbb{R}^n</span>. В частности,
+<strong>для <span class="math inline">n=3</span></strong>: <span
+class="math display">E(x) = -\frac{1}{4\pi |x|}</span> Эти функции
+являются локально интегрируемыми и, следовательно, регулярными
+обобщенными функциями. В лекции доказывается, что <span
+class="math inline">\Delta E = \delta(x)</span>, применяя теорему о
+представлении функции через потенциалы (формулу Грина).</p>
+<hr />
+<h3
+id="построение-фундаментального-решения-обыкновенного-линейного-дифференциального-уравнения.">17.
+Построение фундаментального решения обыкновенного линейного
+дифференциального уравнения.</h3>
+<p><strong>(Источник: Лекция 7, раздел 16)</strong></p>
+<p>Рассмотрим обыкновенное линейное дифференциальное уравнение с
+постоянными коэффициентами: <span class="math display">L(u) = u^{(m)} +
+a_{m-1}u^{(m-1)} + \dots + a_0 u = 0</span> Мы ищем фундаментальное
+решение <span class="math inline">E(x)</span>, удовлетворяющее <span
+class="math inline">L(E) = \delta(x)</span>.</p>
+<p><strong>Теорема:</strong> Фундаментальным решением является функция
+<span class="math inline">E(x) = \Theta(x)Z(x)</span>, где: - <span
+class="math inline">\Theta(x)</span> — функция Хевисайда. - <span
+class="math inline">Z(x)</span> — решение <strong>однородного</strong>
+уравнения <span class="math inline">L(Z)=0</span>, удовлетворяющее
+<strong>специальным начальным условиям</strong> в точке <span
+class="math inline">x=0</span>: <span class="math display">Z(0) =
+Z&#39;(0) = \dots = Z^{(m-2)}(0) = 0, \quad Z^{(m-1)}(0) = 1</span></p>
+<p><strong>Идея доказательства:</strong> Используется формула для
+производной произведения и формула для производной разрывной функции
+(следствие из леммы в лекциях): <span class="math display">f^{(k)} =
+\{f^{(k)}\} + [f]_0 \delta^{(k-1)} + [f&#39;]_0 \delta^{(k-2)} + \dots +
+[f^{(k-1)}]_0 \delta</span> где <span
+class="math inline">\{f^{(k)}\}</span> — обычная производная (где
+существует), а <span class="math inline">[f^{(j)}]_0</span> — скачок
+<span class="math inline">j</span>-й производной в нуле.</p>
+<p>Для <span class="math inline">E(x) = \Theta(x)Z(x)</span>, все скачки
+до <span class="math inline">(m-2)</span>-й производной включительно
+равны нулю из-за начальных условий на <span
+class="math inline">Z</span>. Скачок <span
+class="math inline">(m-1)</span>-й производной равен <span
+class="math inline">Z^{(m-1)}(0) = 1</span>. Применяя оператор <span
+class="math inline">L</span> к <span class="math inline">E(x)</span>,
+все члены, содержащие производные от <span
+class="math inline">\delta</span>, сокращаются, и остается только один
+член с <span class="math inline">\delta(x)</span>, который появляется от
+<span class="math inline">E^{(m)}(x)</span>. Этот член равен <span
+class="math inline">1 \cdot \delta(x)</span>. Члены без <span
+class="math inline">\delta</span>-функций дают <span
+class="math inline">L(\Theta(x)Z(x))</span> в обычном смысле, что равно
+<span class="math inline">\Theta(x)L(Z(x))=0</span> для <span
+class="math inline">x&gt;0</span>. Таким образом, <span
+class="math inline">L(E) = \delta(x)</span>.</p>
+<hr />
+<h3
+id="понятие-обобщенной-производной.-связь-обобщенной-производной-и-производной-в-смысле-теории-обобщенных-функций.-пространства-соболева-h1omega-и-mathringh1omega-их-полнота.">18.
+Понятие обобщенной производной. Связь обобщенной производной и
+производной в смысле теории обобщенных функций. Пространства Соболева
+<span class="math inline">H^1(\Omega)</span> и <span
+class="math inline">\mathring{H}^1(\Omega)</span>, их полнота.</h3>
+<p><strong>(Источник: Лекция 8, раздел 17)</strong></p>
+<p><strong>Обобщенная (слабая) производная:</strong> Пусть <span
+class="math inline">u \in L^1_{loc}(\Omega)</span>. Функция <span
+class="math inline">v \in L^1_{loc}(\Omega)</span> называется обобщенной
+производной <span class="math inline">D^\alpha u</span> функции <span
+class="math inline">u</span>, если для <strong>любой</strong> основной
+функции <span class="math inline">\varphi \in \mathcal{D}(\Omega)</span>
+выполняется равенство: <span class="math display">\int_\Omega u(x)
+D^\alpha\varphi(x) dx = (-1)^{|\alpha|} \int_\Omega v(x)\varphi(x)
+dx</span> Если такая функция <span class="math inline">v</span>
+существует, она единственна (в смысле <span
+class="math inline">L^1_{loc}</span>).</p>
+<p><strong>Связь с производной в <span
+class="math inline">\mathcal{D}&#39;</span>:</strong> Обобщенная
+производная — это частный случай производной в смысле теории обобщенных
+функций, когда и сама функция, и ее производная являются
+<strong>регулярными</strong> обобщенными функциями. Если <span
+class="math inline">v = D^\alpha u</span> в смысле обобщенных
+производных, то <span class="math inline">\langle D^\alpha u, \varphi
+\rangle = \langle v, \varphi \rangle</span>.</p>
+<p><strong>Пространства Соболева:</strong> - <strong><span
+class="math inline">H^1(\Omega)</span></strong> — это пространство
+функций <span class="math inline">u \in L^2(\Omega)</span>, все
+обобщенные производные первого порядка которых также принадлежат <span
+class="math inline">L^2(\Omega)</span>. <span
+class="math inline">H^1(\Omega) = \{u \in L^2(\Omega) : \frac{\partial
+u}{\partial x_i} \in L^2(\Omega), i=1,\dots,n\}</span>. Это гильбертово
+пространство со скалярным произведением и нормой: <span
+class="math display">(u,v)_1 = \int_\Omega (uv + \nabla u \cdot \nabla
+v)dx, \quad \|u\|_1 = \sqrt{(u,u)_1}</span> - <strong><span
+class="math inline">\mathring{H}^1(\Omega)</span></strong> — это
+замыкание пространства основных функций <span
+class="math inline">\mathcal{D}(\Omega)</span> (или <span
+class="math inline">C_0^\infty(\Omega)</span>) в норме пространства
+<span class="math inline">H^1(\Omega)</span>. Интуитивно, это
+пространство функций из <span class="math inline">H^1(\Omega)</span>,
+которые “равны нулю на границе”.</p>
+<p><strong>Полнота:</strong> Оба пространства, <span
+class="math inline">H^1(\Omega)</span> и <span
+class="math inline">\mathring{H}^1(\Omega)</span> (как замкнутое
+подпространство гильбертова пространства), являются полными, то есть
+гильбертовыми.</p>
+<hr />
+<h3
+id="неравенство-фридрихса.-эквивалентные-нормы-в-пространстве-mathringh1omega.">19.
+Неравенство Фридрихса. Эквивалентные нормы в пространстве <span
+class="math inline">\mathring{H}^1(\Omega)</span>.</h3>
+<p><strong>(Источник: Лекция 8, раздел 19)</strong></p>
+<p><strong>Лемма (Неравенство Фридрихса):</strong> Пусть <span
+class="math inline">\Omega \subset \mathbb{R}^n</span> — ограниченная
+область. Тогда существует константа <span class="math inline">C =
+C(\Omega) &gt; 0</span> такая, что для <strong>любой</strong> функции
+<span class="math inline">u \in \mathring{H}^1(\Omega)</span>
+выполняется неравенство: <span class="math display">\int_\Omega u^2(x)
+dx \le C(\Omega) \int_\Omega |\nabla u(x)|^2 dx</span> Или в нормах:
+<span class="math inline">\|u\|_{L^2}^2 \le C \|\nabla
+u\|_{L^2}^2</span>.</p>
+<p><strong>Идея доказательства (для <span class="math inline">u \in
+C_0^\infty(\Omega)</span>):</strong> Помещаем <span
+class="math inline">\Omega</span> в достаточно большой куб <span
+class="math inline">K_R = [-R, R]^n</span>. Для любой точки <span
+class="math inline">x=(x_1, x&#39;)</span> можно написать: <span
+class="math inline">u(x_1, x&#39;) = \int_{-R}^{x_1} \frac{\partial
+u}{\partial t}(t, x&#39;) dt</span>. Применяя неравенство Коши-Шварца:
+<span class="math inline">u^2(x) \le \left(\int_{-R}^{x_1} 1^2 dt\right)
+\left(\int_{-R}^{x_1} (\frac{\partial u}{\partial t})^2 dt\right) \le 2R
+\int_{-R}^R (\frac{\partial u}{\partial x_1})^2 dx_1</span>. Интегрируя
+это неравенство по всему кубу <span class="math inline">K_R</span>,
+получаем требуемый результат. Для произвольной функции из <span
+class="math inline">\mathring{H}^1(\Omega)</span> результат следует из
+плотности <span class="math inline">C_0^\infty(\Omega)</span>.</p>
+<p><strong>Эквивалентные нормы в <span
+class="math inline">\mathring{H}^1(\Omega)</span>:</strong> В
+пространстве <span class="math inline">\mathring{H}^1(\Omega)</span>
+норма <span class="math display">\|u\|_2 = \left(\int_\Omega |\nabla
+u|^2 dx\right)^{1/2}</span> эквивалентна стандартной норме <span
+class="math inline">\|u\|_1 = \left(\int_\Omega (u^2 + |\nabla u|^2)
+dx\right)^{1/2}</span>. <strong>Доказательство:</strong> 1. Очевидно,
+<span class="math inline">\|u\|_2 \le \|u\|_1</span>. 2. Из неравенства
+Фридрихса: <span class="math inline">\|u\|_1^2 = \|u\|_{L^2}^2 +
+\|u\|_2^2 \le C\|u\|_2^2 + \|u\|_2^2 = (C+1)\|u\|_2^2</span>.
+Следовательно, <span class="math inline">\|u\|_1 \le \sqrt{C+1}
+\|u\|_2</span>.</p>
+<p>Таким образом, <span class="math inline">\|u\|_2</span> является
+полноценной нормой в <span
+class="math inline">\mathring{H}^1(\Omega)</span>, и она порождает
+скалярное произведение <span class="math inline">(u,v)_2 = \int_\Omega
+\nabla u \cdot \nabla v \, dx</span>.</p>
+<hr />
+<h3
+id="определение-обобщенного-решения-первой-краевой-задачи-для-уравнения-пуассона.-связь-классического-и-обобщенного-решений.">20.
+Определение обобщенного решения первой краевой задачи для уравнения
+Пуассона. Связь классического и обобщенного решений.</h3>
+<p><strong>(Источник: Лекция 8, раздел 18, 20)</strong></p>
+<p>Рассмотрим первую краевую задачу для уравнения Пуассона: <span
+class="math display">
+\begin{cases}
+-\Delta u = f(x), &amp; x \in \Omega \\
+u|_{\partial\Omega} = 0
+\end{cases}
+</span> (Знак минус удобен для дальнейших формулировок).</p>
+<p><strong>Классическое решение:</strong> Функция <span
+class="math inline">u \in C^2(\Omega) \cap C(\bar{\Omega})</span>,
+удовлетворяющая уравнению и граничным условиям в обычном смысле.</p>
+<p><strong>Обобщенное (слабое) решение:</strong> Функция <span
+class="math inline">u \in \mathring{H}^1(\Omega)</span> называется
+обобщенным решением, если для <strong>любой</strong> “пробной” функции
+<span class="math inline">v \in \mathring{H}^1(\Omega)</span>
+(достаточно проверять для <span class="math inline">v \in
+C_0^\infty(\Omega)</span>) выполняется <strong>интегральное
+тождество</strong>: <span class="math display">\int_\Omega \nabla u
+\cdot \nabla v \, dx = \int_\Omega f v \, dx</span> Или в терминах
+скалярного произведения в <span
+class="math inline">\mathring{H}^1(\Omega)</span>: <span
+class="math inline">(u, v)_2 = (f, v)_{L^2}</span>.</p>
+<p><strong>Связь решений:</strong> 1. <strong>Если <span
+class="math inline">u</span> — классическое решение (достаточно
+гладкое), то оно является и обобщенным решением.</strong>
+<em>Доказательство:</em> Умножим уравнение <span
+class="math inline">-\Delta u = f</span> на пробную функцию <span
+class="math inline">v \in C_0^\infty(\Omega)</span> и проинтегрируем по
+<span class="math inline">\Omega</span>. <span
+class="math inline">-\int_\Omega (\Delta u) v \, dx = \int_\Omega fv \,
+dx</span>. Применяя формулу Грина к левой части и учитывая, что <span
+class="math inline">v=0</span> на <span
+class="math inline">\partial\Omega</span>: <span
+class="math inline">\int_\Omega \nabla u \cdot \nabla v \, dx -
+\int_{\partial\Omega} \frac{\partial u}{\partial \nu} v \, dS =
+\int_\Omega fv \, dx \implies \int_\Omega \nabla u \cdot \nabla v \, dx
+= \int_\Omega fv \, dx</span>. Тождество выполнено.</p>
+<ol start="2" type="1">
+<li><strong>Если <span class="math inline">u</span> — обобщенное
+решение, и при этом оно достаточно гладкое (<span class="math inline">u
+\in C^2(\Omega)</span>), то оно является и классическим
+решением.</strong> <em>Доказательство:</em> Проводим рассуждения в
+обратную сторону. Из <span class="math inline">\int_\Omega \nabla u
+\cdot \nabla v \, dx = \int_\Omega fv \, dx</span>, применяя формулу
+Грина, получаем <span class="math inline">\int_\Omega (-\Delta u - f)v
+\, dx = 0</span> для любой <span class="math inline">v \in
+C_0^\infty(\Omega)</span>. В силу основной леммы вариационного
+исчисления, отсюда следует, что <span class="math inline">-\Delta u - f
+= 0</span> поточечно.</li>
+</ol>
+<hr />
+<h3
+id="теорема-существования-обобщенного-решения-уравнения-пуассона.">21.
+Теорема существования обобщенного решения уравнения Пуассона.</h3>
+<p><strong>(Источник: Лекция 8, раздел 21)</strong></p>
+<p><strong>Теорема:</strong> Для любой функции <span
+class="math inline">f \in L^2(\Omega)</span> первая краевая задача для
+уравнения Пуассона <span class="math display">
+\begin{cases}
+-\Delta u = f(x), &amp; x \in \Omega \\
+u|_{\partial\Omega} = 0
+\end{cases}
+</span> имеет <strong>единственное</strong> обобщенное решение <span
+class="math inline">u \in \mathring{H}^1(\Omega)</span>.</p>
+<p><strong>Доказательство:</strong> Доказательство элегантно и опирается
+на фундаментальную теорему функционального анализа. 1. Рассмотрим
+линейный функционал на гильбертовом пространстве <span
+class="math inline">\mathring{H}^1(\Omega)</span> (со скалярным
+произведением <span class="math inline">(u,v)_2 = \int_\Omega \nabla u
+\cdot \nabla v \, dx</span>): <span class="math display">L(v) =
+\int_\Omega f v \, dx = (f, v)_{L^2}</span> 2. <strong>Покажем, что этот
+функционал непрерывен (ограничен).</strong> По неравенству Коши-Шварца в
+<span class="math inline">L^2</span> и неравенству Фридрихса: <span
+class="math display">|L(v)| = |(f, v)_{L^2}| \le \|f\|_{L^2} \|v\|_{L^2}
+\le \|f\|_{L^2} \sqrt{C} \|\nabla v\|_{L^2} = (\sqrt{C}\|f\|_{L^2})
+\|v\|_2</span> Так как <span class="math inline">|L(v)| \le K
+\|v\|_2</span>, функционал <span class="math inline">L</span> является
+ограниченным (непрерывным) на <span
+class="math inline">\mathring{H}^1(\Omega)</span>. 3. <strong>Применяем
+теорему Рисса о представлении линейных функционалов.</strong> Согласно
+этой теореме, для любого непрерывного линейного функционала <span
+class="math inline">L</span> на гильбертовом пространстве <span
+class="math inline">H</span> существует единственный элемент <span
+class="math inline">u \in H</span> такой, что <span
+class="math inline">L(v) = (u, v)_H</span> для всех <span
+class="math inline">v \in H</span>. 4. В нашем случае <span
+class="math inline">H=\mathring{H}^1(\Omega)</span> со скалярным
+произведением <span class="math inline">(\cdot, \cdot)_2</span>.
+Следовательно, существует <strong>единственный</strong> элемент <span
+class="math inline">u \in \mathring{H}^1(\Omega)</span> такой, что:
+<span class="math display">L(v) = (u, v)_2</span> для всех <span
+class="math inline">v \in \mathring{H}^1(\Omega)</span>. 5. Расписывая,
+получаем: <span class="math display">\int_\Omega fv \, dx = \int_\Omega
+\nabla u \cdot \nabla v \, dx</span> Это в точности определение
+обобщенного решения. Существование и единственность доказаны.</p>
+</body>
+</html>
